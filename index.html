@@ -11313,10 +11313,12 @@
                         </div>
                         <div class="text-[10px] mt-1 font-mono font-bold">${stock.weight}%</div>
                     </td>
-                    <td class="px-6 py-4 text-right font-mono font-bold">$${stock.price.toLocaleString()}</td>
-                    <td class="px-6 py-4 text-right font-bold ${stock.change.includes('+') ? 'positive' : 'negative'}">
+                    <td class="px-6 py-4 text-right font-mono">
+                        <div class="font-bold text-slate-800">$${stock.price.toLocaleString()}</div>
+                        <div class="text-[10px] font-bold ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
+                    </td>
+                    <td class="px-6 py-4 text-right">
                         <div class="flex flex-col items-end">
-                            <span>${stock.change}</span>
                             ${generateSparkline(stock.history)}
                         </div>
                     </td>
