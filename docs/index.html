@@ -565,7 +565,7 @@
         });
 
         // 更新頂部數據
-        const data = etfData[id];
+        const data = etfData[id]; if(!data) { console.error("ETF Data Missing"); return; }
         document.getElementById('etf-scale').innerText = data.scale;
         document.getElementById('etf-price').innerText = `$${data.price}`;
         document.getElementById('etf-top-weight').innerText = data.topWeight || (data.holdings[0].weight + "%");
@@ -585,7 +585,7 @@
         // 更新表格
         const listBody = document.getElementById('stock-list');
         listBody.innerHTML = '';
-        data.holdings.forEach((stock, index) => {
+        if(!data.holdings) return; data.holdings.forEach((stock, index) => { try {
             const row = `
                 <tr class="flex flex-col md:table-row bg-white md:bg-transparent rounded-xl md:rounded-none shadow-sm md:shadow-none border border-slate-100 md:border-b-0 hover:bg-blue-50 transition-colors cursor-pointer group p-4 md:p-0" onclick="showModal('${stock.id}', ${index})">
                     <!-- 股票名稱與價格 -->
@@ -648,8 +648,7 @@
                     </td>
                 </tr>
             `;
-            listBody.insertAdjacentHTML('beforeend', row);
-        });
+            listBody.insertAdjacentHTML('beforeend', row); } catch(err) { console.error(err); } });
     }
 
     function calcFibo() {
