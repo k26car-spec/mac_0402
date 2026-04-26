@@ -239,19 +239,23 @@
 <script>
     function generateSparkline(data) {
         if (!data || data.length === 0) return '';
+        // 提取價格並過濾無效值
+        const prices = data.map(d => (typeof d === 'object' ? d.c : d)).filter(v => v != null && !isNaN(v));
+        if (prices.length === 0) return '';
+        
         const w = 60;
         const h = 20;
-        const min = Math.min(...data);
-        const max = Math.max(...data);
+        const min = Math.min(...prices);
+        const max = Math.max(...prices);
         const range = max - min || 1;
         
-        const points = data.map((val, i) => {
-            const x = (i / (data.length - 1)) * w;
+        const points = prices.map((val, i) => {
+            const x = (i / (prices.length - 1)) * w;
             const y = h - ((val - min) / range) * h;
             return `${x},${y}`;
         }).join(' ');
 
-        const isPositive = data[data.length - 1] >= data[0];
+        const isPositive = prices[prices.length - 1] >= prices[0];
         const color = isPositive ? '#ef4444' : '#22c55e'; // Red up, green down
 
         return `
