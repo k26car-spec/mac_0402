@@ -5,17 +5,29 @@ import os
 
 data_file = "docs/data.json"
 
-async def fetch_2024_price(s, client):
-    # 強制指定 2024 年 10 月 25 日 左右的 TimeStamp (約 1729814400)
-    # 我們抓取 2024 年 10 月初 到 10 月底的資料
-    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{s}.TW?period1=1727740800&period2=1730332800&interval=1d"
+async def get_twse_data():
+    # 抓取證交所今日最新報價 (2026/04/26)
+    url = "https://www.twse.com.tw/exchangeReport/STOCK_DAY_ALL?response=open_data"
     try:
-        r = await client.get(url, headers={'User-Agent': 'Mozilla'}, timeout=12)
-        res = r.json()['chart']['result'][0]
-        ts, q = res['timestamp'], res['indicators']['quote'][0]
-        h = [{"t": ts[i], "c": q['close'][i], "v": q['volume'][i] or 0} for i in range(len(ts)) if q['close'][i]]
-        return h[-5:] # 傳回 2024 年 10 月底最後幾筆
-    except: return None
+        async with httpx.AsyncClient() as client:
+            r = await client.get(url, timeout=30)
+            lines = r.text.split("\n")
+            prices = {}
+            for line in lines[1:]:
+                parts = line.replace('"', '').split(",")
+                if len(parts) >= 10:
+                    try:
+                        ticker = parts[1].strip()
+                        prices[ticker] = {
+                            "p": float(parts[8]) if parts[8] and parts[8] != 'None' else 0,
+                            "v": int(int(parts[3])/1000) if parts[3] else 0, 
+                            "c": parts[9] if parts[9] else "0.00"
+                        }
+                    except: continue
+            return prices
+    except Exception as e:
+        print(f"TWSE Error: {e}")
+        return None
 
 etf_base_data = {
     '00981A': { 'name': '統一台股增長', 'scale': '1,925 億', 'topWeight': '8.55%', 'vwap': '多頭鎖碼', 'holdings': [
@@ -36,42 +48,37 @@ etf_base_data = {
 }
 
 async def run():
-    async with httpx.AsyncClient() as client:
-        all_s = set()
-        all_s.add("0050")
-        for d in etf_base_data.values():
-            for st in d['holdings']: all_s.add(st['id'])
-        
-        quotes = {}
-        tasks = [fetch_2024_price(s, client) for s in list(all_s)]
-        results = await asyncio.gather(*tasks)
-        for i, s in enumerate(list(all_s)):
-            if results[i]: quotes[s] = results[i]
+    official = await get_twse_data()
+    if not official: return
 
     for eid, data in etf_base_data.items():
         total_p_change = 0
-        weight_sum = 0
+        total_w = 0
         
+        # ETF 本身報價
+        if eid in official:
+            data['price'] = official[eid]['p']
+            data['change'] = official[eid]['c']
+            
         for st in data['holdings']:
-            if st['id'] in quotes:
-                q = quotes[st['id']]
-                p, p_p = q[-1]['c'], q[-2]['c']
-                st.update({'price': p, 'change': f"{((p-p_p)/p_p*100):+.2f}%", 'history': q})
-                vol, vol_p = q[-1]['v'], q[-2]['v']
-                st['vwap_pos'] = "高於週VWAP" if p > sum(x['c'] for x in q[-5:])/5 else "回測週VWAP"
-                st['vp_analysis'] = "價漲量增" if (p > p_p and vol > vol_p) else "量縮盤整"
-                st['net_buy'] = f"{int(vol/1000):+d}"
-                
-                total_p_change += ((p - p_p) / p_p) * (st['weight'] / 100)
-                weight_sum += st['weight']
+            sid = st['id']
+            if sid in official:
+                p = official[sid]['p']
+                raw_diff = official[sid]['c']
+                try:
+                    diff_val = float(raw_diff.replace('+','').replace('-','').replace('▲','').replace('▼',''))
+                    is_down = '-' in raw_diff or '▼' in raw_diff
+                    p_p = p + diff_val if is_down else p - diff_val
+                    pct = (p - p_p) / p_p if p_p != 0 else 0
+                    st.update({'price': p, 'change': f"{'+' if not is_down else '-'}{abs(diff_val)} ({pct*100:+.2f}%)", 'vwap_pos': "高於週VWAP" if pct > 0 else "回測週VWAP", 'vp_analysis': "價漲量增" if pct > 0 else "量縮盤整"})
+                    total_p_change += pct * (st['weight'] / 100)
+                    total_w += st['weight']
+                except: pass
 
-        if eid == '0050' and '0050' in quotes:
-             q_50 = quotes['0050']
-             data['price'] = round(q_50[-1]['c'], 2)
-             data['change'] = f"{((q_50[-1]['c']-q_50[-2]['c'])/q_50[-2]['c']*100):+.2f}%"
-        else:
-             base = 28.5
-             daily_swing = total_p_change / (weight_sum/100) if weight_sum > 0 else 0
+        # 非 0050 基金價格
+        if eid != '0050':
+             daily_swing = total_p_change / (total_w/100) if total_w > 0 else 0
+             base = 27.8
              data['price'] = round(base * (1 + daily_swing), 2)
              data['change'] = f"{daily_swing*100:+.2f}%"
 
