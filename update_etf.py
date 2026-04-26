@@ -19,7 +19,22 @@ etf_base_data = {
             {'id': '3324', 'name': '雙鴻', 'weight': 3.90, 'chips': '散熱大廠', 'tech': '盤整向上'},
             {'id': '2308', 'name': '台達電', 'weight': 3.50, 'chips': '長線佈局', 'tech': '突破頸線'},
             {'id': '2317', 'name': '鴻海', 'weight': 3.20, 'chips': '外資吸納', 'tech': '上升通道'},
-            # ... 其餘省略
+            {'id': '3661', 'name': '世芯-KY', 'weight': 2.80, 'chips': '高價領頭', 'tech': '回測5日線'},
+            {'id': '3443', 'name': '創意', 'weight': 2.50, 'chips': '融券回補', 'tech': '底部反轉'},
+            {'id': '2449', 'name': '京元電子', 'weight': 2.30, 'chips': '低接買盤', 'tech': '站穩季線'},
+            {'id': '3037', 'name': '欣興', 'weight': 2.10, 'chips': '投信回歸', 'tech': '整理末端'},
+            {'id': '3189', 'name': '景碩', 'weight': 1.90, 'chips': '低位築底', 'tech': '黃金交叉'},
+            {'id': '8046', 'name': '南電', 'weight': 1.80, 'chips': '空頭止跌', 'tech': '底部放量'},
+            {'id': '1519', 'name': '華城', 'weight': 1.60, 'chips': '重電題材', 'tech': '沿均線上攻'},
+            {'id': '1513', 'name': '中興電', 'weight': 1.50, 'chips': '政策受惠', 'tech': '回測月線'},
+            {'id': '2603', 'name': '長榮', 'weight': 1.40, 'chips': '高股息誘因', 'tech': '橫向整理'},
+            {'id': '1216', 'name': '統一', 'weight': 1.30, 'chips': '防禦型標的', 'tech': '緩步墊高'},
+            {'id': '2881', 'name': '富邦金', 'weight': 1.20, 'chips': '金融領頭', 'tech': '盤堅向上'},
+            {'id': '2376', 'name': '技嘉', 'weight': 1.10, 'chips': '投信承接', 'tech': '區間震盪'},
+            {'id': '3231', 'name': '緯創', 'weight': 1.00, 'chips': '洗清籌碼', 'tech': '破底翻'},
+            {'id': '2382', 'name': '廣達', 'weight': 0.90, 'chips': '穩健流入', 'tech': '多頭排列'},
+            {'id': '3034', 'name': '聯詠', 'weight': 0.85, 'chips': '法人觀望', 'tech': '下探支撐'},
+            {'id': '3008', 'name': '大立光', 'weight': 0.80, 'chips': '守穩千元', 'tech': '長期築底'}
         ]
     },
     '00992A': {
@@ -27,7 +42,23 @@ etf_base_data = {
         'holdings': [
             {'id': '2330', 'name': '台積電', 'weight': 20.00, 'chips': '法人加碼', 'tech': '高於週VWAP'},
             {'id': '6669', 'name': '緯穎', 'weight': 4.80, 'chips': '大戶鎖碼', 'tech': '多頭排列'},
-            # ... 其餘省略
+            {'id': '3105', 'name': '穩懋', 'weight': 4.50, 'chips': '跌深反彈', 'tech': '帶量長紅'},
+            {'id': '6223', 'name': '旺矽', 'weight': 4.20, 'chips': '融資減肥', 'tech': '回測支撐'},
+            {'id': '3037', 'name': '欣興', 'weight': 3.80, 'chips': '法人回補', 'tech': '站穩三線'},
+            {'id': '6515', 'name': '穎崴', 'weight': 3.50, 'chips': '特定買盤', 'tech': '三角收斂'},
+            {'id': '2454', 'name': '聯發科', 'weight': 3.20, 'chips': '主力作作多', 'tech': '穩步墊高'},
+            {'id': '2382', 'name': '廣達', 'weight': 2.90, 'chips': '籌碼穩定', 'tech': '均線糾結'},
+            {'id': '3231', 'name': '緯創', 'weight': 2.70, 'chips': '散戶退場', 'tech': '跌破月線'},
+            {'id': '2376', 'name': '技嘉', 'weight': 2.50, 'chips': '法人首選', 'tech': '突破平台'},
+            {'id': '3330', 'name': '光聖', 'weight': 2.20, 'chips': '光通訊熱', 'tech': '噴發創高'},
+            {'id': '4510', 'name': '高力', 'weight': 2.00, 'chips': '節能題材', 'tech': '帶量上攻'},
+            {'id': '3661', 'name': '世芯-KY', 'weight': 1.80, 'chips': '法人控盤', 'tech': '高檔震盪'},
+            {'id': '2303', 'name': '聯電', 'weight': 1.60, 'chips': '低接支撐', 'tech': '低檔盤旋'},
+            {'id': '3711', 'name': '日月光投控', 'weight': 1.50, 'chips': '內資佈局', 'tech': '緩步墊高'},
+            {'id': '8299', 'name': '群聯', 'weight': 1.40, 'chips': '記憶體修復', 'tech': '站上季線'},
+            {'id': '3529', 'name': '力旺', 'weight': 1.30, 'chips': 'IP大廠', 'tech': '創波段高'},
+            {'id': '2308', 'name': '台達電', 'weight': 1.20, 'chips': '權值吸納', 'tech': '多頭排列'},
+            {'id': '2345', 'name': '智邦', 'weight': 1.10, 'chips': '投信首選', 'tech': '仰角拉升'}
         ]
     },
     '0050': {
@@ -90,4 +121,65 @@ etf_base_data = {
         ]
     }
 }
-# ... 其餘抓取與寫入邏輯 ...
+
+async def fetch_yahoo_kline(symbol, suffix, client):
+    full_symbol = f"{symbol}{suffix}" if "." not in symbol else symbol
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{full_symbol}?interval=1d&range=2mo"
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    try:
+        resp = await client.get(url, headers=headers, timeout=10.0)
+        data = resp.json()
+        if data and 'chart' in data and data['chart']['result']:
+            result = data['chart']['result'][0]
+            timestamps = result['timestamp']
+            quotes = result['indicators']['quote'][0]
+            history = []
+            for i in range(len(timestamps)):
+                o = quotes['open'][i]
+                c = quotes['close'][i]
+                v = quotes['volume'][i]
+                if c is not None and o is not None and v is not None:
+                    history.append({"t": timestamps[i], "o": round(o, 2), "c": round(c, 2), "v": v})
+            return history[-35:]
+    except: return None
+    return None
+
+async def update_prices():
+    all_symbols = set()
+    for etf_id, data in etf_base_data.items():
+        etf_symbol = "0050.TW" if etf_id == "0050" else (etf_id + ".TW")
+        all_symbols.add(etf_symbol)
+        for stock in data['holdings']: all_symbols.add(stock['id'])
+            
+    quotes = {}
+    async with httpx.AsyncClient() as client:
+        for s in list(all_symbols):
+            res = await fetch_yahoo_kline(s, "" if "." in s else ".TW", client)
+            if not res and "." not in s: res = await fetch_yahoo_kline(s, ".TWO", client)
+            if res: quotes[s] = res
+
+    for etf_id, data in etf_base_data.items():
+        etf_symbol = "0050.TW" if etf_id == "0050" else (etf_id + ".TW")
+        if etf_symbol in quotes:
+            q = quotes[etf_symbol]
+            p = q[-1]['c']
+            prev_p = q[-2]['c'] if len(q) > 1 else p
+            data['price'] = p
+            data['change'] = f"{((p-prev_p)/prev_p*100):+.2f}%"
+
+        for stock in data['holdings']:
+            s_id = stock['id']
+            if s_id in quotes:
+                q = quotes[s_id]
+                p, prev_p = q[-1]['c'], (q[-2]['c'] if len(q) > 1 else q[-1]['c'])
+                chg_p = (p - prev_p) / prev_p * 100
+                stock['price'], stock['change'], stock['history'] = p, f"{'+' if chg_p>=0 else ''}{chg_p:.2f}%", q
+
+    with open(html_file, "r", encoding="utf-8") as f:
+        content = f.read()
+    new_data_js = f"const etfData = {json.dumps(etf_base_data, ensure_ascii=False, indent=4)};"
+    updated_content = re.sub(r"const etfData = \{.*?\};", new_data_js, content, flags=re.DOTALL)
+    with open(html_file, "w", encoding="utf-8") as f: f.write(updated_content)
+
+if __name__ == "__main__":
+    asyncio.run(update_prices())
