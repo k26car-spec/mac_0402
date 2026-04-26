@@ -683,12 +683,11 @@
                     <!-- 籌碼與技術診斷 -->
                     <td class="px-0 md:px-6 py-0 md:py-4 flex flex-wrap gap-2 md:table-cell mb-4 md:mb-0">
                         <span class="text-[10px] px-2.5 py-1 md:py-0.5 rounded-md font-medium bg-slate-100 text-slate-600 whitespace-nowrap group-hover:bg-blue-100 transition">${stock.chips}</span>
-                        <span class="text-[10px] px-2.5 py-1 md:py-0.5 rounded-md font-bold bg-indigo-50 text-indigo-600 whitespace-nowrap">${stock.vp_analysis || ''}</span>
-                        <span class="md:hidden text-[10px] px-2.5 py-1 rounded-md font-medium bg-blue-50 text-blue-600 italic whitespace-nowrap">${stock.tech}</span>
+                        <span class="text-[10px] px-2.5 py-1 md:py-0.5 rounded-md font-bold bg-indigo-50 text-indigo-600 whitespace-nowrap">${stock.vp_analysis || '數據計算中'}</span>
                     </td>
 
                     <td class="hidden md:table-cell px-6 py-4 text-xs font-bold text-blue-600 italic whitespace-nowrap">
-                        ${stock.tech}
+                        ${stock.vwap_pos || '多頭鎖碼'}
                     </td>
 
                     <td class="px-0 md:px-4 py-0 md:py-4 text-center border-t border-slate-50 md:border-0 pt-3 md:pt-0">
