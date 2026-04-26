@@ -25,29 +25,33 @@ async def get_twse_official():
     url = "https://www.twse.com.tw/fund/T86?response=open_data"
     try:
         async with httpx.AsyncClient() as client:
+            import csv, io
             res = await client.get(url, timeout=30)
-            lines = res.text.split("\n")
-            header = lines[0].replace('"', '').split(",")
-            
-            trust_idx = -1
-            for i, col in enumerate(header):
-                if "投信買賣超" in col:
-                    trust_idx = i
-                    break
-            
+            rows = list(csv.reader(io.StringIO(res.text)))
             chips = {}
+            trust_idx = -1
+            if rows:
+                for i, col in enumerate(rows[0]):
+                    if "投信買賣超" in col:
+                        trust_idx = i
+                        break
             if trust_idx != -1:
-                # 遍歷資料列，T86 通常只包含最近一個交易日的全部股票
-                for line in lines[1:]:
-                    parts = line.replace('"', '').split(",")
-                    if len(parts) > trust_idx:
-                        ticker = parts[0].strip()
+                for row in rows[1:]:
+                    if len(row) > trust_idx and row[0].strip():
+                        ticker = row[0].strip()
                         try:
-                            # 直接抓取「投信買賣超股數」並換算張數
-                            chips[ticker] = int(int(parts[trust_idx])/1000)
+                            raw = row[trust_idx].strip().replace(",", "")
+                            chips[ticker] = int(int(raw) / 1000)
                         except: continue
+            # 若資料筆數 < 100，代表今天是假日，回傳空 dict 讓 UI 顯示「盤後更新」
+            if len(chips) < 100:
+                print(f"T86 only has {len(chips)} stocks - likely holiday, skipping chip data")
+                return {}
             return chips
-    except: return {}
+    except Exception as e:
+        print(f"T86 error: {e}")
+        return {}
+
 
 etf_base_data = {
     '00981A': { 'name': '統一台股增長', 'scale': '1,925 億', 'topWeight': '8.55%', 'vwap': '多頭鎖碼', 'holdings': [
@@ -132,10 +136,10 @@ async def run():
             if sid in c_map:
                 nb = c_map[sid]
                 st['net_buy'] = f"{nb:+d}"
-                st['chips'] = f"{'🔥 投信積極' if nb > 100 else ('👍 投信認養' if nb > 0 else '💤 法人觀望')}"
+                st['chips'] = f"{'🔥 投信積極' if nb > 100 else ('👍 投信認養' if nb > 0 else ('💤 法人賣超' if nb < 0 else '⚖️ 法人持平'))}"
             else:
-                st['net_buy'] = "+0"
-                st['chips'] = "💤 無官方數據"
+                st['net_buy'] = "盤後更新"
+                st['chips'] = "⏳ 盤後數據更新中"
 
     # 更新時間標記
     update_time = datetime.now().strftime("%Y-%m-%d %H:%M")
