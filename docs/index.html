@@ -666,10 +666,10 @@
     }
 
     // 初始化加載
-    window.onload = () => {
-        switchETF('00981A');
+    // fetchData 已經由 DOMContentLoaded 觸發，故此處僅需確保 Fibo 初始化
+    window.addEventListener('load', () => {
         calcFibo();
-    };
+    });
 </script>
 
 </body>
