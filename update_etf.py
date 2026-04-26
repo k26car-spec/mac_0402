@@ -64,7 +64,7 @@ etf_base_data = {
     '0050': {
         'name': '元大台灣50', 'price': 195.0, 'change': '+1.2%', 'scale': '4,500 億', 'topWeight': '51.2%', 'vwap': '權值護盤',
         'holdings': [
-            {'id': '2330', 'name': '台積電', 'weight': 51.2, 'chips': '外資認養', 'tech': '歷史新高'},
+            {'id': '2330', 'name': '台積電', 'weight': 51.2, 'chips': '外資買超', 'tech': '歷史新高'},
             {'id': '2317', 'name': '鴻海', 'weight': 8.3, 'chips': 'AI題材', 'tech': '季線反彈'},
             {'id': '2454', 'name': '聯發科', 'weight': 4.1, 'chips': '法人卡位', 'tech': '底部翻揚'},
             {'id': '2382', 'name': '廣達', 'weight': 2.8, 'chips': '主力鎖碼', 'tech': '量增突破'},
@@ -108,7 +108,7 @@ etf_base_data = {
             {'id': '2101', 'name': '南港', 'weight': 0.2, 'chips': '資產概念', 'tech': '強勢格局'},
             {'id': '2356', 'name': '英業達', 'weight': 0.2, 'chips': '伺服器熱', 'tech': '高檔震盪'},
             {'id': '2347', 'name': '聯強', 'weight': 0.2, 'chips': '通路王', 'tech': '高息保護'},
-            {'id': '2324', 'name': '仁寶', 'weight': 0.2, 'chips': '投信低階', 'tech': '緩漲格局'},
+            {'id': '2324', 'name': '仁寶', 'weight': 0.2, 'chips': '投信低接', 'tech': '緩漲格局'},
             {'id': '2353', 'name': '宏碁', 'weight': 0.2, 'chips': 'PC復甦', 'tech': '震盪築底'},
             {'id': '9921', 'name': '巨大', 'weight': 0.2, 'chips': '自行車龍頭', 'tech': '庫存去化'},
             {'id': '6505', 'name': '台塑化', 'weight': 0.2, 'chips': '油價支撐', 'tech': '跌深反彈'},
@@ -120,7 +120,9 @@ etf_base_data = {
 }
 
 async def fetch_yahoo_kline(symbol, suffix, client):
-    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}{suffix}?interval=1d&range=2mo"
+    # 如果已經帶有後綴則不添加
+    full_symbol = f"{symbol}{suffix}" if "." not in symbol else symbol
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{full_symbol}?interval=1d&range=2mo"
     headers = {'User-Agent': 'Mozilla/5.0'}
     try:
         resp = await client.get(url, headers=headers, timeout=10.0)
@@ -153,31 +155,51 @@ async def fetch_yahoo_kline(symbol, suffix, client):
 
 async def update_prices():
     all_symbols = set()
-    for etf, data in etf_base_data.items():
+    for etf_id, data in etf_base_data.items():
+        # 加入 ETF 本身代號進入抓取清單 (0050.TW等)
+        # 00981A/00992A 若是主動型，Yahoo 可能以 00981.TW 形式呈現
+        etf_symbol = etf_id
+        if etf_id == "00981A": etf_symbol = "00981.TW"
+        elif etf_id == "00992A": etf_symbol = "00992.TW"
+        elif etf_id == "0050": etf_symbol = "0050.TW"
+        all_symbols.add(etf_symbol)
+        
         for stock in data['holdings']:
             all_symbols.add(stock['id'])
             
-    print(f"📡 正在抓取 {len(all_symbols)} 檔 K 線...")
+    print(f"📡 正在同步 {len(all_symbols)} 檔即時數據...")
     
     quotes = {}
     async with httpx.AsyncClient() as client:
         symbol_list = list(all_symbols)
         for s in symbol_list:
-            # 嘗試 .TW，如果失敗嘗試 .TWO
-            res = await fetch_yahoo_kline(s, ".TW", client)
-            if not res:
-                res = await fetch_yahoo_kline(s, ".TWO", client)
+            if "." in s: # 已經有後綴的 (ETF)
+                res = await fetch_yahoo_kline(s, "", client)
+            else:
+                res = await fetch_yahoo_kline(s, ".TW", client)
+                if not res:
+                    res = await fetch_yahoo_kline(s, ".TWO", client)
             
             if res:
                 quotes[s] = res
-                print(f"✅ {s} OK")
-            else:
-                print(f"❌ {s} Failed")
 
-    updated_count = 0
     for etf_id, data in etf_base_data.items():
-        # 過濾掉沒抓到數據的股票，但保留基本資訊以便以後重試 (或者您希望全部顯示？)
-        # 這裡我們選擇保留所有股票，沒數據的顯示 "--"
+        # 更新 ETF 本身價格
+        etf_symbol = etf_id
+        if etf_id == "00981A": etf_symbol = "00981.TW"
+        elif etf_id == "00992A": etf_symbol = "00992.TW"
+        elif etf_id == "0050": etf_symbol = "0050.TW"
+
+        if etf_symbol in quotes:
+            q = quotes[etf_symbol]
+            p = q[-1]['c']
+            prev_p = q[-2]['c'] if len(q) > 1 else p
+            chg_amt = p - prev_p
+            chg_p = (chg_amt / prev_p) * 100
+            data['price'] = p
+            data['change'] = f"{chg_p:+.2f}%"
+
+        # 更新成分股價格
         for stock in data['holdings']:
             s_id = stock['id']
             if s_id in quotes:
@@ -189,7 +211,7 @@ async def update_prices():
                 chg_text = f"{chg_amt:+.1f} ({chg_p:+.2f}%)"
                 chg_text = ("▲ " if chg_p >= 0 else "▼ ") + chg_text
                 
-                avg_vol = sum(day['v'] for day in q[-5:]) / 5 if len(q) >= 5 else (q[0]['v'] if q else 1)
+                avg_vol = sum(day['v'] for day in q[-5:]) / 5 if len(q) >= 5 else 1
                 vol_ratio = q[-1]['v'] / avg_vol if avg_vol > 0 else 1
                 
                 if chg_p > 0.5:
@@ -203,13 +225,6 @@ async def update_prices():
                 stock['change'] = chg_text
                 stock['vp_analysis'] = vp_status
                 stock['history'] = q
-            else:
-                # 沒數據的預設值
-                stock['price'] = stock.get('price', 0)
-                stock['change'] = "--"
-                stock['vp_analysis'] = "數據載入失敗"
-                stock['history'] = []
-            updated_count += 1
 
     with open(html_file, "r", encoding="utf-8") as f:
         content = f.read()
@@ -219,8 +234,7 @@ async def update_prices():
     
     with open(html_file, "w", encoding="utf-8") as f:
         f.write(updated_content)
-        
-    print(f"\n🎊 完成！")
+    print(f"🎊 完成！ETF 與成分股同步成功。")
 
 if __name__ == "__main__":
     asyncio.run(update_prices())
