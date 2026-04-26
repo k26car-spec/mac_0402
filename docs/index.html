@@ -150,6 +150,23 @@
                     </p>
                 </div>
             </div>
+
+            <!-- 主力共識持股看板 -->
+            <div id="common-box" class="bg-slate-900 p-6 rounded-2xl shadow-xl text-white border border-blue-900/30">
+                <h3 class="font-bold mb-4 flex items-center gap-2 text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2H7a1 1 0 100-2h.01zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                    </svg>
+                    🎯 主力共識持股 (三基金共同持有)
+                </h3>
+                <div id="common-list" class="grid grid-cols-2 gap-2 text-[10px]">
+                    <!-- 動態載入 -->
+                </div>
+                <div class="mt-4 pt-4 border-t border-slate-800 text-[10px] text-slate-500 italic">
+                    註：此名單為三檔選取 ETF 同步持有的強勢股
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -541,13 +558,26 @@
         try {
             const resp = await fetch('data.json?v=' + new Date().getTime());
             if (!resp.ok) throw new Error('Network error');
-            etfData = await resp.json();
+            const fullData = await resp.json();
+            etfData = fullData.etf_data;
+            renderCommonBox(fullData.common_holdings);
             switchETF(currentETFId);
         } catch (e) {
             console.error('Initial Load Error:', e);
             document.getElementById('stock-list').innerHTML = '<tr><td colspan="4" class="p-8 text-center text-slate-400">數據初始化中，請稍候...</td></tr>';
             setTimeout(loadDataFromServer, 2000);
         }
+    }
+
+    function renderCommonBox(list) {
+        const el = document.getElementById('common-list');
+        if (!el) return;
+        el.innerHTML = list.map(item => `
+            <div class='bg-white/5 px-3 py-2 rounded-xl border border-white/10 flex items-center gap-2 hover:bg-white/10 transition group cursor-default'>
+                <span class='text-blue-400 group-hover:scale-125 transition'>🎯</span>
+                <span class='font-bold text-slate-200'>${item}</span>
+            </div>
+        `).join('');
     }
 
     window.addEventListener('DOMContentLoaded', loadDataFromServer);
