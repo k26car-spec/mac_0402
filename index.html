@@ -45,7 +45,7 @@
         <div class="glass-card p-6 rounded-2xl shadow-sm">
             <p class="text-slate-500 text-xs font-semibold uppercase mb-1">今日收盤價</p>
             <div class="text-lg md:text-2xl font-bold" id="etf-price">$27.80</div>
-            <div class="text-xs positive font-medium mt-1">▲ +4.43% (單日表現)</div>
+            <div class="text-xs font-medium mt-1" id="etf-change">▲ +4.43% (單日表現)</div>
         </div>
         <div class="glass-card p-6 rounded-2xl shadow-sm">
             <p class="text-slate-500 text-xs font-semibold uppercase mb-1">重倉龍頭: 台積電</p>
@@ -28034,9 +28034,15 @@
         // 更新頂部數據
         const data = etfData[id];
         document.getElementById('etf-scale').innerText = data.scale;
-        document.getElementById('etf-price').innerText = data.price;
-        document.getElementById('etf-top-weight').innerText = data.topWeight;
+        document.getElementById('etf-price').innerText = `$${data.price}`;
+        document.getElementById('etf-top-weight').innerText = data.topWeight || (data.holdings[0].weight + "%");
         document.getElementById('vwap-summary').innerText = data.vwap;
+
+        // 動態更新漲跌百分比與顏色
+        const changeEl = document.getElementById('etf-change');
+        const isPositive = !data.change.includes('-');
+        changeEl.innerText = `${isPositive ? '▲' : '▼'} ${data.change} (單日表現)`;
+        changeEl.className = `text-xs font-medium mt-1 ${isPositive ? 'text-red-500' : 'text-green-500'}`;
 
         // 更新表格
         const listBody = document.getElementById('stock-list');
