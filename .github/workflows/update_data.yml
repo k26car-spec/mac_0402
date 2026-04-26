@@ -28,6 +28,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add etf_monitor.html
-          git commit -m "Auto-update ETF data [skip ci]" || echo "No changes to commit"
+          git add data.json
+          git commit -m "Auto-update ETF data.json [skip ci]" || echo "No changes to commit"
           git push
