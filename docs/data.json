@@ -44,12 +44,12 @@
                     "chips": "主力吸納",
                     "price": 221.5,
                     "change": "-3.5 (-1.56%)",
-                    "vwap_pos": "回測週VWAP",
+                    "vwap_pos": "低於週VWAP",
                     "vp_analysis": "量縮盤整"
                 }
             ],
-            "price": 29.36,
-            "change": "+5.60%"
+            "price": 27.8,
+            "change": "+4.43%"
         },
         "00992A": {
             "name": "群益科技創新",
@@ -79,8 +79,8 @@
                     "vp_analysis": "價漲量增"
                 }
             ],
-            "price": 29.36,
-            "change": "+5.60%"
+            "price": 16.93,
+            "change": "+1.62%"
         },
         "0050": {
             "name": "元大台灣50",
@@ -105,7 +105,7 @@
                     "chips": "AI伺服器",
                     "price": 221.5,
                     "change": "-3.5 (-1.56%)",
-                    "vwap_pos": "回測週VWAP",
+                    "vwap_pos": "低於週VWAP",
                     "vp_analysis": "量縮盤整"
                 },
                 {
@@ -120,8 +120,10 @@
                 }
             ],
             "price": 89.95,
-            "change": "3.6000"
+            "change": "+4.17%"
         }
     },
-    "common_holdings": []
+    "common_holdings": [
+        "台積電"
+    ]
 }
