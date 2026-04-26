@@ -576,11 +576,16 @@
                 const resp = await fetch(path);
                 if (resp.ok) {
                     const fullData = await resp.json();
-                    etfData = fullData.etf_data;
-                    renderCommonBox(fullData.common_holdings);
-                    switchETF(currentETFId);
-                    success = true;
-                    console.log('Data loaded successfully from:', path);
+                    console.log('Keys in data.json:', Object.keys(fullData));
+                    if (fullData.etf_data) {
+                        etfData = fullData.etf_data;
+                        renderCommonBox(fullData.common_holdings || []);
+                        switchETF(currentETFId);
+                        success = true;
+                        console.log('Data loaded successfully from:', path);
+                    } else {
+                        console.error('Data format mismatch: missing etf_data');
+                    }
                     break;
                 }
             } catch (e) {
