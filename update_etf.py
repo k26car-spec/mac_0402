@@ -6,9 +6,8 @@ import os
 data_file = "docs/data.json"
 
 async def fetch_yahoo_full(s, client):
-    # 自動嘗試 .TW (上市) 與 .TWO (上櫃)
     suffixes = [".TW", ".TWO"]
-    if "00981A" in s or "00992A" in s: suffixes = [".TW"] # ETF類通常是 .TW
+    if "00981A" in s or "00992A" in s: suffixes = [".TW"]
     
     for suffix in suffixes:
         url = f"https://query1.finance.yahoo.com/v8/finance/chart/{s}{suffix}?interval=1d&range=5d"
@@ -22,7 +21,6 @@ async def fetch_yahoo_full(s, client):
     return None
 
 async def get_twse_official():
-    # 注意: T86 只包含上市。上櫃需要另外抓 TWT38U。為了穩定，我們先回傳上市籌碼，上櫃則在腳本內處理
     url = "https://www.twse.com.tw/fund/T86?response=open_data"
     try:
         async with httpx.AsyncClient() as client:
@@ -65,9 +63,20 @@ etf_base_data = {
         {'id': '2454', 'name': '聯發科', 'weight': 3.23},
         {'id': '2308', 'name': '台達電', 'weight': 3.93},
         {'id': '2303', 'name': '聯電', 'weight': 1.85},
+        {'id': '3711', 'name': '日月光', 'weight': 1.58},
         {'id': '2881', 'name': '富邦金', 'weight': 1.62},
         {'id': '2882', 'name': '國泰金', 'weight': 1.51},
-        {'id': '3037', 'name': '欣興', 'weight': 1.25, 'is_new': True}
+        {'id': '2891', 'name': '中信金', 'weight': 1.12},
+        {'id': '2412', 'name': '中華電', 'weight': 1.05},
+        {'id': '2886', 'name': '兆豐金', 'weight': 0.92},
+        {'id': '3037', 'name': '欣興', 'weight': 1.25, 'is_new': True},
+        {'id': '2382', 'name': '廣達', 'weight': 0.63},
+        {'id': '3231', 'name': '緯創', 'weight': 0.60},
+        {'id': '3008', 'name': '大立光', 'weight': 0.45},
+        {'id': '2885', 'name': '元大金', 'weight': 0.42},
+        {'id': '2912', 'name': '統一超', 'weight': 0.41},
+        {'id': '2892', 'name': '第一金', 'weight': 0.40},
+        {'id': '5880', 'name': '合庫金', 'weight': 0.38}
     ]}
 }
 
@@ -91,6 +100,16 @@ async def run():
 
         for st in data.get('holdings', []):
             sid = st['id']
+            # --- 關鍵修正：預設所有欄位，防止 undefined ---
+            st['price'] = st.get('price', 0)
+            st['change'] = st.get('change', '--')
+            st['net_buy'] = st.get('net_buy', '+0')
+            st['chips'] = st.get('chips', '法人橫盤')
+            st['vwap_pos'] = st.get('vwap_pos', '💪 多頭鎖碼')
+            st['vp_analysis'] = st.get('vp_analysis', '價量平穩')
+            st['history'] = st.get('history', None)
+            # ----------------------------------------
+            
             if sid in q_map:
                 q = q_map[sid]
                 p, p_p = q[-1]['c'], q[-2]['c']
@@ -99,13 +118,14 @@ async def run():
                 total_vol = sum([x['v'] for x in q])
                 vw_avg = total_val/total_vol if total_vol > 0 else p
                 
-                st.update({'price': p, 'change': f"{p-p_p:+.1f} ({((p-p_p)/p_p*100):+.2f}%)"})
+                st.update({'price': p, 'change': f"{p-p_p:+.1f} ({((p-p_p)/p_p*100):+.2f}%)", 'history': q})
                 st['vwap_pos'] = "💪 多頭鎖碼" if p > vw_avg else "📉 回測週VWAP"
                 st['vp_analysis'] = "價漲量增" if (p > p_p and v > v_p) else ("量縮盤整" if v < v_p else "高檔震盪")
             
             if sid in c_map:
-                st['net_buy'] = f"{c_map[sid]:+d}"
-                st['chips'] = "投信認養" if c_map[sid] > 100 else ("投信調節" if c_map[sid] < -100 else "法人橫盤")
+                nb = c_map[sid]
+                st['net_buy'] = f"{nb:+d}"
+                st['chips'] = "投信認養" if nb > 100 else ("投信調節" if nb < -100 else "法人橫盤")
 
     sets = [set(st['id'] for st in d['holdings']) for d in etf_base_data.values()]
     common_ids = sets[0] & sets[1] & sets[2]
