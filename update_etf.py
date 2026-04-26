@@ -32,11 +32,14 @@ async def fetch_yahoo_full(s, client):
                 c = q["close"][i]
                 if c is None:
                     continue
+                o = q["open"][i] or c
                 bars.append(
                     {
+                        "t": ts[i],
+                        "o": o,
                         "c": c,
-                        "h": q["high"][i] or c,   # 補 high
-                        "l": q["low"][i] or c,    # 補 low
+                        "hPrice": q["high"][i] or c,   # 補 high
+                        "lPrice": q["low"][i] or c,    # 補 low
                         "v": q["volume"][i] or 0,
                     }
                 )
@@ -250,7 +253,7 @@ def load_previous_holdings() -> dict[str, set[str]]:
 # [修正四] 標準週 VWAP：使用典型價格 (H+L+C)/3
 # ─────────────────────────────────────────────
 def calc_vwap(bars: list[dict]) -> float:
-    total_val = sum((b["h"] + b["l"] + b["c"]) / 3 * b["v"] for b in bars)
+    total_val = sum((b["hPrice"] + b["lPrice"] + b["c"]) / 3 * b["v"] for b in bars)
     total_vol = sum(b["v"] for b in bars)
     return total_val / total_vol if total_vol > 0 else bars[-1]["c"]
 
