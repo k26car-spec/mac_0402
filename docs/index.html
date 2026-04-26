@@ -609,6 +609,7 @@
                              <div class="font-bold text-lg text-slate-800">$${stock.price.toLocaleString()}</div>
                              <div class="text-[11px] font-bold ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
                              <div class="text-[10px] text-slate-400 font-mono mt-0.5">成交 ${Math.round(stock.history[stock.history.length-1].v).toLocaleString()} 張</div>
+                             <div class="text-[10px] font-bold mt-0.5 ${stock.net_buy && stock.net_buy.includes('+') ? 'text-red-500' : 'text-green-500'}">基金動向：${stock.net_buy || '+0'} 張</div>
                         </div>
                     </td>
 
@@ -631,6 +632,7 @@
                         <div class="font-bold text-slate-800">$${stock.price.toLocaleString()}</div>
                         <div class="text-[10px] font-bold ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
                         <div class="text-[10px] text-slate-400 mt-0.5">成交 ${Math.round(stock.history[stock.history.length-1].v).toLocaleString()} 張</div>
+                        <div class="text-[10px] font-bold mt-0.5 ${stock.net_buy && stock.net_buy.includes('+') ? 'text-red-500' : 'text-green-500'}">基金動向：${stock.net_buy || '+0'} 張</div>
                     </td>
 
                     <td class="hidden md:table-cell px-6 py-4 text-right border-t border-slate-100 md:border-0">
