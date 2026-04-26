@@ -36,8 +36,8 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 4.5%",
                     "vp_analysis": "🐢 量縮 0.9倍 (向上)",
-                    "chips": "💤 無法人數據",
-                    "net_buy": "+0"
+                    "net_buy": "+0",
+                    "chips": "💤 無官方數據"
                 },
                 {
                     "id": "3037",
@@ -70,8 +70,8 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 8.7%",
                     "vp_analysis": "⚡ 量能 1.2倍 (向上)",
-                    "chips": "💤 無法人數據",
-                    "net_buy": "+0"
+                    "net_buy": "+0",
+                    "chips": "💤 無官方數據"
                 },
                 {
                     "id": "2454",
@@ -103,8 +103,8 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 9.5%",
                     "vp_analysis": "🐢 量縮 0.8倍 (向上)",
-                    "chips": "💤 無法人數據",
-                    "net_buy": "+0"
+                    "net_buy": "+0",
+                    "chips": "💤 無官方數據"
                 },
                 {
                     "id": "2317",
@@ -136,8 +136,8 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 0.6%",
                     "vp_analysis": "🐢 量縮 0.4倍 (向下)",
-                    "chips": "💤 無法人數據",
-                    "net_buy": "+0"
+                    "net_buy": "+0",
+                    "chips": "💤 無官方數據"
                 },
                 {
                     "id": "2383",
@@ -169,8 +169,8 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 8.8%",
                     "vp_analysis": "🐢 量縮 1.0倍 (向上)",
-                    "chips": "💤 無法人數據",
-                    "net_buy": "+0"
+                    "net_buy": "+0",
+                    "chips": "💤 無官方數據"
                 }
             ],
             "price": 27.8,
@@ -184,7 +184,7 @@
             "holdings": [
                 {
                     "id": "2330",
-                    "name": "台積電",
+                    "name": "台績電",
                     "weight": 51.52,
                     "price": 2185.0,
                     "change": "+105.0 (+5.05%)",
@@ -212,8 +212,8 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 4.5%",
                     "vp_analysis": "🐢 量縮 0.9倍 (向上)",
-                    "chips": "💤 無法人數據",
-                    "net_buy": "+0"
+                    "net_buy": "+0",
+                    "chips": "💤 無官方數據"
                 },
                 {
                     "id": "2317",
@@ -245,8 +245,8 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 0.6%",
                     "vp_analysis": "🐢 量縮 0.4倍 (向下)",
-                    "chips": "💤 無法人數據",
-                    "net_buy": "+0"
+                    "net_buy": "+0",
+                    "chips": "💤 無官方數據"
                 },
                 {
                     "id": "2454",
@@ -278,13 +278,14 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 9.5%",
                     "vp_analysis": "🐢 量縮 0.8倍 (向上)",
-                    "chips": "💤 無法人數據",
-                    "net_buy": "+0"
+                    "net_buy": "+0",
+                    "chips": "💤 無官方數據"
                 }
             ],
             "price": 89.95,
             "change": "+4.17%"
         }
     },
-    "common_holdings": []
+    "common_holdings": [],
+    "update_time": "2026-04-26 13:57"
 }

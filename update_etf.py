@@ -2,6 +2,7 @@ import asyncio
 import json
 import httpx
 import os
+from datetime import datetime
 
 data_file = "docs/data.json"
 
@@ -20,15 +21,31 @@ async def fetch_yahoo_full(s, client):
     return None
 
 async def get_twse_official():
+    # 抓取三大法人買賣超 (T86)
     url = "https://www.twse.com.tw/fund/T86?response=open_data"
     try:
         async with httpx.AsyncClient() as client:
             res = await client.get(url, timeout=30)
+            lines = res.text.split("\n")
+            header = lines[0].replace('"', '').split(",")
+            
+            trust_idx = -1
+            for i, col in enumerate(header):
+                if "投信買賣超" in col:
+                    trust_idx = i
+                    break
+            
             chips = {}
-            for line in res.text.split("\n")[1:]:
-                parts = line.replace('"', '').split(",")
-                if len(parts) >= 11:
-                    chips[parts[0].strip()] = int(int(parts[10])/1000)
+            if trust_idx != -1:
+                # 遍歷資料列，T86 通常只包含最近一個交易日的全部股票
+                for line in lines[1:]:
+                    parts = line.replace('"', '').split(",")
+                    if len(parts) > trust_idx:
+                        ticker = parts[0].strip()
+                        try:
+                            # 直接抓取「投信買賣超股數」並換算張數
+                            chips[ticker] = int(int(parts[trust_idx])/1000)
+                        except: continue
             return chips
     except: return {}
 
@@ -41,7 +58,7 @@ etf_base_data = {
         {'id': '2383', 'name': '台光電', 'weight': 4.80}
     ]},
     '0050': { 'name': '元大台灣50', 'scale': '4,500 億', 'topWeight': '51.52%', 'vwap': '權值護盤', 'holdings': [
-        {'id': '2330', 'name': '台積電', 'weight': 51.52},
+        {'id': '2330', 'name': '台績電', 'weight': 51.52},
         {'id': '2317', 'name': '鴻海', 'weight': 3.14},
         {'id': '2454', 'name': '聯發科', 'weight': 3.23}
     ]}
@@ -71,30 +88,26 @@ async def run():
                 q = q_map[sid]
                 p, p_p = q[-1]['c'], q[-2]['c']
                 v, v_p = q[-1]['v'], q[-2]['v']
-                
-                # 計算 VWAP
                 total_val = sum([x['c'] * x['v'] for x in q])
                 total_vol = sum([x['v'] for x in q])
                 vw_avg = total_val/total_vol if total_vol > 0 else p
                 dist = ((p - vw_avg) / vw_avg) * 100
-                
                 st.update({'price': p, 'change': f"{p-p_p:+.1f} ({((p-p_p)/p_p*100):+.2f}%)", 'history': q})
-                
-                # --- 數值化差異分析 ---
                 st['vwap_pos'] = f"{'💪' if dist > 0 else '📉'} {'高於' if dist > 0 else '低於'} VWAP {abs(dist):.1f}%"
-                
                 vol_ratio = v / v_p if v_p > 0 else 1.0
                 st['vp_analysis'] = f"{'⚡ 量能' if vol_ratio > 1.2 else '🐢 量縮'} {vol_ratio:.1f}倍 {'(向上)' if p > p_p else '(向下)'}"
-                
-                if sid in c_map:
-                    nb = c_map[sid]
-                    st['net_buy'] = f"{nb:+d}"
-                    st['chips'] = f"{'🔥 投信積極' if nb > 500 else ('👍 投信認養' if nb > 0 else '💤 法人觀望')}"
-                else:
-                    st['chips'] = "💤 無法人數據"
-                    st['net_buy'] = "+0"
+            
+            if sid in c_map:
+                nb = c_map[sid]
+                st['net_buy'] = f"{nb:+d}"
+                st['chips'] = f"{'🔥 投信積極' if nb > 100 else ('👍 投信認養' if nb > 0 else '💤 法人觀望')}"
+            else:
+                st['net_buy'] = "+0"
+                st['chips'] = "💤 無官方數據"
 
+    # 更新時間標記
+    update_time = datetime.now().strftime("%Y-%m-%d %H:%M")
     with open(data_file, "w", encoding="utf-8") as f:
-        json.dump({ "etf_data": etf_base_data, "common_holdings": [] }, f, ensure_ascii=False, indent=4)
+        json.dump({ "etf_data": etf_base_data, "common_holdings": [], "update_time": update_time }, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__": asyncio.run(run())
