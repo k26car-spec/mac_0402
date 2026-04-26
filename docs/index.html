@@ -562,17 +562,35 @@
     let etfData = {};
     
     async function loadDataFromServer() {
-        try {
-            const resp = await fetch('data.json?v=' + new Date().getTime());
-            if (!resp.ok) throw new Error('Network error');
-            const fullData = await resp.json();
-            etfData = fullData.etf_data;
-            renderCommonBox(fullData.common_holdings);
-            switchETF(currentETFId);
-        } catch (e) {
-            console.error('Initial Load Error:', e);
-            document.getElementById('stock-list').innerHTML = '<tr><td colspan="4" class="p-8 text-center text-slate-400">數據初始化中，請稍候...</td></tr>';
-            setTimeout(loadDataFromServer, 2000);
+        // 多路徑診斷：嘗試抓取當前路徑或 repo 根路徑的資料
+        const paths = [
+            'data.json?v=' + new Date().getTime(),
+            './data.json?v=' + new Date().getTime(),
+            '../data.json?v=' + new Date().getTime()
+        ];
+        
+        let success = false;
+        for (let path of paths) {
+            try {
+                console.log('Trying to load data from:', path);
+                const resp = await fetch(path);
+                if (resp.ok) {
+                    const fullData = await resp.json();
+                    etfData = fullData.etf_data;
+                    renderCommonBox(fullData.common_holdings);
+                    switchETF(currentETFId);
+                    success = true;
+                    console.log('Data loaded successfully from:', path);
+                    break;
+                }
+            } catch (e) {
+                console.warn('Failed path:', path, e);
+            }
+        }
+        
+        if (!success) {
+            document.getElementById('stock-list').innerHTML = '<tr><td colspan="4" class="p-8 text-center text-slate-400">數據伺服器部署中，請連點兩次「刷新數據」...</td></tr>';
+            setTimeout(loadDataFromServer, 3000);
         }
     }
 
