@@ -3,6 +3,7 @@ import json
 import httpx
 import os
 from datetime import datetime
+from bs4 import BeautifulSoup
 
 data_file = "docs/data.json"
 
@@ -51,6 +52,38 @@ async def get_twse_official():
     except Exception as e:
         print(f"T86 error: {e}")
         return {}
+
+async def get_name_to_id():
+    name_to_id = {}
+    async with httpx.AsyncClient() as client:
+        try:
+            r1 = await client.get('https://www.twse.com.tw/exchangeReport/STOCK_DAY_ALL?response=open_data', timeout=10)
+            for line in r1.text.split('\n')[1:]:
+                parts = line.replace('"', '').split(',')
+                if len(parts) > 2: name_to_id[parts[2].strip()] = parts[1].strip()
+            r2 = await client.get('https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes', timeout=10)
+            for item in r2.json(): name_to_id[item['CompanyName'].strip()] = item['SecuritiesCompanyCode'].strip()
+        except: pass
+    return name_to_id
+
+async def scrape_etf_holdings(etf_id, name_to_id):
+    holdings = []
+    async with httpx.AsyncClient() as client:
+        try:
+            url = f"https://www.moneydj.com/ETF/X/Basic/Basic0007A.xdjhtm?etfid={etf_id}.TW"
+            r = await client.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
+            soup = BeautifulSoup(r.text, 'html.parser')
+            for t in soup.find_all('table'):
+                rows = t.find_all('tr')
+                if len(rows) > 3:
+                     sample = [col.text.strip().replace('\u3000', '') for col in rows[1].find_all('td')]
+                     if len(sample) > 3 and '%' in sample[3] and '.' in sample[2]:
+                         for row in rows[1:]:
+                             cols = [c.text.strip().replace('\u3000', '') for c in row.find_all('td')]
+                             if len(cols) > 3 and name_to_id.get(cols[0]):
+                                 holdings.append({'id': name_to_id[cols[0]], 'name': cols[0], 'weight': float(cols[2])})
+        except: pass
+    return sorted(holdings, key=lambda x: x['weight'], reverse=True)
 
 
 etf_base_data = {
@@ -102,6 +135,19 @@ etf_base_data = {
 
 async def run():
     c_map = await get_twse_official()
+    name_to_id = await get_name_to_id()
+    
+    # 動態抓取取代預設資料
+    if name_to_id:
+        for eid in etf_base_data.keys():
+            scraped = await scrape_etf_holdings(eid, name_to_id)
+            if scraped:
+                # 紀錄舊的有 is_new 標籤的代號
+                old_new_ids = {s['id'] for s in etf_base_data[eid]['holdings'] if s.get('is_new')}
+                for st in scraped:
+                    if st['id'] in old_new_ids: st['is_new'] = True
+                etf_base_data[eid]['holdings'] = scraped
+
     async with httpx.AsyncClient() as client:
         all_sids = set(["00981A", "00992A", "0050"])
         for d in etf_base_data.values():
