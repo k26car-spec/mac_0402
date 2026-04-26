@@ -28,47 +28,70 @@ async def get_twse_official():
 
 etf_base_data = {
     '00981A': { 'name': '統一台股增長', 'scale': '1,925 億', 'topWeight': '8.55%', 'vwap': '多頭鎖碼', 'holdings': [
-        {'id': '2330', 'name': '台積電', 'weight': 8.55, 'chips': '龍頭守護'},
-        {'id': '3037', 'name': '欣興', 'weight': 2.50, 'chips': '新進佈局', 'is_new': True},
-        {'id': '2454', 'name': '聯發科', 'weight': 6.20, 'chips': '投信連買'},
-        {'id': '2317', 'name': '鴻海', 'weight': 4.10, 'chips': '主力吸納'},
-        {'id': '2383', 'name': '台光電', 'weight': 4.80, 'chips': '主動認養'},
-        {'id': '3017', 'name': '奇鋐', 'weight': 4.30, 'chips': '散熱領先'},
-        {'id': '2449', 'name': '京元電', 'weight': 2.00, 'chips': '新進補權', 'is_new': True},
-        {'id': '6223', 'name': '旺矽', 'weight': 2.20, 'chips': '測試介面'},
-        {'id': '2368', 'name': '金像電', 'weight': 2.10, 'chips': 'PCB首選'}
+        {'id': '2330', 'name': '台積電', 'weight': 8.55},
+        {'id': '3037', 'name': '欣興', 'weight': 2.50, 'is_new': True},
+        {'id': '2454', 'name': '聯發科', 'weight': 6.20},
+        {'id': '2317', 'name': '鴻海', 'weight': 4.10},
+        {'id': '2383', 'name': '台光電', 'weight': 4.80},
+        {'id': '3017', 'name': '奇鋐', 'weight': 4.30},
+        {'id': '2449', 'name': '京元電', 'weight': 2.00, 'is_new': True},
+        {'id': '6223', 'name': '旺矽', 'weight': 2.20},
+        {'id': '2368', 'name': '金像電', 'weight': 2.10},
+        {'id': '2345', 'name': '智邦', 'weight': 1.80},
+        {'id': '3653', 'name': '健策', 'weight': 1.60},
+        {'id': '6669', 'name': '緯穎', 'weight': 1.40}
     ]},
     '00992A': { 'name': '群益科技創新', 'scale': '468 億', 'topWeight': '20.00%', 'vwap': '權值撐盤', 'holdings': [
-        {'id': '2330', 'name': '台積電', 'weight': 20.00, 'chips': '法人加碼'},
-        {'id': '3037', 'name': '欣興', 'weight': 3.80, 'chips': '新進加碼', 'is_new': True},
-        {'id': '6669', 'name': '緯穎', 'weight': 4.80, 'chips': '大戶鎖碼'},
-        {'id': '3105', 'name': '穩懋', 'weight': 4.50, 'chips': '跌深反彈'}
+        {'id': '2330', 'name': '台積電', 'weight': 20.00},
+        {'id': '3037', 'name': '欣興', 'weight': 3.80, 'is_new': True},
+        {'id': '6669', 'name': '緯穎', 'weight': 4.80},
+        {'id': '3105', 'name': '穩懋', 'weight': 4.50},
+        {'id': '2454', 'name': '聯發科', 'weight': 3.20},
+        {'id': '2317', 'name': '鴻海', 'weight': 2.90},
+        {'id': '2368', 'name': '金像電', 'weight': 2.50}
     ]},
     '0050': { 'name': '元大台灣50', 'scale': '4,500 億', 'topWeight': '51.52%', 'vwap': '權值護盤', 'holdings': [
-        {'id': '2330', 'name': '台積電', 'weight': 51.52, 'chips': '權值霸主'},
-        {'id': '2317', 'name': '鴻海', 'weight': 3.14, 'chips': 'AI伺服器'},
-        {'id': '2454', 'name': '聯發科', 'weight': 3.23, 'chips': '手機晶片'},
-        {'id': '2308', 'name': '台達電', 'weight': 3.93, 'chips': '電源領先'},
-        {'id': '2303', 'name': '聯電', 'weight': 1.85, 'chips': '成熟產能'},
-        {'id': '3711', 'name': '日月光', 'weight': 1.58, 'chips': '封測首選'},
-        {'id': '2881', 'name': '富邦金', 'weight': 1.62, 'chips': '金控龍頭'},
-        {'id': '2882', 'name': '國泰金', 'weight': 1.51, 'chips': '壽險獲利'},
-        {'id': '2891', 'name': '中信金', 'weight': 1.12, 'chips': '獲利穩健'},
-        {'id': '2412', 'name': '中華電', 'weight': 1.05, 'chips': '防禦守勢'},
-        {'id': '2886', 'name': '兆豐金', 'weight': 0.92, 'chips': '官股穩定'},
-        {'id': '2884', 'name': '玉山金', 'weight': 0.81, 'chips': '消金優勢'},
-        {'id': '3037', 'name': '欣興', 'weight': 1.25, 'chips': '新進回歸', 'is_new': True},
-        {'id': '2382', 'name': '廣達', 'weight': 0.63, 'chips': '伺服器王'},
-        {'id': '3231', 'name': '緯創', 'weight': 0.60, 'chips': 'AI代工'},
-        {'id': '2603', 'name': '長榮', 'weight': 0.45, 'chips': '航運龍頭'},
-        {'id': '3008', 'name': '大立光', 'weight': 0.45, 'chips': '光學龍頭'}
+        {'id': '2330', 'name': '台積電', 'weight': 51.52},
+        {'id': '2317', 'name': '鴻海', 'weight': 3.14},
+        {'id': '2454', 'name': '聯發科', 'weight': 3.23},
+        {'id': '2308', 'name': '台達電', 'weight': 3.93},
+        {'id': '2303', 'name': '聯電', 'weight': 1.85},
+        {'id': '3711', 'name': '日月光', 'weight': 1.58},
+        {'id': '2881', 'name': '富邦金', 'weight': 1.62},
+        {'id': '2882', 'name': '國泰金', 'weight': 1.51},
+        {'id': '2891', 'name': '中信金', 'weight': 1.12},
+        {'id': '2412', 'name': '中華電', 'weight': 1.05},
+        {'id': '2886', 'name': '兆豐金', 'weight': 0.92},
+        {'id': '2884', 'name': '玉山金', 'weight': 0.81},
+        {'id': '3037', 'name': '欣興', 'weight': 1.25, 'is_new': True},
+        {'id': '2382', 'name': '廣達', 'weight': 0.63},
+        {'id': '3231', 'name': '緯創', 'weight': 0.60},
+        {'id': '2603', 'name': '長榮', 'weight': 0.45},
+        {'id': '3008', 'name': '大立光', 'weight': 0.45},
+        {'id': '2885', 'name': '元大金', 'weight': 0.42},
+        {'id': '2912', 'name': '統一超', 'weight': 0.41},
+        {'id': '2892', 'name': '第一金', 'weight': 0.40},
+        {'id': '5880', 'name': '合庫金', 'weight': 0.38},
+        {'id': '1303', 'name': '南亞', 'weight': 0.35},
+        {'id': '1216', 'name': '統一', 'weight': 0.34},
+        {'id': '2880', 'name': '華南金', 'weight': 0.32},
+        {'id': '2357', 'name': '華碩', 'weight': 0.30},
+        {'id': '2002', 'name': '中鋼', 'weight': 0.28},
+        {'id': '2883', 'name': '凱基金', 'weight': 0.26},
+        {'id': '2379', 'name': '瑞昱', 'weight': 0.25},
+        {'id': '1101', 'name': '台泥', 'weight': 0.24},
+        {'id': '2887', 'name': '台新金', 'weight': 0.23},
+        {'id': '2408', 'name': '南亞科', 'weight': 0.22},
+        {'id': '2395', 'name': '研華', 'weight': 0.21},
+        {'id': '6505', 'name': '台塑化', 'weight': 0.20},
+        {'id': '3034', 'name': '聯詠', 'weight': 0.19},
+        {'id': '4938', 'name': '和碩', 'weight': 0.18}
     ]}
 }
 
 async def run():
     c_map = await get_twse_official()
     async with httpx.AsyncClient() as client:
-        # 自動搜集所有持股 ID 並進行 Yahoo 抓取
         all_sids = set(["00981A", "00992A", "0050"])
         for d in etf_base_data.values():
             for st in d['holdings']: all_sids.add(st['id'])
@@ -84,14 +107,15 @@ async def run():
             data['price'] = round(q[-1]['c'], 2)
             data['change'] = f"{((q[-1]['c']-q[-2]['c'])/q[-2]['c']*100):+.2f}%"
 
-        for st in data['holdings']:
+        for st in data.get('holdings', []):
             sid = st['id']
+            # 初始化預設值以免 undefined
+            st.update({'price': 0, 'change': '-', 'net_buy': '0', 'vwap_pos': '計算中', 'vp_analysis': '觀望', 'chips': '法人橫盤'})
+            
             if sid in q_map:
                 q = q_map[sid]
                 p, p_p = q[-1]['c'], q[-2]['c']
                 v, v_p = q[-1]['v'], q[-2]['v']
-                
-                # VWAP 精算 (5日加權)
                 total_val = sum([x['c'] * x['v'] for x in q])
                 total_vol = sum([x['v'] for x in q])
                 vw_avg = total_val/total_vol if total_vol > 0 else p
@@ -101,12 +125,14 @@ async def run():
                 st['vp_analysis'] = "價漲量增" if (p > p_p and v > v_p) else ("量縮盤整" if v < v_p else "高檔震盪")
             
             if sid in c_map:
-                st['net_buy'] = f"{c_map[sid]:+d}"
+                nb = c_map[sid]
+                st['net_buy'] = f"{nb:+d}"
+                st['chips'] = "投信認養" if nb > 100 else ("投信調節" if nb < -100 else "法人橫盤")
 
-    # 動態計算主力共識持股
     sets = [set(st['id'] for st in d['holdings']) for d in etf_base_data.values()]
     common_ids = sets[0] & sets[1] & sets[2]
-    name_map = {st['id']: st['name'] for d in etf_base_data.values() for st in d['holdings']}
+    all_h = [st for d in etf_base_data.values() for st in d['holdings']]
+    name_map = {st['id']: st['name'] for st in all_h}
     common_list = [name_map[cid] for cid in common_ids if cid in name_map]
 
     with open(data_file, "w", encoding="utf-8") as f:
