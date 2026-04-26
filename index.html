@@ -166,7 +166,7 @@
         </div>
         <div class="p-6 overflow-y-auto flex-1 h-full scroll-smooth">
             <!-- 數據卡片 -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
                 <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col items-center">
                     <p class="text-xs text-slate-500 font-bold mb-1">目前權重</p>
                     <p class="text-2xl font-mono font-bold text-blue-600" id="modal-weight">--</p>
@@ -177,7 +177,11 @@
                 </div>
                 <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col items-center">
                     <p class="text-xs text-slate-500 font-bold mb-1">籌碼評估</p>
-                    <p class="text-md font-bold text-blue-600 mt-1" id="modal-chips">--</p>
+                    <p class="text-xs md:text-sm font-bold text-blue-600 mt-1 text-center" id="modal-chips">--</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 flex flex-col items-center">
+                    <p class="text-xs text-indigo-500 font-bold mb-1">量價診斷</p>
+                    <p class="text-xs md:text-sm font-bold text-indigo-700 mt-1 text-center" id="modal-vp">--</p>
                 </div>
             </div>
             
@@ -494,6 +498,7 @@
         document.getElementById('modal-weight').innerText = `${stock.weight}%`;
         document.getElementById('modal-price').innerText = `$${stock.price.toLocaleString()}`;
         document.getElementById('modal-chips').innerText = stock.chips;
+        document.getElementById('modal-vp').innerText = stock.vp_analysis || '數據計算中';
         
         document.getElementById('modal-chart-container').innerHTML = generateModalChart(stock.history, stock.id, stock.weight, "chip");
     }
@@ -829,7 +834,8 @@
                     }
                 ],
                 "price": 2185.0,
-                "change": "▲ +105.0 (+5.05%)"
+                "change": "▲ +105.0 (+5.05%)",
+                "vp_analysis": "價漲量增: 攻擊動能強"
             },
             {
                 "id": "2383",
@@ -1127,7 +1133,8 @@
                     }
                 ],
                 "price": 4475.0,
-                "change": "▲ +375.0 (+9.15%)"
+                "change": "▲ +375.0 (+9.15%)",
+                "vp_analysis": "價漲量增: 攻擊動能強"
             },
             {
                 "id": "3653",
@@ -1425,7 +1432,8 @@
                     }
                 ],
                 "price": 5370.0,
-                "change": "▲ +60.0 (+1.13%)"
+                "change": "▲ +60.0 (+1.13%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "2308",
@@ -1723,7 +1731,8 @@
                     }
                 ],
                 "price": 2075.0,
-                "change": "▲ +95.0 (+4.80%)"
+                "change": "▲ +95.0 (+4.80%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "2345",
@@ -2021,7 +2030,8 @@
                     }
                 ],
                 "price": 2140.0,
-                "change": "▲ +60.0 (+2.88%)"
+                "change": "▲ +60.0 (+2.88%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "3017",
@@ -2319,7 +2329,8 @@
                     }
                 ],
                 "price": 2945.0,
-                "change": "▲ +265.0 (+9.89%)"
+                "change": "▲ +265.0 (+9.89%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "2317",
@@ -2617,7 +2628,8 @@
                     }
                 ],
                 "price": 221.5,
-                "change": "▼ -3.5 (-1.56%)"
+                "change": "▼ -3.5 (-1.56%)",
+                "vp_analysis": "價跌量縮: 尋求支撐中"
             },
             {
                 "id": "2454",
@@ -2915,7 +2927,8 @@
                     }
                 ],
                 "price": 2435.0,
-                "change": "▲ +220.0 (+9.93%)"
+                "change": "▲ +220.0 (+9.93%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "2881",
@@ -3213,7 +3226,8 @@
                     }
                 ],
                 "price": 87.8,
-                "change": "▼ -0.5 (-0.57%)"
+                "change": "▼ -0.5 (-0.57%)",
+                "vp_analysis": "價跌量縮: 尋求支撐中"
             },
             {
                 "id": "2882",
@@ -3511,7 +3525,8 @@
                     }
                 ],
                 "price": 74.9,
-                "change": "▲ +0.1 (+0.13%)"
+                "change": "▲ +0.1 (+0.13%)",
+                "vp_analysis": "量縮整理: 觀望買盤支撐"
             },
             {
                 "id": "3231",
@@ -3809,7 +3824,8 @@
                     }
                 ],
                 "price": 141.5,
-                "change": "▲ +2.0 (+1.43%)"
+                "change": "▲ +2.0 (+1.43%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "2382",
@@ -4107,7 +4123,8 @@
                     }
                 ],
                 "price": 323.0,
-                "change": "▲ +1.0 (+0.31%)"
+                "change": "▲ +1.0 (+0.31%)",
+                "vp_analysis": "量縮整理: 觀望買盤支撐"
             },
             {
                 "id": "3034",
@@ -4405,7 +4422,8 @@
                     }
                 ],
                 "price": 418.0,
-                "change": "▲ +12.0 (+2.96%)"
+                "change": "▲ +12.0 (+2.96%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "2395",
@@ -4703,7 +4721,8 @@
                     }
                 ],
                 "price": 354.0,
-                "change": "▼ -2.5 (-0.70%)"
+                "change": "▼ -2.5 (-0.70%)",
+                "vp_analysis": "價跌量縮: 尋求支撐中"
             },
             {
                 "id": "2603",
@@ -5001,7 +5020,8 @@
                     }
                 ],
                 "price": 201.5,
-                "change": "▲ +0.5 (+0.25%)"
+                "change": "▲ +0.5 (+0.25%)",
+                "vp_analysis": "量縮整理: 觀望買盤支撐"
             },
             {
                 "id": "1519",
@@ -5299,7 +5319,8 @@
                     }
                 ],
                 "price": 886.0,
-                "change": "▲ +9.0 (+1.03%)"
+                "change": "▲ +9.0 (+1.03%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "3443",
@@ -5597,7 +5618,8 @@
                     }
                 ],
                 "price": 4035.0,
-                "change": "▲ +125.0 (+3.20%)"
+                "change": "▲ +125.0 (+3.20%)",
+                "vp_analysis": "價漲量增: 攻擊動能強"
             },
             {
                 "id": "3661",
@@ -5895,7 +5917,8 @@
                     }
                 ],
                 "price": 4215.0,
-                "change": "▲ +235.0 (+5.90%)"
+                "change": "▲ +235.0 (+5.90%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             }
         ]
     },
@@ -6203,7 +6226,8 @@
                     }
                 ],
                 "price": 2185.0,
-                "change": "▲ +105.0 (+5.05%)"
+                "change": "▲ +105.0 (+5.05%)",
+                "vp_analysis": "價漲量增: 攻擊動能強"
             },
             {
                 "id": "6669",
@@ -6501,7 +6525,8 @@
                     }
                 ],
                 "price": 4635.0,
-                "change": "▲ +385.0 (+9.06%)"
+                "change": "▲ +385.0 (+9.06%)",
+                "vp_analysis": "價漲量增: 攻擊動能強"
             },
             {
                 "id": "3105",
@@ -6799,7 +6824,8 @@
                     }
                 ],
                 "price": 547.0,
-                "change": "▼ -13.0 (-2.32%)"
+                "change": "▼ -13.0 (-2.32%)",
+                "vp_analysis": "價跌量增: 恐慌性拋售"
             },
             {
                 "id": "6223",
@@ -7097,7 +7123,8 @@
                     }
                 ],
                 "price": 4650.0,
-                "change": "▼ -140.0 (-2.92%)"
+                "change": "▼ -140.0 (-2.92%)",
+                "vp_analysis": "價跌量縮: 尋求支撐中"
             },
             {
                 "id": "3037",
@@ -7395,7 +7422,8 @@
                     }
                 ],
                 "price": 790.0,
-                "change": "▲ +62.0 (+8.52%)"
+                "change": "▲ +62.0 (+8.52%)",
+                "vp_analysis": "價漲量增: 攻擊動能強"
             },
             {
                 "id": "6515",
@@ -7693,7 +7721,8 @@
                     }
                 ],
                 "price": 10060.0,
-                "change": "▼ -670.0 (-6.24%)"
+                "change": "▼ -670.0 (-6.24%)",
+                "vp_analysis": "價跌量增: 恐慌性拋售"
             },
             {
                 "id": "2454",
@@ -7991,7 +8020,8 @@
                     }
                 ],
                 "price": 2435.0,
-                "change": "▲ +220.0 (+9.93%)"
+                "change": "▲ +220.0 (+9.93%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "2382",
@@ -8289,7 +8319,8 @@
                     }
                 ],
                 "price": 323.0,
-                "change": "▲ +1.0 (+0.31%)"
+                "change": "▲ +1.0 (+0.31%)",
+                "vp_analysis": "量縮整理: 觀望買盤支撐"
             },
             {
                 "id": "3231",
@@ -8587,7 +8618,8 @@
                     }
                 ],
                 "price": 141.5,
-                "change": "▲ +2.0 (+1.43%)"
+                "change": "▲ +2.0 (+1.43%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "2376",
@@ -8885,7 +8917,8 @@
                     }
                 ],
                 "price": 278.0,
-                "change": "▲ +3.0 (+1.09%)"
+                "change": "▲ +3.0 (+1.09%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "3443",
@@ -9183,7 +9216,8 @@
                     }
                 ],
                 "price": 4035.0,
-                "change": "▲ +125.0 (+3.20%)"
+                "change": "▲ +125.0 (+3.20%)",
+                "vp_analysis": "價漲量增: 攻擊動能強"
             },
             {
                 "id": "3661",
@@ -9481,7 +9515,8 @@
                     }
                 ],
                 "price": 4215.0,
-                "change": "▲ +235.0 (+5.90%)"
+                "change": "▲ +235.0 (+5.90%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "2303",
@@ -9779,7 +9814,8 @@
                     }
                 ],
                 "price": 74.5,
-                "change": "▲ +0.9 (+1.22%)"
+                "change": "▲ +0.9 (+1.22%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "3711",
@@ -10077,7 +10113,8 @@
                     }
                 ],
                 "price": 496.0,
-                "change": "▲ +31.5 (+6.78%)"
+                "change": "▲ +31.5 (+6.78%)",
+                "vp_analysis": "價漲量增: 攻擊動能強"
             },
             {
                 "id": "6415",
@@ -10375,7 +10412,8 @@
                     }
                 ],
                 "price": 436.0,
-                "change": "▲ +20.5 (+4.93%)"
+                "change": "▲ +20.5 (+4.93%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "3529",
@@ -10673,7 +10711,8 @@
                     }
                 ],
                 "price": 3900.0,
-                "change": "▼ -80.0 (-2.01%)"
+                "change": "▼ -80.0 (-2.01%)",
+                "vp_analysis": "價跌量縮: 尋求支撐中"
             },
             {
                 "id": "2308",
@@ -10971,7 +11010,8 @@
                     }
                 ],
                 "price": 2075.0,
-                "change": "▲ +95.0 (+4.80%)"
+                "change": "▲ +95.0 (+4.80%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             },
             {
                 "id": "2345",
@@ -11269,7 +11309,8 @@
                     }
                 ],
                 "price": 2140.0,
-                "change": "▲ +60.0 (+2.88%)"
+                "change": "▲ +60.0 (+2.88%)",
+                "vp_analysis": "價漲量縮: 追價意願弱"
             }
         ]
     }
@@ -11343,7 +11384,8 @@
 
                     <!-- 籌碼與技術診斷 -->
                     <td class="px-0 md:px-6 py-0 md:py-4 flex flex-wrap gap-2 md:table-cell mb-4 md:mb-0">
-                        <span class="text-[10px] md:text-[10px] px-2.5 py-1 md:py-0.5 rounded-md font-medium bg-slate-100 text-slate-600 whitespace-nowrap group-hover:bg-blue-100 transition">${stock.chips}</span>
+                        <span class="text-[10px] px-2.5 py-1 md:py-0.5 rounded-md font-medium bg-slate-100 text-slate-600 whitespace-nowrap group-hover:bg-blue-100 transition">${stock.chips}</span>
+                        <span class="text-[10px] px-2.5 py-1 md:py-0.5 rounded-md font-bold bg-indigo-50 text-indigo-600 whitespace-nowrap">${stock.vp_analysis || ''}</span>
                         <span class="md:hidden text-[10px] px-2.5 py-1 rounded-md font-medium bg-blue-50 text-blue-600 italic whitespace-nowrap">${stock.tech}</span>
                     </td>
 

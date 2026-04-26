@@ -120,8 +120,20 @@ async def update_prices():
                 chg_text = f"{chg_amt:+.1f} ({chg_p:+.2f}%)"
                 chg_text = ("▲ " if chg_p >= 0 else "▼ ") + chg_text
                 
+                # 量價分析邏輯
+                avg_vol = sum(day['v'] for day in q[-5:]) / 5 if len(q) >= 5 else q[-1]['v']
+                vol_ratio = q[-1]['v'] / avg_vol if avg_vol > 0 else 1
+                
+                if chg_p > 0.5:
+                    vp_status = "價漲量增: 攻擊動能強" if vol_ratio > 1.1 else "價漲量縮: 追價意願弱"
+                elif chg_p < -0.5:
+                    vp_status = "價跌量增: 恐慌性拋售" if vol_ratio > 1.1 else "價跌量縮: 尋求支撐中"
+                else:
+                    vp_status = "量縮整理: 觀望買盤支撐"
+                
                 stock['price'] = p
                 stock['change'] = chg_text
+                stock['vp_analysis'] = vp_status
                 stock['history'] = [day['c'] for day in q[-5:]] # sparkline needs 5 days of close prices
                 updated_count += 1
                 print(f"✅ 更新 {stock['id']} ({stock.get('name')}): {p} ({chg_text})")
