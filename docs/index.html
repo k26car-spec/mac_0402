@@ -534,8 +534,7 @@
 
     
     let etfData = {};
-    let currentETFId = '00981A';
-
+    
     async function loadDataFromServer() {
         try {
             const resp = await fetch('data.json?v=' + new Date().getTime());
