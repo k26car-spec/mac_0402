@@ -786,8 +786,10 @@
     }
 
     function renderSummaryPanel() {
+        console.log('[Summary] renderSummaryPanel called, currentView=', currentView);
         const data = etfData['00981A'];
         const panel = document.getElementById('summary-panel');
+        console.log('[Summary] data=', data ? 'OK ('+data.holdings.length+' holdings)' : 'NULL', 'panel=', panel ? 'FOUND' : 'NOT FOUND');
 
         if (!data) {
             panel.innerHTML = `<div style="text-align:center;padding:60px 20px;color:#94a3b8;">
@@ -798,6 +800,7 @@
             return;
         }
 
+        try {
         const holdings = data.holdings || [];
         const today = new Date();
         const dateStr = `(${String(today.getMonth()+1).padStart(2,'0')}/${String(today.getDate()).padStart(2,'0')})`;
@@ -943,6 +946,11 @@
                 註：張數為當日增減張數；持股權重為最新資料
             </div>
         </div>`;
+        console.log('[Summary] innerHTML injected OK, length=', panel.innerHTML.length);
+        } catch(e) {
+            console.error('[Summary] RENDER ERROR:', e);
+            panel.innerHTML = `<div style="color:red;padding:20px;font-weight:bold;">渲染錯誤：${e.message}</div>`;
+        }
     }
     // ────────────────────────────────────────────────────────────────
 
