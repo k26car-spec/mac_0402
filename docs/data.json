@@ -13,8 +13,8 @@
                     "chips": "龍頭守護",
                     "price": 2185.0,
                     "change": "+105.0 (+5.05%)",
-                    "vp_analysis": "量縮盤整",
-                    "vwap_pos": "高於週VWAP"
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
                 },
                 {
                     "id": "3037",
@@ -24,8 +24,8 @@
                     "is_new": true,
                     "price": 790.0,
                     "change": "+62.0 (+8.52%)",
-                    "vp_analysis": "價漲量增",
-                    "vwap_pos": "高於週VWAP"
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "價漲量增"
                 },
                 {
                     "id": "2454",
@@ -34,8 +34,8 @@
                     "chips": "投信連買",
                     "price": 2435.0,
                     "change": "+220.0 (+9.93%)",
-                    "vp_analysis": "量縮盤整",
-                    "vwap_pos": "高於週VWAP"
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
                 },
                 {
                     "id": "2317",
@@ -44,8 +44,8 @@
                     "chips": "主力吸納",
                     "price": 221.5,
                     "change": "-3.5 (-1.56%)",
-                    "vp_analysis": "量縮盤整",
-                    "vwap_pos": "高於週VWAP"
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
                 }
             ],
             "price": 27.8,
@@ -64,8 +64,8 @@
                     "chips": "法人加碼",
                     "price": 2185.0,
                     "change": "+105.0 (+5.05%)",
-                    "vp_analysis": "量縮盤整",
-                    "vwap_pos": "高於週VWAP"
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
                 },
                 {
                     "id": "3037",
@@ -75,8 +75,8 @@
                     "is_new": true,
                     "price": 790.0,
                     "change": "+62.0 (+8.52%)",
-                    "vp_analysis": "價漲量增",
-                    "vwap_pos": "高於週VWAP"
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "價漲量增"
                 }
             ],
             "price": 16.93,
@@ -95,8 +95,8 @@
                     "chips": "權值霸主",
                     "price": 2185.0,
                     "change": "+105.0 (+5.05%)",
-                    "vp_analysis": "量縮盤整",
-                    "vwap_pos": "高於週VWAP"
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
                 },
                 {
                     "id": "2317",
@@ -105,8 +105,8 @@
                     "chips": "AI伺服器",
                     "price": 221.5,
                     "change": "-3.5 (-1.56%)",
-                    "vp_analysis": "量縮盤整",
-                    "vwap_pos": "高於週VWAP"
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
                 },
                 {
                     "id": "2454",
@@ -115,8 +115,8 @@
                     "chips": "手機晶片",
                     "price": 2435.0,
                     "change": "+220.0 (+9.93%)",
-                    "vp_analysis": "量縮盤整",
-                    "vwap_pos": "高於週VWAP"
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
                 }
             ],
             "price": 89.95,
