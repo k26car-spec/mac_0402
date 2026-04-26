@@ -12,7 +12,9 @@
                     "weight": 8.55,
                     "chips": "龍頭守護",
                     "price": 2185.0,
-                    "change": "105.0000"
+                    "change": "+105.0 (+5.05%)",
+                    "vp_analysis": "量縮盤整",
+                    "vwap_pos": "高於週VWAP"
                 },
                 {
                     "id": "3037",
@@ -21,11 +23,64 @@
                     "chips": "新進佈局",
                     "is_new": true,
                     "price": 790.0,
-                    "change": "62.0000"
+                    "change": "+62.0 (+8.52%)",
+                    "vp_analysis": "價漲量增",
+                    "vwap_pos": "高於週VWAP"
+                },
+                {
+                    "id": "2454",
+                    "name": "聯發科",
+                    "weight": 6.2,
+                    "chips": "投信連買",
+                    "price": 2435.0,
+                    "change": "+220.0 (+9.93%)",
+                    "vp_analysis": "量縮盤整",
+                    "vwap_pos": "高於週VWAP"
+                },
+                {
+                    "id": "2317",
+                    "name": "鴻海",
+                    "weight": 4.1,
+                    "chips": "主力吸納",
+                    "price": 221.5,
+                    "change": "-3.5 (-1.56%)",
+                    "vp_analysis": "量縮盤整",
+                    "vwap_pos": "高於週VWAP"
                 }
             ],
             "price": 27.8,
             "change": "+4.43%"
+        },
+        "00992A": {
+            "name": "群益科技創新",
+            "scale": "468 億",
+            "topWeight": "20.00%",
+            "vwap": "權值撐盤",
+            "holdings": [
+                {
+                    "id": "2330",
+                    "name": "台積電",
+                    "weight": 20.0,
+                    "chips": "法人加碼",
+                    "price": 2185.0,
+                    "change": "+105.0 (+5.05%)",
+                    "vp_analysis": "量縮盤整",
+                    "vwap_pos": "高於週VWAP"
+                },
+                {
+                    "id": "3037",
+                    "name": "欣興",
+                    "weight": 3.8,
+                    "chips": "新進加碼",
+                    "is_new": true,
+                    "price": 790.0,
+                    "change": "+62.0 (+8.52%)",
+                    "vp_analysis": "價漲量增",
+                    "vwap_pos": "高於週VWAP"
+                }
+            ],
+            "price": 16.93,
+            "change": "+1.62%"
         },
         "0050": {
             "name": "元大台灣50",
@@ -37,9 +92,31 @@
                     "id": "2330",
                     "name": "台積電",
                     "weight": 51.52,
-                    "chips": "龍頭守護",
+                    "chips": "權值霸主",
                     "price": 2185.0,
-                    "change": "105.0000"
+                    "change": "+105.0 (+5.05%)",
+                    "vp_analysis": "量縮盤整",
+                    "vwap_pos": "高於週VWAP"
+                },
+                {
+                    "id": "2317",
+                    "name": "鴻海",
+                    "weight": 3.14,
+                    "chips": "AI伺服器",
+                    "price": 221.5,
+                    "change": "-3.5 (-1.56%)",
+                    "vp_analysis": "量縮盤整",
+                    "vwap_pos": "高於週VWAP"
+                },
+                {
+                    "id": "2454",
+                    "name": "聯發科",
+                    "weight": 3.23,
+                    "chips": "手機晶片",
+                    "price": 2435.0,
+                    "change": "+220.0 (+9.93%)",
+                    "vp_analysis": "量縮盤整",
+                    "vwap_pos": "高於週VWAP"
                 }
             ],
             "price": 89.95,
