@@ -80,7 +80,7 @@
                                 <th class="px-4 py-4 text-center">分析</th>
                             </tr>
                         </thead>
-                        <tbody id="stock-list" class="divide-y divide-slate-100">
+                        <tbody id="stock-list" class="flex flex-col md:table-row-group gap-3 md:gap-0 p-2 md:p-0">
                             <!-- JS 動態插入 -->
                         </tbody>
                     </table>
@@ -11302,59 +11302,58 @@
         listBody.innerHTML = '';
         data.holdings.forEach((stock, index) => {
             const row = `
-                <tr class="flex flex-col md:table-row hover:bg-blue-50 transition-colors cursor-pointer group border-b md:border-b-0 border-slate-100 p-4 md:p-0" onclick="showModal('${stock.id}', ${index})">
-                    <!-- 股票名稱與價格 (手機端併排) -->
-                    <td class="px-0 md:px-6 py-0 md:py-4 flex justify-between items-start md:table-cell mb-2 md:mb-0">
+                <tr class="flex flex-col md:table-row bg-white md:bg-transparent rounded-xl md:rounded-none shadow-sm md:shadow-none border border-slate-100 md:border-b-0 hover:bg-blue-50 transition-colors cursor-pointer group p-4 md:p-0" onclick="showModal('${stock.id}', ${index})">
+                    <!-- 股票名稱與價格 -->
+                    <td class="px-0 md:px-6 py-0 md:py-4 flex justify-between items-start md:table-cell mb-3 md:mb-0">
                         <div>
-                            <div class="font-bold text-base md:text-sm text-slate-800 whitespace-nowrap group-hover:text-blue-600 transition">${stock.name}</div>
-                            <div class="text-[10px] text-slate-400 font-mono tracking-wider">${stock.id}</div>
+                            <div class="font-bold text-lg md:text-sm text-slate-800 whitespace-nowrap group-hover:text-blue-600 transition tracking-tight">${stock.name}</div>
+                            <div class="text-xs md:text-[10px] text-slate-400 font-mono tracking-wider">${stock.id}</div>
                         </div>
                         <div class="md:hidden text-right">
-                             <div class="font-bold text-base text-slate-800">$${stock.price.toLocaleString()}</div>
-                             <div class="text-[10px] font-bold ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
+                             <div class="font-bold text-lg text-slate-800">$${stock.price.toLocaleString()}</div>
+                             <div class="text-[11px] font-bold ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
                         </div>
                     </td>
 
-                    <!-- 權重與走勢 (手機端併排) -->
-                    <td class="px-0 md:px-6 py-0 md:py-4 flex justify-between items-center md:table-cell mb-3 md:mb-0">
+                    <!-- 權重與走勢 -->
+                    <td class="px-0 md:px-6 py-0 md:py-4 flex justify-between items-center md:table-cell mb-4 md:mb-0 border-t border-slate-50 md:border-0 pt-3 md:pt-4">
                         <div class="flex-1 md:flex-none">
-                            <span class="md:hidden text-[10px] text-slate-400 font-bold block mb-1">權重</span>
-                            <div class="w-24 bg-slate-100 h-1.5 rounded-full mt-1">
+                            <span class="md:hidden text-[11px] text-slate-400 font-bold block mb-1">基金權重</span>
+                            <div class="w-28 md:w-24 bg-slate-100 h-1.5 rounded-full mt-1">
                                 <div class="bg-blue-500 h-1.5 rounded-full" style="width: ${stock.weight * 4}%"></div>
                             </div>
-                            <div class="text-[10px] mt-1 font-mono font-bold">${stock.weight}%</div>
+                            <div class="text-[11px] mt-1 font-mono font-bold">${stock.weight}%</div>
                         </div>
                         <div class="md:hidden text-right">
-                            <span class="text-[10px] text-slate-400 font-bold block mb-1 text-right">週趨勢</span>
+                            <span class="text-[11px] text-slate-400 font-bold block mb-1 text-right">一週走勢</span>
                             ${generateSparkline(stock.history)}
                         </div>
                     </td>
 
-                    <!-- 桌面端隱藏的價格列，但在表格模式下顯示 -->
-                    <td class="hidden md:table-cell px-6 py-4 text-right font-mono">
+                    <td class="hidden md:table-cell px-6 py-4 text-right font-mono border-t border-slate-100 md:border-0">
                         <div class="font-bold text-slate-800">$${stock.price.toLocaleString()}</div>
                         <div class="text-[10px] font-bold ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
                     </td>
 
-                    <td class="hidden md:table-cell px-6 py-4 text-right">
+                    <td class="hidden md:table-cell px-6 py-4 text-right border-t border-slate-100 md:border-0">
                         <div class="flex flex-col items-end">
                             ${generateSparkline(stock.history)}
                         </div>
                     </td>
 
-                    <!-- 標籤組 (手機端併排) -->
-                    <td class="px-0 md:px-6 py-0 md:py-4 flex gap-2 md:table-cell mb-3 md:mb-0">
-                        <span class="text-[10px] px-2 py-0.5 rounded-full font-medium bg-slate-100 text-slate-600 whitespace-nowrap group-hover:bg-blue-100 transition">${stock.chips}</span>
-                        <span class="md:hidden text-[10px] px-2 py-0.5 rounded-full font-medium bg-blue-50 text-blue-600 italic whitespace-nowrap">${stock.tech}</span>
+                    <!-- 籌碼與技術診斷 -->
+                    <td class="px-0 md:px-6 py-0 md:py-4 flex flex-wrap gap-2 md:table-cell mb-4 md:mb-0">
+                        <span class="text-[10px] md:text-[10px] px-2.5 py-1 md:py-0.5 rounded-md font-medium bg-slate-100 text-slate-600 whitespace-nowrap group-hover:bg-blue-100 transition">${stock.chips}</span>
+                        <span class="md:hidden text-[10px] px-2.5 py-1 rounded-md font-medium bg-blue-50 text-blue-600 italic whitespace-nowrap">${stock.tech}</span>
                     </td>
 
                     <td class="hidden md:table-cell px-6 py-4 text-xs font-bold text-blue-600 italic whitespace-nowrap">
                         ${stock.tech}
                     </td>
 
-                    <td class="px-0 md:px-4 py-0 md:py-4 text-right md:text-center mt-2 md:mt-0">
-                        <button onclick="event.stopPropagation(); showKlineModal('${stock.id}', ${index})" class="w-full md:w-auto text-xs bg-slate-800 text-white px-4 py-2 md:px-3 md:py-1.5 rounded hover:bg-slate-700 transition font-bold shadow-sm inline-flex justify-center items-center gap-1">
-                            📊 技術分析 K線圖
+                    <td class="px-0 md:px-4 py-0 md:py-4 text-center border-t border-slate-50 md:border-0 pt-3 md:pt-0">
+                        <button onclick="event.stopPropagation(); showKlineModal('${stock.id}', ${index})" class="w-full md:w-auto text-xs bg-slate-900 text-white px-4 py-2.5 md:px-3 md:py-1.5 rounded-lg hover:bg-slate-700 transition font-bold shadow-md md:shadow-sm inline-flex justify-center items-center gap-2">
+                             📈 查看 K線分析
                         </button>
                     </td>
                 </tr>
