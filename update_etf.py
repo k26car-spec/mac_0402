@@ -6,8 +6,7 @@ import os
 data_file = "docs/data.json"
 
 async def get_twse_data():
-    # 證交所官方 Open Data
-    # 格式: "證券代號","證券名稱","成交股數","成交金額","開盤價","最高價","最低價","收盤價","漲跌價差","成交筆數"
+    # 官方 Open Data 格式: 日期,證券代號,證券名稱,成交股數,成交金額,開盤價,最高價,最低價,收盤價,漲跌價差,成交筆數
     url = "https://www.twse.com.tw/exchangeReport/STOCK_DAY_ALL?response=open_data"
     try:
         async with httpx.AsyncClient() as client:
@@ -16,15 +15,14 @@ async def get_twse_data():
             prices = {}
             for line in lines[1:]:
                 parts = line.replace('"', '').split(",")
-                if len(parts) >= 9:
+                if len(parts) >= 10:
                     try:
-                        ticker = parts[0].strip()
-                        # 正確索引: 
-                        # 0:代號, 1:名稱, 2:成交股數, 7:收盤價, 8:漲跌價差
+                        # 索引校正: 1是代號, 8是正式價
+                        ticker = parts[1].strip()
                         prices[ticker] = {
-                            "p": float(parts[7]) if parts[7] and parts[7] != 'None' else 0,
-                            "v": int(int(parts[2])/1000) if parts[2] else 0, # 轉為張數
-                            "c": parts[8] if parts[8] else "0.00"
+                            "p": float(parts[8]) if parts[8] and parts[8] != 'None' else 0,
+                            "v": int(int(parts[3])/1000) if parts[3] else 0, 
+                            "c": parts[9] if parts[9] else "0.00"
                         }
                     except: continue
             return prices
@@ -51,51 +49,47 @@ etf_base_data = {
 }
 
 async def run():
-    official_prices = await get_twse_data()
-    if not official_prices: return
+    official = await get_twse_data()
+    if not official: return
 
     for eid, data in etf_base_data.items():
-        total_p_change = 0
+        total_pct = 0
         weight_sum = 0
         
         for st in data['holdings']:
             sid = st['id']
-            if sid in official_prices:
-                p = official_prices[sid]['p']
-                vol = official_prices[sid]['v']
-                raw_diff = official_prices[sid]['c']
+            if sid in official:
+                p = official[sid]['p']
+                vol = official[sid]['v']
+                raw_diff = official[sid]['c']
                 
-                # 計算百分比
                 try:
                     diff_val = float(raw_diff.replace('+','').replace('-','').replace('▲','').replace('▼',''))
                     is_down = '-' in raw_diff or '▼' in raw_diff
                     p_prev = p + diff_val if is_down else p - diff_val
                     pct = (p - p_prev) / p_prev if p_prev != 0 else 0
                     change_str = f"{'+' if not is_down else '-'}{abs(diff_val)} ({pct*100:+.2f}%)"
-                except:
-                    pct = 0
-                    change_str = raw_diff
+                except: pct, change_str = 0, raw_diff
 
                 st.update({'price': p, 'change': change_str})
                 st['vwap_pos'] = "高於週VWAP" if pct > 0 else "回測週VWAP"
                 st['vp_analysis'] = "價漲量增" if pct > 0 else "量縮盤整"
                 st['net_buy'] = f"{int(vol * 0.05 * (1 if pct > 0 else -1)):+d}"
                 
-                total_p_change += pct * (st['weight'] / 100)
+                total_pct += pct * (st['weight'] / 100)
                 weight_sum += st['weight']
 
-        if eid == '0050' and '0050' in official_prices:
-            data['price'] = official_prices['0050']['p']
-            data['change'] = official_prices['0050']['c']
+        # 更新 ETF 頂層資料
+        if eid == '0050' and '0050' in official:
+             data['price'] = official['0050']['p']
+             data['change'] = official['0050']['c']
         else:
-            base = 28.5
-            current_pct = total_p_change / (weight_sum/100) if weight_sum > 0 else 0
-            data['price'] = round(base * (1 + current_pct), 2)
-            data['change'] = f"{current_pct*100:+.2f}%"
+             base = 28.5
+             daily_swing = total_pct / (weight_sum/100) if weight_sum > 0 else 0
+             data['price'] = round(base * (1 + daily_swing), 2)
+             data['change'] = f"{daily_swing*100:+.2f}%"
 
     with open(data_file, "w", encoding="utf-8") as f:
         json.dump({ "etf_data": etf_base_data, "common_holdings": [] }, f, ensure_ascii=False, indent=4)
-    with open("data.json", "w", encoding="utf-8") as f:
-        json.dump({ "etf_data": etf_base_data, "common_holdings": [] }, f, ensure_ascii=False, indent=4)
-
+        
 if __name__ == "__main__": asyncio.run(run())
