@@ -178,6 +178,9 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </div>
+
 <div id="stock-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-start md:items-center justify-center p-2 md:p-4 overflow-y-auto">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl border border-slate-200 flex flex-col my-auto max-h-[90vh] md:max-h-[95vh] overflow-hidden">
         <div class="p-4 md:p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50 shrink-0 pt-6 md:pt-6">
@@ -220,116 +223,10 @@
 <!-- ══════════════════════════════════════════════════════
      00981A 總整理分頁
 ══════════════════════════════════════════════════════ -->
-<div id="summary-panel" class="hidden mt-6">
-    <!-- 標題 -->
-    <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:16px;padding:20px 28px;margin-bottom:20px;text-align:center;">
-        <h2 id="sum-title" style="font-size:clamp(20px,4vw,30px);font-weight:900;color:#fff;letter-spacing:1px;">
-            00981A <span id="sum-date" style="color:#fbbf24;">(04/24)</span> 持股調整
-        </h2>
-    </div>
+<div id="summary-panel" class="hidden mt-2">
+    <!-- 內容由 renderSummaryPanel() 動態產生 -->
+</div>
 
-    <!-- 四格規格 -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;" id="sum-stats-grid">
-        <div class="sum-stat-card" style="background:#1e293b;border-radius:12px;padding:14px 10px;text-align:center;color:#fff;">
-            <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;font-weight:700;">基本規模</div>
-            <div id="sum-scale" style="font-size:clamp(16px,2.5vw,22px);font-weight:900;color:#fff;">--</div>
-            <div id="sum-scale-chg" style="font-size:12px;color:#f87171;margin-top:4px;">--</div>
-        </div>
-        <div class="sum-stat-card" style="background:#1e293b;border-radius:12px;padding:14px 10px;text-align:center;color:#fff;">
-            <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;font-weight:700;">單位淨值</div>
-            <div id="sum-nav" style="font-size:clamp(16px,2.5vw,22px);font-weight:900;color:#fff;">--</div>
-            <div id="sum-nav-chg" style="font-size:12px;color:#f87171;margin-top:4px;">--</div>
-        </div>
-        <div class="sum-stat-card" style="background:#1e293b;border-radius:12px;padding:14px 10px;text-align:center;color:#fff;">
-            <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;font-weight:700;">現金占比</div>
-            <div id="sum-cash" style="font-size:clamp(16px,2.5vw,22px);font-weight:900;color:#fff;">--</div>
-            <div id="sum-cash-chg" style="font-size:12px;color:#f87171;margin-top:4px;">--</div>
-        </div>
-        <div class="sum-stat-card" style="background:#1e293b;border-radius:12px;padding:14px 10px;text-align:center;color:#fff;">
-            <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;font-weight:700;">期貨保證金</div>
-            <div id="sum-futures" style="font-size:clamp(16px,2.5vw,22px);font-weight:900;color:#fff;">--</div>
-            <div id="sum-futures-chg" style="font-size:12px;color:#22c55e;margin-top:4px;">--</div>
-        </div>
-    </div>
-
-    <!-- 中段：當天加減碼 -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-        <!-- 二、當天加碼 (左側) -->
-        <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-            <div style="background:#dc2626;padding:12px 16px;text-align:center;">
-                <span style="font-size:14px;font-weight:900;color:#fff;">二、當天加碼</span>
-            </div>
-            <table style="width:100%;border-collapse:collapse;">
-                <thead><tr>
-                    <th style="padding:8px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:left;background:#fef2f2;">股名</th>
-                    <th style="padding:8px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#fef2f2;">張數</th>
-                </tr></thead>
-                <tbody id="sum-add-list"></tbody>
-            </table>
-        </div>
-
-        <!-- 右側：新增 + 減碼 + 刪除 -->
-        <div style="display:flex;flex-direction:column;gap:12px;">
-            <!-- 一、當天新增 -->
-            <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-                <div style="background:#16a34a;padding:10px 16px;text-align:center;">
-                    <span style="font-size:13px;font-weight:900;color:#fff;">一、當天新增</span>
-                </div>
-                <table style="width:100%;border-collapse:collapse;">
-                    <thead><tr>
-                        <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;text-align:left;background:#f0fdf4;">股名</th>
-                        <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#f0fdf4;">張數</th>
-                    </tr></thead>
-                    <tbody id="sum-new-list"></tbody>
-                </table>
-            </div>
-            <!-- 三、當天減碼 -->
-            <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-                <div style="background:#ea580c;padding:10px 16px;text-align:center;">
-                    <span style="font-size:13px;font-weight:900;color:#fff;">三、當天減碼</span>
-                </div>
-                <table style="width:100%;border-collapse:collapse;">
-                    <thead><tr>
-                        <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;text-align:left;background:#fff7ed;">股名</th>
-                        <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#fff7ed;">張數</th>
-                    </tr></thead>
-                    <tbody id="sum-reduce-list"></tbody>
-                </table>
-            </div>
-            <!-- 四、當天刪除 -->
-            <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-                <div style="background:#2563eb;padding:10px 16px;text-align:center;">
-                    <span style="font-size:13px;font-weight:900;color:#fff;">四、當天刪除</span>
-                </div>
-                <table style="width:100%;border-collapse:collapse;">
-                    <thead><tr>
-                        <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;text-align:left;background:#eff6ff;">股名</th>
-                        <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#eff6ff;">張數</th>
-                    </tr></thead>
-                    <tbody id="sum-del-list"></tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- 五、前十大持股（權重） -->
-    <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);margin-bottom:16px;">
-        <div style="background:#7c3aed;padding:12px 16px;text-align:center;">
-            <span style="font-size:14px;font-weight:900;color:#fff;">五、前十大持股（權重）</span>
-        </div>
-        <table style="width:100%;border-collapse:collapse;">
-            <thead><tr>
-                <th style="padding:9px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:center;background:#f5f3ff;width:50px;">排名</th>
-                <th style="padding:9px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:left;background:#f5f3ff;">股名</th>
-                <th style="padding:9px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#f5f3ff;">張數</th>
-                <th style="padding:9px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#f5f3ff;">持股權重</th>
-            </tr></thead>
-            <tbody id="sum-top10-list"></tbody>
-        </table>
-        <div style="padding:8px 14px;font-size:10px;color:#94a3b8;background:#fafaf9;">
-            註：張數為當日增減張數；持股權重為最新資料
-        </div>
-    </div>
 </div>
 
 <!-- 股票K線圖 Modal -->
@@ -808,11 +705,11 @@
 
         // 分類
         const newStocks    = holdings.filter(s => s.is_new);
-        const addStocks    = holdings.filter(s => !s.is_new && (s.etf_net_buy || 0) > 0)
+        const addStocks    = holdings.filter(s => !s.is_new && !s.is_deleted && (s.etf_net_buy || 0) > 0)
                                      .sort((a,b) => (b.etf_net_buy||0) - (a.etf_net_buy||0));
-        const reduceStocks = holdings.filter(s => !s.is_new && (s.etf_net_buy || 0) < 0 && (s.etf_net_buy||0) > -9999)
+        const reduceStocks = holdings.filter(s => !s.is_new && !s.is_deleted && (s.etf_net_buy || 0) < 0)
                                      .sort((a,b) => (a.etf_net_buy||0) - (b.etf_net_buy||0));
-        const delStocks    = holdings.filter(s => s.etf_net_buy !== undefined && s.etf_net_buy <= -9999);
+        const delStocks    = holdings.filter(s => s.is_deleted);
 
         const makeRow = (name, lots, color) =>
             `<tr style="border-top:1px solid #f3f4f6;">
