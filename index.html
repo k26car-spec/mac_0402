@@ -68,16 +68,16 @@
                     <span class="text-[10px] md:text-xs px-2 py-0.5 md:py-1 bg-blue-50 rounded text-blue-600 font-semibold">即時連動</span>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left min-w-[750px]">
-                        <thead class="bg-slate-50 text-slate-500 text-xs uppercase font-bold">
+                    <table class="w-full text-left md:min-w-[750px]">
+                        <thead class="hidden md:table-header-group bg-slate-50 text-slate-500 text-xs uppercase font-bold">
                             <tr>
-                                <th class="px-2 md:px-6 py-3 md:py-4">股票</th>
-                                <th class="px-2 md:px-6 py-3 md:py-4">權重 (%)</th>
-                                <th class="px-2 md:px-6 py-3 md:py-4 text-right">最新價</th>
-                                <th class="px-2 md:px-6 py-3 md:py-4 text-right">一週走勢</th>
-                                <th class="px-2 md:px-6 py-3 md:py-4">籌碼狀況</th>
-                                <th class="px-2 md:px-6 py-3 md:py-4">VWAP 位置</th>
-                                <th class="px-2 md:px-4 py-3 md:py-4 text-center">分析</th>
+                                <th class="px-6 py-4">股票</th>
+                                <th class="px-6 py-4">權重 (%)</th>
+                                <th class="px-6 py-4 text-right">最新價 / 漲跌</th>
+                                <th class="px-6 py-4 text-right">一週走勢</th>
+                                <th class="px-6 py-4">籌碼狀況</th>
+                                <th class="px-6 py-4">VWAP 位置</th>
+                                <th class="px-4 py-4 text-center">分析</th>
                             </tr>
                         </thead>
                         <tbody id="stock-list" class="divide-y divide-slate-100">
@@ -11302,35 +11302,59 @@
         listBody.innerHTML = '';
         data.holdings.forEach((stock, index) => {
             const row = `
-                <tr class="hover:bg-blue-50 transition-colors cursor-pointer group" onclick="showModal('${stock.id}', ${index})">
-                    <td class="px-2 md:px-6 py-3 md:py-4">
-                        <div class="font-bold text-xs md:text-sm text-slate-800 whitespace-nowrap group-hover:text-blue-600 transition">${stock.name}</div>
-                        <div class="text-[9px] md:text-[10px] text-slate-400 font-mono tracking-wider">${stock.id}</div>
-                    </td>
-                    <td class="px-2 md:px-6 py-3 md:py-4">
-                        <div class="w-16 md:w-24 bg-slate-100 h-1.5 rounded-full mt-1">
-                            <div class="bg-blue-500 h-1.5 rounded-full" style="width: ${stock.weight * 4}%"></div>
+                <tr class="flex flex-col md:table-row hover:bg-blue-50 transition-colors cursor-pointer group border-b md:border-b-0 border-slate-100 p-4 md:p-0" onclick="showModal('${stock.id}', ${index})">
+                    <!-- 股票名稱與價格 (手機端併排) -->
+                    <td class="px-0 md:px-6 py-0 md:py-4 flex justify-between items-start md:table-cell mb-2 md:mb-0">
+                        <div>
+                            <div class="font-bold text-base md:text-sm text-slate-800 whitespace-nowrap group-hover:text-blue-600 transition">${stock.name}</div>
+                            <div class="text-[10px] text-slate-400 font-mono tracking-wider">${stock.id}</div>
                         </div>
-                        <div class="text-[9px] md:text-[10px] mt-1 font-mono font-bold">${stock.weight}%</div>
+                        <div class="md:hidden text-right">
+                             <div class="font-bold text-base text-slate-800">$${stock.price.toLocaleString()}</div>
+                             <div class="text-[10px] font-bold ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
+                        </div>
                     </td>
-                    <td class="px-2 md:px-6 py-3 md:py-4 text-right font-mono">
-                        <div class="font-bold text-xs md:text-sm text-slate-800 whitespace-nowrap">$${stock.price.toLocaleString()}</div>
-                        <div class="text-[9px] md:text-[10px] font-bold whitespace-nowrap ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
+
+                    <!-- 權重與走勢 (手機端併排) -->
+                    <td class="px-0 md:px-6 py-0 md:py-4 flex justify-between items-center md:table-cell mb-3 md:mb-0">
+                        <div class="flex-1 md:flex-none">
+                            <span class="md:hidden text-[10px] text-slate-400 font-bold block mb-1">權重</span>
+                            <div class="w-24 bg-slate-100 h-1.5 rounded-full mt-1">
+                                <div class="bg-blue-500 h-1.5 rounded-full" style="width: ${stock.weight * 4}%"></div>
+                            </div>
+                            <div class="text-[10px] mt-1 font-mono font-bold">${stock.weight}%</div>
+                        </div>
+                        <div class="md:hidden text-right">
+                            <span class="text-[10px] text-slate-400 font-bold block mb-1 text-right">週趨勢</span>
+                            ${generateSparkline(stock.history)}
+                        </div>
                     </td>
-                    <td class="px-2 md:px-6 py-3 md:py-4 text-right">
+
+                    <!-- 桌面端隱藏的價格列，但在表格模式下顯示 -->
+                    <td class="hidden md:table-cell px-6 py-4 text-right font-mono">
+                        <div class="font-bold text-slate-800">$${stock.price.toLocaleString()}</div>
+                        <div class="text-[10px] font-bold ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
+                    </td>
+
+                    <td class="hidden md:table-cell px-6 py-4 text-right">
                         <div class="flex flex-col items-end">
                             ${generateSparkline(stock.history)}
                         </div>
                     </td>
-                    <td class="px-2 md:px-6 py-3 md:py-4">
-                        <span class="text-[9px] md:text-[10px] px-2 py-0.5 rounded-full font-medium bg-slate-100 text-slate-600 whitespace-nowrap group-hover:bg-blue-100 transition">${stock.chips}</span>
+
+                    <!-- 標籤組 (手機端併排) -->
+                    <td class="px-0 md:px-6 py-0 md:py-4 flex gap-2 md:table-cell mb-3 md:mb-0">
+                        <span class="text-[10px] px-2 py-0.5 rounded-full font-medium bg-slate-100 text-slate-600 whitespace-nowrap group-hover:bg-blue-100 transition">${stock.chips}</span>
+                        <span class="md:hidden text-[10px] px-2 py-0.5 rounded-full font-medium bg-blue-50 text-blue-600 italic whitespace-nowrap">${stock.tech}</span>
                     </td>
-                    <td class="px-2 md:px-6 py-3 md:py-4 text-[10px] md:text-xs font-bold text-blue-600 italic whitespace-nowrap">
+
+                    <td class="hidden md:table-cell px-6 py-4 text-xs font-bold text-blue-600 italic whitespace-nowrap">
                         ${stock.tech}
                     </td>
-                    <td class="px-2 md:px-4 py-3 md:py-4 text-center">
-                        <button onclick="event.stopPropagation(); showKlineModal('${stock.id}', ${index})" class="text-[10px] bg-slate-800 text-white px-2 md:px-3 py-1 md:py-1.5 rounded hover:bg-slate-700 transition font-bold shadow-sm inline-flex items-center gap-1">
-                            📊 K線
+
+                    <td class="px-0 md:px-4 py-0 md:py-4 text-right md:text-center mt-2 md:mt-0">
+                        <button onclick="event.stopPropagation(); showKlineModal('${stock.id}', ${index})" class="w-full md:w-auto text-xs bg-slate-800 text-white px-4 py-2 md:px-3 md:py-1.5 rounded hover:bg-slate-700 transition font-bold shadow-sm inline-flex justify-center items-center gap-1">
+                            📊 技術分析 K線圖
                         </button>
                     </td>
                 </tr>
