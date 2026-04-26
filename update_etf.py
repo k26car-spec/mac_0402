@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-data_file = "docs/data.json"
+data_file = "data.json"
 
 async def fetch_yahoo_full(s, client):
     suffixes = [".TW", ".TWO"]

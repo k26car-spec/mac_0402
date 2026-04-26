@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>主動式 ETF 籌碼監測中心</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
         body { font-family: 'Inter', 'PingFang TC', 'Microsoft JhengHei', sans-serif; }
         .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); }
@@ -576,11 +578,16 @@
                 const resp = await fetch(path);
                 if (resp.ok) {
                     const fullData = await resp.json();
-                    etfData = fullData.etf_data;
-                    renderCommonBox(fullData.common_holdings);
-                    switchETF(currentETFId);
-                    success = true;
-                    console.log('Data loaded successfully from:', path);
+                    console.log('Keys in data.json:', Object.keys(fullData));
+                    if (fullData.etf_data) {
+                        etfData = fullData.etf_data;
+                        renderCommonBox(fullData.common_holdings || []);
+                        switchETF(currentETFId);
+                        success = true;
+                        console.log('Data loaded successfully from:', path);
+                    } else {
+                        console.error('Data format mismatch: missing etf_data');
+                    }
                     break;
                 }
             } catch (e) {
