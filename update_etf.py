@@ -22,36 +22,37 @@ async def fetch_yahoo_full(s, client):
     return None
 
 async def get_twse_official():
-    # 抓取三大法人買賣超 (T86)
-    url = "https://www.twse.com.tw/fund/T86?response=open_data"
-    try:
-        async with httpx.AsyncClient() as client:
-            import csv, io
-            res = await client.get(url, timeout=30)
-            rows = list(csv.reader(io.StringIO(res.text)))
-            chips = {}
-            trust_idx = -1
-            if rows:
-                for i, col in enumerate(rows[0]):
-                    if "投信買賣超" in col:
-                        trust_idx = i
-                        break
-            if trust_idx != -1:
-                for row in rows[1:]:
-                    if len(row) > trust_idx and row[0].strip():
-                        ticker = row[0].strip()
+    from datetime import datetime, timedelta
+    chips = {}
+    async with httpx.AsyncClient() as client:
+        # TWSE
+        for d_back in range(10):
+            try:
+                date_str = (datetime.now() - timedelta(days=d_back)).strftime('%Y%m%d')
+                url = f"https://www.twse.com.tw/fund/T86?response=json&date={date_str}&selectType=ALL"
+                res = await client.get(url, timeout=10)
+                data = res.json()
+                if 'data' in data and len(data['data']) > 100:
+                    fields = data['fields']
+                    idx_id = fields.index('證券代號')
+                    idx_trust = fields.index('投信買賣超股數')
+                    for row in data['data']:
                         try:
-                            raw = row[trust_idx].strip().replace(",", "")
-                            chips[ticker] = int(int(raw) / 1000)
-                        except: continue
-            # 若資料筆數 < 100，代表今天是假日，回傳空 dict 讓 UI 顯示「盤後更新」
-            if len(chips) < 100:
-                print(f"T86 only has {len(chips)} stocks - likely holiday, skipping chip data")
-                return {}
-            return chips
-    except Exception as e:
-        print(f"T86 error: {e}")
-        return {}
+                            val = int(row[idx_trust].replace(',', ''))
+                            chips[row[idx_id].strip()] = int(val / 1000)
+                        except: pass
+                    break
+            except: pass
+            
+        # TPEx (櫃買) - 最新一日
+        try:
+            url_otc = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_trading_summary_by_institutional_investors"
+            res_otc = await client.get(url_otc, timeout=10)
+            for row in res_otc.json():
+                try: chips[row['SecuritiesCompanyCode'].strip()] = int(int(row['InvestmentTrustsNetBuySell'].replace(',', '')) / 1000)
+                except: pass
+        except: pass
+    return chips
 
 async def get_name_to_id():
     name_to_id = {}
