@@ -103,7 +103,7 @@ etf_base_data = {
 async def run():
     c_map = await get_twse_official()
     async with httpx.AsyncClient() as client:
-        all_sids = set(["00981A", "0050"])
+        all_sids = set(["00981A", "00992A", "0050"])
         for d in etf_base_data.values():
             for st in d['holdings']: all_sids.add(st['id'])
         
