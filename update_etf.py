@@ -118,34 +118,39 @@ async def get_name_to_id():
 
 async def scrape_etf_holdings(etf_id, name_to_id):
     holdings = []
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(follow_redirects=True) as client:
+        # 特別處理統一投信 (00981A)
+        if etf_id == "00981A":
+            try:
+                url = "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW"
+                r = await client.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
+                import html, re
+                decoded = html.unescape(r.text)
+                matches = re.findall(r'"DetailCode":"([^"\s]+)","DetailName":"([^"]+)","Position":"[^"]*","Share":[\d\.]*,"Amount":[\d\.]*,"NavRate":([0-9\.]+)', decoded)
+                for match in matches:
+                    try:
+                        w = float(match[2])
+                        if w > 0:
+                            holdings.append({"id": match[0].strip(), "name": match[1].strip(), "weight": w})
+                    except Exception: pass
+            except Exception: pass
+            if holdings:
+                return sorted(holdings, key=lambda x: x["weight"], reverse=True)
+
+        # 其他 ETF (群益 00992A, 元大 0050) 使用 MoneyDJ
         try:
             url = f"https://www.moneydj.com/ETF/X/Basic/Basic0007A.xdjhtm?etfid={etf_id}.TW"
-            r = await client.get(
-                url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15
-            )
+            r = await client.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
             soup = BeautifulSoup(r.text, "html.parser")
             for t in soup.find_all("table"):
                 rows = t.find_all("tr")
                 if len(rows) > 3:
-                    sample = [
-                        col.text.strip().replace("\u3000", "")
-                        for col in rows[1].find_all("td")
-                    ]
+                    sample = [col.text.strip().replace("\u3000", "") for col in rows[1].find_all("td")]
                     if len(sample) > 3 and "%" in sample[3] and "." in sample[2]:
                         for row in rows[1:]:
-                            cols = [
-                                c.text.strip().replace("\u3000", "")
-                                for c in row.find_all("td")
-                            ]
+                            cols = [c.text.strip().replace("\u3000", "") for c in row.find_all("td")]
                             if len(cols) > 3 and name_to_id.get(cols[0]):
-                                holdings.append(
-                                    {
-                                        "id": name_to_id[cols[0]],
-                                        "name": cols[0],
-                                        "weight": float(cols[2]),
-                                    }
-                                )
+                                holdings.append({"id": name_to_id[cols[0]], "name": cols[0], "weight": float(cols[2])})
         except Exception:
             pass
     return sorted(holdings, key=lambda x: x["weight"], reverse=True)
