@@ -46,6 +46,53 @@
                     "change": "-3.5 (-1.56%)",
                     "vwap_pos": "💪 多頭鎖碼",
                     "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "2383",
+                    "name": "台光電",
+                    "weight": 4.8,
+                    "chips": "主動認養",
+                    "price": 4475.0,
+                    "change": "+375.0 (+9.15%)",
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "3017",
+                    "name": "奇鋐",
+                    "weight": 4.3,
+                    "chips": "散熱領先",
+                    "price": 2945.0,
+                    "change": "+265.0 (+9.89%)",
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "2449",
+                    "name": "京元電",
+                    "weight": 2.0,
+                    "chips": "新進補權",
+                    "is_new": true,
+                    "price": 286.0,
+                    "change": "+8.5 (+3.06%)",
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "6223",
+                    "name": "旺矽",
+                    "weight": 2.2,
+                    "chips": "測試介面"
+                },
+                {
+                    "id": "2368",
+                    "name": "金像電",
+                    "weight": 2.1,
+                    "chips": "PCB首選",
+                    "price": 1390.0,
+                    "change": "+125.0 (+9.88%)",
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "價漲量增"
                 }
             ],
             "price": 27.8,
@@ -77,6 +124,22 @@
                     "change": "+62.0 (+8.52%)",
                     "vwap_pos": "💪 多頭鎖碼",
                     "vp_analysis": "價漲量增"
+                },
+                {
+                    "id": "6669",
+                    "name": "緯穎",
+                    "weight": 4.8,
+                    "chips": "大戶鎖碼",
+                    "price": 4635.0,
+                    "change": "+385.0 (+9.06%)",
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "價漲量增"
+                },
+                {
+                    "id": "3105",
+                    "name": "穩懋",
+                    "weight": 4.5,
+                    "chips": "跌深反彈"
                 }
             ],
             "price": 16.93,
@@ -117,6 +180,147 @@
                     "change": "+220.0 (+9.93%)",
                     "vwap_pos": "💪 多頭鎖碼",
                     "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "2308",
+                    "name": "台達電",
+                    "weight": 3.93,
+                    "chips": "電源領先",
+                    "price": 2075.0,
+                    "change": "+95.0 (+4.80%)",
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "2303",
+                    "name": "聯電",
+                    "weight": 1.85,
+                    "chips": "成熟產能",
+                    "price": 74.5,
+                    "change": "+0.9 (+1.22%)",
+                    "vwap_pos": "📉 回測週VWAP",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "3711",
+                    "name": "日月光",
+                    "weight": 1.58,
+                    "chips": "封測首選",
+                    "price": 496.0,
+                    "change": "+31.5 (+6.78%)",
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "價漲量增"
+                },
+                {
+                    "id": "2881",
+                    "name": "富邦金",
+                    "weight": 1.62,
+                    "chips": "金控龍頭",
+                    "price": 87.80000305175781,
+                    "change": "-0.5 (-0.57%)",
+                    "vwap_pos": "📉 回測週VWAP",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "2882",
+                    "name": "國泰金",
+                    "weight": 1.51,
+                    "chips": "壽險獲利",
+                    "price": 74.9000015258789,
+                    "change": "+0.1 (+0.13%)",
+                    "vwap_pos": "📉 回測週VWAP",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "2891",
+                    "name": "中信金",
+                    "weight": 1.12,
+                    "chips": "獲利穩健",
+                    "price": 52.900001525878906,
+                    "change": "+0.2 (+0.38%)",
+                    "vwap_pos": "📉 回測週VWAP",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "2412",
+                    "name": "中華電",
+                    "weight": 1.05,
+                    "chips": "防禦守勢",
+                    "price": 135.5,
+                    "change": "-0.5 (-0.37%)",
+                    "vwap_pos": "📉 回測週VWAP",
+                    "vp_analysis": "高檔震盪"
+                },
+                {
+                    "id": "2886",
+                    "name": "兆豐金",
+                    "weight": 0.92,
+                    "chips": "官股穩定",
+                    "price": 39.54999923706055,
+                    "change": "-0.2 (-0.63%)",
+                    "vwap_pos": "📉 回測週VWAP",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "2884",
+                    "name": "玉山金",
+                    "weight": 0.81,
+                    "chips": "消金優勢",
+                    "price": 32.54999923706055,
+                    "change": "+0.1 (+0.31%)",
+                    "vwap_pos": "📉 回測週VWAP",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "3037",
+                    "name": "欣興",
+                    "weight": 1.25,
+                    "chips": "新進回歸",
+                    "is_new": true,
+                    "price": 790.0,
+                    "change": "+62.0 (+8.52%)",
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "價漲量增"
+                },
+                {
+                    "id": "2382",
+                    "name": "廣達",
+                    "weight": 0.63,
+                    "chips": "伺服器王",
+                    "price": 323.0,
+                    "change": "+1.0 (+0.31%)",
+                    "vwap_pos": "📉 回測週VWAP",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "3231",
+                    "name": "緯創",
+                    "weight": 0.6,
+                    "chips": "AI代工",
+                    "price": 141.5,
+                    "change": "+2.0 (+1.43%)",
+                    "vwap_pos": "📉 回測週VWAP",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "2603",
+                    "name": "長榮",
+                    "weight": 0.45,
+                    "chips": "航運龍頭",
+                    "price": 201.5,
+                    "change": "+0.5 (+0.25%)",
+                    "vwap_pos": "💪 多頭鎖碼",
+                    "vp_analysis": "量縮盤整"
+                },
+                {
+                    "id": "3008",
+                    "name": "大立光",
+                    "weight": 0.45,
+                    "chips": "光學龍頭",
+                    "price": 2520.0,
+                    "change": "+35.0 (+1.41%)",
+                    "vwap_pos": "📉 回測週VWAP",
+                    "vp_analysis": "量縮盤整"
                 }
             ],
             "price": 89.95,
@@ -124,6 +328,7 @@
         }
     },
     "common_holdings": [
+        "欣興",
         "台積電"
     ]
 }
