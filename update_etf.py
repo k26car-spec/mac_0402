@@ -5,7 +5,7 @@ import httpx
 from datetime import datetime
 
 # 數據分離：現在只更新 data.json
-data_file = "data.json"
+data_file = "docs/data.json"
 NEW_STOCKS = ["3037", "2344", "2368", "2449", "7769"]
 
 etf_base_data = {
