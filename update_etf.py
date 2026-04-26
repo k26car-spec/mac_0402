@@ -4,25 +4,37 @@ import httpx
 import os
 
 data_file = "docs/data.json"
-ETF_SCALES = { '00981A': 1925, '00992A': 468, '0050': 4500 }
 
 etf_base_data = {
     '00981A': { 'name': '統一台股增長', 'scale': '1,925 億', 'topWeight': '8.55%', 'vwap': '多頭鎖碼', 'holdings': [
         {'id': '2330', 'name': '台積電', 'weight': 8.55, 'chips': '龍頭守護'},
         {'id': '2454', 'name': '聯發科', 'weight': 6.20, 'chips': '投信連買'},
-        {'id': '2317', 'name': '鴻海', 'weight': 3.20, 'chips': '主力吸納'},
+        {'id': '2317', 'name': '鴻海', 'weight': 4.10, 'chips': '主力吸納'},
         {'id': '2383', 'name': '台光電', 'weight': 4.80, 'chips': '主動認養'},
         {'id': '3653', 'name': '健策', 'weight': 4.50, 'chips': '籌碼集中'},
-        {'id': '3017', 'name': '奇鋐', 'weight': 4.30, 'chips': 'AI伺服器'},
-        {'id': '2345', 'name': '智邦', 'weight': 2.80, 'chips': '投信連買'},
-        {'id': '3037', 'name': '欣興', 'weight': 2.20, 'chips': '法人回補'}
+        {'id': '3017', 'name': '奇鋐', 'weight': 4.30, 'chips': '散熱領先'},
+        {'id': '2345', 'name': '智邦', 'weight': 3.80, 'chips': '投信連買'},
+        {'id': '3037', 'name': '欣興', 'weight': 2.50, 'chips': '法人回補'},
+        {'id': '6223', 'name': '旺矽', 'weight': 2.20, 'chips': '測試介面'},
+        {'id': '2368', 'name': '金像電', 'weight': 2.10, 'chips': 'PCB首選'},
+        {'id': '2449', 'name': '京元電', 'weight': 2.00, 'chips': '封測大廠'},
+        {'id': '6669', 'name': '緯穎', 'weight': 1.80, 'chips': '伺服器代工'},
+        {'id': '2382', 'name': '廣達', 'weight': 1.60, 'chips': 'AI主幹'},
+        {'id': '3231', 'name': '緯創', 'weight': 1.50, 'chips': '法人佈局'},
+        {'id': '2301', 'name': '光寶科', 'weight': 1.20, 'chips': '電源轉型'}
     ]},
     '00992A': { 'name': '群益科技創新', 'scale': '468 億', 'topWeight': '20.00%', 'vwap': '權值撐盤', 'holdings': [
         {'id': '2330', 'name': '台積電', 'weight': 20.00, 'chips': '法人加碼'},
         {'id': '6669', 'name': '緯穎', 'weight': 4.80, 'chips': '大戶鎖碼'},
         {'id': '3105', 'name': '穩懋', 'weight': 4.50, 'chips': '跌深反彈'},
         {'id': '3037', 'name': '欣興', 'weight': 3.80, 'chips': '載板龍頭'},
-        {'id': '2454', 'name': '聯發科', 'weight': 3.10, 'chips': '晶片設計'}
+        {'id': '2454', 'name': '聯發科', 'weight': 3.10, 'chips': '晶片設計'},
+        {'id': '2317', 'name': '鴻海', 'weight': 2.80, 'chips': 'AI賦能'},
+        {'id': '2368', 'name': '金像電', 'weight': 2.50, 'chips': 'PCB龍頭'},
+        {'id': '6223', 'name': '旺矽', 'weight': 2.20, 'chips': '投信新歡'},
+        {'id': '3017', 'name': '奇鋐', 'weight': 2.00, 'chips': '液冷技術'},
+        {'id': '2383', 'name': '台光電', 'weight': 1.80, 'chips': 'CCL首選'},
+        {'id': '3653', 'name': '健策', 'weight': 1.60, 'chips': '均熱片'}
     ]},
     '0050': { 'name': '元大台灣50', 'scale': '4,500 億', 'topWeight': '51.52%', 'vwap': '權值護盤', 'holdings': [
         {'id': '2330', 'name': '台積電', 'weight': 51.52, 'chips': '權值霸主'},
@@ -88,14 +100,13 @@ async def run():
     
     quotes = {}
     async with httpx.AsyncClient() as client:
-        # 這裡不抓 ETF 本身避免 404，只抓持股個股
         tasks = [fetch_yahoo(s, client) for s in list(all_s)]
         results = await asyncio.gather(*tasks)
         for i, s in enumerate(list(all_s)):
             if results[i]: quotes[s] = results[i]
 
     for eid, data in etf_base_data.items():
-        data['price'] = 27.80 # 暫定
+        data['price'] = 27.80
         data['change'] = "+4.43%"
         
         for st in data['holdings']:
@@ -109,19 +120,17 @@ async def run():
                 force = (p - p_p) / p_p * (vol / 100000) * 10 
                 st['net_buy'] = f"{int(force):+d}"
 
-    # 計算全體共同持股 (主力共識)
     id_map = {}
     for d in etf_base_data.values():
         for st in d['holdings']: id_map[st['id']] = st['name']
     
     set1, set2, set3 = {s['id'] for s in etf_base_data['00981A']['holdings']}, {s['id'] for s in etf_base_data['00992A']['holdings']}, {s['id'] for s in etf_base_data['0050']['holdings']}
     common_ids = list(set1 & set2 & set3)
-    common_names = [id_map[cid] for cid in common_ids if cid in id_map]
+    common_list = [id_map[cid] for cid in common_ids if cid in id_map]
 
     with open(data_file, "w", encoding="utf-8") as f:
-        json.dump({ "etf_data": etf_base_data, "common_holdings": common_names }, f, ensure_ascii=False, indent=4)
-    # 同時更新根目錄備份
+        json.dump({ "etf_data": etf_base_data, "common_holdings": common_list }, f, ensure_ascii=False, indent=4)
     with open("data.json", "w", encoding="utf-8") as f:
-        json.dump({ "etf_data": etf_base_data, "common_holdings": common_names }, f, ensure_ascii=False, indent=4)
+        json.dump({ "etf_data": etf_base_data, "common_holdings": common_list }, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__": asyncio.run(run())
