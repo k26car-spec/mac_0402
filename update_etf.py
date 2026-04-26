@@ -54,9 +54,7 @@ async def run():
             if results[i]: quotes[s] = results[i]
 
     for eid, data in etf_base_data.items():
-        # 更新持股明細
-        nav_curr = 0
-        nav_prev = 0
+        total_p_change = 0
         weight_sum = 0
         
         for st in data['holdings']:
@@ -70,24 +68,22 @@ async def run():
                 force = (p - p_p) / p_p * (vol / 100000) * 10 
                 st['net_buy'] = f"{int(force):+d}"
                 
-                # 計算 Proxy NAV
-                nav_curr += p * (st['weight'] / 100)
-                nav_prev += p_p * (st['weight'] / 100)
+                # 基於「漲跌幅百分比」進行累積預測，這才符合基金淨值的邏輯
+                total_p_change += ((p - p_p) / p_p) * (st['weight'] / 100)
                 weight_sum += st['weight']
         
-        # 根據成分股權重推算基金價格 (假設剩餘權重的表現與這些持股平均一致)
-        if weight_sum > 0:
-            scale_factor = 27.8 / (nav_curr / (weight_sum/100)) if eid != '0050' else 1.0
-            # 0050 直接用報價
-            if eid == '0050' and '0050' in quotes:
-                q_50 = quotes['0050']
-                data['price'] = round(q_50[-1]['c'], 2)
-                data['change'] = f"{((q_50[-1]['c']-q_50[-2]['c'])/q_50[-2]['c']*100):+.2f}%"
-            else:
-                final_price = (nav_curr / (weight_sum/100)) * (27.8 / 27.0) # 模擬基準
-                # 確保數字漂亮
-                data['price'] = round(final_price, 2)
-                data['change'] = f"{((nav_curr-nav_prev)/nav_prev*100):+.2f}%"
+        # 0050 直接使用 Yahoo 給出的真實報價
+        if eid == '0050' and '0050' in quotes:
+             q_50 = quotes['0050']
+             data['price'] = round(q_50[-1]['c'], 2)
+             data['change'] = f"{((q_50[-1]['c']-q_50[-2]['c'])/q_50[-2]['c']*100):+.2f}%"
+        else:
+             # 非 ETF 類基金：採用 27.8 作為假設基底，乘以今日成分股帶動的漲跌幅
+             base_price = 27.80
+             # 如果成分股覆蓋率不夠 100%，剩餘部分假設持平或跟隨大盤
+             daily_swing = total_p_change / (weight_sum / 100) if weight_sum > 0 else 0
+             data['price'] = round(base_price * (1 + daily_swing), 2)
+             data['change'] = f"{ (daily_swing * 100):+.2f}%"
 
     id_map = {}
     for d in etf_base_data.values():
