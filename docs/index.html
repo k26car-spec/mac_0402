@@ -538,7 +538,7 @@
 
     async function loadDataFromServer() {
         try {
-            const resp = await fetch('data.json');
+            const resp = await fetch('data.json?v=' + new Date().getTime());
             if (!resp.ok) throw new Error('Network error');
             etfData = await resp.json();
             switchETF(currentETFId);
