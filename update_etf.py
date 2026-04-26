@@ -55,12 +55,44 @@ etf_base_data = {
         {'id': '3037', 'name': '欣興', 'weight': 2.50, 'is_new': True},
         {'id': '2454', 'name': '聯發科', 'weight': 6.20},
         {'id': '2317', 'name': '鴻海', 'weight': 4.10},
-        {'id': '2383', 'name': '台光電', 'weight': 4.80}
+        {'id': '2383', 'name': '台光電', 'weight': 4.80},
+        {'id': '3017', 'name': '奇鋐', 'weight': 4.30},
+        {'id': '2449', 'name': '京元電', 'weight': 2.00, 'is_new': True},
+        {'id': '6223', 'name': '旺矽', 'weight': 2.20},
+        {'id': '2368', 'name': '金像電', 'weight': 2.10},
+        {'id': '2345', 'name': '智邦', 'weight': 1.80},
+        {'id': '3653', 'name': '健策', 'weight': 1.60},
+        {'id': '6669', 'name': '緯穎', 'weight': 1.40}
+    ]},
+    '00992A': { 'name': '群益科技創新', 'scale': '468 億', 'topWeight': '20.00%', 'vwap': '權值撐盤', 'holdings': [
+        {'id': '2330', 'name': '台積電', 'weight': 20.00},
+        {'id': '3037', 'name': '欣興', 'weight': 3.80, 'is_new': True},
+        {'id': '6669', 'name': '緯穎', 'weight': 4.80},
+        {'id': '3105', 'name': '穩懋', 'weight': 4.50},
+        {'id': '2454', 'name': '聯發科', 'weight': 3.20},
+        {'id': '2317', 'name': '鴻海', 'weight': 2.90},
+        {'id': '2368', 'name': '金像電', 'weight': 2.50}
     ]},
     '0050': { 'name': '元大台灣50', 'scale': '4,500 億', 'topWeight': '51.52%', 'vwap': '權值護盤', 'holdings': [
-        {'id': '2330', 'name': '台績電', 'weight': 51.52},
+        {'id': '2330', 'name': '台積電', 'weight': 51.52},
         {'id': '2317', 'name': '鴻海', 'weight': 3.14},
-        {'id': '2454', 'name': '聯發科', 'weight': 3.23}
+        {'id': '2454', 'name': '聯發科', 'weight': 3.23},
+        {'id': '2308', 'name': '台達電', 'weight': 3.93},
+        {'id': '2303', 'name': '聯電', 'weight': 1.85},
+        {'id': '3711', 'name': '日月光', 'weight': 1.58},
+        {'id': '2881', 'name': '富邦金', 'weight': 1.62},
+        {'id': '2882', 'name': '國泰金', 'weight': 1.51},
+        {'id': '2891', 'name': '中信金', 'weight': 1.12},
+        {'id': '2412', 'name': '中華電', 'weight': 1.05},
+        {'id': '2886', 'name': '兆豐金', 'weight': 0.92},
+        {'id': '3037', 'name': '欣興', 'weight': 1.25, 'is_new': True},
+        {'id': '2382', 'name': '廣達', 'weight': 0.63},
+        {'id': '3231', 'name': '緯創', 'weight': 0.60},
+        {'id': '3008', 'name': '大立光', 'weight': 0.45},
+        {'id': '2885', 'name': '元大金', 'weight': 0.42},
+        {'id': '2912', 'name': '統一超', 'weight': 0.41},
+        {'id': '2892', 'name': '第一金', 'weight': 0.40},
+        {'id': '5880', 'name': '合庫金', 'weight': 0.38}
     ]}
 }
 
