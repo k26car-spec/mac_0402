@@ -67,8 +67,8 @@
                     <h2 class="font-bold text-lg text-slate-800">成分股籌碼明細</h2>
                     <span class="text-xs px-2 py-1 bg-blue-50 rounded text-blue-600 font-semibold">即時連動</span>
                 </div>
-                <div class="overflow-x-auto scrollbar-hide">
-                    <table class="w-full text-left min-w-[700px]">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left min-w-[750px]">
                         <thead class="bg-slate-50 text-slate-500 text-xs uppercase font-bold">
                             <tr>
                                 <th class="px-6 py-4">股票</th>
@@ -11303,32 +11303,32 @@
         data.holdings.forEach((stock, index) => {
             const row = `
                 <tr class="hover:bg-blue-50 transition-colors cursor-pointer group" onclick="showModal('${stock.id}', ${index})">
-                    <td class="px-6 py-4">
-                        <div class="font-bold text-slate-800 group-hover:text-blue-600 transition">${stock.name}</div>
+                    <td class="px-3 md:px-6 py-4">
+                        <div class="font-bold text-slate-800 whitespace-nowrap group-hover:text-blue-600 transition">${stock.name}</div>
                         <div class="text-[10px] text-slate-400 font-mono tracking-wider">${stock.id}</div>
                     </td>
-                    <td class="px-6 py-4">
-                        <div class="w-24 bg-slate-100 h-1.5 rounded-full mt-1">
+                    <td class="px-3 md:px-6 py-4">
+                        <div class="w-20 md:w-24 bg-slate-100 h-1.5 rounded-full mt-1">
                             <div class="bg-blue-500 h-1.5 rounded-full" style="width: ${stock.weight * 4}%"></div>
                         </div>
                         <div class="text-[10px] mt-1 font-mono font-bold">${stock.weight}%</div>
                     </td>
-                    <td class="px-6 py-4 text-right font-mono">
-                        <div class="font-bold text-slate-800">$${stock.price.toLocaleString()}</div>
-                        <div class="text-[10px] font-bold ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
+                    <td class="px-3 md:px-6 py-4 text-right font-mono">
+                        <div class="font-bold text-slate-800 whitespace-nowrap">$${stock.price.toLocaleString()}</div>
+                        <div class="text-[10px] font-bold whitespace-nowrap ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
                     </td>
-                    <td class="px-6 py-4 text-right">
+                    <td class="px-3 md:px-6 py-4 text-right">
                         <div class="flex flex-col items-end">
                             ${generateSparkline(stock.history)}
                         </div>
                     </td>
-                    <td class="px-6 py-4">
-                        <span class="chip-tag group-hover:bg-blue-100 transition">${stock.chips}</span>
+                    <td class="px-3 md:px-6 py-4">
+                        <span class="chip-tag whitespace-nowrap group-hover:bg-blue-100 transition">${stock.chips}</span>
                     </td>
-                    <td class="px-6 py-4 text-xs font-bold text-blue-600 italic">
+                    <td class="px-3 md:px-6 py-4 text-xs font-bold text-blue-600 italic whitespace-nowrap">
                         ${stock.tech}
                     </td>
-                    <td class="px-4 py-4 text-center">
+                    <td class="px-2 md:px-4 py-4 text-center">
                         <button onclick="event.stopPropagation(); showKlineModal('${stock.id}', ${index})" class="text-xs bg-slate-800 text-white px-3 py-1.5 rounded hover:bg-slate-700 transition font-bold shadow-sm inline-flex items-center gap-1">
                             📊 K線
                         </button>
