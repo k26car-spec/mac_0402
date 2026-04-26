@@ -14918,17 +14918,15 @@
     function switchETF(id) {
         currentETFId = id; // 記錄當前 ETF 讓 Modal 存取
         
-        // 切換按鈕樣式
-        const btn981 = document.getElementById('btn-00981A');
-        const btn992 = document.getElementById('btn-00992A');
-        
-        if (id === '00981A') {
-            btn981.className = "px-6 py-2 rounded-lg font-medium transition-all bg-blue-600 text-white shadow-md";
-            btn992.className = "px-6 py-2 rounded-lg font-medium transition-all text-slate-500 hover:bg-slate-100";
-        } else {
-            btn992.className = "px-6 py-2 rounded-lg font-medium transition-all bg-blue-600 text-white shadow-md";
-            btn981.className = "px-6 py-2 rounded-lg font-medium transition-all text-slate-500 hover:bg-slate-100";
-        }
+        // 動態切換按鈕樣式 (找出所有 btn- 開頭的按鈕)
+        const buttons = document.querySelectorAll('button[id^="btn-"]');
+        buttons.forEach(btn => {
+            if (btn.id === `btn-${id}`) {
+                btn.className = "whitespace-nowrap flex-1 md:flex-none px-4 md:px-6 py-2 rounded-lg font-medium transition-all bg-blue-600 text-white shadow-md text-sm md:text-base";
+            } else {
+                btn.className = "whitespace-nowrap flex-1 md:flex-none px-4 md:px-6 py-2 rounded-lg font-medium transition-all text-slate-500 hover:bg-slate-100 text-sm md:text-base";
+            }
+        });
 
         // 更新頂部數據
         const data = etfData[id];
