@@ -8,16 +8,16 @@ data_file = "docs/data.json"
 etf_base_data = {
     '00981A': { 'name': '統一台股增長', 'scale': '1,925 億', 'topWeight': '8.55%', 'vwap': '多頭鎖碼', 'holdings': [
         {'id': '2330', 'name': '台積電', 'weight': 8.55, 'chips': '龍頭守護'},
-        {'id': '3037', 'name': '欣興', 'weight': 2.50, 'chips': '新進佈局', 'is_new': True}, # 標記為新進
+        {'id': '3037', 'name': '欣興', 'weight': 2.50, 'chips': '新進佈局', 'is_new': True},
         {'id': '2454', 'name': '聯發科', 'weight': 6.20, 'chips': '投信連買'},
         {'id': '2317', 'name': '鴻海', 'weight': 4.10, 'chips': '主力吸納'},
         {'id': '2383', 'name': '台光電', 'weight': 4.80, 'chips': '主動認養'},
         {'id': '3017', 'name': '奇鋐', 'weight': 4.30, 'chips': '散熱領先'},
-        {'id': '2449', 'name': '京元電', 'weight': 2.00, 'chips': '新進補籌', 'is_new': True} # 標記為新進
+        {'id': '2449', 'name': '京元電', 'weight': 2.00, 'chips': '新進補籌', 'is_new': True}
     ]},
     '00992A': { 'name': '群益科技創新', 'scale': '468 億', 'topWeight': '20.00%', 'vwap': '權值撐盤', 'holdings': [
         {'id': '2330', 'name': '台積電', 'weight': 20.00, 'chips': '法人加碼'},
-        {'id': '3037', 'name': '欣興', 'weight': 3.80, 'chips': '新進加碼', 'is_new': True}, # 標記為新進
+        {'id': '3037', 'name': '欣興', 'weight': 3.80, 'chips': '新進加碼', 'is_new': True},
         {'id': '6669', 'name': '緯穎', 'weight': 4.80, 'chips': '大戶鎖碼'},
         {'id': '3105', 'name': '穩懋', 'weight': 4.50, 'chips': '跌深反彈'}
     ]},
@@ -26,7 +26,7 @@ etf_base_data = {
         {'id': '2317', 'name': '鴻海', 'weight': 3.14, 'chips': 'AI伺服器'},
         {'id': '2454', 'name': '聯發科', 'weight': 3.23, 'chips': '手機晶片'},
         {'id': '2308', 'name': '台達電', 'weight': 3.93, 'chips': '電源領先'},
-        {'id': '3037', 'name': '欣興', 'weight': 1.25, 'chips': '回歸名單', 'is_new': True} # 標記為新進
+        {'id': '3037', 'name': '欣興', 'weight': 1.25, 'chips': '回歸名單', 'is_new': True}
     ]}
 }
 
@@ -42,7 +42,6 @@ async def fetch_yahoo(s, client):
 
 async def run():
     all_s = set()
-    # 我們也要抓 0050 的報價
     all_s.add("0050")
     for d in etf_base_data.values():
         for st in d['holdings']: all_s.add(st['id'])
@@ -55,17 +54,10 @@ async def run():
             if results[i]: quotes[s] = results[i]
 
     for eid, data in etf_base_data.items():
-        # 如果是 0050，直接使用 real price；如果是主動型，則參考 0050 趨勢稍微動態化
-        if "0050" in quotes:
-            q_50 = quotes["0050"]
-            p_50, p_p_50 = q_50[-1]['c'], q_50[-2]['c']
-            if eid == "0050":
-                data['price'] = p_50
-                data['change'] = f"{((p_50-p_p_50)/p_p_50*100):+.2f}%"
-            else:
-                # 類推報價 (模擬連動)
-                data['price'] = round(27.8 * (p_50 / p_p_50), 2)
-                data['change'] = f"{((p_50-p_p_50)/p_p_50*100):+.2f}%"
+        # 更新持股明細
+        nav_curr = 0
+        nav_prev = 0
+        weight_sum = 0
         
         for st in data['holdings']:
             if st['id'] in quotes:
@@ -77,6 +69,25 @@ async def run():
                 st['vp_analysis'] = "價漲量增" if (p > p_p and vol > vol_p) else "量縮盤整"
                 force = (p - p_p) / p_p * (vol / 100000) * 10 
                 st['net_buy'] = f"{int(force):+d}"
+                
+                # 計算 Proxy NAV
+                nav_curr += p * (st['weight'] / 100)
+                nav_prev += p_p * (st['weight'] / 100)
+                weight_sum += st['weight']
+        
+        # 根據成分股權重推算基金價格 (假設剩餘權重的表現與這些持股平均一致)
+        if weight_sum > 0:
+            scale_factor = 27.8 / (nav_curr / (weight_sum/100)) if eid != '0050' else 1.0
+            # 0050 直接用報價
+            if eid == '0050' and '0050' in quotes:
+                q_50 = quotes['0050']
+                data['price'] = round(q_50[-1]['c'], 2)
+                data['change'] = f"{((q_50[-1]['c']-q_50[-2]['c'])/q_50[-2]['c']*100):+.2f}%"
+            else:
+                final_price = (nav_curr / (weight_sum/100)) * (27.8 / 27.0) # 模擬基準
+                # 確保數字漂亮
+                data['price'] = round(final_price, 2)
+                data['change'] = f"{((nav_curr-nav_prev)/nav_prev*100):+.2f}%"
 
     id_map = {}
     for d in etf_base_data.values():
