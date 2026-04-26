@@ -710,6 +710,7 @@
 
     
     let etfData = {};
+    let currentView = 'etf'; // 'etf' | 'summary'
     
     async function loadDataFromServer() {
         // 多路徑診斷：嘗試抓取當前路徑或 repo 根路徑的資料
@@ -730,7 +731,12 @@
                     if (fullData.etf_data) {
                         etfData = fullData.etf_data;
                         renderCommonBox(fullData.common_holdings || []);
-                        switchETF(currentETFId);
+                        // 載入完成後，尊重目前活踴視圖
+                        if (currentView === 'summary') {
+                            renderSummaryPanel();
+                        } else {
+                            switchETF(currentETFId);
+                        }
                         success = true;
                         console.log('Data loaded successfully from:', path);
                     } else {
@@ -764,6 +770,7 @@
 
     // ── 總整理分頁邏輯 ──────────────────────────────────────────────
     function switchSummary() {
+        currentView = 'summary';
         // 切換按鈕樣式
         document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
             if (btn.id === 'btn-summary') {
@@ -780,7 +787,11 @@
 
     function renderSummaryPanel() {
         const data = etfData['00981A'];
-        if (!data) return;
+        const panel = document.getElementById('summary-panel');
+        if (!data) {
+            panel.innerHTML = '<div style="text-align:center;padding:60px 20px;color:#94a3b8;"><div style="font-size:32px;margin-bottom:12px;">⏳</div><div style="font-size:14px;font-weight:600;">資料載入中，請稍候...</div><div style="font-size:12px;margin-top:8px;">若超過 10 秒請點擊「刷新數據」</div></div>';
+            return;
+        }
 
         // 日期
         const today = new Date();
@@ -846,6 +857,7 @@
     // ────────────────────────────────────────────────────────────────
 
     function switchETF(id) {
+        currentView = 'etf';
         currentETFId = id; // 記錄當前 ETF 讓 Modal 存取
         // 隱藏總整理面板，顯示主儀表板
         document.getElementById('summary-panel').classList.add('hidden');
