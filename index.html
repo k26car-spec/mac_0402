@@ -788,37 +788,28 @@
     function renderSummaryPanel() {
         const data = etfData['00981A'];
         const panel = document.getElementById('summary-panel');
+
         if (!data) {
-            panel.innerHTML = '<div style="text-align:center;padding:60px 20px;color:#94a3b8;"><div style="font-size:32px;margin-bottom:12px;">⏳</div><div style="font-size:14px;font-weight:600;">資料載入中，請稍候...</div><div style="font-size:12px;margin-top:8px;">若超過 10 秒請點擊「刷新數據」</div></div>';
+            panel.innerHTML = `<div style="text-align:center;padding:60px 20px;color:#94a3b8;">
+                <div style="font-size:32px;margin-bottom:12px;">⏳</div>
+                <div style="font-size:14px;font-weight:600;">資料載入中，請稍候...</div>
+                <div style="font-size:12px;margin-top:8px;">若超過 10 秒請點擊「刷新數據」</div>
+            </div>`;
             return;
         }
 
-        // 日期
+        const holdings = data.holdings || [];
         const today = new Date();
         const dateStr = `(${String(today.getMonth()+1).padStart(2,'0')}/${String(today.getDate()).padStart(2,'0')})`;
-        document.getElementById('sum-date').textContent = dateStr;
-
-        // 四格規格（從 data 中讀取，若有則填入）
-        document.getElementById('sum-scale').textContent = data.scale || '--';
-        document.getElementById('sum-scale-chg').textContent = data.change ? `(${data.change})` : '--';
-        document.getElementById('sum-nav').textContent = data.price ? `$${data.price}` : '--';
-        document.getElementById('sum-nav-chg').textContent = data.change || '--';
-        document.getElementById('sum-cash').textContent = data.cash_ratio || '--';
-        document.getElementById('sum-cash-chg').textContent = data.cash_ratio_chg || '--';
-        document.getElementById('sum-futures').textContent = data.futures_margin || '--';
-        document.getElementById('sum-futures-chg').textContent = data.futures_margin_chg || '--';
-
-        const holdings = data.holdings || [];
         const NONE_ROW = `<tr><td colspan="2" style="text-align:center;padding:12px;color:#94a3b8;font-size:13px;">無</td></tr>`;
 
-        // 分類：新增、加碼、減碼、刪除
-        const newStocks   = holdings.filter(s => s.is_new);
-        const addStocks   = holdings.filter(s => !s.is_new && (s.etf_net_buy || 0) > 0)
-                                    .sort((a,b) => (b.etf_net_buy||0) - (a.etf_net_buy||0));
-        const reduceStocks= holdings.filter(s => !s.is_new && (s.etf_net_buy || 0) < 0 && (s.etf_net_buy||0) > -9999)
-                                    .sort((a,b) => (a.etf_net_buy||0) - (b.etf_net_buy||0));
-        // 刪除股 = 被標記為 is_deleted，或 etf_net_buy 極度負值（目前無 is_deleted 欄位，用 net_buy 極端值判斷）
-        const delStocks   = holdings.filter(s => s.etf_net_buy !== undefined && s.etf_net_buy <= -9999);
+        // 分類
+        const newStocks    = holdings.filter(s => s.is_new);
+        const addStocks    = holdings.filter(s => !s.is_new && (s.etf_net_buy || 0) > 0)
+                                     .sort((a,b) => (b.etf_net_buy||0) - (a.etf_net_buy||0));
+        const reduceStocks = holdings.filter(s => !s.is_new && (s.etf_net_buy || 0) < 0 && (s.etf_net_buy||0) > -9999)
+                                     .sort((a,b) => (a.etf_net_buy||0) - (b.etf_net_buy||0));
+        const delStocks    = holdings.filter(s => s.etf_net_buy !== undefined && s.etf_net_buy <= -9999);
 
         const makeRow = (name, lots, color) =>
             `<tr style="border-top:1px solid #f3f4f6;">
@@ -826,33 +817,132 @@
                 <td style="padding:8px 12px;font-size:13px;font-weight:700;text-align:right;color:${color};">${lots > 0 ? '+' : ''}${lots.toLocaleString()}張</td>
              </tr>`;
 
-        // 一、新增
-        document.getElementById('sum-new-list').innerHTML =
-            newStocks.length > 0 ? newStocks.map(s => makeRow(s.name, s.etf_net_buy || 0, '#16a34a')).join('') : NONE_ROW;
+        const addRows    = addStocks.length    > 0 ? addStocks.map(s => makeRow(s.name, s.etf_net_buy, '#dc2626')).join('') : NONE_ROW;
+        const newRows    = newStocks.length    > 0 ? newStocks.map(s => makeRow(s.name, s.etf_net_buy || 0, '#16a34a')).join('') : NONE_ROW;
+        const reduceRows = reduceStocks.length > 0 ? reduceStocks.map(s => makeRow(s.name, s.etf_net_buy, '#ea580c')).join('') : NONE_ROW;
+        const delRows    = delStocks.length    > 0 ? delStocks.map(s => makeRow(s.name, s.etf_net_buy, '#2563eb')).join('') : NONE_ROW;
 
-        // 二、加碼（降序排列）
-        document.getElementById('sum-add-list').innerHTML =
-            addStocks.length > 0 ? addStocks.map(s => makeRow(s.name, s.etf_net_buy, '#dc2626')).join('') : NONE_ROW;
-
-        // 三、減碼
-        document.getElementById('sum-reduce-list').innerHTML =
-            reduceStocks.length > 0 ? reduceStocks.map(s => makeRow(s.name, s.etf_net_buy, '#ea580c')).join('') : NONE_ROW;
-
-        // 四、刪除
-        document.getElementById('sum-del-list').innerHTML =
-            delStocks.length > 0 ? delStocks.map(s => makeRow(s.name, s.etf_net_buy, '#2563eb')).join('') : NONE_ROW;
-
-        // 五、前十大持股（按 weight 降序）
         const RANKS = ['❶','❷','❸','❹','❺','❻','❼','❽','❾','❿'];
         const top10 = [...holdings].sort((a,b) => b.weight - a.weight).slice(0, 10);
-        document.getElementById('sum-top10-list').innerHTML = top10.map((s, i) =>
+        const top10Rows = top10.map((s, i) =>
             `<tr style="border-top:1px solid #f3f4f6;${i%2===0?'background:#faf5ff;':''}">
                 <td style="padding:9px 12px;text-align:center;font-size:16px;">${RANKS[i]}</td>
                 <td style="padding:9px 12px;font-size:13px;font-weight:600;">${s.name}</td>
-                <td style="padding:9px 12px;font-size:13px;font-weight:700;text-align:right;color:#374151;">${s.shares ? (s.shares/1000).toLocaleString() + '張' : '--'}</td>
+                <td style="padding:9px 12px;font-size:13px;font-weight:700;text-align:right;color:#374151;">${s.shares ? (s.shares/1000).toLocaleString()+'張' : '--'}</td>
                 <td style="padding:9px 12px;font-size:13px;font-weight:700;text-align:right;color:#7c3aed;">${s.weight}%</td>
              </tr>`
         ).join('');
+
+        // ── 全量重建 innerHTML ──────────────────────────────────────────
+        panel.innerHTML = `
+        <!-- 標題 -->
+        <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:16px;padding:20px 28px;margin-bottom:20px;text-align:center;">
+            <h2 style="font-size:clamp(20px,4vw,30px);font-weight:900;color:#fff;letter-spacing:1px;">
+                00981A <span style="color:#fbbf24;">${dateStr}</span> 持股調整
+            </h2>
+        </div>
+
+        <!-- 四格規格 -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;">
+            <div style="background:#1e293b;border-radius:12px;padding:14px 10px;text-align:center;color:#fff;">
+                <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;font-weight:700;">基本規模</div>
+                <div style="font-size:clamp(16px,2.5vw,22px);font-weight:900;">${data.scale || '--'}</div>
+                <div style="font-size:12px;color:#f87171;margin-top:4px;">${data.change || '--'}</div>
+            </div>
+            <div style="background:#1e293b;border-radius:12px;padding:14px 10px;text-align:center;color:#fff;">
+                <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;font-weight:700;">單位淨值</div>
+                <div style="font-size:clamp(16px,2.5vw,22px);font-weight:900;">${data.price ? '$'+data.price : '--'}</div>
+                <div style="font-size:12px;color:#f87171;margin-top:4px;">${data.change || '--'}</div>
+            </div>
+            <div style="background:#1e293b;border-radius:12px;padding:14px 10px;text-align:center;color:#fff;">
+                <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;font-weight:700;">現金占比</div>
+                <div style="font-size:clamp(16px,2.5vw,22px);font-weight:900;">${data.cash_ratio || '--'}</div>
+                <div style="font-size:12px;color:#f87171;margin-top:4px;">${data.cash_ratio_chg || '--'}</div>
+            </div>
+            <div style="background:#1e293b;border-radius:12px;padding:14px 10px;text-align:center;color:#fff;">
+                <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;font-weight:700;">期貨保證金</div>
+                <div style="font-size:clamp(16px,2.5vw,22px);font-weight:900;">${data.futures_margin || '--'}</div>
+                <div style="font-size:12px;color:#22c55e;margin-top:4px;">${data.futures_margin_chg || '--'}</div>
+            </div>
+        </div>
+
+        <!-- 中段：當天加減碼 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <!-- 二、當天加碼 -->
+            <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+                <div style="background:#dc2626;padding:12px 16px;text-align:center;">
+                    <span style="font-size:14px;font-weight:900;color:#fff;">二、當天加碼</span>
+                </div>
+                <table style="width:100%;border-collapse:collapse;">
+                    <thead><tr>
+                        <th style="padding:8px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:left;background:#fef2f2;">股名</th>
+                        <th style="padding:8px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#fef2f2;">張數</th>
+                    </tr></thead>
+                    <tbody>${addRows}</tbody>
+                </table>
+            </div>
+            <!-- 右側三格 -->
+            <div style="display:flex;flex-direction:column;gap:12px;">
+                <!-- 一、當天新增 -->
+                <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+                    <div style="background:#16a34a;padding:10px 16px;text-align:center;">
+                        <span style="font-size:13px;font-weight:900;color:#fff;">一、當天新增</span>
+                    </div>
+                    <table style="width:100%;border-collapse:collapse;">
+                        <thead><tr>
+                            <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;background:#f0fdf4;">股名</th>
+                            <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#f0fdf4;">張數</th>
+                        </tr></thead>
+                        <tbody>${newRows}</tbody>
+                    </table>
+                </div>
+                <!-- 三、當天減碼 -->
+                <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+                    <div style="background:#ea580c;padding:10px 16px;text-align:center;">
+                        <span style="font-size:13px;font-weight:900;color:#fff;">三、當天減碼</span>
+                    </div>
+                    <table style="width:100%;border-collapse:collapse;">
+                        <thead><tr>
+                            <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;background:#fff7ed;">股名</th>
+                            <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#fff7ed;">張數</th>
+                        </tr></thead>
+                        <tbody>${reduceRows}</tbody>
+                    </table>
+                </div>
+                <!-- 四、當天刪除 -->
+                <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+                    <div style="background:#2563eb;padding:10px 16px;text-align:center;">
+                        <span style="font-size:13px;font-weight:900;color:#fff;">四、當天刪除</span>
+                    </div>
+                    <table style="width:100%;border-collapse:collapse;">
+                        <thead><tr>
+                            <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;background:#eff6ff;">股名</th>
+                            <th style="padding:7px 10px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#eff6ff;">張數</th>
+                        </tr></thead>
+                        <tbody>${delRows}</tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 五、前十大持股 -->
+        <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);margin-bottom:16px;">
+            <div style="background:#7c3aed;padding:12px 16px;text-align:center;">
+                <span style="font-size:14px;font-weight:900;color:#fff;">五、前十大持股（權重）</span>
+            </div>
+            <table style="width:100%;border-collapse:collapse;">
+                <thead><tr>
+                    <th style="padding:9px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:center;background:#f5f3ff;width:50px;">排名</th>
+                    <th style="padding:9px 12px;font-size:11px;color:#6b7280;font-weight:700;background:#f5f3ff;">股名</th>
+                    <th style="padding:9px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#f5f3ff;">張數</th>
+                    <th style="padding:9px 12px;font-size:11px;color:#6b7280;font-weight:700;text-align:right;background:#f5f3ff;">持股權重</th>
+                </tr></thead>
+                <tbody>${top10Rows}</tbody>
+            </table>
+            <div style="padding:8px 14px;font-size:10px;color:#94a3b8;background:#fafaf9;">
+                註：張數為當日增減張數；持股權重為最新資料
+            </div>
+        </div>`;
     }
     // ────────────────────────────────────────────────────────────────
 
