@@ -127,21 +127,32 @@ async def get_name_to_id():
 async def scrape_etf_holdings(etf_id, name_to_id):
     holdings = []
     async with httpx.AsyncClient(follow_redirects=True) as client:
-        # 特別處理統一投信 (00981A)
+        # 特別處理統一投信 (00981A)：同時抓取 Share（股數）用於計算 ETF 自身買賣超
         if etf_id == "00981A":
             try:
+                import html as _html, re as _re
                 url = "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW"
                 r = await client.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
-                import html, re
-                decoded = html.unescape(r.text)
-                matches = re.findall(r'"DetailCode":"([^"\s]+)","DetailName":"([^"]+)","Position":"[^"]*","Share":[\d\.]*,"Amount":[\d\.]*,"NavRate":([0-9\.]+)', decoded)
+                decoded = _html.unescape(r.text)
+                matches = _re.findall(
+                    r'"DetailCode":"([^"\s]+)","DetailName":"([^"]+)","Position":"[^"]*","Share":([\d\.]+),"Amount":[\d\.]*,"NavRate":([0-9\.]+)',
+                    decoded
+                )
                 for match in matches:
                     try:
-                        w = float(match[2])
+                        w = float(match[3])
+                        shares = int(float(match[2]))  # 股數（ezmoney 原始單位）
                         if w > 0:
-                            holdings.append({"id": match[0].strip(), "name": match[1].strip(), "weight": w})
-                    except Exception: pass
-            except Exception: pass
+                            holdings.append({
+                                "id": match[0].strip(),
+                                "name": match[1].strip(),
+                                "weight": w,
+                                "shares": shares,  # 存入股數以供差值計算
+                            })
+                    except Exception:
+                        pass
+            except Exception:
+                pass
             if holdings:
                 return sorted(holdings, key=lambda x: x["weight"], reverse=True)
 
@@ -257,17 +268,27 @@ etf_base_data = {
 # [修正三] 讀取上次 data.json 的成分股清單，
 #          用來判斷「這次爬蟲新出現的股票」才是真正 is_new
 # ─────────────────────────────────────────────
-def load_previous_holdings() -> dict[str, set[str]]:
-    """回傳 {etf_id: {股票代號, ...}} 的上次成分股快照。"""
+def load_previous_holdings() -> dict:
+    """
+    回傳 {
+      etf_id: {
+        'ids': {股票代號, ...},
+        'shares': {股票代號: 股數, ...}  ← 用於計算 00981A 自身買賣超
+      }
+    }
+    """
     if not os.path.exists(data_file):
         return {}
     try:
         with open(data_file, encoding="utf-8") as f:
             saved = json.load(f)
-        return {
-            eid: {s["id"] for s in d.get("holdings", [])}
-            for eid, d in saved.get("etf_data", {}).items()
-        }
+        result = {}
+        for eid, d in saved.get("etf_data", {}).items():
+            result[eid] = {
+                "ids": {s["id"] for s in d.get("holdings", [])},
+                "shares": {s["id"]: s.get("shares", 0) for s in d.get("holdings", [])},
+            }
+        return result
     except Exception:
         return {}
 
@@ -337,20 +358,26 @@ async def run():
         for eid in etf_base_data.keys():
             scraped = await scrape_etf_holdings(eid, name_to_id)
             if scraped:
-                prev_ids = prev_holdings.get(eid, set())
+                prev_info = prev_holdings.get(eid, {"ids": set(), "shares": {}})
+                prev_ids = prev_info.get("ids", set())
+                prev_shares = prev_info.get("shares", {})
 
-                # ─────────────────────────────────────────────
-                # [修正三] is_new = 「這次爬蟲出現，但上次快照沒有」
-                # ─────────────────────────────────────────────
                 for st in scraped:
+                    # [修正三] is_new
                     if prev_ids and st["id"] not in prev_ids:
                         st["is_new"] = True
 
-                etf_base_data[eid]["holdings"] = scraped
+                    # ──────────────────────────────────────────────────────
+                    # [修正五] 00981A 自身買賣超 = 今日股數 - 昨日股數
+                    #          單位：股 → 張 (除以 1000)
+                    # ──────────────────────────────────────────────────────
+                    if eid == "00981A" and "shares" in st:
+                        prev_s = prev_shares.get(st["id"], None)
+                        if prev_s is not None:
+                            delta_lots = int((st["shares"] - prev_s) / 1000)
+                            st["etf_net_buy"] = delta_lots  # 儲存 ETF 自身買賣超
 
-                # ─────────────────────────────────────────────
-                # [修正一] topWeight 跟著爬蟲結果同步更新
-                # ─────────────────────────────────────────────
+                etf_base_data[eid]["holdings"] = scraped
                 etf_base_data[eid]["topWeight"] = f"{scraped[0]['weight']:.2f}%"
 
     # 抓個股 + ETF 本身的 Yahoo Finance 報價
@@ -400,7 +427,20 @@ async def run():
                     f"{vol_ratio:.1f}倍 {'(向上)' if p > p_p else '(向下)'}"
                 )
 
-            if sid in c_map:
+            # ──────────────────────────────────────────────────────────
+            # [修正五] 00981A 優先使用「ETF 自身持股變化」顯示基金動向
+            #          其他 ETF 仍使用 T86 全市場投信合計買賣超
+            # ──────────────────────────────────────────────────────────
+            if eid == "00981A" and "etf_net_buy" in st:
+                nb = st["etf_net_buy"]
+                st["net_buy"] = f"{nb:+d}"
+                st["chips"] = (
+                    "🔥 本基金積極買入" if nb > 50
+                    else "👍 本基金小幅買入" if nb > 0
+                    else "💤 本基金減碼" if nb < 0
+                    else "⚖️ 本基金持平"
+                )
+            elif sid in c_map:
                 nb = c_map[sid]
                 st["net_buy"] = f"{nb:+d}"
                 st["chips"] = (
