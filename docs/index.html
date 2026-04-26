@@ -604,21 +604,23 @@
 
         // 更新頂部數據
         const data = etfData[id]; if(!data) { console.error("ETF Data Missing"); return; }
-        document.getElementById('etf-scale').innerText = data.scale;
-        document.getElementById('etf-price').innerText = `$${data.price || "27.80"}`;
-        document.getElementById('etf-top-weight').innerText = data.topWeight || (data.holdings[0].weight + "%");
-        document.getElementById('vwap-summary').innerText = data.vwap;
+        
+        // 確保每個顯示 ID 都有正確對應
+        if(document.getElementById('etf-scale')) document.getElementById('etf-scale').innerText = data.scale;
+        if(document.getElementById('etf-price')) document.getElementById('etf-price').innerText = `$${data.price || "27.80"}`;
+        
+        // 抓取 VWAP 診斷：先找 vwap-summary 再找 etf-vwap
+        const vwapEl = document.getElementById('vwap-summary') || document.getElementById('etf-vwap');
+        if(vwapEl) vwapEl.innerText = data.vwap || "多頭鎖碼";
 
-        // 更新龍頭權重條
-        const weightVal = parseFloat(data.topWeight);
-        const bar = document.getElementById('etf-top-weight-bar');
-        if (bar) bar.style.width = weightVal + '%';
-
-        // 動態更新漲跌百分比與顏色
+        // 動態更新漲跌百分比與顏色 (台灣紅漲綠跌)
         const changeEl = document.getElementById('etf-change');
-        const isPositive = !data.change || "+0.00%".includes('-');
-        changeEl.innerText = `${isPositive ? '▲' : '▼'} ${data.change || "+0.00%"} (單日表現)`;
-        changeEl.className = `text-xs font-medium mt-1 ${isPositive ? 'text-red-600 font-bold' : 'text-green-600 font-bold'}`;
+        if(changeEl) {
+            const isPositive = data.change && data.change.includes('+');
+            const arrow = isPositive ? '▲' : '▼';
+            changeEl.innerText = `${arrow} ${data.change || "+0.00%"} (單日表現)`;
+            changeEl.className = `text-xs font-medium mt-1 ${isPositive ? 'text-red-600 font-bold' : 'text-green-600 font-bold'}`;
+        }
 
         // 排序：將 [新進] 股票排在最前面
         const sortedHoldings = [...data.holdings].sort((a, b) => {
