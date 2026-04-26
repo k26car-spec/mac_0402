@@ -117,8 +117,8 @@ async def update_prices():
                 chg_amt = p - prev_p
                 chg_p = round((chg_amt / prev_p) * 100, 2) if prev_p else 0
                 
-                chg_text = f"+{chg_p}%" if chg_p > 0 else f"{chg_p}%"
-                chg_text = "▲ " + chg_text if chg_p >= 0 else "▼ " + chg_text
+                chg_text = f"{chg_amt:+.1f} ({chg_p:+.2f}%)"
+                chg_text = ("▲ " if chg_p >= 0 else "▼ ") + chg_text
                 
                 stock['price'] = p
                 stock['change'] = chg_text

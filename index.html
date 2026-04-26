@@ -20,40 +20,40 @@
     <!-- 頁首 -->
     <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
-            <h1 class="text-3xl font-bold tracking-tight text-slate-800 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <h1 class="text-xl md:text-3xl font-bold tracking-tight text-slate-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
-                主動式 ETF 籌碼監測中心
+                主動式 ETF 監測中心
             </h1>
             <p class="text-slate-500 mt-1">數據基準日：2026/04/24 (五) | 法規：單一持股上限已放寬至 25%</p>
         </div>
-        <div class="flex bg-white p-1 rounded-xl shadow-sm border border-slate-200">
-            <button onclick="switchETF('00981A')" id="btn-00981A" class="px-6 py-2 rounded-lg font-medium transition-all bg-blue-600 text-white shadow-md">00981A</button>
-            <button onclick="switchETF('00992A')" id="btn-00992A" class="px-6 py-2 rounded-lg font-medium transition-all text-slate-500 hover:bg-slate-100">00992A</button>
+        <div class="flex bg-white p-1 rounded-xl shadow-sm border border-slate-200 w-full md:w-auto">
+            <button onclick="switchETF('00981A')" id="btn-00981A" class="flex-1 md:flex-none px-4 md:px-6 py-2 rounded-lg font-medium transition-all bg-blue-600 text-white shadow-md text-sm md:text-base">00981A</button>
+            <button onclick="switchETF('00992A')" id="btn-00992A" class="flex-1 md:flex-none px-4 md:px-6 py-2 rounded-lg font-medium transition-all text-slate-500 hover:bg-slate-100 text-sm md:text-base">00992A</button>
         </div>
     </header>
 
     <!-- 頂部核心指標 -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
         <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-l-blue-500">
             <p class="text-slate-500 text-xs font-semibold uppercase mb-1">基金規模 (AUM)</p>
-            <div class="text-2xl font-bold" id="etf-scale">1,925 億</div>
+            <div class="text-lg md:text-2xl font-bold" id="etf-scale">1,925 億</div>
             <div class="text-xs text-blue-600 font-medium mt-1">近一週資金持續淨流入</div>
         </div>
         <div class="glass-card p-6 rounded-2xl shadow-sm">
             <p class="text-slate-500 text-xs font-semibold uppercase mb-1">今日收盤價</p>
-            <div class="text-2xl font-bold" id="etf-price">$27.80</div>
+            <div class="text-lg md:text-2xl font-bold" id="etf-price">$27.80</div>
             <div class="text-xs positive font-medium mt-1">▲ +4.43% (單日表現)</div>
         </div>
         <div class="glass-card p-6 rounded-2xl shadow-sm">
             <p class="text-slate-500 text-xs font-semibold uppercase mb-1">重倉龍頭: 台積電</p>
-            <div class="text-2xl font-bold" id="etf-top-weight">8.55%</div>
+            <div class="text-lg md:text-2xl font-bold" id="etf-top-weight">8.55%</div>
             <div class="text-xs text-slate-400 mt-1">主動型加碼空間大</div>
         </div>
         <div class="glass-card p-6 rounded-2xl shadow-sm bg-slate-900 text-white">
             <p class="text-slate-400 text-xs font-semibold uppercase mb-1">VWAP 技術狀態</p>
-            <div class="text-2xl font-bold text-blue-400" id="vwap-summary">多頭鎖碼</div>
+            <div class="text-lg md:text-2xl font-bold text-blue-400" id="vwap-summary">多頭鎖碼</div>
             <div class="text-xs text-slate-400 mt-1">價格遠高於週均成交價</div>
         </div>
     </div>
@@ -67,8 +67,8 @@
                     <h2 class="font-bold text-lg text-slate-800">成分股籌碼明細</h2>
                     <span class="text-xs px-2 py-1 bg-blue-50 rounded text-blue-600 font-semibold">即時連動</span>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left">
+                <div class="overflow-x-auto scrollbar-hide">
+                    <table class="w-full text-left min-w-[700px]">
                         <thead class="bg-slate-50 text-slate-500 text-xs uppercase font-bold">
                             <tr>
                                 <th class="px-6 py-4">股票</th>
@@ -829,7 +829,7 @@
                     }
                 ],
                 "price": 2185.0,
-                "change": "▲ +5.05%"
+                "change": "▲ +105.0 (+5.05%)"
             },
             {
                 "id": "2383",
@@ -1127,7 +1127,7 @@
                     }
                 ],
                 "price": 4475.0,
-                "change": "▲ +9.15%"
+                "change": "▲ +375.0 (+9.15%)"
             },
             {
                 "id": "3653",
@@ -1425,7 +1425,7 @@
                     }
                 ],
                 "price": 5370.0,
-                "change": "▲ +1.13%"
+                "change": "▲ +60.0 (+1.13%)"
             },
             {
                 "id": "2308",
@@ -1723,7 +1723,7 @@
                     }
                 ],
                 "price": 2075.0,
-                "change": "▲ +4.8%"
+                "change": "▲ +95.0 (+4.80%)"
             },
             {
                 "id": "2345",
@@ -2021,7 +2021,7 @@
                     }
                 ],
                 "price": 2140.0,
-                "change": "▲ +2.88%"
+                "change": "▲ +60.0 (+2.88%)"
             },
             {
                 "id": "3017",
@@ -2319,7 +2319,7 @@
                     }
                 ],
                 "price": 2945.0,
-                "change": "▲ +9.89%"
+                "change": "▲ +265.0 (+9.89%)"
             },
             {
                 "id": "2317",
@@ -2617,7 +2617,7 @@
                     }
                 ],
                 "price": 221.5,
-                "change": "▼ -1.56%"
+                "change": "▼ -3.5 (-1.56%)"
             },
             {
                 "id": "2454",
@@ -2915,7 +2915,7 @@
                     }
                 ],
                 "price": 2435.0,
-                "change": "▲ +9.93%"
+                "change": "▲ +220.0 (+9.93%)"
             },
             {
                 "id": "2881",
@@ -3213,7 +3213,7 @@
                     }
                 ],
                 "price": 87.8,
-                "change": "▼ -0.57%"
+                "change": "▼ -0.5 (-0.57%)"
             },
             {
                 "id": "2882",
@@ -3511,7 +3511,7 @@
                     }
                 ],
                 "price": 74.9,
-                "change": "▲ +0.13%"
+                "change": "▲ +0.1 (+0.13%)"
             },
             {
                 "id": "3231",
@@ -3809,7 +3809,7 @@
                     }
                 ],
                 "price": 141.5,
-                "change": "▲ +1.43%"
+                "change": "▲ +2.0 (+1.43%)"
             },
             {
                 "id": "2382",
@@ -4107,7 +4107,7 @@
                     }
                 ],
                 "price": 323.0,
-                "change": "▲ +0.31%"
+                "change": "▲ +1.0 (+0.31%)"
             },
             {
                 "id": "3034",
@@ -4405,7 +4405,7 @@
                     }
                 ],
                 "price": 418.0,
-                "change": "▲ +2.96%"
+                "change": "▲ +12.0 (+2.96%)"
             },
             {
                 "id": "2395",
@@ -4703,7 +4703,7 @@
                     }
                 ],
                 "price": 354.0,
-                "change": "▼ -0.7%"
+                "change": "▼ -2.5 (-0.70%)"
             },
             {
                 "id": "2603",
@@ -5001,7 +5001,7 @@
                     }
                 ],
                 "price": 201.5,
-                "change": "▲ +0.25%"
+                "change": "▲ +0.5 (+0.25%)"
             },
             {
                 "id": "1519",
@@ -5299,7 +5299,7 @@
                     }
                 ],
                 "price": 886.0,
-                "change": "▲ +1.03%"
+                "change": "▲ +9.0 (+1.03%)"
             },
             {
                 "id": "3443",
@@ -5597,7 +5597,7 @@
                     }
                 ],
                 "price": 4035.0,
-                "change": "▲ +3.2%"
+                "change": "▲ +125.0 (+3.20%)"
             },
             {
                 "id": "3661",
@@ -5895,7 +5895,7 @@
                     }
                 ],
                 "price": 4215.0,
-                "change": "▲ +5.9%"
+                "change": "▲ +235.0 (+5.90%)"
             }
         ]
     },
@@ -6203,7 +6203,7 @@
                     }
                 ],
                 "price": 2185.0,
-                "change": "▲ +5.05%"
+                "change": "▲ +105.0 (+5.05%)"
             },
             {
                 "id": "6669",
@@ -6501,7 +6501,7 @@
                     }
                 ],
                 "price": 4635.0,
-                "change": "▲ +9.06%"
+                "change": "▲ +385.0 (+9.06%)"
             },
             {
                 "id": "3105",
@@ -6799,7 +6799,7 @@
                     }
                 ],
                 "price": 547.0,
-                "change": "▼ -2.32%"
+                "change": "▼ -13.0 (-2.32%)"
             },
             {
                 "id": "6223",
@@ -7097,7 +7097,7 @@
                     }
                 ],
                 "price": 4650.0,
-                "change": "▼ -2.92%"
+                "change": "▼ -140.0 (-2.92%)"
             },
             {
                 "id": "3037",
@@ -7395,7 +7395,7 @@
                     }
                 ],
                 "price": 790.0,
-                "change": "▲ +8.52%"
+                "change": "▲ +62.0 (+8.52%)"
             },
             {
                 "id": "6515",
@@ -7693,7 +7693,7 @@
                     }
                 ],
                 "price": 10060.0,
-                "change": "▼ -6.24%"
+                "change": "▼ -670.0 (-6.24%)"
             },
             {
                 "id": "2454",
@@ -7991,7 +7991,7 @@
                     }
                 ],
                 "price": 2435.0,
-                "change": "▲ +9.93%"
+                "change": "▲ +220.0 (+9.93%)"
             },
             {
                 "id": "2382",
@@ -8289,7 +8289,7 @@
                     }
                 ],
                 "price": 323.0,
-                "change": "▲ +0.31%"
+                "change": "▲ +1.0 (+0.31%)"
             },
             {
                 "id": "3231",
@@ -8587,7 +8587,7 @@
                     }
                 ],
                 "price": 141.5,
-                "change": "▲ +1.43%"
+                "change": "▲ +2.0 (+1.43%)"
             },
             {
                 "id": "2376",
@@ -8885,7 +8885,7 @@
                     }
                 ],
                 "price": 278.0,
-                "change": "▲ +1.09%"
+                "change": "▲ +3.0 (+1.09%)"
             },
             {
                 "id": "3443",
@@ -9183,7 +9183,7 @@
                     }
                 ],
                 "price": 4035.0,
-                "change": "▲ +3.2%"
+                "change": "▲ +125.0 (+3.20%)"
             },
             {
                 "id": "3661",
@@ -9481,7 +9481,7 @@
                     }
                 ],
                 "price": 4215.0,
-                "change": "▲ +5.9%"
+                "change": "▲ +235.0 (+5.90%)"
             },
             {
                 "id": "2303",
@@ -9779,7 +9779,7 @@
                     }
                 ],
                 "price": 74.5,
-                "change": "▲ +1.22%"
+                "change": "▲ +0.9 (+1.22%)"
             },
             {
                 "id": "3711",
@@ -10077,7 +10077,7 @@
                     }
                 ],
                 "price": 496.0,
-                "change": "▲ +6.78%"
+                "change": "▲ +31.5 (+6.78%)"
             },
             {
                 "id": "6415",
@@ -10375,7 +10375,7 @@
                     }
                 ],
                 "price": 436.0,
-                "change": "▲ +4.93%"
+                "change": "▲ +20.5 (+4.93%)"
             },
             {
                 "id": "3529",
@@ -10673,7 +10673,7 @@
                     }
                 ],
                 "price": 3900.0,
-                "change": "▼ -2.01%"
+                "change": "▼ -80.0 (-2.01%)"
             },
             {
                 "id": "2308",
@@ -10971,7 +10971,7 @@
                     }
                 ],
                 "price": 2075.0,
-                "change": "▲ +4.8%"
+                "change": "▲ +95.0 (+4.80%)"
             },
             {
                 "id": "2345",
@@ -11269,7 +11269,7 @@
                     }
                 ],
                 "price": 2140.0,
-                "change": "▲ +2.88%"
+                "change": "▲ +60.0 (+2.88%)"
             }
         ]
     }
