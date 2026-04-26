@@ -145,7 +145,30 @@ async def scrape_etf_holdings(etf_id, name_to_id):
             if holdings:
                 return sorted(holdings, key=lambda x: x["weight"], reverse=True)
 
-        # 其他 ETF (群益 00992A, 元大 0050) 使用 MoneyDJ
+        # 特別處理群益投信 (00992A)
+        if etf_id == "00992A":
+            try:
+                url = "https://www.capitalfund.com.tw/etf/product/detail/500/portfolio"
+                r = await client.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
+                from bs4 import BeautifulSoup
+                soup = BeautifulSoup(r.text, "html.parser")
+                rows = soup.find_all("div", class_=lambda c: c and "tr" in c.split())
+                for row in rows:
+                    divs = row.find_all("div")
+                    texts = [d.text.strip() for d in divs]
+                    if len(texts) >= 3 and "%" in texts[2]:
+                        try:
+                            w = float(texts[2].replace("%", ""))
+                            if w > 0:
+                                holdings.append({"id": texts[0], "name": texts[1], "weight": w})
+                        except Exception:
+                            pass
+            except Exception:
+                pass
+            if holdings:
+                return sorted(holdings, key=lambda x: x["weight"], reverse=True)
+
+        # 其他 ETF (元大 0050 等) 使用 MoneyDJ
         try:
             url = f"https://www.moneydj.com/ETF/X/Basic/Basic0007A.xdjhtm?etfid={etf_id}.TW"
             r = await client.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
