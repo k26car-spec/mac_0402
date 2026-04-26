@@ -63,21 +63,21 @@
         <!-- 左側：成分股表格 -->
         <div class="lg:col-span-2">
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-white">
-                    <h2 class="font-bold text-lg text-slate-800">成分股籌碼明細</h2>
-                    <span class="text-xs px-2 py-1 bg-blue-50 rounded text-blue-600 font-semibold">即時連動</span>
+                <div class="p-3 md:p-6 border-b border-slate-100 flex justify-between items-center bg-white">
+                    <h2 class="font-bold text-sm md:text-lg text-slate-800">成分股籌碼明細</h2>
+                    <span class="text-[10px] md:text-xs px-2 py-0.5 md:py-1 bg-blue-50 rounded text-blue-600 font-semibold">即時連動</span>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left min-w-[750px]">
                         <thead class="bg-slate-50 text-slate-500 text-xs uppercase font-bold">
                             <tr>
-                                <th class="px-6 py-4">股票</th>
-                                <th class="px-6 py-4">權重 (%)</th>
-                                <th class="px-6 py-4 text-right">最新價</th>
-                                <th class="px-6 py-4 text-right">一週走勢</th>
-                                <th class="px-6 py-4">籌碼狀況</th>
-                                <th class="px-6 py-4">VWAP 位置</th>
-                                <th class="px-4 py-4 text-center">獨立分析</th>
+                                <th class="px-2 md:px-6 py-3 md:py-4">股票</th>
+                                <th class="px-2 md:px-6 py-3 md:py-4">權重 (%)</th>
+                                <th class="px-2 md:px-6 py-3 md:py-4 text-right">最新價</th>
+                                <th class="px-2 md:px-6 py-3 md:py-4 text-right">一週走勢</th>
+                                <th class="px-2 md:px-6 py-3 md:py-4">籌碼狀況</th>
+                                <th class="px-2 md:px-6 py-3 md:py-4">VWAP 位置</th>
+                                <th class="px-2 md:px-4 py-3 md:py-4 text-center">分析</th>
                             </tr>
                         </thead>
                         <tbody id="stock-list" class="divide-y divide-slate-100">
@@ -11303,33 +11303,33 @@
         data.holdings.forEach((stock, index) => {
             const row = `
                 <tr class="hover:bg-blue-50 transition-colors cursor-pointer group" onclick="showModal('${stock.id}', ${index})">
-                    <td class="px-3 md:px-6 py-4">
-                        <div class="font-bold text-slate-800 whitespace-nowrap group-hover:text-blue-600 transition">${stock.name}</div>
-                        <div class="text-[10px] text-slate-400 font-mono tracking-wider">${stock.id}</div>
+                    <td class="px-2 md:px-6 py-3 md:py-4">
+                        <div class="font-bold text-xs md:text-sm text-slate-800 whitespace-nowrap group-hover:text-blue-600 transition">${stock.name}</div>
+                        <div class="text-[9px] md:text-[10px] text-slate-400 font-mono tracking-wider">${stock.id}</div>
                     </td>
-                    <td class="px-3 md:px-6 py-4">
-                        <div class="w-20 md:w-24 bg-slate-100 h-1.5 rounded-full mt-1">
+                    <td class="px-2 md:px-6 py-3 md:py-4">
+                        <div class="w-16 md:w-24 bg-slate-100 h-1.5 rounded-full mt-1">
                             <div class="bg-blue-500 h-1.5 rounded-full" style="width: ${stock.weight * 4}%"></div>
                         </div>
-                        <div class="text-[10px] mt-1 font-mono font-bold">${stock.weight}%</div>
+                        <div class="text-[9px] md:text-[10px] mt-1 font-mono font-bold">${stock.weight}%</div>
                     </td>
-                    <td class="px-3 md:px-6 py-4 text-right font-mono">
-                        <div class="font-bold text-slate-800 whitespace-nowrap">$${stock.price.toLocaleString()}</div>
-                        <div class="text-[10px] font-bold whitespace-nowrap ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
+                    <td class="px-2 md:px-6 py-3 md:py-4 text-right font-mono">
+                        <div class="font-bold text-xs md:text-sm text-slate-800 whitespace-nowrap">$${stock.price.toLocaleString()}</div>
+                        <div class="text-[9px] md:text-[10px] font-bold whitespace-nowrap ${stock.change.includes('+') || stock.change.includes('▲') ? 'positive' : 'negative'}">${stock.change}</div>
                     </td>
-                    <td class="px-3 md:px-6 py-4 text-right">
+                    <td class="px-2 md:px-6 py-3 md:py-4 text-right">
                         <div class="flex flex-col items-end">
                             ${generateSparkline(stock.history)}
                         </div>
                     </td>
-                    <td class="px-3 md:px-6 py-4">
-                        <span class="chip-tag whitespace-nowrap group-hover:bg-blue-100 transition">${stock.chips}</span>
+                    <td class="px-2 md:px-6 py-3 md:py-4">
+                        <span class="text-[9px] md:text-[10px] px-2 py-0.5 rounded-full font-medium bg-slate-100 text-slate-600 whitespace-nowrap group-hover:bg-blue-100 transition">${stock.chips}</span>
                     </td>
-                    <td class="px-3 md:px-6 py-4 text-xs font-bold text-blue-600 italic whitespace-nowrap">
+                    <td class="px-2 md:px-6 py-3 md:py-4 text-[10px] md:text-xs font-bold text-blue-600 italic whitespace-nowrap">
                         ${stock.tech}
                     </td>
-                    <td class="px-2 md:px-4 py-4 text-center">
-                        <button onclick="event.stopPropagation(); showKlineModal('${stock.id}', ${index})" class="text-xs bg-slate-800 text-white px-3 py-1.5 rounded hover:bg-slate-700 transition font-bold shadow-sm inline-flex items-center gap-1">
+                    <td class="px-2 md:px-4 py-3 md:py-4 text-center">
+                        <button onclick="event.stopPropagation(); showKlineModal('${stock.id}', ${index})" class="text-[10px] bg-slate-800 text-white px-2 md:px-3 py-1 md:py-1.5 rounded hover:bg-slate-700 transition font-bold shadow-sm inline-flex items-center gap-1">
                             📊 K線
                         </button>
                     </td>
