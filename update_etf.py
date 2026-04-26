@@ -287,6 +287,7 @@ def load_previous_holdings() -> dict:
             result[eid] = {
                 "ids": {s["id"] for s in d.get("holdings", [])},
                 "shares": {s["id"]: s.get("shares", 0) for s in d.get("holdings", [])},
+                "names": {s["id"]: s.get("name", "") for s in d.get("holdings", [])},
             }
         return result
     except Exception:
@@ -376,6 +377,22 @@ async def run():
                         if prev_s is not None:
                             delta_lots = int((st["shares"] - prev_s) / 1000)
                             st["etf_net_buy"] = delta_lots  # 儲存 ETF 自身買賣超
+
+                # 處理被刪除的股票
+                if eid == "00981A" and prev_ids:
+                    scraped_ids = {st["id"] for st in scraped}
+                    deleted_ids = prev_ids - scraped_ids
+                    for del_id in deleted_ids:
+                        del_name = prev_info.get("names", {}).get(del_id, str(del_id))
+                        del_shares = prev_shares.get(del_id, 0)
+                        scraped.append({
+                            "id": del_id,
+                            "name": del_name,
+                            "weight": 0,
+                            "shares": 0,
+                            "etf_net_buy": -int(del_shares / 1000) if del_shares else -99999,
+                            "is_deleted": True
+                        })
 
                 etf_base_data[eid]["holdings"] = scraped
                 etf_base_data[eid]["topWeight"] = f"{scraped[0]['weight']:.2f}%"

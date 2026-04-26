@@ -705,11 +705,11 @@
 
         // 分類
         const newStocks    = holdings.filter(s => s.is_new);
-        const addStocks    = holdings.filter(s => !s.is_new && (s.etf_net_buy || 0) > 0)
+        const addStocks    = holdings.filter(s => !s.is_new && !s.is_deleted && (s.etf_net_buy || 0) > 0)
                                      .sort((a,b) => (b.etf_net_buy||0) - (a.etf_net_buy||0));
-        const reduceStocks = holdings.filter(s => !s.is_new && (s.etf_net_buy || 0) < 0 && (s.etf_net_buy||0) > -9999)
+        const reduceStocks = holdings.filter(s => !s.is_new && !s.is_deleted && (s.etf_net_buy || 0) < 0)
                                      .sort((a,b) => (a.etf_net_buy||0) - (b.etf_net_buy||0));
-        const delStocks    = holdings.filter(s => s.etf_net_buy !== undefined && s.etf_net_buy <= -9999);
+        const delStocks    = holdings.filter(s => s.is_deleted);
 
         const makeRow = (name, lots, color) =>
             `<tr style="border-top:1px solid #f3f4f6;">
