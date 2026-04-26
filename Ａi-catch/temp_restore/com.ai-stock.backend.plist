@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.ai-stock.backend</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Mac/Documents/ETF/AI/Ａi-catch/start_backend.sh</string>
+    </array>
+    
+    <!-- 每天 08:50 自動啟動 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>50</integer>
+    </dict>
+    
+    <!-- 開機時也啟動 -->
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <!-- 保持運行 -->
+    <key>KeepAlive</key>
+    <false/>
+    
+    <!-- 工作目錄 -->
+    <key>WorkingDirectory</key>
+    <string>/Users/Mac/Documents/ETF/AI/Ａi-catch</string>
+    
+    <!-- 日誌輸出 -->
+    <key>StandardOutPath</key>
+    <string>/Users/Mac/Documents/ETF/AI/Ａi-catch/logs/launchd_out.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/Mac/Documents/ETF/AI/Ａi-catch/logs/launchd_err.log</string>
+    
+    <!-- 環境變數 -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Python.framework/Versions/3.12/bin</string>
+    </dict>
+</dict>
+</plist>

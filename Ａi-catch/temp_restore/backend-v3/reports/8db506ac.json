@@ -1,0 +1,177 @@
+{
+  "stock_code": "2337",
+  "stock_name": "旺宏",
+  "overall_score": 44.4,
+  "recommendation": "減碼",
+  "target_price": 61.22,
+  "stop_loss": 52.47,
+  "ai_summary": "旺宏 整體評分偏低 (44.4分)，出現 4 個賣出訊號，需謹慎操作。 注意：有 2 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 58.3,
+    "change_pct": -7.9,
+    "ma5": 55.85,
+    "ma10": 47.82,
+    "ma20": 42.85,
+    "ma60": 36.96,
+    "ma_arrangement": "多頭排列",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 60.0,
+    "resistance_2": 64.0,
+    "support_1": 55.85,
+    "support_2": 50.0,
+    "rsi_14": 79.11,
+    "macd": 5.5799,
+    "trend": "多頭"
+  },
+  "financial_health": {
+    "roe": -10.37,
+    "eps": -2.45,
+    "revenue_growth_3y": 5.9,
+    "gross_margin": 14.93,
+    "debt_ratio": 98.44
+  },
+  "institutional_trading": {
+    "foreign_net": -3205,
+    "trust_net": 9,
+    "dealer_net": -254,
+    "total_net": -3450
+  },
+  "volume_price_analysis": {
+    "trend_direction": "sideways",
+    "trend_confidence": 50.0,
+    "volume_price_confirmation": "價跌量增",
+    "confirmation_signal": "bearish_confirmation",
+    "confirmation_strength": 1.0,
+    "divergence_detected": false,
+    "divergence_type": "none",
+    "divergence_description": "",
+    "volume_ratio": 1.72,
+    "obv_trend": "bullish",
+    "predicted_direction": "sideways",
+    "key_signals": [
+      "OBV確認多頭"
+    ]
+  },
+  "related_news": [
+    {
+      "title": "驊陞受記憶體缺料影響　去年12月營收2.84億元連3降",
+      "summary": "驊陞受記憶體缺料影響　去年12月營收2.84億元連3降",
+      "date": "2026-01-09",
+      "source": "中央社",
+      "url": "https://ieknet.iek.org.tw/ieknews/news_more.aspx?actiontype=ieknews&indu_idno=2&nsl_id=3dc7d64cdb354970918c1e893e40dba3",
+      "sentiment": "neutral",
+      "impact": "medium"
+    },
+    {
+      "title": "3D 奈米列印「光籠」上陣，為量子記憶體開闢新路",
+      "summary": "3D 奈米列印「光籠」上陣，為量子記憶體開闢新路",
+      "date": "2026-01-10",
+      "source": "科技新報",
+      "url": "https://technews.tw/2026/01/09/light-cage/",
+      "sentiment": "neutral",
+      "impact": "medium"
+    },
+    {
+      "title": "AI拉抬記憶體市況 Q4三星重返全球DRAM龍頭",
+      "summary": "AI拉抬記憶體市況 Q4三星重返全球DRAM龍頭",
+      "date": "2026-01-09",
+      "source": "台視財經",
+      "url": "https://www.ttv.com.tw/finance/view/default.asp?i=0120260911035535527FC0E84F639ED47621D2445E316534&from=587",
+      "sentiment": "neutral",
+      "impact": "medium"
+    },
+    {
+      "title": "旺宏 (2337) 12 月營收雙增突破 26 億！庫存持續去化，迎 AI 記憶體超級循環",
+      "summary": "旺宏 (2337) 12 月營收雙增突破 26 億！庫存持續去化，迎 AI 記憶體超級循環",
+      "date": "2026-01-08",
+      "source": "口袋證券",
+      "url": "https://www.pocket.tw/school/report/SCHOOL/6949",
+      "sentiment": "positive",
+      "impact": "medium"
+    }
+  ],
+  "chip_analysis": {
+    "futures": {
+      "foreign_futures_net": -37452,
+      "pc_ratio": 1.2717,
+      "foreign_stance": "極度看空",
+      "market_sentiment": "極度恐慌"
+    },
+    "margin": {
+      "retail_sentiment": "中性",
+      "margin_change_ratio": -0.2,
+      "short_change_ratio": -1.24
+    },
+    "summary": {
+      "overall_stance": "強烈看空",
+      "total_score": -59.2
+    },
+    "continuous": {
+      "foreign": {
+        "direction": "sell",
+        "days": 1
+      },
+      "investment": {
+        "direction": "buy",
+        "days": 1
+      },
+      "dealer": {
+        "direction": "sell",
+        "days": 2
+      }
+    }
+  },
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "多頭排列",
+      "description": "技術面多頭排列，趨勢向上",
+      "confidence": 75
+    },
+    {
+      "type": "buy",
+      "name": "MACD 黃金交叉",
+      "description": "MACD 黃金交叉且在零軸之上，多頭動能強",
+      "confidence": 80
+    },
+    {
+      "type": "buy",
+      "name": "OBV 確認多頭",
+      "description": "能量潮 OBV 趨勢向上，資金持續流入",
+      "confidence": 70
+    }
+  ],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "KD 高檔死亡交叉",
+      "description": "KD 在高檔區死亡交叉",
+      "confidence": 70
+    },
+    {
+      "type": "sell",
+      "name": "乖離率過高",
+      "description": "20日乖離率 (36.07%) 過高，注意回調風險",
+      "confidence": 65
+    },
+    {
+      "type": "sell",
+      "name": "量價確認 (價跌量增)",
+      "description": "價跌量增，賣壓沉重",
+      "confidence": 80
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "high",
+      "name": "ROE 偏低",
+      "description": "ROE (-10.37%)，獲利能力待改善"
+    },
+    {
+      "level": "medium",
+      "name": "RSI 過熱",
+      "description": "RSI (79.11)，短期可能回調"
+    }
+  ]
+}

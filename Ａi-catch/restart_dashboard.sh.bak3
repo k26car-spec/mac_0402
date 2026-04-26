@@ -1,0 +1,37 @@
+#!/bin/bash
+# restart_dashboard.sh - 完全清理並重啟 Web 平台
+
+echo "🔧 完全重啟 Web 平台..."
+echo ""
+
+# 1. 停止所有相關進程
+echo "1️⃣  停止所有相關進程..."
+pkill -f "dashboard.py" 2>/dev/null
+pkill -f "test_flask.py" 2>/dev/null
+
+# 殺掉占用 8080 端口的進程
+PORT_PIDS=$(lsof -ti:8080 2>/dev/null)
+if [ -n "$PORT_PIDS" ]; then
+    echo "   正在停止占用 8080 端口的進程: $PORT_PIDS"
+    kill -9 $PORT_PIDS 2>/dev/null
+fi
+
+sleep 2
+
+# 2. 確認端口已釋放
+echo "2️⃣  檢查端口狀態..."
+if lsof -i:8080 >/dev/null 2>&1; then
+    echo "   ⚠️  端口 8080 仍被占用"
+    lsof -i:8080
+    echo ""
+    echo "   請手動停止上述進程，或使用其他端口"
+    exit 1
+else
+    echo "   ✓ 端口 8080 已釋放"
+fi
+
+# 3. 啟動 Web 平台
+echo "3️⃣  啟動 Web 平台..."
+echo ""
+
+./start_dashboard.sh

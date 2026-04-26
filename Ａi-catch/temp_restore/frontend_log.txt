@@ -1,0 +1,13 @@
+
+> ai-stock-frontend@3.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.3
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 4.4s
+ ○ Compiling /dashboard/sniper ...
+ ✓ Compiled /dashboard/sniper in 6.5s (694 modules)
+ GET /dashboard/sniper 200 in 7432ms
+ ✓ Compiled in 836ms (354 modules)

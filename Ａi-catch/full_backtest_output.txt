@@ -1,0 +1,239 @@
+2026-02-10 13:43:48.643471: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+======================================================================
+📊 LSTM模型回测验证系统
+======================================================================
+
+📁 加载LSTM模型...
+   模型目录: models/lstm_smart_entry
+   找到 50 个模型文件
+   ✅ 8422: 8422_model.h5
+   ✅ 1815: 1815_model.h5
+   ✅ 2317: 2317_model.h5
+   ✅ 3363: 3363_model.h5
+   ✅ 8074: 8074_model.h5
+   ✅ 2881: 2881_model.h5
+   ✅ 3481: 3481_model.h5
+   ✅ 6285: 6285_model.h5
+   ✅ 2301: 2301_model.h5
+   ✅ 1802: 1802_model.h5
+   ✅ 8155: 8155_model.h5
+   ✅ 2371: 2371_model.h5
+   ✅ 6282: 6282_model.h5
+   ✅ 3163: 3163_model.h5
+   ✅ 1301: 1301_model.h5
+   ✅ 2449: 2449_model.h5
+   ✅ 2344: 2344_model.h5
+   ✅ 6770: 6770_model.h5
+   ✅ 2367: 2367_model.h5
+   ✅ 3706: 3706_model.h5
+   ✅ 3034: 3034_model.h5
+   ✅ 2454: 2454_model.h5
+   ✅ 2382: 2382_model.h5
+   ✅ 8046: 8046_model.h5
+   ✅ 6239: 6239_model.h5
+   ✅ 2002: 2002_model.h5
+   ✅ 6257: 6257_model.h5
+   ✅ 2337: 2337_model.h5
+   ✅ 5521: 5521_model.h5
+   ✅ 3189: 3189_model.h5
+   ✅ 2303: 2303_model.h5
+   ✅ 2412: 2412_model.h5
+   ✅ 5498: 5498_model.h5
+   ✅ 1605: 1605_model.h5
+   ✅ 1326: 1326_model.h5
+   ✅ 2314: 2314_model.h5
+   ✅ 6153: 6153_model.h5
+   ✅ 2609: 2609_model.h5
+   ✅ 2327: 2327_model.h5
+   ✅ 3265: 3265_model.h5
+   ✅ 3037: 3037_model.h5
+   ✅ 2313: 2313_model.h5
+   ✅ 2312: 2312_model.h5
+   ✅ 3008: 3008_model.h5
+   ✅ 1303: 1303_model.h5
+   ✅ 2379: 2379_model.h5
+   ✅ 8150: 8150_model.h5
+   ✅ 2408: 2408_model.h5
+   ✅ 2618: 2618_model.h5
+   ✅ 3231: 3231_model.h5
+
+   总计加载: 50 个模型
+
+🔍 开始回测...
+   股票数量: 50
+   回测期间: 3m
+
+   [1/50] 8422... ✅ 准确率=100.0%
+
+   [2/50] 1815...HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 1815.TW"}}}
+$1815.TW: possibly delisted; no price data found  (period=6mo) (Yahoo error = "No data found, symbol may be delisted")
+ ❌ 失败
+
+   [3/50] 2317... ✅ 准确率=62.5%
+
+   [4/50] 3363...HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 3363.TW"}}}
+$3363.TW: possibly delisted; no price data found  (period=6mo) (Yahoo error = "No data found, symbol may be delisted")
+ ❌ 失败
+
+   [5/50] 8074...$8074.TW: possibly delisted; no price data found  (period=6mo) (Yahoo error = "No data found, symbol may be delisted")
+ ❌ 失败
+
+   [6/50] 2881... ✅ 准确率=100.0%
+
+   [7/50] 3481... ✅ 准确率=100.0%
+
+   [8/50] 6285...WARNING:tensorflow:5 out of the last 5 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x1403091c0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+ ✅ 准确率=0.0%
+
+   [9/50] 2301...WARNING:tensorflow:6 out of the last 6 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x140308b80> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+ ✅ 准确率=37.5%
+
+   [10/50] 1802... ✅ 准确率=62.5%
+
+   [11/50] 8155...$8155.TW: possibly delisted; no price data found  (period=6mo) (Yahoo error = "No data found, symbol may be delisted")
+ ❌ 失败
+
+   [12/50] 2371... ✅ 准确率=75.0%
+
+   [13/50] 6282... ✅ 准确率=75.0%
+
+   [14/50] 3163...$3163.TW: possibly delisted; no price data found  (period=6mo) (Yahoo error = "No data found, symbol may be delisted")
+ ❌ 失败
+
+   [15/50] 1301... ✅ 准确率=25.0%
+
+   [16/50] 2449... ✅ 准确率=25.0%
+
+   [17/50] 2344... ✅ 准确率=37.5%
+
+   [18/50] 6770... ✅ 准确率=25.0%
+
+   [19/50] 2367... ✅ 准确率=0.0%
+
+   [20/50] 3706... ✅ 准确率=100.0%
+
+   [21/50] 3034... ✅ 准确率=37.5%
+
+   [22/50] 2454... ✅ 准确率=12.5%
+
+   [23/50] 2382... ✅ 准确率=62.5%
+
+   [24/50] 8046... ✅ 准确率=25.0%
+
+   [25/50] 6239... ✅ 准确率=62.5%
+
+   [26/50] 2002... ✅ 准确率=25.0%
+
+   [27/50] 6257... ✅ 准确率=100.0%
+
+   [28/50] 2337... ✅ 准确率=12.5%
+
+   [29/50] 5521... ✅ 准确率=100.0%
+
+   [30/50] 3189... ✅ 准确率=0.0%
+
+   [31/50] 2303... ✅ 准确率=37.5%
+
+   [32/50] 2412... ✅ 准确率=50.0%
+
+   [33/50] 5498...$5498.TW: possibly delisted; no price data found  (period=6mo) (Yahoo error = "No data found, symbol may be delisted")
+ ❌ 失败
+
+   [34/50] 1605... ✅ 准确率=62.5%
+
+   [35/50] 1326... ✅ 准确率=25.0%
+
+   [36/50] 2314... ✅ 准确率=100.0%
+
+   [37/50] 6153... ✅ 准确率=50.0%
+
+   [38/50] 2609... ✅ 准确率=87.5%
+
+   [39/50] 2327... ✅ 准确率=62.5%
+
+   [40/50] 3265...$3265.TW: possibly delisted; no price data found  (period=6mo) (Yahoo error = "No data found, symbol may be delisted")
+ ❌ 失败
+
+   [41/50] 3037... ✅ 准确率=0.0%
+
+   [42/50] 2313... ✅ 准确率=25.0%
+
+   [43/50] 2312... ✅ 准确率=100.0%
+
+   [44/50] 3008... ✅ 准确率=75.0%
+
+   [45/50] 1303... ✅ 准确率=50.0%
+
+   [46/50] 2379... ✅ 准确率=37.5%
+
+   [47/50] 8150... ✅ 准确率=100.0%
+
+   [48/50] 2408... ✅ 准确率=0.0%
+
+   [49/50] 2618... ✅ 准确率=62.5%
+
+   [50/50] 3231... ✅ 准确率=87.5%
+
+
+======================================================================
+📊 回测结果分析
+======================================================================
+
+📈 总体指标:
+   测试股票数: 43
+   平均准确率: 52.91%
+   平均精确率: 0.87%
+   平均召回率: 2.33%
+   平均F1分数: 1.27%
+
+📊 准确率分布:
+   优秀(≥70%): 14 支 (32.6%)
+   良好(60-70%): 7 支 (16.3%)
+   可接受(50-60%): 3 支 (7.0%)
+   较差(<50%): 19 支 (44.2%)
+
+🏆 Top 10准确率:
+    1. 8422: 100.00% (P=0.0%, R=0.0%)
+    2. 2881: 100.00% (P=0.0%, R=0.0%)
+    3. 3481: 100.00% (P=0.0%, R=0.0%)
+    4. 3706: 100.00% (P=0.0%, R=0.0%)
+    5. 6257: 100.00% (P=0.0%, R=0.0%)
+    6. 5521: 100.00% (P=0.0%, R=0.0%)
+    7. 2314: 100.00% (P=0.0%, R=0.0%)
+    8. 2312: 100.00% (P=0.0%, R=0.0%)
+    9. 8150: 100.00% (P=0.0%, R=0.0%)
+   10. 2609: 87.50% (P=0.0%, R=0.0%)
+
+⚠️ Bottom 10准确率:
+    1. 2002: 25.00% (P=0.0%, R=0.0%)
+    2. 1326: 25.00% (P=0.0%, R=0.0%)
+    3. 2313: 25.00% (P=0.0%, R=0.0%)
+    4. 2454: 12.50% (P=0.0%, R=0.0%)
+    5. 2337: 12.50% (P=0.0%, R=0.0%)
+    6. 6285: 0.00% (P=0.0%, R=0.0%)
+    7. 2367: 0.00% (P=0.0%, R=0.0%)
+    8. 3189: 0.00% (P=0.0%, R=0.0%)
+    9. 3037: 0.00% (P=0.0%, R=0.0%)
+   10. 2408: 0.00% (P=0.0%, R=0.0%)
+
+======================================================================
+🎯 决策建议
+======================================================================
+
+⚠️ 平均准确率 52.91% < 目标55.00000000000001%
+   差距: 2.09%
+
+💡 建议:
+   1. 优化建议:
+      - 准确率接近目标，可以继续
+      - 降低目标到52%
+      - 或优化表现差的股票
+   2. 可以先集成准确率>60%的股票
+   3. 其他股票使用技术指标
+
+📄 结果已保存: lstm_backtest_report_20260210.json
+
+======================================================================
+✅ 回测完成
+======================================================================

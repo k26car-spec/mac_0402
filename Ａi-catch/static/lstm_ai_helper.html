@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 LSTM AI 預測助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .result {
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result.bullish {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border: 2px solid #22c55e;
+        }
+
+        .result.bearish {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 2px solid #ef4444;
+        }
+
+        .result-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .result-details {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .badge.bullish {
+            background: #22c55e;
+        }
+
+        .badge.bearish {
+            background: #ef4444;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🤖 LSTM AI 預測助手</h1>
+
+        <div class="card">
+            <div class="input-group">
+                <input type="text" id="stockInput" placeholder="輸入股票代碼 (例: 2330)" maxlength="4">
+                <button id="analyzeBtn" onclick="analyze()">分析</button>
+            </div>
+
+            <div id="loading" class="loading" style="display:none;">
+                ⏳ AI 正在分析中...
+            </div>
+
+            <div id="error" class="error" style="display:none;"></div>
+
+            <div id="result" class="result">
+                <div class="result-title" id="resultTitle"></div>
+                <div class="result-details" id="resultDetails"></div>
+            </div>
+        </div>
+
+        <div class="card" style="font-size: 13px; color: #666;">
+            <strong>💡 使用說明：</strong>
+            <ul style="margin-left: 20px; margin-top: 8px;">
+                <li>輸入股票代碼（4 位數字）</li>
+                <li>AI 會分析過去 6 個月的數據</li>
+                <li>得到看漲 🚀 或看跌 ⚠️ 的建議</li>
+                <li>僅支持白名單內的 43 支股票</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+
+        async function analyze() {
+            const stockCode = document.getElementById('stockInput').value.trim();
+
+            if (!stockCode || stockCode.length !== 4) {
+                showError('請輸入正確的 4 位股票代碼');
+                return;
+            }
+
+            const button = document.getElementById('analyzeBtn');
+            const loading = document.getElementById('loading');
+            const result = document.getElementById('result');
+            const error = document.getElementById('error');
+
+            // 重置 UI
+            result.style.display = 'none';
+            error.style.display = 'none';
+            loading.style.display = 'block';
+            button.disabled = true;
+
+            try {
+                // 調用 Smart Entry API (已經集成了 LSTM)
+                const response = await fetch(`${API_BASE}/api/smart-entry/analyze`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ stock_code: stockCode })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API 錯誤: ${response.status}`);
+                }
+
+                const data = await response.json();
+                displayResult(stockCode, data);
+
+            } catch (e) {
+                showError(`分析失敗: ${e.message}`);
+            } finally {
+                loading.style.display = 'none';
+                button.disabled = false;
+            }
+        }
+
+        function displayResult(code, data) {
+            const result = document.getElementById('result');
+            const title = document.getElementById('resultTitle');
+            const details = document.getElementById('resultDetails');
+
+            // 檢查是否有 LSTM 信號
+            const hasLSTM = data.factors && data.factors.some(f =>
+                f.includes('AI推薦') || f.includes('AI預警') || f.includes('🤖') || f.includes('⚠️')
+            );
+
+            let lstmSignal = '無數據';
+            let lstmClass = '';
+
+            if (hasLSTM) {
+                const hasBullish = data.factors.some(f => f.includes('AI推薦') || f.includes('🤖'));
+                const hasBearish = data.factors.some(f => f.includes('AI預警') || f.includes('⚠️'));
+
+                if (hasBullish) {
+                    lstmSignal = '看漲 🚀';
+                    lstmClass = 'bullish';
+                } else if (hasBearish) {
+                    lstmSignal = '看跌 📉';
+                    lstmClass = 'bearish';
+                }
+            } else {
+                lstmSignal = '不在白名單';
+                lstmClass = '';
+            }
+
+            // 顯示結果
+            result.className = 'result ' + lstmClass;
+            result.style.display = 'block';
+
+            title.innerHTML = `
+                <span style="font-size: 24px;">${code}</span>
+                <span class="badge ${lstmClass}">${lstmSignal}</span>
+            `;
+
+            let html = `<strong>綜合分數:</strong> ${data.confidence || 0}/100<br>`;
+
+            if (data.factors && data.factors.length > 0) {
+                html += `<br><strong>影響因子:</strong><br>`;
+                data.factors.forEach(f => {
+                    html += `• ${f}<br>`;
+                });
+            }
+
+            if (!hasLSTM) {
+                html += `<br><span style="color: #f59e0b;">⚠️ 此股票不在 LSTM 白名單中，僅顯示技術指標分析</span>`;
+            }
+
+            details.innerHTML = html;
+        }
+
+        function showError(message) {
+            const error = document.getElementById('error');
+            error.textContent = message;
+            error.style.display = 'block';
+        }
+
+        // 支持 Enter 鍵
+        document.getElementById('stockInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                analyze();
+            }
+        });
+    </script>
+</body>
+
+</html>

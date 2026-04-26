@@ -1,0 +1,116 @@
+{
+  "stock_code": "3037",
+  "stock_name": "欣興",
+  "overall_score": 53.2,
+  "recommendation": "觀望",
+  "target_price": 238.7,
+  "stop_loss": 201.81,
+  "ai_summary": "欣興 整體評分中性 (53.2分)，出現 2 個賣出訊號，需謹慎操作。 注意：有 1 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 217.0,
+    "change_pct": 0.7,
+    "ma5": 215.0,
+    "ma10": 217.25,
+    "ma20": 211.15,
+    "ma60": 178.77,
+    "ma_arrangement": "均線糾結",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 217.25,
+    "resistance_2": 220.0,
+    "support_1": 215.0,
+    "support_2": 211.15,
+    "rsi_14": 63.31,
+    "macd": 10.3378,
+    "trend": "盤整"
+  },
+  "financial_health": {
+    "roe": 3.75,
+    "eps": 2.06,
+    "revenue_growth_3y": 7.2,
+    "gross_margin": 12.88,
+    "debt_ratio": 98.15
+  },
+  "institutional_trading": {
+    "foreign_net": -8026737,
+    "trust_net": 0,
+    "dealer_net": -1436706,
+    "total_net": -9463443
+  },
+  "related_news": [
+    {
+      "title": "欣興11月營收創近36個月新高，月增、年增雙升",
+      "summary": "公司公告11月合併營收115.41億元，創近36個月新高，月增1.9%、年增20.4%。",
+      "date": "2025-12-24",
+      "source": "聯合報/經濟日報 摘要於 UDN 標籤頁面",
+      "sentiment": "positive",
+      "impact": "high"
+    },
+    {
+      "title": "載板需求回溫，PCB族群及欣興成盤面焦點",
+      "summary": "ABF高階載板供不應求與BT載板漲價題材推升載板三雄股價表現，欣興受關注並有買盤進駐。",
+      "date": "2025-12-16",
+      "source": "經濟日報 / Anue鉅亨 報導彙整",
+      "sentiment": "positive",
+      "impact": "medium"
+    },
+    {
+      "title": "欣興Q2維持獲利但轉投資聯致科技上半年虧損",
+      "summary": "公司財報顯示第二季匯損下仍保有獲利，但轉投資聯致科技上半年出現每股虧損。",
+      "date": "2025-07-29",
+      "source": "UDN 聯合新聞網",
+      "sentiment": "neutral",
+      "impact": "low"
+    },
+    {
+      "title": "外資與法人對欣興看法分歧，小摩維持正面但提醒原料供給緊張",
+      "summary": "摩根士丹利看好長期需求，但指出原料供給受限可能影響短期成長。",
+      "date": "2025-07-17",
+      "source": "UDN / 小摩研究報告摘要",
+      "sentiment": "neutral",
+      "impact": "medium"
+    },
+    {
+      "title": "大型PCB廠籌資消息：欣興與金像電接連進行市場籌資",
+      "summary": "市場傳聞及報導指出欣興等PCB廠進行籌資動作，預估整體將吸金近百億元。",
+      "date": "2025-10-19",
+      "source": "Anue鉅亨",
+      "sentiment": "neutral",
+      "impact": "medium"
+    }
+  ],
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "高殖利率",
+      "description": "殖利率 (69.0%) 具吸引力",
+      "confidence": 65
+    }
+  ],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "法人連續賣超",
+      "description": "法人連續 3 天賣超，籌碼鬆動",
+      "confidence": 75
+    },
+    {
+      "type": "sell",
+      "name": "本益比過高",
+      "description": "本益比 (105.34) 過高，估值風險大",
+      "confidence": 65
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "medium",
+      "name": "ROE 普通",
+      "description": "ROE (3.75%)，獲利能力一般"
+    },
+    {
+      "level": "high",
+      "name": "負債比過高",
+      "description": "負債比 (98.15%)，財務槓桿風險高"
+    }
+  ]
+}

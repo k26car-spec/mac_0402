@@ -1,0 +1,39 @@
+{
+  "train_date": "2026-02-23T14:04:28.696900",
+  "method": "LSTM_v4_tech+chip",
+  "total": 2,
+  "ok": 0,
+  "elapsed_sec": 772,
+  "results": [
+    {
+      "symbol": "2881",
+      "status": "biased",
+      "mode": "法人+技術",
+      "features": 22,
+      "epochs": 44,
+      "samples": 675,
+      "accuracy": 0.4222,
+      "precision": 0.4222,
+      "recall": 1.0,
+      "f1": 0.5938,
+      "pos_preds": 135,
+      "total_test": 135,
+      "is_valid": false
+    },
+    {
+      "symbol": "2317",
+      "status": "biased",
+      "mode": "法人+技術",
+      "features": 22,
+      "epochs": 46,
+      "samples": 675,
+      "accuracy": 0.4963,
+      "precision": 0.3077,
+      "recall": 0.0635,
+      "f1": 0.1053,
+      "pos_preds": 13,
+      "total_test": 135,
+      "is_valid": false
+    }
+  ]
+}

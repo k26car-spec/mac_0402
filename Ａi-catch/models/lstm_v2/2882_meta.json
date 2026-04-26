@@ -1,0 +1,1 @@
+{"symbol": "2882", "horizon_days": 2, "val_accuracy": 0.5, "val_loss": 0.8001145124435425, "best_epoch": 1, "n_train": 279, "n_val": 70, "trained_at": "2026-04-10T12:09:28.557783", "n_features": 18}

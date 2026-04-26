@@ -1,0 +1,323 @@
+{
+  "run_date": "2026-03-12T18:37:04.963212",
+  "orb_stocks": [
+    "2337",
+    "6153",
+    "2367",
+    "1301",
+    "1326",
+    "8155",
+    "2344",
+    "6285",
+    "2303",
+    "2313",
+    "2449",
+    "2317",
+    "5521",
+    "8074",
+    "3163",
+    "1303",
+    "6257",
+    "3231",
+    "1815",
+    "8422",
+    "6770",
+    "3265",
+    "3706",
+    "3481",
+    "2312",
+    "3037",
+    "3363",
+    "2327",
+    "6282",
+    "5498",
+    "2314",
+    "1605",
+    "2454",
+    "3034",
+    "2379",
+    "2382",
+    "3008",
+    "2881",
+    "2412",
+    "2609",
+    "2618",
+    "8046",
+    "3189",
+    "2408",
+    "8150",
+    "1802",
+    "2371",
+    "6239",
+    "2002",
+    "2301",
+    "2887",
+    "2377"
+  ],
+  "processed": [
+    "2337",
+    "6153",
+    "2367",
+    "1301",
+    "1326",
+    "8155",
+    "2344",
+    "6285",
+    "2303",
+    "2313",
+    "2449",
+    "2317",
+    "5521",
+    "8074",
+    "3163",
+    "1303",
+    "6257",
+    "3231",
+    "1815",
+    "8422",
+    "6770",
+    "3265",
+    "3706",
+    "3481",
+    "2312",
+    "3037",
+    "3363",
+    "2327",
+    "6282",
+    "5498",
+    "2314",
+    "1605",
+    "2454",
+    "3034",
+    "2379",
+    "2382",
+    "3008",
+    "2881",
+    "2412",
+    "2609",
+    "2618",
+    "8046",
+    "3189",
+    "2408",
+    "8150",
+    "1802",
+    "2371",
+    "6239",
+    "2002",
+    "2301",
+    "2887",
+    "2377"
+  ],
+  "added": [
+    {
+      "symbol": "2344",
+      "threshold": 0.35,
+      "precision": 0.8158,
+      "recall": 0.7949,
+      "f1": 0.8052,
+      "avg_alpha": 8.331,
+      "version": "v5",
+      "source": "orb_auto_expand",
+      "updated": "2026-03-12"
+    },
+    {
+      "symbol": "3163",
+      "threshold": 0.5,
+      "precision": 0.6042,
+      "recall": 0.8056,
+      "f1": 0.6905,
+      "avg_alpha": 6.95,
+      "version": "v5",
+      "source": "orb_auto_expand",
+      "updated": "2026-03-12"
+    },
+    {
+      "symbol": "3265",
+      "threshold": 0.5,
+      "precision": 1.0,
+      "recall": 0.0968,
+      "f1": 0.1765,
+      "avg_alpha": 12.436,
+      "version": "v5",
+      "source": "orb_auto_expand",
+      "updated": "2026-03-12"
+    }
+  ],
+  "skipped": [
+    "2337",
+    "8155",
+    "8074",
+    "1815",
+    "3363",
+    "5498",
+    "1605",
+    "2408"
+  ],
+  "failed": [
+    {
+      "symbol": "6153",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2367",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "1301",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "1326",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "6285",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2303",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2313",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2449",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2317",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "5521",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "1303",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "6257",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "3231",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "8422",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "6770",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "3706",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "3481",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2312",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "3037",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2327",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "6282",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2314",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2454",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "3034",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2379",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2382",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "3008",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2881",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2412",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2609",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2618",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "8046",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "3189",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "8150",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "1802",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2371",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "6239",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2002",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2301",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2887",
+      "reason": "backtest_failed"
+    },
+    {
+      "symbol": "2377",
+      "reason": "backtest_failed"
+    }
+  ],
+  "elapsed_sec": 76
+}

@@ -1,0 +1,27 @@
+{
+  "backtest_date": "2026-03-24T09:03:34.717587",
+  "period": "3m",
+  "threshold": "auto",
+  "summary": {
+    "total": 1,
+    "whitelist": 1,
+    "avg_precision": 0.7916666666666666,
+    "avg_alpha": 8.422
+  },
+  "results": [
+    {
+      "symbol": "2344",
+      "version": "v5",
+      "threshold": 0.28109111189842223,
+      "threshold_mode": "adaptive",
+      "samples": 60,
+      "accuracy": 0.6,
+      "precision": 0.7916666666666666,
+      "recall": 0.5,
+      "f1": 0.6129032258064516,
+      "pos_preds": 24,
+      "actual_pos": 38,
+      "avg_alpha": 8.422
+    }
+  ]
+}

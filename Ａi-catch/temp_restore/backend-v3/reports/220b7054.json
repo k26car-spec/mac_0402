@@ -1,0 +1,107 @@
+{
+  "stock_code": "3706",
+  "stock_name": "神達",
+  "overall_score": 56.2,
+  "recommendation": "觀望",
+  "target_price": 90.86,
+  "stop_loss": 76.82,
+  "ai_summary": "神達 整體評分中性 (56.2分)，出現 3 個賣出訊號，需謹慎操作。 注意：有 1 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 82.6,
+    "change_pct": -0.36,
+    "ma5": 82.14,
+    "ma10": 82.41,
+    "ma20": 86.94,
+    "ma60": 90.68,
+    "ma_arrangement": "空頭排列",
+    "ma_signal": "突破MA10、站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏空、長期偏空",
+    "resistance_1": 86.94,
+    "resistance_2": 90.0,
+    "support_1": 82.41,
+    "support_2": 82.14,
+    "rsi_14": 26.61,
+    "macd": -2.5686,
+    "trend": "空頭"
+  },
+  "financial_health": {
+    "roe": 9.42,
+    "eps": 4.44,
+    "revenue_growth_3y": 63.4,
+    "gross_margin": 11.59,
+    "debt_ratio": 94.92
+  },
+  "institutional_trading": {
+    "foreign_net": -3358260,
+    "trust_net": 0,
+    "dealer_net": -44810,
+    "total_net": -3403070
+  },
+  "related_news": [
+    {
+      "title": "蛇年交易榜單大洗牌這2檔竟從榜外直衝前5！",
+      "summary": "永豐金證券公布2025年百大熱門股，神達從第29名躍升至第9，受AI伺服器題材資金換手青睞。",
+      "date": "2025-12-24",
+      "source": "三立iNEWS",
+      "sentiment": "positive",
+      "impact": "medium"
+    },
+    {
+      "title": "神達：美國新廠2026年啟動滿足AI需求電力是擴產關鍵考量",
+      "summary": "神達宣布美國新廠2026年啟用，瞄準AI需求，電力供應為擴產關鍵。",
+      "date": "2025-11-27",
+      "source": "中央商情",
+      "sentiment": "positive",
+      "impact": "high"
+    },
+    {
+      "title": "神達旗下神數推出全新免費測速預警App「Mio神速」",
+      "summary": "神達車電品牌神數推出手機軟體「Mio神速」，進軍數位服務強化車電布局。",
+      "date": "2025-12-19",
+      "source": "富聯網",
+      "sentiment": "positive",
+      "impact": "medium"
+    }
+  ],
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "RSI 超賣",
+      "description": "RSI (26.61) 進入超賣區，可能反彈",
+      "confidence": 65
+    },
+    {
+      "type": "buy",
+      "name": "高殖利率",
+      "description": "殖利率 (121.0%) 具吸引力",
+      "confidence": 65
+    }
+  ],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "空頭排列",
+      "description": "技術面空頭排列，趨勢向下",
+      "confidence": 75
+    },
+    {
+      "type": "sell",
+      "name": "MACD 死亡交叉",
+      "description": "MACD 死亡交叉且在零軸之下，空頭動能強",
+      "confidence": 80
+    },
+    {
+      "type": "sell",
+      "name": "法人連續賣超",
+      "description": "法人連續 3 天賣超，籌碼鬆動",
+      "confidence": 75
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "high",
+      "name": "負債比過高",
+      "description": "負債比 (94.92%)，財務槓桿風險高"
+    }
+  ]
+}

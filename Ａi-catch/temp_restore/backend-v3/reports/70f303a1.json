@@ -1,0 +1,180 @@
+{
+  "stock_code": "8150",
+  "stock_name": "南茂",
+  "overall_score": 54.0,
+  "recommendation": "觀望",
+  "target_price": 64.13,
+  "stop_loss": 54.22,
+  "ai_summary": "南茂 整體評分中性 (54.0分)，出現 6 個買入訊號，技術面偏多。 注意：有 1 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 58.3,
+    "change_pct": 10.0,
+    "ma5": 52.84,
+    "ma10": 50.38,
+    "ma20": 47.74,
+    "ma60": 42.05,
+    "ma_arrangement": "多頭排列",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 60.0,
+    "resistance_2": 64.13,
+    "support_1": 52.84,
+    "support_2": 50.38,
+    "rsi_14": 83.33,
+    "macd": 2.8897,
+    "trend": "多頭"
+  },
+  "financial_health": {
+    "roe": 0.94,
+    "eps": 2.05,
+    "revenue_growth_3y": 1.2,
+    "gross_margin": 9.52,
+    "debt_ratio": 98.52
+  },
+  "institutional_trading": {
+    "foreign_net": -12,
+    "trust_net": -85,
+    "dealer_net": 11,
+    "total_net": -86
+  },
+  "volume_price_analysis": {
+    "trend_direction": "bullish",
+    "trend_confidence": 92.86,
+    "volume_price_confirmation": "價漲量增",
+    "confirmation_signal": "bullish_confirmation",
+    "confirmation_strength": 1.0,
+    "divergence_detected": false,
+    "divergence_type": "none",
+    "divergence_description": "",
+    "volume_ratio": 1.27,
+    "obv_trend": "bullish",
+    "predicted_direction": "up",
+    "key_signals": [
+      "OBV確認多頭"
+    ]
+  },
+  "related_news": [
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-10",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-10",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-10",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-10",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-10",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    }
+  ],
+  "chip_analysis": {
+    "futures": {
+      "foreign_futures_net": -37452,
+      "pc_ratio": 1.2717,
+      "foreign_stance": "極度看空",
+      "market_sentiment": "極度恐慌"
+    },
+    "margin": {
+      "retail_sentiment": "中性",
+      "margin_change_ratio": -0.2,
+      "short_change_ratio": -1.24
+    },
+    "summary": {
+      "overall_stance": "強烈看空",
+      "total_score": -59.2
+    },
+    "continuous": {
+      "foreign": {
+        "direction": "buy",
+        "days": 1
+      },
+      "investment": {
+        "direction": "sell",
+        "days": 6
+      },
+      "dealer": {
+        "direction": "buy",
+        "days": 1
+      }
+    }
+  },
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "多頭排列",
+      "description": "技術面多頭排列，趨勢向上",
+      "confidence": 75
+    },
+    {
+      "type": "buy",
+      "name": "MACD 黃金交叉",
+      "description": "MACD 黃金交叉且在零軸之上，多頭動能強",
+      "confidence": 80
+    },
+    {
+      "type": "buy",
+      "name": "高殖利率",
+      "description": "殖利率 (211.0%) 具吸引力",
+      "confidence": 65
+    }
+  ],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "RSI 極度超買",
+      "description": "RSI (83.33) 極度超買，建議減碼",
+      "confidence": 70
+    },
+    {
+      "type": "sell",
+      "name": "乖離率過高",
+      "description": "20日乖離率 (22.12%) 過高，注意回調風險",
+      "confidence": 65
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "medium",
+      "name": "ROE 普通",
+      "description": "ROE (0.94%)，獲利能力一般"
+    },
+    {
+      "level": "medium",
+      "name": "RSI 過熱",
+      "description": "RSI (83.33)，短期可能回調"
+    }
+  ]
+}

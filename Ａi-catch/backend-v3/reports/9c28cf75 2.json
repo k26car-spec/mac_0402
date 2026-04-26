@@ -1,0 +1,105 @@
+{
+  "stock_code": "3163",
+  "stock_name": "波若威",
+  "overall_score": 62.5,
+  "recommendation": "觀望",
+  "target_price": 427.9,
+  "stop_loss": 361.77,
+  "ai_summary": "波若威 整體評分中性 (62.5分)，買賣訊號均衡，建議觀望。 注意：有 1 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 389.0,
+    "change_pct": -0.26,
+    "ma5": 370.2,
+    "ma10": 371.7,
+    "ma20": 349.48,
+    "ma60": 268.43,
+    "ma_arrangement": "均線糾結",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 390.0,
+    "resistance_2": 408.0,
+    "support_1": 380.0,
+    "support_2": 371.7,
+    "rsi_14": 67.75,
+    "macd": 30.4777,
+    "trend": "盤整"
+  },
+  "financial_health": {
+    "roe": 15.07,
+    "eps": 5.13,
+    "revenue_growth_3y": 18.4,
+    "gross_margin": 17.09,
+    "debt_ratio": 85.89
+  },
+  "institutional_trading": {},
+  "related_news": [
+    {
+      "title": "波若威(3163)強彈6%站回多頭，CPO題材熱度續燒",
+      "summary": "波若威股價大漲逾6%至377.5元，領漲CPO概念，外資連三日買超，技術面多頭排列。",
+      "date": "2025-12-25",
+      "source": "cmnews.com.tw",
+      "sentiment": "positive",
+      "impact": "high"
+    },
+    {
+      "title": "波若威明年營收拚新高",
+      "summary": "11月營收2.13億元，年增39.9%，法人看好2026年800G規格帶動業績新高。",
+      "date": "2025-12-20",
+      "source": "money.udn.com",
+      "sentiment": "positive",
+      "impact": "medium"
+    },
+    {
+      "title": "矽光子題材持續發酵，光聖、波若威股價強攻",
+      "summary": "波若威搭矽光子與CPO列車，股價強勢，市場預期2028年伺服器量產帶來長線商機。",
+      "date": "2025-12-22",
+      "source": "uanalyze.com.tw",
+      "sentiment": "positive",
+      "impact": "medium"
+    },
+    {
+      "title": "波若威明年營收拚新高",
+      "summary": "法人預期今年業績優去年，2026年800G主流規格下營收力拚新高，11月營收創22個月高。",
+      "date": "2025-12-20",
+      "source": "sinotrade.com.tw",
+      "sentiment": "positive",
+      "impact": "medium"
+    },
+    {
+      "title": "波若威(3163) 個股資訊",
+      "summary": "股價389元，市值313億元，EPS 3.32元，11月累計營收年增12.8%。",
+      "date": "2025-12-24",
+      "source": "pchome.megatime.com.tw",
+      "sentiment": "neutral",
+      "impact": "low"
+    }
+  ],
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "高殖利率",
+      "description": "殖利率 (77.0%) 具吸引力",
+      "confidence": 65
+    }
+  ],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "本益比過高",
+      "description": "本益比 (75.83) 過高，估值風險大",
+      "confidence": 65
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "high",
+      "name": "負債比過高",
+      "description": "負債比 (85.89%)，財務槓桿風險高"
+    },
+    {
+      "level": "medium",
+      "name": "短期漲幅過大",
+      "description": "60日乖離率 (44.91%)，注意回調風險"
+    }
+  ]
+}

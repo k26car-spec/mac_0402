@@ -1,0 +1,94 @@
+{
+  "stock_code": "2330",
+  "stock_name": "台積電",
+  "overall_score": 79.8,
+  "recommendation": "買進",
+  "target_price": 1719.25,
+  "stop_loss": 1420.25,
+  "ai_summary": "台積電 整體評分優異 (79.8分)，出現 3 個買入訊號，技術面偏多。 注意：有 1 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 1495.0,
+    "change_pct": 0.34,
+    "ma5": 1462.0,
+    "ma10": 1457.5,
+    "ma20": 1453.83,
+    "ma60": 1441.09,
+    "ma_arrangement": "多頭排列",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 1500.0,
+    "resistance_2": 1515.0,
+    "support_1": 1490.0,
+    "support_2": 1462.0,
+    "rsi_14": 61.2,
+    "macd": 9.8085,
+    "trend": "多頭"
+  },
+  "financial_health": {
+    "roe": 34.66,
+    "eps": 60.55,
+    "revenue_growth_3y": 30.3,
+    "gross_margin": 58.98,
+    "debt_ratio": 95.33
+  },
+  "institutional_trading": {
+    "foreign_net": 10098562,
+    "trust_net": 0,
+    "dealer_net": 158363,
+    "total_net": 10256925
+  },
+  "related_news": [
+    {
+      "title": "台積電帶動台股反彈 全場穩守高檔收1490元",
+      "summary": "台積電領軍推升大盤，收在1490元，逼近1500元關卡。 ",
+      "date": "2025-12-23",
+      "source": "聯合新聞網",
+      "sentiment": "positive",
+      "impact": "high"
+    },
+    {
+      "title": "TrendForce：台積電市占率衝上71%、第四季續增可期",
+      "summary": "調查顯示台積電市占達71%，法人看好AI需求帶動持續成長。 ",
+      "date": "2025-12-23",
+      "source": "CMNews (TrendForce 報告)",
+      "sentiment": "positive",
+      "impact": "medium"
+    },
+    {
+      "title": "台積電股價盤中震盪 早盤衝關1500後回落",
+      "summary": "股價曾上測1500但紅翻黑，成交量與震盪增加。 ",
+      "date": "2025-12-23",
+      "source": "CMNews",
+      "sentiment": "neutral",
+      "impact": "medium"
+    }
+  ],
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "多頭排列",
+      "description": "技術面多頭排列，趨勢向上",
+      "confidence": 75
+    },
+    {
+      "type": "buy",
+      "name": "MACD 黃金交叉",
+      "description": "MACD 黃金交叉且在零軸之上，多頭動能強",
+      "confidence": 80
+    },
+    {
+      "type": "buy",
+      "name": "高殖利率",
+      "description": "殖利率 (137.0%) 具吸引力",
+      "confidence": 65
+    }
+  ],
+  "sell_signals": [],
+  "risk_warnings": [
+    {
+      "level": "high",
+      "name": "負債比過高",
+      "description": "負債比 (95.33%)，財務槓桿風險高"
+    }
+  ]
+}

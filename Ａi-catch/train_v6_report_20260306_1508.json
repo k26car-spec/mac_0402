@@ -1,0 +1,130 @@
+{
+  "train_date": "2026-03-06T15:08:49.826972",
+  "method": "LSTM_v6_trend4class_RF15",
+  "feature_count": 60,
+  "top_n_features": 15,
+  "alpha_threshold": 0.005,
+  "total": 4,
+  "ok": 1,
+  "elapsed_sec": 239,
+  "results": [
+    {
+      "symbol": "4256",
+      "status": "data_error"
+    },
+    {
+      "symbol": "6531",
+      "status": "low_quality",
+      "version": "v6",
+      "industries": [
+        "HBM"
+      ],
+      "alpha_threshold": 0.005,
+      "n_features": 15,
+      "n_features_orig": 60,
+      "feature_cols": [
+        "MA5",
+        "dist_52w_high",
+        "MA60",
+        "MA20",
+        "ath_proximity",
+        "sector_outmom",
+        "MA10",
+        "Volume_MA5",
+        "Close",
+        "rs_20d",
+        "momentum_20",
+        "rs_60d",
+        "dist_52w_low",
+        "MACD",
+        "momentum_60"
+      ],
+      "threshold": 0.55,
+      "accuracy": 0.5391,
+      "precision": 0.5,
+      "recall": 0.5932,
+      "f1": 0.5426,
+      "pos_preds": 70,
+      "total_test": 128,
+      "samples": 637,
+      "epochs": 65,
+      "is_valid": false
+    },
+    {
+      "symbol": "3443",
+      "status": "ok",
+      "version": "v6",
+      "industries": [
+        "HBM"
+      ],
+      "alpha_threshold": 0.005,
+      "n_features": 15,
+      "n_features_orig": 60,
+      "feature_cols": [
+        "MACD",
+        "MA60",
+        "ath_proximity",
+        "dist_52w_high",
+        "ma_spread_5_20",
+        "momentum_accel",
+        "momentum_20",
+        "Volatility",
+        "MA20",
+        "rs_60d",
+        "kd_d",
+        "dist_52w_low",
+        "MA10",
+        "bb_position",
+        "rs_20d"
+      ],
+      "threshold": 0.5,
+      "accuracy": 0.5938,
+      "precision": 0.8,
+      "recall": 0.2985,
+      "f1": 0.4348,
+      "pos_preds": 25,
+      "total_test": 128,
+      "samples": 637,
+      "epochs": 48,
+      "is_valid": true
+    },
+    {
+      "symbol": "8046",
+      "status": "low_quality",
+      "version": "v6",
+      "industries": [
+        "HBM"
+      ],
+      "alpha_threshold": 0.005,
+      "n_features": 15,
+      "n_features_orig": 60,
+      "feature_cols": [
+        "MA60",
+        "macd_hist",
+        "Volatility",
+        "MA20",
+        "dist_52w_low",
+        "MA10",
+        "sector_outmom",
+        "MACD",
+        "MA5",
+        "rs_20d",
+        "kd_k",
+        "momentum_60",
+        "ath_proximity",
+        "rs_60d",
+        "rs_5d"
+      ],
+      "threshold": 0.35,
+      "accuracy": 0.5547,
+      "precision": 0.9286,
+      "recall": 0.1884,
+      "f1": 0.3133,
+      "pos_preds": 14,
+      "total_test": 128,
+      "samples": 637,
+      "epochs": 62,
+      "is_valid": false
+    }
+  ]
+}

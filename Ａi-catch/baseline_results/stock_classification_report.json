@@ -1,0 +1,1270 @@
+{
+  "generated_at": "2026-02-08T01:58:53.769596",
+  "total_stocks": 43,
+  "summary": {
+    "type_A": 0,
+    "type_B": 43,
+    "type_C": 0
+  },
+  "classifications": {
+    "2337": {
+      "stock_code": "2337",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.557114601135254,
+      "train_mae": 0.756910502910614,
+      "gap": 0.8002040982246399,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "6153": {
+      "stock_code": "6153",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.5729038715362549,
+      "train_mae": 0.7425140738487244,
+      "gap": -0.16961020231246948,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2367": {
+      "stock_code": "2367",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.6591320037841797,
+      "train_mae": 0.5646745562553406,
+      "gap": 1.0944574475288391,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "1301": {
+      "stock_code": "1301",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.7062639594078064,
+      "train_mae": 0.4693354070186615,
+      "gap": 0.2369285523891449,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "1326": {
+      "stock_code": "1326",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.6964772939682007,
+      "train_mae": 0.31325653195381165,
+      "gap": 0.38322076201438904,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2344": {
+      "stock_code": "2344",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.9609177708625793,
+      "train_mae": 0.6738724708557129,
+      "gap": 0.28704530000686646,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "6285": {
+      "stock_code": "6285",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.4667307138442993,
+      "train_mae": 0.4106616973876953,
+      "gap": 1.056069016456604,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2303": {
+      "stock_code": "2303",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.697642207145691,
+      "train_mae": 0.4050542712211609,
+      "gap": 1.29258793592453,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2313": {
+      "stock_code": "2313",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.8196396827697754,
+      "train_mae": 0.649588406085968,
+      "gap": 1.1700512766838074,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2449": {
+      "stock_code": "2449",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.7457849383354187,
+      "train_mae": 0.63203364610672,
+      "gap": 0.11375129222869873,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2317": {
+      "stock_code": "2317",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.5036746263504028,
+      "train_mae": 0.649900496006012,
+      "gap": -0.14622586965560913,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "5521": {
+      "stock_code": "5521",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.8648772239685059,
+      "train_mae": 0.687766969203949,
+      "gap": 1.1771102547645569,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "1303": {
+      "stock_code": "1303",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.7777872085571289,
+      "train_mae": 0.6989927291870117,
+      "gap": 0.07879447937011719,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "6257": {
+      "stock_code": "6257",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.1513142585754395,
+      "train_mae": 0.6497935056686401,
+      "gap": 0.5015207529067993,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "3231": {
+      "stock_code": "3231",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.6192319393157959,
+      "train_mae": 0.594132125377655,
+      "gap": 0.02509981393814087,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "8422": {
+      "stock_code": "8422",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 4.515932083129883,
+      "train_mae": 0.41241592168807983,
+      "gap": 4.103516161441803,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "6770": {
+      "stock_code": "6770",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.1251306533813477,
+      "train_mae": 0.6549418568611145,
+      "gap": 0.47018879652023315,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "3706": {
+      "stock_code": "3706",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.518945038318634,
+      "train_mae": 0.5639557242393494,
+      "gap": -0.04501068592071533,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "3481": {
+      "stock_code": "3481",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 2.444674491882324,
+      "train_mae": 0.5312198400497437,
+      "gap": 1.9134546518325806,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2312": {
+      "stock_code": "2312",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.7132140398025513,
+      "train_mae": 0.3927130103111267,
+      "gap": 1.3205010294914246,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "3037": {
+      "stock_code": "3037",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.7045921683311462,
+      "train_mae": 0.48174476623535156,
+      "gap": 0.22284740209579468,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2327": {
+      "stock_code": "2327",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.1663315296173096,
+      "train_mae": 0.788147509098053,
+      "gap": 0.3781840205192566,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "6282": {
+      "stock_code": "6282",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.1201139688491821,
+      "train_mae": 0.5542765259742737,
+      "gap": 0.5658374428749084,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2314": {
+      "stock_code": "2314",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.49363455176353455,
+      "train_mae": 0.9957393407821655,
+      "gap": -0.502104789018631,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "1605": {
+      "stock_code": "1605",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.7743117213249207,
+      "train_mae": 0.3427879214286804,
+      "gap": 0.43152379989624023,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2454": {
+      "stock_code": "2454",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.0264803171157837,
+      "train_mae": 0.6767991185188293,
+      "gap": 0.34968119859695435,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "3034": {
+      "stock_code": "3034",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.6867178082466125,
+      "train_mae": 0.7023106217384338,
+      "gap": -0.015592813491821289,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2379": {
+      "stock_code": "2379",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.078639030456543,
+      "train_mae": 0.46829482913017273,
+      "gap": 0.6103442013263702,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2382": {
+      "stock_code": "2382",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.4745265543460846,
+      "train_mae": 0.47345876693725586,
+      "gap": 0.0010677874088287354,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "3008": {
+      "stock_code": "3008",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.0036396980285645,
+      "train_mae": 0.6934034824371338,
+      "gap": 0.31023621559143066,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2881": {
+      "stock_code": "2881",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.43179506063461304,
+      "train_mae": 0.8064287900924683,
+      "gap": -0.3746337294578552,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2412": {
+      "stock_code": "2412",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.46184879541397095,
+      "train_mae": 0.8048409819602966,
+      "gap": -0.3429921865463257,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2609": {
+      "stock_code": "2609",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.5410500764846802,
+      "train_mae": 0.6869350671768188,
+      "gap": -0.14588499069213867,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2618": {
+      "stock_code": "2618",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.36744198203086853,
+      "train_mae": 0.5714648962020874,
+      "gap": -0.20402291417121887,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "8046": {
+      "stock_code": "8046",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.9908156991004944,
+      "train_mae": 0.7092087864875793,
+      "gap": 0.28160691261291504,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "3189": {
+      "stock_code": "3189",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.8431082367897034,
+      "train_mae": 0.5447518825531006,
+      "gap": 0.2983563542366028,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2408": {
+      "stock_code": "2408",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.4061468243598938,
+      "train_mae": 0.6027427911758423,
+      "gap": -0.1965959668159485,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "8150": {
+      "stock_code": "8150",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.3378769159317017,
+      "train_mae": 0.6662095785140991,
+      "gap": 0.6716673374176025,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "1802": {
+      "stock_code": "1802",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.0017423629760742,
+      "train_mae": 0.4689655303955078,
+      "gap": 0.5327768325805664,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2371": {
+      "stock_code": "2371",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.2168503999710083,
+      "train_mae": 0.6053826808929443,
+      "gap": 0.611467719078064,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "6239": {
+      "stock_code": "6239",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 1.099171757698059,
+      "train_mae": 0.5141170620918274,
+      "gap": 0.5850546956062317,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2002": {
+      "stock_code": "2002",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.6627138257026672,
+      "train_mae": 0.6323270797729492,
+      "gap": 0.030386745929718018,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "2301": {
+      "stock_code": "2301",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.6983486413955688,
+      "train_mae": 0.8466849327087402,
+      "gap": -0.1483362913131714,
+      "problem_type": "预测能力差",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "30-40%",
+      "test_methods": [
+        "Larger",
+        "Attention",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    }
+  },
+  "test_plan": {
+    "keep_baseline": [],
+    "test_methods": {
+      "2337": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "6153": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "2367": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "1301": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "1326": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2344": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "6285": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2303": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2313": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2449": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2317": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "5521": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "1303": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "6257": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "3231": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "8422": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "6770": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "3706": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "3481": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2312": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "3037": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2327": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "6282": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2314": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "1605": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2454": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "3034": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "2379": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2382": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "3008": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2881": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "2412": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "2609": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "2618": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "8046": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "3189": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2408": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      },
+      "8150": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "1802": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2371": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "6239": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2002": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "2301": {
+        "methods": [
+          "Larger",
+          "Attention",
+          "Optimized"
+        ],
+        "problem_type": "预测能力差",
+        "expected_improvement": "30-40%"
+      }
+    },
+    "total_stocks": 43,
+    "estimated_hours": 172,
+    "estimated_days": 21.5,
+    "priority_high": [
+      "2337",
+      "6153",
+      "2367",
+      "1301",
+      "1326",
+      "2344",
+      "6285",
+      "2303",
+      "2313",
+      "2449",
+      "2317",
+      "5521",
+      "1303",
+      "6257",
+      "3231",
+      "8422",
+      "6770",
+      "3706",
+      "3481",
+      "2312",
+      "3037",
+      "2327",
+      "6282",
+      "2314",
+      "1605",
+      "2454",
+      "3034",
+      "2379",
+      "2382",
+      "3008",
+      "2881",
+      "2412",
+      "2609",
+      "2618",
+      "8046",
+      "3189",
+      "2408",
+      "8150",
+      "1802",
+      "2371",
+      "6239",
+      "2002",
+      "2301"
+    ],
+    "priority_medium": [],
+    "priority_low": []
+  }
+}

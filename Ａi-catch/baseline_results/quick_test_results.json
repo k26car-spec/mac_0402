@@ -1,0 +1,35 @@
+{
+  "2330": {
+    "stock_code": "2330",
+    "stock_name": "台积电",
+    "success": true,
+    "test_mae": 0.6139184236526489,
+    "train_mae": 0.5893548727035522,
+    "gap": 0.02456355094909668,
+    "epochs_trained": 24,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2317": {
+    "stock_code": "2317",
+    "stock_name": "鸿海",
+    "success": true,
+    "test_mae": 0.5263918042182922,
+    "train_mae": 0.6458979845046997,
+    "gap": -0.11950618028640747,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2454": {
+    "stock_code": "2454",
+    "stock_name": "联发科",
+    "success": true,
+    "test_mae": 1.0186340808868408,
+    "train_mae": 0.6924169659614563,
+    "gap": 0.3262171149253845,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  }
+}

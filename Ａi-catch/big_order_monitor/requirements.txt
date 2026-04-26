@@ -1,0 +1,19 @@
+# 大單偵測監控系統 v3.0 - 依賴套件
+
+# 核心套件
+pandas>=1.5.0
+numpy>=1.21.0
+
+# 非同步
+asyncio>=3.4.3
+httpx>=0.24.0
+
+# 設定檔
+python-dotenv>=0.21.0
+pyyaml>=6.0
+
+# 日誌
+colorama>=0.4.0
+
+# 注意：富邦 API 需要另外安裝
+# pip install fubon-neo

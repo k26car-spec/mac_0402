@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.ai-stock.daily-news-report</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Mac/Documents/ETF/AI/Ａi-catch/daily_news_report.sh</string>
+    </array>
+    
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/Mac/Documents/ETF/AI/Ａi-catch/log/daily_news_report_stdout.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/Mac/Documents/ETF/AI/Ａi-catch/log/daily_news_report_stderr.log</string>
+    
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>EMAIL_USERNAME</key>
+        <string>k26car@gmail.com</string>
+        <key>EMAIL_PASSWORD</key>
+        <string>zrgogmielnvpykrv</string>
+        <key>EMAIL_RECIPIENTS</key>
+        <string>k26car@gmail.com,neimou1225@gmail.com</string>
+        <key>SMTP_SERVER</key>
+        <string>smtp.gmail.com</string>
+        <key>SMTP_PORT</key>
+        <string>587</string>
+    </dict>
+    
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

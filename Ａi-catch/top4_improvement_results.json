@@ -1,0 +1,94 @@
+{
+  "3481": {
+    "stock_code": "3481",
+    "baseline_mae": 2.445,
+    "best_method": "Augmented",
+    "best_mae": 0.15620379149913788,
+    "improvement": 93.6112968712009,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.051233354955911636,
+        "test_mae": 0.1564152091741562,
+        "gap": 0.10518185421824455,
+        "epochs": 80
+      },
+      {
+        "method": "Augmented",
+        "train_mae": 0.05046313256025314,
+        "test_mae": 0.15620379149913788,
+        "gap": 0.10574065893888474,
+        "epochs": 47
+      }
+    ]
+  },
+  "5521": {
+    "stock_code": "5521",
+    "baseline_mae": 1.865,
+    "best_method": "Augmented",
+    "best_mae": 0.1534498929977417,
+    "improvement": 91.772123699853,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.059236448258161545,
+        "test_mae": 0.1553315967321396,
+        "gap": 0.09609514847397804,
+        "epochs": 66
+      },
+      {
+        "method": "Augmented",
+        "train_mae": 0.06001552939414978,
+        "test_mae": 0.1534498929977417,
+        "gap": 0.09343436360359192,
+        "epochs": 47
+      }
+    ]
+  },
+  "2313": {
+    "stock_code": "2313",
+    "baseline_mae": 1.82,
+    "best_method": "Augmented",
+    "best_mae": 0.13425838947296143,
+    "improvement": 92.62316541357355,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.08728425949811935,
+        "test_mae": 0.13615238666534424,
+        "gap": 0.048868127167224884,
+        "epochs": 31
+      },
+      {
+        "method": "Augmented",
+        "train_mae": 0.08036696910858154,
+        "test_mae": 0.13425838947296143,
+        "gap": 0.05389142036437988,
+        "epochs": 35
+      }
+    ]
+  },
+  "2312": {
+    "stock_code": "2312",
+    "baseline_mae": 1.713,
+    "best_method": "Regularized",
+    "best_mae": 0.09647652506828308,
+    "improvement": 94.36797868836642,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.052432503551244736,
+        "test_mae": 0.09647652506828308,
+        "gap": 0.044044021517038345,
+        "epochs": 75
+      },
+      {
+        "method": "Augmented",
+        "train_mae": 0.0521642230451107,
+        "test_mae": 0.0965140238404274,
+        "gap": 0.044349800795316696,
+        "epochs": 92
+      }
+    ]
+  }
+}

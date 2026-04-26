@@ -1,0 +1,122 @@
+{
+  "stock_code": "1605",
+  "stock_name": "華新",
+  "overall_score": 64.2,
+  "recommendation": "觀望",
+  "target_price": 34.82,
+  "stop_loss": 29.43,
+  "ai_summary": "華新 整體評分中性 (64.2分)，出現 4 個買入訊號，技術面偏多。 注意：有 1 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 31.65,
+    "change_pct": 3.6,
+    "ma5": 30.41,
+    "ma10": 30.36,
+    "ma20": 30.24,
+    "ma60": 29.67,
+    "ma_arrangement": "多頭排列",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 33.0,
+    "resistance_2": 35.35,
+    "support_1": 30.41,
+    "support_2": 30.36,
+    "rsi_14": 54.76,
+    "macd": 0.2526,
+    "trend": "多頭"
+  },
+  "financial_health": {
+    "roe": 0.7,
+    "eps": 0.36,
+    "revenue_growth_3y": -6.2,
+    "gross_margin": 6.38,
+    "debt_ratio": 98.08
+  },
+  "institutional_trading": {
+    "foreign_net": 27956195,
+    "trust_net": 0,
+    "dealer_net": 1597000,
+    "total_net": 29553195
+  },
+  "related_news": [
+    {
+      "title": "華新股價上漲3.6%創近期新高，單日成交量衝破17萬張",
+      "summary": "華新股價漲3.6%收31.65元，成交量173,309張居個股第四，三大法人買超15.2億元，市場買盤湧入。",
+      "date": "2025-12-24",
+      "source": "cmnews.com.tw",
+      "sentiment": "positive",
+      "impact": "high"
+    },
+    {
+      "title": "華新不銹鋼品牌「奇沃」冷精棒攻AI機櫃液冷散熱市占達5成",
+      "summary": "華新推出全新不銹鋼品牌「奇沃」冷精棒，多元應用解決方案攻AI商機。",
+      "date": "2025-12-16",
+      "source": "wantgoo.com",
+      "sentiment": "positive",
+      "impact": "medium"
+    },
+    {
+      "title": "華新受益強韌電網計畫，股價上漲1.65元",
+      "summary": "華新受惠強韌電網計畫，股價上漲1.65元，年底作帳行情啟動。",
+      "date": "2025-11-16",
+      "source": "cmy.tw",
+      "sentiment": "positive",
+      "impact": "medium"
+    },
+    {
+      "title": "〈焦點股〉川普擬對銅進口課徵50%關稅 銅價噴漲 線纜族群齊揚",
+      "summary": "川普擬課銅進口50%關稅，銅價上漲帶動線纜族群包括華新走強。",
+      "date": "2025-12-24",
+      "source": "wantgoo.com",
+      "sentiment": "positive",
+      "impact": "high"
+    },
+    {
+      "title": "華新啟動SMP英國擴產計劃 拓展航太與能源高價值應用",
+      "summary": "華新啟動英國SMP擴產，拓展航太與能源高價值應用。",
+      "date": "2025-12-20",
+      "source": "wantgoo.com",
+      "sentiment": "positive",
+      "impact": "medium"
+    }
+  ],
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "多頭排列",
+      "description": "技術面多頭排列，趨勢向上",
+      "confidence": 75
+    },
+    {
+      "type": "buy",
+      "name": "MACD 黃金交叉",
+      "description": "MACD 黃金交叉且在零軸之上，多頭動能強",
+      "confidence": 80
+    },
+    {
+      "type": "buy",
+      "name": "法人連續買超",
+      "description": "法人連續 3 天買超，籌碼集中",
+      "confidence": 75
+    }
+  ],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "本益比過高",
+      "description": "本益比 (87.92) 過高，估值風險大",
+      "confidence": 65
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "medium",
+      "name": "ROE 普通",
+      "description": "ROE (0.7%)，獲利能力一般"
+    },
+    {
+      "level": "medium",
+      "name": "營收微幅衰退",
+      "description": "營收成長率 (-6.2%)，需持續觀察"
+    }
+  ]
+}

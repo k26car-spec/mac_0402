@@ -1,0 +1,163 @@
+{
+  "8046": {
+    "stock_code": "8046",
+    "baseline_mae": 0.9908156991004944,
+    "best_method": "Regularized",
+    "best_mae": 0.11458469182252884,
+    "improvement": 88.43531729194906,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.10742077231407166,
+        "test_mae": 0.11458469182252884,
+        "gap": 0.007163919508457184,
+        "epochs": 57
+      },
+      {
+        "method": "Optimized",
+        "train_mae": 0.10745223611593246,
+        "test_mae": 0.11584150791168213,
+        "gap": 0.008389271795749664,
+        "epochs": 72
+      }
+    ]
+  },
+  "2344": {
+    "stock_code": "2344",
+    "baseline_mae": 0.9609177708625793,
+    "best_method": "Regularized",
+    "best_mae": 0.15756723284721375,
+    "improvement": 83.60242284771446,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.12491524964570999,
+        "test_mae": 0.15756723284721375,
+        "gap": 0.032651983201503754,
+        "epochs": 30
+      },
+      {
+        "method": "Optimized",
+        "train_mae": 0.17906247079372406,
+        "test_mae": 0.16643841564655304,
+        "gap": -0.01262405514717102,
+        "epochs": 21
+      }
+    ]
+  },
+  "3189": {
+    "stock_code": "3189",
+    "baseline_mae": 0.8431082367897034,
+    "best_method": "Regularized",
+    "best_mae": 0.12732408940792084,
+    "improvement": 84.89825103681447,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.11676452308893204,
+        "test_mae": 0.12732408940792084,
+        "gap": 0.0105595663189888,
+        "epochs": 30
+      },
+      {
+        "method": "Optimized",
+        "train_mae": 0.12497019022703171,
+        "test_mae": 0.127940833568573,
+        "gap": 0.0029706433415412903,
+        "epochs": 23
+      }
+    ]
+  },
+  "1605": {
+    "stock_code": "1605",
+    "baseline_mae": 0.7743117213249207,
+    "best_method": "Optimized",
+    "best_mae": 0.1417263150215149,
+    "improvement": 81.6964781601126,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.10717632621526718,
+        "test_mae": 0.14450205862522125,
+        "gap": 0.03732573240995407,
+        "epochs": 40
+      },
+      {
+        "method": "Optimized",
+        "train_mae": 0.10585487633943558,
+        "test_mae": 0.1417263150215149,
+        "gap": 0.035871438682079315,
+        "epochs": 44
+      }
+    ]
+  },
+  "2449": {
+    "stock_code": "2449",
+    "baseline_mae": 0.7457849383354187,
+    "best_method": "Optimized",
+    "best_mae": 0.1320623904466629,
+    "improvement": 82.29216176698013,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.17416252195835114,
+        "test_mae": 0.1339506208896637,
+        "gap": -0.04021190106868744,
+        "epochs": 24
+      },
+      {
+        "method": "Optimized",
+        "train_mae": 0.11437217891216278,
+        "test_mae": 0.1320623904466629,
+        "gap": 0.017690211534500122,
+        "epochs": 73
+      }
+    ]
+  },
+  "1301": {
+    "stock_code": "1301",
+    "baseline_mae": 0.7062639594078064,
+    "best_method": "Regularized",
+    "best_mae": 0.14952751994132996,
+    "improvement": 78.82838024657141,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.11802807450294495,
+        "test_mae": 0.14952751994132996,
+        "gap": 0.03149944543838501,
+        "epochs": 111
+      },
+      {
+        "method": "Optimized",
+        "train_mae": 0.11636463552713394,
+        "test_mae": 0.1507662981748581,
+        "gap": 0.03440166264772415,
+        "epochs": 72
+      }
+    ]
+  },
+  "3037": {
+    "stock_code": "3037",
+    "baseline_mae": 0.7045921683311462,
+    "best_method": "Regularized",
+    "best_mae": 0.12982089817523956,
+    "improvement": 81.57502963980917,
+    "all_results": [
+      {
+        "method": "Regularized",
+        "train_mae": 0.10488488525152206,
+        "test_mae": 0.12982089817523956,
+        "gap": 0.0249360129237175,
+        "epochs": 33
+      },
+      {
+        "method": "Optimized",
+        "train_mae": 0.10225281119346619,
+        "test_mae": 0.13028566539287567,
+        "gap": 0.028032854199409485,
+        "epochs": 36
+      }
+    ]
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "stock_code": "5521",
+  "stock_name": "工信",
+  "overall_score": 47.2,
+  "recommendation": "減碼",
+  "target_price": 25.46,
+  "stop_loss": 21.82,
+  "ai_summary": "工信 整體評分偏低 (47.2分)，出現 3 個賣出訊號，需謹慎操作。 注意：有 1 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 24.25,
+    "change_pct": 9.98,
+    "ma5": 22.78,
+    "ma10": 23.18,
+    "ma20": 22.24,
+    "ma60": 16.6,
+    "ma_arrangement": "均線糾結",
+    "ma_signal": "突破MA5、突破MA10、站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 26.35,
+    "resistance_2": 30.0,
+    "support_1": 23.18,
+    "support_2": 22.78,
+    "rsi_14": 58.62,
+    "macd": 1.7516,
+    "trend": "盤整"
+  },
+  "financial_health": {
+    "roe": 3.4,
+    "eps": 0.38,
+    "revenue_growth_3y": 11.3,
+    "gross_margin": 5.89,
+    "debt_ratio": 94.62
+  },
+  "institutional_trading": {
+    "foreign_net": 0,
+    "trust_net": 0,
+    "dealer_net": 0,
+    "total_net": 0
+  },
+  "volume_price_analysis": {
+    "trend_direction": "bearish",
+    "trend_confidence": 100.0,
+    "volume_price_confirmation": "價漲量縮",
+    "confirmation_signal": "caution",
+    "confirmation_strength": 0.3,
+    "divergence_detected": false,
+    "divergence_type": "none",
+    "divergence_description": "",
+    "volume_ratio": 1.08,
+    "obv_trend": "bearish",
+    "predicted_direction": "down",
+    "key_signals": []
+  },
+  "related_news": [
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-10",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-10",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-10",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-10",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-10",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    }
+  ],
+  "chip_analysis": {
+    "futures": {
+      "foreign_futures_net": -37452,
+      "pc_ratio": 1.2717,
+      "foreign_stance": "極度看空",
+      "market_sentiment": "極度恐慌"
+    },
+    "margin": {
+      "retail_sentiment": "中性",
+      "margin_change_ratio": -0.2,
+      "short_change_ratio": -1.24
+    },
+    "summary": {
+      "overall_stance": "強烈看空",
+      "total_score": -59.2
+    },
+    "continuous": {
+      "foreign": {
+        "direction": "buy",
+        "days": 1
+      },
+      "investment": {
+        "direction": null,
+        "days": 0
+      },
+      "dealer": {
+        "direction": "buy",
+        "days": 1
+      }
+    }
+  },
+  "buy_signals": [],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "本益比過高",
+      "description": "本益比 (63.82) 過高，估值風險大",
+      "confidence": 65
+    },
+    {
+      "type": "sell",
+      "name": "量能不足警示",
+      "description": "價漲量縮，上漲動能不足",
+      "confidence": 60
+    },
+    {
+      "type": "sell",
+      "name": "量價趨勢看跌",
+      "description": "量價分析預測下跌，機率 100%",
+      "confidence": 100
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "medium",
+      "name": "ROE 普通",
+      "description": "ROE (3.4%)，獲利能力一般"
+    },
+    {
+      "level": "high",
+      "name": "負債比過高",
+      "description": "負債比 (94.62%)，財務槓桿風險高"
+    }
+  ]
+}

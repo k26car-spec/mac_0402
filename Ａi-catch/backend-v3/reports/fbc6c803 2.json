@@ -1,0 +1,103 @@
+{
+  "stock_code": "2317",
+  "stock_name": "鴻海",
+  "overall_score": 64.8,
+  "recommendation": "觀望",
+  "target_price": 254.1,
+  "stop_loss": 214.83,
+  "ai_summary": "鴻海 整體評分中性 (64.8分)，出現 1 個買入訊號，技術面偏多。 注意：有 1 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 231.0,
+    "change_pct": 2.44,
+    "ma5": 225.7,
+    "ma10": 222.2,
+    "ma20": 225.3,
+    "ma60": 231.92,
+    "ma_arrangement": "均線糾結",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏空",
+    "resistance_1": 231.92,
+    "resistance_2": 236.5,
+    "support_1": 230.0,
+    "support_2": 225.7,
+    "rsi_14": 48.72,
+    "macd": -1.7277,
+    "trend": "盤整"
+  },
+  "financial_health": {
+    "roe": 11.82,
+    "eps": 13.42,
+    "revenue_growth_3y": 11.0,
+    "gross_margin": 6.24,
+    "debt_ratio": 98.54
+  },
+  "institutional_trading": {
+    "foreign_net": 10497476,
+    "trust_net": 0,
+    "dealer_net": 355773,
+    "total_net": 10853249
+  },
+  "related_news": [
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-30",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-30",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-30",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-30",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-30",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    }
+  ],
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "高殖利率",
+      "description": "殖利率 (257.0%) 具吸引力",
+      "confidence": 65
+    }
+  ],
+  "sell_signals": [],
+  "risk_warnings": [
+    {
+      "level": "high",
+      "name": "負債比過高",
+      "description": "負債比 (98.54%)，財務槓桿風險高"
+    }
+  ]
+}

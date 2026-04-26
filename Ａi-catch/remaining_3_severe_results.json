@@ -1,0 +1,71 @@
+{
+  "2303": {
+    "stock_code": "2303",
+    "baseline_mae": 1.698,
+    "best_method": "Regularized",
+    "best_mae": 0.11913660913705826,
+    "improvement": 92.98370970924275,
+    "all_results": [
+      {
+        "method": "Augmented",
+        "train_mae": 0.049518730491399765,
+        "test_mae": 0.11925539374351501,
+        "gap": 0.06973666325211525,
+        "epochs": 73
+      },
+      {
+        "method": "Regularized",
+        "train_mae": 0.0520441010594368,
+        "test_mae": 0.11913660913705826,
+        "gap": 0.06709250807762146,
+        "epochs": 49
+      }
+    ]
+  },
+  "2367": {
+    "stock_code": "2367",
+    "baseline_mae": 1.659,
+    "best_method": "Augmented",
+    "best_mae": 0.13491900265216827,
+    "improvement": 91.86745011138227,
+    "all_results": [
+      {
+        "method": "Augmented",
+        "train_mae": 0.12914997339248657,
+        "test_mae": 0.13491900265216827,
+        "gap": 0.005769029259681702,
+        "epochs": 21
+      },
+      {
+        "method": "Regularized",
+        "train_mae": 0.08161639422178268,
+        "test_mae": 0.15280529856681824,
+        "gap": 0.07118890434503555,
+        "epochs": 33
+      }
+    ]
+  },
+  "2337": {
+    "stock_code": "2337",
+    "baseline_mae": 1.557,
+    "best_method": "Augmented",
+    "best_mae": 0.1433628797531128,
+    "improvement": 90.79236481996706,
+    "all_results": [
+      {
+        "method": "Augmented",
+        "train_mae": 0.0628165602684021,
+        "test_mae": 0.1433628797531128,
+        "gap": 0.0805463194847107,
+        "epochs": 28
+      },
+      {
+        "method": "Regularized",
+        "train_mae": 0.06488320976495743,
+        "test_mae": 0.14640066027641296,
+        "gap": 0.08151745051145554,
+        "epochs": 26
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+# Docker ignore file
+# 排除不需要打包到 Docker 映像的文件
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js
+.next/
+out/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# Environment files
+.env
+.env.local
+.env.*.local
+*.env
+fubon.env
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+data/
+
+# Certificates (will be mounted separately)
+certs/
+*.pfx
+*.pem
+*.key
+*.crt
+
+# Test files
+tests/
+test_*.py
+*_test.py
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Misc
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp

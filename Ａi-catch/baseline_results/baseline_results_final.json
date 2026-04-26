@@ -1,0 +1,517 @@
+{
+  "2337": {
+    "stock_code": "2337",
+    "stock_name": "股票2337",
+    "success": true,
+    "test_mae": 1.557114601135254,
+    "train_mae": 0.756910502910614,
+    "gap": 0.8002040982246399,
+    "epochs_trained": 22,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "6153": {
+    "stock_code": "6153",
+    "stock_name": "股票6153",
+    "success": true,
+    "test_mae": 0.5729038715362549,
+    "train_mae": 0.7425140738487244,
+    "gap": -0.16961020231246948,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2367": {
+    "stock_code": "2367",
+    "stock_name": "股票2367",
+    "success": true,
+    "test_mae": 1.6591320037841797,
+    "train_mae": 0.5646745562553406,
+    "gap": 1.0944574475288391,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "1301": {
+    "stock_code": "1301",
+    "stock_name": "股票1301",
+    "success": true,
+    "test_mae": 0.7062639594078064,
+    "train_mae": 0.4693354070186615,
+    "gap": 0.2369285523891449,
+    "epochs_trained": 29,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "1326": {
+    "stock_code": "1326",
+    "stock_name": "股票1326",
+    "success": true,
+    "test_mae": 0.6964772939682007,
+    "train_mae": 0.31325653195381165,
+    "gap": 0.38322076201438904,
+    "epochs_trained": 56,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "8155": {
+    "stock_code": "8155",
+    "stock_name": "股票8155",
+    "success": false,
+    "reason": "insufficient_data"
+  },
+  "2344": {
+    "stock_code": "2344",
+    "stock_name": "股票2344",
+    "success": true,
+    "test_mae": 0.9609177708625793,
+    "train_mae": 0.6738724708557129,
+    "gap": 0.28704530000686646,
+    "epochs_trained": 22,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "6285": {
+    "stock_code": "6285",
+    "stock_name": "股票6285",
+    "success": true,
+    "test_mae": 1.4667307138442993,
+    "train_mae": 0.4106616973876953,
+    "gap": 1.056069016456604,
+    "epochs_trained": 34,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2303": {
+    "stock_code": "2303",
+    "stock_name": "股票2303",
+    "success": true,
+    "test_mae": 1.697642207145691,
+    "train_mae": 0.4050542712211609,
+    "gap": 1.29258793592453,
+    "epochs_trained": 35,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2313": {
+    "stock_code": "2313",
+    "stock_name": "股票2313",
+    "success": true,
+    "test_mae": 1.8196396827697754,
+    "train_mae": 0.649588406085968,
+    "gap": 1.1700512766838074,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2449": {
+    "stock_code": "2449",
+    "stock_name": "股票2449",
+    "success": true,
+    "test_mae": 0.7457849383354187,
+    "train_mae": 0.63203364610672,
+    "gap": 0.11375129222869873,
+    "epochs_trained": 25,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2317": {
+    "stock_code": "2317",
+    "stock_name": "股票2317",
+    "success": true,
+    "test_mae": 0.5036746263504028,
+    "train_mae": 0.649900496006012,
+    "gap": -0.14622586965560913,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "5521": {
+    "stock_code": "5521",
+    "stock_name": "股票5521",
+    "success": true,
+    "test_mae": 1.8648772239685059,
+    "train_mae": 0.687766969203949,
+    "gap": 1.1771102547645569,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "8074": {
+    "stock_code": "8074",
+    "stock_name": "股票8074",
+    "success": false,
+    "reason": "insufficient_data"
+  },
+  "3163": {
+    "stock_code": "3163",
+    "stock_name": "股票3163",
+    "success": false,
+    "reason": "insufficient_data"
+  },
+  "1303": {
+    "stock_code": "1303",
+    "stock_name": "股票1303",
+    "success": true,
+    "test_mae": 0.7777872085571289,
+    "train_mae": 0.6989927291870117,
+    "gap": 0.07879447937011719,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "6257": {
+    "stock_code": "6257",
+    "stock_name": "股票6257",
+    "success": true,
+    "test_mae": 1.1513142585754395,
+    "train_mae": 0.6497935056686401,
+    "gap": 0.5015207529067993,
+    "epochs_trained": 22,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "3231": {
+    "stock_code": "3231",
+    "stock_name": "股票3231",
+    "success": true,
+    "test_mae": 0.6192319393157959,
+    "train_mae": 0.594132125377655,
+    "gap": 0.02509981393814087,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "1815": {
+    "stock_code": "1815",
+    "stock_name": "股票1815",
+    "success": false,
+    "reason": "insufficient_data"
+  },
+  "8422": {
+    "stock_code": "8422",
+    "stock_name": "股票8422",
+    "success": true,
+    "test_mae": 4.515932083129883,
+    "train_mae": 0.41241592168807983,
+    "gap": 4.103516161441803,
+    "epochs_trained": 59,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "6770": {
+    "stock_code": "6770",
+    "stock_name": "股票6770",
+    "success": true,
+    "test_mae": 1.1251306533813477,
+    "train_mae": 0.6549418568611145,
+    "gap": 0.47018879652023315,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "3265": {
+    "stock_code": "3265",
+    "stock_name": "股票3265",
+    "success": false,
+    "reason": "insufficient_data"
+  },
+  "3706": {
+    "stock_code": "3706",
+    "stock_name": "股票3706",
+    "success": true,
+    "test_mae": 0.518945038318634,
+    "train_mae": 0.5639557242393494,
+    "gap": -0.04501068592071533,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "3481": {
+    "stock_code": "3481",
+    "stock_name": "股票3481",
+    "success": true,
+    "test_mae": 2.444674491882324,
+    "train_mae": 0.5312198400497437,
+    "gap": 1.9134546518325806,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2312": {
+    "stock_code": "2312",
+    "stock_name": "股票2312",
+    "success": true,
+    "test_mae": 1.7132140398025513,
+    "train_mae": 0.3927130103111267,
+    "gap": 1.3205010294914246,
+    "epochs_trained": 43,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "3037": {
+    "stock_code": "3037",
+    "stock_name": "股票3037",
+    "success": true,
+    "test_mae": 0.7045921683311462,
+    "train_mae": 0.48174476623535156,
+    "gap": 0.22284740209579468,
+    "epochs_trained": 31,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "3363": {
+    "stock_code": "3363",
+    "stock_name": "股票3363",
+    "success": false,
+    "reason": "insufficient_data"
+  },
+  "2327": {
+    "stock_code": "2327",
+    "stock_name": "股票2327",
+    "success": true,
+    "test_mae": 1.1663315296173096,
+    "train_mae": 0.788147509098053,
+    "gap": 0.3781840205192566,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "6282": {
+    "stock_code": "6282",
+    "stock_name": "股票6282",
+    "success": true,
+    "test_mae": 1.1201139688491821,
+    "train_mae": 0.5542765259742737,
+    "gap": 0.5658374428749084,
+    "epochs_trained": 25,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "5498": {
+    "stock_code": "5498",
+    "stock_name": "股票5498",
+    "success": false,
+    "reason": "insufficient_data"
+  },
+  "2314": {
+    "stock_code": "2314",
+    "stock_name": "股票2314",
+    "success": true,
+    "test_mae": 0.49363455176353455,
+    "train_mae": 0.9957393407821655,
+    "gap": -0.502104789018631,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "1605": {
+    "stock_code": "1605",
+    "stock_name": "股票1605",
+    "success": true,
+    "test_mae": 0.7743117213249207,
+    "train_mae": 0.3427879214286804,
+    "gap": 0.43152379989624023,
+    "epochs_trained": 42,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2454": {
+    "stock_code": "2454",
+    "stock_name": "股票2454",
+    "success": true,
+    "test_mae": 1.0264803171157837,
+    "train_mae": 0.6767991185188293,
+    "gap": 0.34968119859695435,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "3034": {
+    "stock_code": "3034",
+    "stock_name": "股票3034",
+    "success": true,
+    "test_mae": 0.6867178082466125,
+    "train_mae": 0.7023106217384338,
+    "gap": -0.015592813491821289,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2379": {
+    "stock_code": "2379",
+    "stock_name": "股票2379",
+    "success": true,
+    "test_mae": 1.078639030456543,
+    "train_mae": 0.46829482913017273,
+    "gap": 0.6103442013263702,
+    "epochs_trained": 23,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2382": {
+    "stock_code": "2382",
+    "stock_name": "股票2382",
+    "success": true,
+    "test_mae": 0.4745265543460846,
+    "train_mae": 0.47345876693725586,
+    "gap": 0.0010677874088287354,
+    "epochs_trained": 28,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "3008": {
+    "stock_code": "3008",
+    "stock_name": "股票3008",
+    "success": true,
+    "test_mae": 1.0036396980285645,
+    "train_mae": 0.6934034824371338,
+    "gap": 0.31023621559143066,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2881": {
+    "stock_code": "2881",
+    "stock_name": "股票2881",
+    "success": true,
+    "test_mae": 0.43179506063461304,
+    "train_mae": 0.8064287900924683,
+    "gap": -0.3746337294578552,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2412": {
+    "stock_code": "2412",
+    "stock_name": "股票2412",
+    "success": true,
+    "test_mae": 0.46184879541397095,
+    "train_mae": 0.8048409819602966,
+    "gap": -0.3429921865463257,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2609": {
+    "stock_code": "2609",
+    "stock_name": "股票2609",
+    "success": true,
+    "test_mae": 0.5410500764846802,
+    "train_mae": 0.6869350671768188,
+    "gap": -0.14588499069213867,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2618": {
+    "stock_code": "2618",
+    "stock_name": "股票2618",
+    "success": true,
+    "test_mae": 0.36744198203086853,
+    "train_mae": 0.5714648962020874,
+    "gap": -0.20402291417121887,
+    "epochs_trained": 30,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "8046": {
+    "stock_code": "8046",
+    "stock_name": "股票8046",
+    "success": true,
+    "test_mae": 0.9908156991004944,
+    "train_mae": 0.7092087864875793,
+    "gap": 0.28160691261291504,
+    "epochs_trained": 23,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "3189": {
+    "stock_code": "3189",
+    "stock_name": "股票3189",
+    "success": true,
+    "test_mae": 0.8431082367897034,
+    "train_mae": 0.5447518825531006,
+    "gap": 0.2983563542366028,
+    "epochs_trained": 26,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2408": {
+    "stock_code": "2408",
+    "stock_name": "股票2408",
+    "success": true,
+    "test_mae": 0.4061468243598938,
+    "train_mae": 0.6027427911758423,
+    "gap": -0.1965959668159485,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "8150": {
+    "stock_code": "8150",
+    "stock_name": "股票8150",
+    "success": true,
+    "test_mae": 1.3378769159317017,
+    "train_mae": 0.6662095785140991,
+    "gap": 0.6716673374176025,
+    "epochs_trained": 24,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "1802": {
+    "stock_code": "1802",
+    "stock_name": "股票1802",
+    "success": true,
+    "test_mae": 1.0017423629760742,
+    "train_mae": 0.4689655303955078,
+    "gap": 0.5327768325805664,
+    "epochs_trained": 47,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2371": {
+    "stock_code": "2371",
+    "stock_name": "股票2371",
+    "success": true,
+    "test_mae": 1.2168503999710083,
+    "train_mae": 0.6053826808929443,
+    "gap": 0.611467719078064,
+    "epochs_trained": 22,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "6239": {
+    "stock_code": "6239",
+    "stock_name": "股票6239",
+    "success": true,
+    "test_mae": 1.099171757698059,
+    "train_mae": 0.5141170620918274,
+    "gap": 0.5850546956062317,
+    "epochs_trained": 26,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2002": {
+    "stock_code": "2002",
+    "stock_name": "股票2002",
+    "success": true,
+    "test_mae": 0.6627138257026672,
+    "train_mae": 0.6323270797729492,
+    "gap": 0.030386745929718018,
+    "epochs_trained": 23,
+    "category": "B",
+    "category_name": "需要改进"
+  },
+  "2301": {
+    "stock_code": "2301",
+    "stock_name": "股票2301",
+    "success": true,
+    "test_mae": 0.6983486413955688,
+    "train_mae": 0.8466849327087402,
+    "gap": -0.1483362913131714,
+    "epochs_trained": 21,
+    "category": "B",
+    "category_name": "需要改进"
+  }
+}

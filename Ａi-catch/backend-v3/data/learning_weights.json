@@ -1,0 +1,42 @@
+{
+  "weights": {
+    "volume_ratio_high": 20,
+    "volume_ratio_mid": 10,
+    "ma_bull_alignment": 15,
+    "trend_up": 10,
+    "change_pct_moderate": 15,
+    "change_pct_excessive": -20,
+    "volume_insufficient": -25,
+    "risk_high": -20,
+    "risk_extreme": -30,
+    "sector_bull": 10,
+    "sector_bear": -15,
+    "quality_ideal": 15,
+    "quality_good": 8,
+    "quality_poor": -10,
+    "lstm_bullish": 12,
+    "lstm_bearish": -15
+  },
+  "updated_at": "2026-03-26T18:24:00",
+  "lessons": {
+    "forced_close_too_much": 0.78125,
+    "stop_loss_symbols": [
+      "6770",
+      "3481",
+      "1815"
+    ],
+    "best_symbols": [
+      "2337",
+      "8046",
+      "1802",
+      "6257"
+    ],
+    "entry_too_early": true
+  },
+  "metadata": {
+    "total_trades": 32,
+    "win_rate": 0.0,
+    "data_period": "2026-03-25 ~ 2026-03-26",
+    "learning_version": "1.0"
+  }
+}

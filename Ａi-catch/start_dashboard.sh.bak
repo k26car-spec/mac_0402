@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "🚀 啟動 AI 主力監控 Web 平台..."
+echo ""
+echo "📊 平台網址："
+echo "   本機: http://127.0.0.1:5000"
+echo "   區網: http://$(hostname -I | awk '{print $1}'):5000"
+echo ""
+echo "🛑 停止平台: 按 Ctrl+C"
+echo ""
+
+python3 dashboard.py

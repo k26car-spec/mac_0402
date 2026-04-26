@@ -1,0 +1,1106 @@
+{
+  "generated_at": "2026-02-08T00:56:56.588330",
+  "total_stocks": 50,
+  "summary": {
+    "type_A": 26,
+    "type_B": 8,
+    "type_C": 16
+  },
+  "classifications": {
+    "Stock_001": {
+      "stock_code": "Stock_001",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.05852142919229748,
+      "train_mae": 0.05239747159961765,
+      "gap": 0.006123957592679835,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_002": {
+      "stock_code": "Stock_002",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.06624074561769747,
+      "train_mae": 0.05968080041433544,
+      "gap": 0.006559945203362026,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_003": {
+      "stock_code": "Stock_003",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.055985284373248054,
+      "train_mae": 0.05077747929104559,
+      "gap": 0.005207805082202463,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_004": {
+      "stock_code": "Stock_004",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.10102922471479013,
+      "train_mae": 0.061781478410740276,
+      "gap": 0.039247746304049855,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "Stock_005": {
+      "stock_code": "Stock_005",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.1106169555339138,
+      "train_mae": 0.0910713313537363,
+      "gap": 0.01954562418017751,
+      "problem_type": "泛化不佳",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "20-30%",
+      "test_methods": [
+        "Regularized",
+        "Larger",
+        "Attention"
+      ],
+      "estimated_hours": 4
+    },
+    "Stock_006": {
+      "stock_code": "Stock_006",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.03912726728878613,
+      "train_mae": 0.03445397226736046,
+      "gap": 0.004673295021425668,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_007": {
+      "stock_code": "Stock_007",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.07164916560792167,
+      "train_mae": 0.06053063666069788,
+      "gap": 0.011118528947223795,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_008": {
+      "stock_code": "Stock_008",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.03876433945605654,
+      "train_mae": 0.0351998065530007,
+      "gap": 0.0035645329030558406,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_009": {
+      "stock_code": "Stock_009",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.09140703845572054,
+      "train_mae": 0.08441030063413694,
+      "gap": 0.006996737821583596,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_010": {
+      "stock_code": "Stock_010",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.0836965827544817,
+      "train_mae": 0.07823207862728172,
+      "gap": 0.005464504127199982,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_011": {
+      "stock_code": "Stock_011",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.06682096494749167,
+      "train_mae": 0.06117044901763887,
+      "gap": 0.005650515929852794,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_012": {
+      "stock_code": "Stock_012",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.14828160165372795,
+      "train_mae": 0.11307166795081641,
+      "gap": 0.03520993370291153,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "Stock_013": {
+      "stock_code": "Stock_013",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.03293016342019151,
+      "train_mae": 0.027140532234606413,
+      "gap": 0.005789631185585099,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_014": {
+      "stock_code": "Stock_014",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.06488152939379115,
+      "train_mae": 0.054929760292678445,
+      "gap": 0.0099517691011127,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_015": {
+      "stock_code": "Stock_015",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.057279612062363455,
+      "train_mae": 0.054468152191163334,
+      "gap": 0.0028114598712001213,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_016": {
+      "stock_code": "Stock_016",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.07246844304357644,
+      "train_mae": 0.062267762831798336,
+      "gap": 0.010200680211778106,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_017": {
+      "stock_code": "Stock_017",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.06739417822102108,
+      "train_mae": 0.05269833194337549,
+      "gap": 0.014695846277645586,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_018": {
+      "stock_code": "Stock_018",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.14697494707820946,
+      "train_mae": 0.10960426331751824,
+      "gap": 0.03737068376069122,
+      "problem_type": "严重过拟合",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "25-35%",
+      "test_methods": [
+        "Regularized",
+        "Augmented",
+        "Optimized"
+      ],
+      "estimated_hours": 4
+    },
+    "Stock_019": {
+      "stock_code": "Stock_019",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.09687496940092469,
+      "train_mae": 0.09099004438040549,
+      "gap": 0.005884925020519197,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_020": {
+      "stock_code": "Stock_020",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.03135681866731614,
+      "train_mae": 0.02807950635197329,
+      "gap": 0.00327731231534285,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_021": {
+      "stock_code": "Stock_021",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.038140470953216876,
+      "train_mae": 0.03133930838915337,
+      "gap": 0.006801162564063504,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_022": {
+      "stock_code": "Stock_022",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.03842803529062142,
+      "train_mae": 0.03362916270851368,
+      "gap": 0.00479887258210774,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_023": {
+      "stock_code": "Stock_023",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.05406590942262118,
+      "train_mae": 0.05254405491686279,
+      "gap": 0.0015218545057583965,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_024": {
+      "stock_code": "Stock_024",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.13861223846483287,
+      "train_mae": 0.11864434642647856,
+      "gap": 0.019967892038354307,
+      "problem_type": "泛化不佳",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "20-30%",
+      "test_methods": [
+        "Regularized",
+        "Larger",
+        "Attention"
+      ],
+      "estimated_hours": 4
+    },
+    "Stock_025": {
+      "stock_code": "Stock_025",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.05446384285364502,
+      "train_mae": 0.0485158414467117,
+      "gap": 0.005948001406933322,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_026": {
+      "stock_code": "Stock_026",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.13856351733429728,
+      "train_mae": 0.12171240104094502,
+      "gap": 0.01685111629335226,
+      "problem_type": "泛化不佳",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "20-30%",
+      "test_methods": [
+        "Regularized",
+        "Larger",
+        "Attention"
+      ],
+      "estimated_hours": 4
+    },
+    "Stock_027": {
+      "stock_code": "Stock_027",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.03347607178575389,
+      "train_mae": 0.026434347804624732,
+      "gap": 0.007041723981129157,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_028": {
+      "stock_code": "Stock_028",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.07323592099410597,
+      "train_mae": 0.06760033749124573,
+      "gap": 0.005635583502860239,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_029": {
+      "stock_code": "Stock_029",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.03975549966080241,
+      "train_mae": 0.03364825641243596,
+      "gap": 0.006107243248366451,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_030": {
+      "stock_code": "Stock_030",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.09548850970305306,
+      "train_mae": 0.08576636045143357,
+      "gap": 0.009722149251619489,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_031": {
+      "stock_code": "Stock_031",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.05139734361668985,
+      "train_mae": 0.04507184827637157,
+      "gap": 0.006325495340318281,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_032": {
+      "stock_code": "Stock_032",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.09083868719818244,
+      "train_mae": 0.08090073123453853,
+      "gap": 0.009937955963643913,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_033": {
+      "stock_code": "Stock_033",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.07710164073434199,
+      "train_mae": 0.07184744946690104,
+      "gap": 0.00525419126744095,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_034": {
+      "stock_code": "Stock_034",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.030942875570602026,
+      "train_mae": 0.025488002691755562,
+      "gap": 0.005454872878846464,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_035": {
+      "stock_code": "Stock_035",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.04525712073494108,
+      "train_mae": 0.037904155417458424,
+      "gap": 0.007352965317482654,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_036": {
+      "stock_code": "Stock_036",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.04231148769106889,
+      "train_mae": 0.03602262972126755,
+      "gap": 0.006288857969801338,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_037": {
+      "stock_code": "Stock_037",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.03230939729486379,
+      "train_mae": 0.029281137124467414,
+      "gap": 0.0030282601703963755,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_038": {
+      "stock_code": "Stock_038",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.057890929570277194,
+      "train_mae": 0.051234086913326274,
+      "gap": 0.00665684265695092,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_039": {
+      "stock_code": "Stock_039",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.09485842360750871,
+      "train_mae": 0.08182170283851756,
+      "gap": 0.01303672076899115,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_040": {
+      "stock_code": "Stock_040",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.05677676995469933,
+      "train_mae": 0.05200137426128978,
+      "gap": 0.004775395693409554,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_041": {
+      "stock_code": "Stock_041",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.14480456499617467,
+      "train_mae": 0.12185447812187808,
+      "gap": 0.022950086874296588,
+      "problem_type": "泛化不佳",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "20-30%",
+      "test_methods": [
+        "Regularized",
+        "Larger",
+        "Attention"
+      ],
+      "estimated_hours": 4
+    },
+    "Stock_042": {
+      "stock_code": "Stock_042",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.03683805487625825,
+      "train_mae": 0.03284830035587445,
+      "gap": 0.003989754520383797,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_043": {
+      "stock_code": "Stock_043",
+      "type": "B",
+      "type_name": "需要改进型",
+      "test_mae": 0.14303652916281717,
+      "train_mae": 0.1278627258995374,
+      "gap": 0.015173803263279773,
+      "problem_type": "泛化不佳",
+      "recommendation": "测试多种方案",
+      "action": "⚠️ 需要深入测试和优化",
+      "priority": "HIGH",
+      "expected_improvement": "20-30%",
+      "test_methods": [
+        "Regularized",
+        "Larger",
+        "Attention"
+      ],
+      "estimated_hours": 4
+    },
+    "Stock_044": {
+      "stock_code": "Stock_044",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.07669644012595116,
+      "train_mae": 0.06947536202124385,
+      "gap": 0.007221078104707304,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    },
+    "Stock_045": {
+      "stock_code": "Stock_045",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.04012845514210884,
+      "train_mae": 0.0325280872147212,
+      "gap": 0.007600367927387636,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_046": {
+      "stock_code": "Stock_046",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.04556371865230098,
+      "train_mae": 0.03964258594003474,
+      "gap": 0.005921132712266242,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_047": {
+      "stock_code": "Stock_047",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.05915346248162882,
+      "train_mae": 0.05141633141703404,
+      "gap": 0.007737131064594775,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_048": {
+      "stock_code": "Stock_048",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.044917455176771565,
+      "train_mae": 0.041811307008054174,
+      "gap": 0.0031061481687173903,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_049": {
+      "stock_code": "Stock_049",
+      "type": "A",
+      "type_name": "训练良好型",
+      "test_mae": 0.031106608420635982,
+      "train_mae": 0.025839658082776704,
+      "gap": 0.005266950337859278,
+      "recommendation": "Baseline",
+      "action": "✅ 保持现有方案，无需改进",
+      "priority": "LOW",
+      "expected_improvement": "0%（已经很好）",
+      "test_methods": [],
+      "estimated_hours": 0
+    },
+    "Stock_050": {
+      "stock_code": "Stock_050",
+      "type": "C",
+      "type_name": "中等难度型",
+      "test_mae": 0.062059150049999574,
+      "train_mae": 0.05427268540763346,
+      "gap": 0.007786464642366112,
+      "problem_type": "可优化空间",
+      "recommendation": "Baseline 或 Optimized",
+      "action": "🤔 可选择性优化",
+      "priority": "MEDIUM",
+      "expected_improvement": "10-15%",
+      "test_methods": [
+        "Optimized",
+        "Attention"
+      ],
+      "estimated_hours": 2
+    }
+  },
+  "test_plan": {
+    "keep_baseline": [
+      "Stock_001",
+      "Stock_003",
+      "Stock_006",
+      "Stock_008",
+      "Stock_013",
+      "Stock_015",
+      "Stock_020",
+      "Stock_021",
+      "Stock_022",
+      "Stock_023",
+      "Stock_025",
+      "Stock_027",
+      "Stock_029",
+      "Stock_031",
+      "Stock_034",
+      "Stock_035",
+      "Stock_036",
+      "Stock_037",
+      "Stock_038",
+      "Stock_040",
+      "Stock_042",
+      "Stock_045",
+      "Stock_046",
+      "Stock_047",
+      "Stock_048",
+      "Stock_049"
+    ],
+    "test_methods": {
+      "Stock_002": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_004": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "Stock_005": {
+        "methods": [
+          "Regularized",
+          "Larger",
+          "Attention"
+        ],
+        "problem_type": "泛化不佳",
+        "expected_improvement": "20-30%"
+      },
+      "Stock_007": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_009": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_010": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_011": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_012": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "Stock_014": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_016": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_017": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_018": {
+        "methods": [
+          "Regularized",
+          "Augmented",
+          "Optimized"
+        ],
+        "problem_type": "严重过拟合",
+        "expected_improvement": "25-35%"
+      },
+      "Stock_019": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_024": {
+        "methods": [
+          "Regularized",
+          "Larger",
+          "Attention"
+        ],
+        "problem_type": "泛化不佳",
+        "expected_improvement": "20-30%"
+      },
+      "Stock_026": {
+        "methods": [
+          "Regularized",
+          "Larger",
+          "Attention"
+        ],
+        "problem_type": "泛化不佳",
+        "expected_improvement": "20-30%"
+      },
+      "Stock_028": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_030": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_032": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_033": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_039": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_041": {
+        "methods": [
+          "Regularized",
+          "Larger",
+          "Attention"
+        ],
+        "problem_type": "泛化不佳",
+        "expected_improvement": "20-30%"
+      },
+      "Stock_043": {
+        "methods": [
+          "Regularized",
+          "Larger",
+          "Attention"
+        ],
+        "problem_type": "泛化不佳",
+        "expected_improvement": "20-30%"
+      },
+      "Stock_044": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      },
+      "Stock_050": {
+        "methods": [
+          "Optimized",
+          "Attention"
+        ],
+        "problem_type": "可优化空间",
+        "expected_improvement": "10-15%"
+      }
+    },
+    "total_stocks": 50,
+    "estimated_hours": 64,
+    "estimated_days": 8.0,
+    "priority_high": [
+      "Stock_004",
+      "Stock_005",
+      "Stock_012",
+      "Stock_018",
+      "Stock_024",
+      "Stock_026",
+      "Stock_041",
+      "Stock_043"
+    ],
+    "priority_medium": [
+      "Stock_002",
+      "Stock_007",
+      "Stock_009",
+      "Stock_010",
+      "Stock_011",
+      "Stock_014",
+      "Stock_016",
+      "Stock_017",
+      "Stock_019",
+      "Stock_028",
+      "Stock_030",
+      "Stock_032",
+      "Stock_033",
+      "Stock_039",
+      "Stock_044",
+      "Stock_050"
+    ],
+    "priority_low": [
+      "Stock_001",
+      "Stock_003",
+      "Stock_006",
+      "Stock_008",
+      "Stock_013",
+      "Stock_015",
+      "Stock_020",
+      "Stock_021",
+      "Stock_022",
+      "Stock_023",
+      "Stock_025",
+      "Stock_027",
+      "Stock_029",
+      "Stock_031",
+      "Stock_034",
+      "Stock_035",
+      "Stock_036",
+      "Stock_037",
+      "Stock_038",
+      "Stock_040",
+      "Stock_042",
+      "Stock_045",
+      "Stock_046",
+      "Stock_047",
+      "Stock_048",
+      "Stock_049"
+    ]
+  }
+}

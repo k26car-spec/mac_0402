@@ -1,0 +1,277 @@
+2026-01-24 02:29:13.260398: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+⚠️ OPENAI_API_KEY 環境變數未設定
+INFO:     Started server process [90466]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+✅ 載入環境變數: /Users/Mac/Documents/ETF/AI/Ａi-catch/.env
+📁 靜態檔案路由已設定: /Users/Mac/Documents/ETF/AI/Ａi-catch/static
+✅ 智慧選股 API 已啟用
+✅ 股票綜合分析 API 已啟用
+✅ 持有股票 API 已啟用
+✅ 經濟循環系統 API 已啟用
+   📊 投資信號: /api/economic-cycle/signals/generate
+   📈 技術分析: /api/economic-cycle/technical/analyze/{ticker}
+   ⚖️ 資產配置: /api/economic-cycle/allocation/calculate
+   📱 電子股監測: /api/economic-cycle/electronics/trends
+✅ 訂單流模式識別系統 API 已啟用
+   📊 模式檢測: /api/order-flow/patterns/{symbol}
+   📈 特徵提取: /api/order-flow/features/{symbol}
+   📝 完整分析: /api/order-flow/analyze
+✅ 選股決策引擎 API 已啟用
+   📊 單股分析: /api/stock-selector/analyze/{stock_code}
+   📈 批量分析: /api/stock-selector/analyze/batch
+   🏆 推薦股票: /api/stock-selector/recommendations
+   💰 富邦新店: /api/stock-selector/broker-flow/fubon-xindan/top-stocks
+   📊 券商進出: /api/stock-selector/broker-flow/{stock_code}
+✅ 撐壓趨勢轉折 API 已啟用
+   📊 單股分析: /api/support-resistance/analyze/{stock_code}
+   📈 批量分析: /api/support-resistance/batch
+   🔄 轉折訊號: /api/support-resistance/reversal-signals
+   📍 關鍵價位: /api/support-resistance/key-levels/{stock_code}
+✅ Volume Profile 籌碼分析 API 已啟用
+   📊 完整分析: /api/volume-profile/analyze/{stock_code}
+   📈 籌碼摘要: /api/volume-profile/summary/{stock_code}
+✅ 智慧進場評分 API 已啟用
+   🎯 單股評分: /api/smart-entry/score/{stock_code}
+   📊 批量評分: /api/smart-entry/batch-score?stock_codes=2330,2317
+   💡 快速建議: /api/smart-entry/recommendation/{stock_code}
+✅ AI 績效追蹤 API 已啟用
+   📊 績效統計: /api/ai-performance/stats
+   📈 準確性報告: /api/ai-performance/accuracy-report
+   💹 交易記錄: /api/ai-performance/trades
+✅ 交易檢討與學習 API 已啟用
+   📊 檢討交易: /api/trade-review/analyze/{symbol}
+   📚 查看教訓: /api/trade-review/lessons
+   🤔 是否交易: /api/trade-review/should-trade/{symbol}
+✅ 多因子進場檢查 API 已啟用
+   🔍 綜合檢查: /api/entry-check/comprehensive/{symbol}
+   ⚡ 快速檢查: /api/entry-check/quick/{symbol}
+   📋 批量檢查: /api/entry-check/batch
+✅ 用戶控制 API 已啟用
+✅ 每日觀察名單 API 已啟用
+   📊 掃描強勢股: /api/watchlist/scan-strong-stocks
+   📋 今日名單: /api/watchlist/today
+   🎯 進場候選: /api/watchlist/candidates
+✅ 狙擊手清單 API 已啟用
+   📋 所有產業: /api/sniper/sectors
+   ➕ 新增股票: POST /api/sniper/stock/add
+🚀 啟動 AI Stock Intelligence API v3.0 (簡化版)
+==================================================
+📊 FastAPI 服務啟動中...
+🔗 WebSocket 服務已就緒
+🤖 AI 偵測引擎初始化完成
+✅ 富邦 API 連接成功！
+📊 準確率評估任務已啟動（每5秒追蹤價格）
+📧 交易報告排程器已啟動（09:05 自動發送）
+🔄 自動平倉排程器已啟動（盤中每分鐘檢查）
+🤖 智能模擬交易器已啟動（信號自動下單 + ORB + 移動停利）
+🎯 當沖自動訊號監控器已啟動（自動進出場通知）
+📊 ML 訊號追蹤器已啟動（自動追蹤訊號結果）
+🛡️ 單日虧損監控器已啟動（風控: 2% 上限）
+🔍 全市場強勢股掃描器已啟動（09:30/10:00/10:30 掃描）
+📡 WebSocket 實時監控已啟動（55 支股票）
+🔗 富邦連線健康檢查已啟動（每 5 分鐘）
+⚠️  處置股清單已載入（1 支）：
+      2337 旺宏 - 5分鐘撮合
+==================================================
+🤖 AI 交易輔助功能：
+   📊 掃描強勢股: POST /api/watchlist/scan-strong-stocks
+   🔍 進場檢查:   GET  /api/entry-check/quick/{symbol}
+   📋 觀察名單:   GET  /api/watchlist/today
+   📚 交易檢討:   POST /api/trade-review/review-all-stopped
+   📈 績效追蹤:   GET  /api/portfolio/summary
+   🔄 自動平倉:   GET  /api/portfolio/auto-close/scheduler-status
+   🤖 智能交易:   GET  /api/portfolio/smart-trader/status
+   📈 ML 狀態:    GET  /api/ml/training-status
+   🛡️ 風控狀態:   GET  /api/risk/daily-loss/status
+   🔍 市場掃描:   GET  /api/market/scanner/status
+   ⚠️  處置股:     GET  /api/disposition/list
+==================================================
+INFO:     127.0.0.1:61662 - "GET /api/sniper/sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61664 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61718 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61716 - "GET /api/smart-entry/score/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61719 - "GET /api/smart-entry/score/2344 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61720 - "GET /api/smart-entry/score/2408 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61721 - "GET /api/smart-entry/score/3006 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61727 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61718 - "GET /api/big-order/status HTTP/1.1" 200 OK
+取得個股法人買賣超失敗: 
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 1532, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 1148, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Mac/Documents/ETF/AI/Ａi-catch/backend-v3/app/services/twse_crawler.py", line 221, in get_stock_institutional
+    async with session.get(FINMIND_API_URL, params=params, timeout=30) as response:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 624, in _request
+    with timer:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/helpers.py", line 713, in __exit__
+    raise asyncio.TimeoutError from exc_val
+TimeoutError
+INFO:     127.0.0.1:61768 - "GET /api/market/quotes HTTP/1.1" 200 OK
+API 呼叫失敗 /api/stock-analysis/technical/2337: 
+API 呼叫失敗 /api/stock-analysis/technical/2408: 
+API 呼叫失敗 /api/stock-analysis/technical/2344: 
+API 呼叫失敗 /api/stock-analysis/technical/3006: 
+INFO:     127.0.0.1:61718 - "GET /api/big-order/status HTTP/1.1" 200 OK
+爬取鉅亨網失敗: 
+爬取Yahoo股市失敗: 
+爬取經濟日報失敗: 
+爬取PTT Stock失敗: 
+取得個股法人買賣超失敗: 
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 1532, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 1148, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Mac/Documents/ETF/AI/Ａi-catch/backend-v3/app/services/twse_crawler.py", line 221, in get_stock_institutional
+    async with session.get(FINMIND_API_URL, params=params, timeout=30) as response:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 624, in _request
+    with timer:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/helpers.py", line 713, in __exit__
+    raise asyncio.TimeoutError from exc_val
+TimeoutError
+INFO:     127.0.0.1:61773 - "GET /api/fubon/orderbook/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61718 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61775 - "GET /api/fubon/trades/2337?count=20 HTTP/1.1" 200 OK
+取得個股法人買賣超失敗: 
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "uvloop/loop.pyx", line 2627, in sock_connect
+  File "uvloop/loop.pyx", line 1529, in getaddrinfo
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Mac/Documents/ETF/AI/Ａi-catch/backend-v3/app/services/twse_crawler.py", line 221, in get_stock_institutional
+    async with session.get(FINMIND_API_URL, params=params, timeout=30) as response:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/client.py", line 624, in _request
+    with timer:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/aiohttp/helpers.py", line 713, in __exit__
+    raise asyncio.TimeoutError from exc_val
+TimeoutError
+INFO:     127.0.0.1:61777 - "GET /api/fubon/quote/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61718 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61777 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61718 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61777 - "GET /api/stock/2330/quote HTTP/1.1" 404 Not Found
+爬取PTT Stock失敗: Cannot connect to host www.ptt.cc:443 ssl:default [Connection reset by peer]
+INFO:     127.0.0.1:61718 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61911 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61939 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61718 - "GET /api/big-order/status HTTP/1.1" 200 OK
+HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 6274.TW"}}}
+$6274.TW: possibly delisted; no price data found  (period=1d) (Yahoo error = "No data found, symbol may be delisted")
+INFO:     127.0.0.1:61718 - "GET /api/big-order/status HTTP/1.1" 200 OK
+HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 8080.TW"}}}
+$8080.TW: possibly delisted; no price data found  (period=1d) (Yahoo error = "No data found, symbol may be delisted")
+INFO:     127.0.0.1:61718 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61985 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62035 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62045 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62115 - "GET /api/orderbook/entry-signal/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62117 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /api/fubon/quote/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62130 - "GET /api/fubon/quote/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /api/market/quotes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62132 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "POST /api/orderbook/exit-signal?symbol=2337&position_side=long&entry_price=69.3&bid_volume=812&ask_volume=815&current_price=69.3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62132 - "GET /api/fubon/orderbook/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /api/fubon/trades/2337?count=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62132 - "GET /api/orderbook/entry-signal/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62162 - "GET /api/smart-entry/score/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /api/fubon/quote/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62132 - "GET /api/big-order/quote/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62183 - "GET /api/smart-entry/score/4967 HTTP/1.1" 200 OK
+TWSE API 返回 404
+INFO:     127.0.0.1:62185 - "GET /api/smart-entry/score/6271 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62132 - "GET /api/stock/2330/quote HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62128 - "GET /api/stock/2454/quote HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62186 - "GET /api/smart-entry/score/3596 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62187 - "GET /api/smart-entry/score/4551 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /api/big-order/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62132 - "GET /api/market/quotes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62210 - "GET /api/smart-entry/score/2344 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62162 - "GET /api/stock-analysis/technical/2337 HTTP/1.1" 200 OK
+$6274.TW: possibly delisted; no price data found  (period=5d) (Yahoo error = "No data found, symbol may be delisted")
+INFO:     127.0.0.1:62217 - "GET /api/smart-entry/score/6274 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /api/fubon/orderbook/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62132 - "GET /api/fubon/trades/2337?count=20 HTTP/1.1" 200 OK
+TWSE API 返回 404
+INFO:     127.0.0.1:62132 - "GET /api/orderbook/entry-signal/2337 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62128 - "GET /api/big-order/quote/2337 HTTP/1.1" 200 OK
+$3596.TWO: possibly delisted; no price data found  (period=6mo) (Yahoo error = "No data found, symbol may be delisted")
+HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 3596.TWO"}}}

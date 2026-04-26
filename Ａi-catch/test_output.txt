@@ -1,0 +1,130 @@
+2026-02-10 11:42:15.656771: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+======================================================================
+📊 LSTM模型回测验证系统
+======================================================================
+
+📁 加载LSTM模型...
+   模型目录: models/lstm_smart_entry
+   找到 50 个模型文件
+   ✅ 8422: 8422_model.h5
+   ✅ 1815: 1815_model.h5
+   ✅ 2317: 2317_model.h5
+   ✅ 3363: 3363_model.h5
+   ✅ 8074: 8074_model.h5
+   ✅ 2881: 2881_model.h5
+   ✅ 3481: 3481_model.h5
+   ✅ 6285: 6285_model.h5
+   ✅ 2301: 2301_model.h5
+   ✅ 1802: 1802_model.h5
+   ✅ 8155: 8155_model.h5
+   ✅ 2371: 2371_model.h5
+   ✅ 6282: 6282_model.h5
+   ✅ 3163: 3163_model.h5
+   ✅ 1301: 1301_model.h5
+   ✅ 2449: 2449_model.h5
+   ✅ 2344: 2344_model.h5
+   ✅ 6770: 6770_model.h5
+   ✅ 2367: 2367_model.h5
+   ✅ 3706: 3706_model.h5
+   ✅ 3034: 3034_model.h5
+   ✅ 2454: 2454_model.h5
+   ✅ 2382: 2382_model.h5
+   ✅ 8046: 8046_model.h5
+   ✅ 6239: 6239_model.h5
+   ✅ 2002: 2002_model.h5
+   ✅ 6257: 6257_model.h5
+   ✅ 2337: 2337_model.h5
+   ✅ 5521: 5521_model.h5
+   ✅ 3189: 3189_model.h5
+   ✅ 2303: 2303_model.h5
+   ✅ 2412: 2412_model.h5
+   ✅ 5498: 5498_model.h5
+   ✅ 1605: 1605_model.h5
+   ✅ 1326: 1326_model.h5
+   ✅ 2314: 2314_model.h5
+   ✅ 6153: 6153_model.h5
+   ✅ 2609: 2609_model.h5
+   ✅ 2327: 2327_model.h5
+   ✅ 3265: 3265_model.h5
+   ✅ 3037: 3037_model.h5
+   ✅ 2313: 2313_model.h5
+   ✅ 2312: 2312_model.h5
+   ✅ 3008: 3008_model.h5
+   ✅ 1303: 1303_model.h5
+   ✅ 2379: 2379_model.h5
+   ✅ 8150: 8150_model.h5
+   ✅ 2408: 2408_model.h5
+   ✅ 2618: 2618_model.h5
+   ✅ 3231: 3231_model.h5
+
+   总计加载: 50 个模型
+
+🔍 开始回测...
+   股票数量: 3
+   回测期间: 3m
+
+   [1/3] 3481... ✅ 准确率=100.0%
+
+   [2/3] 5521... ✅ 准确率=100.0%
+
+   [3/3] 2313... ✅ 准确率=25.0%
+
+
+======================================================================
+📊 回测结果分析
+======================================================================
+
+📈 总体指标:
+   测试股票数: 3
+   平均准确率: 75.00%
+   平均精确率: 0.00%
+   平均召回率: 0.00%
+   平均F1分数: 0.00%
+
+📊 准确率分布:
+   优秀(≥70%): 2 支 (66.7%)
+   良好(60-70%): 0 支 (0.0%)
+   可接受(50-60%): 0 支 (0.0%)
+   较差(<50%): 1 支 (33.3%)
+
+🏆 Top 10准确率:
+    1. 3481: 100.00% (P=0.0%, R=0.0%)
+    2. 5521: 100.00% (P=0.0%, R=0.0%)
+    3. 2313: 25.00% (P=0.0%, R=0.0%)
+
+⚠️ Bottom 10准确率:
+    1. 3481: 100.00% (P=0.0%, R=0.0%)
+    2. 5521: 100.00% (P=0.0%, R=0.0%)
+    3. 2313: 25.00% (P=0.0%, R=0.0%)
+
+======================================================================
+🎯 决策建议
+======================================================================
+
+✅ 平均准确率 75.00% ≥ 目标55.00000000000001%
+
+💡 建议:
+   1. LSTM模型准确率达标
+   2. 可以继续Day 2: Smart Entry集成
+   3. 集成时使用保守权重（20-25%）
+   4. 优先使用准确率>60%的股票模型
+Traceback (most recent call last):
+  File "/Users/Mac/Documents/ETF/AI/Ａi-catch/lstm_backtest.py", line 398, in <module>
+    main()
+  File "/Users/Mac/Documents/ETF/AI/Ａi-catch/lstm_backtest.py", line 388, in main
+    json.dump(output, f, indent=2, ensure_ascii=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool_ is not JSON serializable

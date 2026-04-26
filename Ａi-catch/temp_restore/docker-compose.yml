@@ -1,0 +1,129 @@
+# ========================================
+# AI 股票分析系統 V3 - Docker Compose 配置
+# ========================================
+# 使用方式: docker-compose up -d
+# ========================================
+
+version: '3.8'
+
+services:
+  # ========================================
+  # PostgreSQL 資料庫
+  # ========================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: ai-stock-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-stockai}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-stockai123}
+      POSTGRES_DB: ${DB_NAME:-ai_stock_db}
+      TZ: Asia/Taipei
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend-v3/database/setup_database.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER:-stockai} -d ${DB_NAME:-ai_stock_db}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ai-stock-network
+
+  # ========================================
+  # 後端 API (FastAPI)
+  # ========================================
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: ai-stock-backend
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Taipei
+      - DATABASE_URL=postgresql://${DB_USER:-stockai}:${DB_PASSWORD:-stockai123}@postgres:5432/${DB_NAME:-ai_stock_db}
+      - SECRET_KEY=${SECRET_KEY:-your-secret-key-change-in-production}
+      - FUBON_USER_ID=${FUBON_USER_ID:-}
+      - FUBON_PASSWORD=${FUBON_PASSWORD:-}
+      - FUBON_CERT_PATH=${FUBON_CERT_PATH:-}
+      - FUBON_CERT_PASSWORD=${FUBON_CERT_PASSWORD:-}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/api/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - ai-stock-network
+    volumes:
+      - ./certs:/app/certs:ro
+      - ./logs:/app/logs
+
+  # ========================================
+  # 前端 (Next.js)
+  # ========================================
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: ai-stock-frontend
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Taipei
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - ai-stock-network
+
+  # ========================================
+  # 舊版監控服務 (可選保留)
+  # ========================================
+  stock-monitor:
+    build: .
+    container_name: ai-stock-monitor
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Taipei
+      - LINE_NOTIFY_TOKEN=${LINE_NOTIFY_TOKEN:-}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-}
+      - EMAIL_USERNAME=${EMAIL_USERNAME:-}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD:-}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./models:/app/models
+      - ./config.yaml:/app/config.yaml
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+    profiles:
+      - monitoring
+    networks:
+      - ai-stock-network
+
+# ========================================
+# 網路配置
+# ========================================
+networks:
+  ai-stock-network:
+    driver: bridge
+    name: ai-stock-network
+
+# ========================================
+# 持久化存儲
+# ========================================
+volumes:
+  postgres_data:
+    driver: local

@@ -1,0 +1,75 @@
+{
+  "entry_rules": {
+    "min_smart_score": 65,
+    "min_bullish_factors": 3,
+    "require_trend_confirmation": true,
+    "require_volume_confirmation": true,
+    "avoid_gap_up_chase": true,
+    "max_entry_vs_ma5_percent": 5
+  },
+  "stop_loss_rules": {
+    "max_loss_percent": 5,
+    "use_atr_stop": true,
+    "atr_multiplier": 1.5,
+    "check_gap_risk": true
+  },
+  "signal_weights": {
+    "大單分析": 0.5,
+    "ORB突破": 1.0,
+    "法人買超": 1.0,
+    "技術突破": 0.9,
+    "主力進場": 0.9
+  },
+  "blacklist": [],
+  "lessons_learned": [
+    {
+      "date": "2026-01-05",
+      "symbol": "8039",
+      "loss_pct": -12.37,
+      "problems": [
+        "跳空停損失效",
+        "單一訊號進場",
+        "風險報酬比不佳"
+      ],
+      "key_lesson": "對高波動股票使用更寬的停損，或減少倉位"
+    },
+    {
+      "date": "2026-01-05",
+      "symbol": "6257",
+      "loss_pct": -6.61,
+      "problems": [
+        "追高買入",
+        "跳空停損失效",
+        "單一訊號進場",
+        "風險報酬比不佳"
+      ],
+      "key_lesson": "避免買入已大幅偏離 MA5 的股票"
+    },
+    {
+      "date": "2026-01-05",
+      "symbol": "8039",
+      "stock_name": "台虹",
+      "loss_pct": -5.29,
+      "problems": [
+        "逆勢買入",
+        "跳空停損失效",
+        "單一訊號進場",
+        "風險報酬比不佳"
+      ],
+      "key_lesson": "只在 MA5 > MA20 的上升趨勢中買入"
+    },
+    {
+      "date": "2026-01-05",
+      "symbol": "1303",
+      "stock_name": "南亞",
+      "loss_pct": -7.3,
+      "problems": [
+        "逆勢買入",
+        "跳空停損失效",
+        "單一訊號進場",
+        "風險報酬比不佳"
+      ],
+      "key_lesson": "只在 MA5 > MA20 的上升趨勢中買入"
+    }
+  ]
+}

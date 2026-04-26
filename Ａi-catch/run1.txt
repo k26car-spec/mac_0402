@@ -1,0 +1,99 @@
+🌱 隨機種子已固定 (seed=42)，回測結果可重現
+
+======================================================================
+🚀 LSTM 整合版歷史回測系統 v3.0
+  AI 引擎: LSTM 深度學習模型 + MA 均線雙重過濾
+======================================================================
+
+======================================================================
+🤖 1301 LSTM 回測 v3.0
+期間: 2024-10-01 → 2025-03-24  |  LSTM 閾值: 0.420
+初始資金: $5,000,000
+======================================================================
+
+📊 下載歷史數據...
+✅ 成功獲取 111 天數據
+
+🧠 開始逐日 LSTM 分析... (閾值:0.42 | 做多>0.42 | 做空<0.58)
+  [DEBUG 2024-10-01] prob=0.455 signal=buy
+  [DEBUG 2024-10-04] prob=0.455 signal=buy
+  [DEBUG 2024-10-07] prob=0.456 signal=buy
+  [DEBUG 2024-10-08] prob=0.456 signal=buy
+  [DEBUG 2024-10-09] prob=0.455 signal=buy
+
+======================================================================
+📊 1301 — 期間無成交（LSTM 沒有發出有效訊號）
+======================================================================
+
+======================================================================
+🤖 1303 LSTM 回測 v3.0
+期間: 2024-10-01 → 2025-03-24  |  LSTM 閾值: 0.420
+初始資金: $5,000,000
+======================================================================
+
+📊 下載歷史數據...
+✅ 成功獲取 111 天數據
+
+🧠 開始逐日 LSTM 分析... (閾值:0.42 | 做多>0.42 | 做空<0.58)
+  [DEBUG 2024-10-01] prob=0.301 signal=sell
+  [2024-10-01] ⚡ 1303 x 1張 (做空) | 價格:45.0 | LSTM:0.301 | 信心:0.84 | 剩餘:$4,954,983
+  [DEBUG 2024-10-04] prob=0.304 signal=sell
+  [DEBUG 2024-10-07] prob=0.303 signal=sell
+  [DEBUG 2024-10-08] prob=0.304 signal=sell
+  [DEBUG 2024-10-09] prob=0.308 signal=sell
+  [2024-10-15] 🟢 Take Profit: 1303 | +7.48% | 資金:$5,003,369
+  [2024-10-15] ⚡ 1303 x 1張 (做空) | 價格:41.6 | LSTM:0.317 | 信心:0.84 | 剩餘:$4,961,721
+  [2024-11-14] 🟢 Take Profit: 1303 | +7.15% | 資金:$5,006,347
+  [2024-11-14] ⚡ 1303 x 1張 (做空) | 價格:38.7 | LSTM:0.312 | 信心:0.84 | 剩餘:$4,967,678
+  [2024-11-18] 🔴 Stop Loss: 1303 | -6.19% | 資金:$5,003,955
+  [2024-11-18] ⚡ 1303 x 1張 (做空) | 價格:41.1 | LSTM:0.347 | 信心:0.82 | 剩餘:$4,962,893
+Traceback (most recent call last):
+  File "/Users/Mac/Documents/ETF/AI/Ａi-catch/test_backtest_v2.py", line 558, in <module>
+    asyncio.run(main())
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 651, in run_until_complete
+    self.run_forever()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 618, in run_forever
+    self._run_once()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1951, in _run_once
+    handle._run()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/Mac/Documents/ETF/AI/Ａi-catch/test_backtest_v2.py", line 513, in main
+    result = await backtester.backtest(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Mac/Documents/ETF/AI/Ａi-catch/test_backtest_v2.py", line 327, in backtest
+    prediction = self.signal_engine.predict(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Mac/Documents/ETF/AI/Ａi-catch/test_backtest_v2.py", line 172, in predict
+    prob = float(model.predict(X_in, verbose=0).flatten()[0])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/keras/src/utils/traceback_utils.py", line 117, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/keras/src/backend/tensorflow/trainer.py", line 585, in predict
+    for begin_step, end_step, iterator in epoch_iterator:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/keras/src/backend/tensorflow/trainer.py", line 764, in __next__
+    return next(self._epoch_iterator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/keras/src/trainers/epoch_iterator.py", line 111, in _enumerate_iterator
+    self._current_iterator = iter(self._get_iterator())
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 501, in __iter__
+    return iterator_ops.OwnedIterator(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 705, in __init__
+    self._create_iterator(dataset)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 744, in _create_iterator
+    gen_dataset_ops.make_iterator(ds_variant, self._iterator_resource)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/tensorflow/python/ops/gen_dataset_ops.py", line 3478, in make_iterator
+    _result = pywrap_tfe.TFE_Py_FastPathExecute(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt

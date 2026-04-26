@@ -1,0 +1,54 @@
+# ========================================
+# 交易系統環境變數設定範例
+# 複製此檔案為 .env 並填入實際值
+# ========================================
+
+# === 資料庫設定 ===
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=ai_stock_db
+DB_USER=postgres
+DB_PASSWORD=your_password_here
+
+# === Fubon API 設定 ===
+FUBON_ACCOUNT=your_fubon_account
+FUBON_PASSWORD=your_fubon_password
+FUBON_CERT_PATH=/path/to/certificate
+
+# === Email 通知設定 ===
+# 系統使用 Gmail SMTP 發送通知
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+EMAIL_USERNAME=k26car@gmail.com
+EMAIL_PASSWORD=your_gmail_app_password
+# 收件人（多個用逗號分隔）
+EMAIL_RECIPIENTS=k26car@gmail.com,neimou1225@gmail.com
+
+# === Telegram 通知設定 ===
+# 1. 在 Telegram 搜尋 @BotFather 創建機器人獲取 Token
+# 2. 與機器人對話後，訪問 https://api.telegram.org/bot<TOKEN>/getUpdates 獲取 chat_id
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+TELEGRAM_CHAT_IDS=your_chat_id_1,your_chat_id_2
+
+# === Line Notify 設定 ===
+# 前往 https://notify-bot.line.me/my/ 獲取 Token
+LINE_NOTIFY_TOKEN=your_line_notify_token
+
+# === 系統設定 ===
+# 日誌級別: DEBUG, INFO, WARNING, ERROR
+LOG_LEVEL=INFO
+
+# 交易時段
+TRADING_START_TIME=09:00
+TRADING_END_TIME=13:30
+
+# 風控設定
+MIN_RR_RATIO=1.5
+OPENING_WAIT_MINUTES=20
+MAX_POSITION_RISK=0.02
+
+# === ML 設定 ===
+ML_MODEL_PATH=/Users/Mac/Documents/ETF/AI/Ａi-catch/backend-v3/models
+ML_AUTO_RETRAIN=true
+ML_RETRAIN_DAY=Sunday
+ML_RETRAIN_TIME=20:00

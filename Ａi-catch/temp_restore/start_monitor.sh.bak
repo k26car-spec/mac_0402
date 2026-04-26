@@ -1,0 +1,131 @@
+#!/bin/bash
+# start_monitor.sh - 啟動主力監控系統
+
+echo "🚀 啟動 AI 主力監控系統..."
+
+# 設定顏色輸出
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# 檢查 Python 版本（macOS 相容）
+python_version=$(python3 --version 2>&1 | sed -n 's/Python \([0-9]*\.[0-9]*\).*/\1/p')
+required_version="3.9"
+
+# 如果無法獲取版本，直接檢查 python3 是否存在
+if [ -z "$python_version" ]; then
+    if command -v python3 &> /dev/null; then
+        python_version=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+    else
+        echo -e "${RED}⚠️  找不到 Python 3${NC}"
+        exit 1
+    fi
+fi
+
+# 版本比較
+if [ "$(printf '%s\n' "$required_version" "$python_version" | sort -V | head -n1)" != "$required_version" ]; then 
+    echo -e "${RED}⚠️  Python 版本需要 >= 3.9，當前版本: $python_version${NC}"
+    exit 1
+fi
+
+echo -e "${GREEN}✓ Python 版本檢查通過: $python_version${NC}"
+
+# 檢查必要環境變數（可選）
+if [ -n "$LINE_NOTIFY_TOKEN" ]; then
+    echo -e "${GREEN}✓ LINE_NOTIFY_TOKEN 已設定${NC}"
+else
+    echo -e "${YELLOW}ℹ️  LINE_NOTIFY_TOKEN 未設定，LINE通知將被停用${NC}"
+fi
+
+if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+    echo -e "${GREEN}✓ Telegram 設定已就緒${NC}"
+else
+    echo -e "${YELLOW}ℹ️  Telegram 未完整設定，Telegram通知將被停用${NC}"
+fi
+
+# 建立必要目錄
+echo "📁 建立必要目錄..."
+mkdir -p logs data models
+
+# 建立或啟動虛擬環境
+if [ ! -d "venv" ]; then
+    echo "📦 建立虛擬環境..."
+    python3 -m venv venv
+fi
+
+# 啟動虛擬環境
+echo "🔧 啟動虛擬環境..."
+source venv/bin/activate
+
+# 安裝或更新依賴
+echo "📦 安裝依賴套件..."
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# 檢查配置文件
+if [ ! -f "config.yaml" ]; then
+    echo -e "${RED}⚠️  找不到 config.yaml，請先建立配置文件${NC}"
+    exit 1
+fi
+
+echo -e "${GREEN}✓ 配置文件檢查通過${NC}"
+
+# 顯示監控設定
+echo ""
+echo "=" * 50
+echo "📊 系統配置"
+echo "=" * 50
+python3 -c "
+import yaml
+with open('config.yaml', 'r', encoding='utf-8') as f:
+    config = yaml.safe_load(f)
+    print(f\"系統名稱: {config['system']['name']}")
+    print(f\"版本: {config['system']['version']}")
+    print(f\"監控清單: {len(config['watchlist']['stocks'])} 支股票")
+    print(f\"檢查間隔: {config['monitoring']['check_interval']} 秒")
+    print(f\"信心閥值: {config['ai_model']['confidence_threshold']}")
+"
+echo "=" * 50
+echo ""
+
+# 詢問運行模式
+echo "請選擇運行模式:"
+echo "1) 前台運行（可看到即時日誌）"
+echo "2) 背景運行（daemon模式）"
+echo "3) 測試模式（只檢查配置不實際運行）"
+read -p "請輸入選項 [1-3]: " mode
+
+case $mode in
+    1)
+        echo -e "${GREEN}🚀 以前台模式啟動...${NC}"
+        echo "按 Ctrl+C 停止監控"
+        python3 stock_monitor.py
+        ;;
+    2)
+        echo -e "${GREEN}🚀 以背景模式啟動...${NC}"
+        nohup python3 stock_monitor.py > logs/monitor_output.log 2>&1 &
+        pid=$!
+        echo $pid > .monitor.pid
+        echo -e "${GREEN}✓ 系統已在背景運行 (PID: $pid)${NC}"
+        echo "使用 './stop_monitor.sh' 停止監控"
+        echo "使用 'tail -f logs/stock_monitor.log' 查看日誌"
+        ;;
+    3)
+        echo -e "${YELLOW}🧪 測試模式${NC}"
+        python3 -c "
+import yaml
+from config import *
+print('✓ 配置載入成功')
+print(f'✓ 監控清單: {DEFAULT_WATCHLIST}')
+print('✓ 系統檢查完成')
+"
+        ;;
+    *)
+        echo -e "${RED}無效的選項${NC}"
+        exit 1
+        ;;
+esac
+
+echo ""
+echo -e "${GREEN}✅ 完成${NC}"

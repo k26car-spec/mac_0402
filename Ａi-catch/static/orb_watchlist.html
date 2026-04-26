@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORB 監控股票管理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stock-item {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .stock-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .stock-item.selected {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-color: #16a34a;
+            color: white;
+        }
+
+        .stock-item.selected .stock-name {
+            color: white;
+        }
+
+        .stock-code {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stock-item.selected .stock-code {
+            color: white;
+        }
+
+        .stock-name {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .check-icon {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #22c55e;
+        }
+
+        .stock-item.selected .check-icon {
+            display: flex;
+        }
+
+        .add-section {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .status {
+            text-align: center;
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .status.success {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .status.error {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .category-title {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: bold;
+            margin: 16px 0 8px 0;
+            padding-left: 4px;
+        }
+
+        .count-badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-left: auto;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .quick-add {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .quick-btn {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎯 ORB 監控股票管理 <span
+                style="font-size: 12px; background: #22c55e; padding: 2px 6px; border-radius: 4px; vertical-align: middle;">New
+                V2.1</span></h1>
+        <script>console.log("Loaded ORB Watchlist V2.1 - Stock Names Fixed - " + new Date().toLocaleTimeString());</script>
+
+        <!-- 目前監控中 -->
+        <div class="card">
+            <div class="card-title">
+                📊 目前監控中的股票
+                <span class="count-badge" id="currentCount">0</span>
+            </div>
+            <div id="currentStocks" class="stock-grid">
+                <div class="loading">載入中...</div>
+            </div>
+        </div>
+
+        <!-- 新增股票 -->
+        <div class="card">
+            <div class="card-title">➕ 新增監控股票</div>
+            <div class="add-section">
+                <input type="text" id="newStock" placeholder="輸入股票代碼 (例: 2337)">
+                <button class="btn-primary" onclick="addStock()">新增</button>
+            </div>
+
+            <div class="category-title">🔥 快速新增熱門股</div>
+            <div class="quick-add">
+                <button class="quick-btn" onclick="quickAdd('2337')">2337 旺宏</button>
+                <button class="quick-btn" onclick="quickAdd('3443')">3443 創意</button>
+                <button class="quick-btn" onclick="quickAdd('2303')">2303 聯電</button>
+                <button class="quick-btn" onclick="quickAdd('3034')">3034 聯詠</button>
+                <button class="quick-btn" onclick="quickAdd('2379')">2379 瑞昱</button>
+                <button class="quick-btn" onclick="quickAdd('2603')">2603 長榮</button>
+                <button class="quick-btn" onclick="quickAdd('2609')">2609 陽明</button>
+                <button class="quick-btn" onclick="quickAdd('3231')">3231 緯創</button>
+                <button class="quick-btn" onclick="quickAdd('3017')">3017 奇鋐</button>
+                <button class="quick-btn" onclick="quickAdd('2301')">2301 光寶科</button>
+            </div>
+        </div>
+
+        <!-- 推薦股票 -->
+        <div class="card">
+            <div class="card-title">⭐ 推薦股票 (點擊加入監控)</div>
+
+            <div class="category-title">🤖 AI / 半導體</div>
+            <div class="stock-grid" id="aiStocks"></div>
+
+            <div class="category-title">🚢 航運股</div>
+            <div class="stock-grid" id="shippingStocks"></div>
+
+            <div class="category-title">🏦 金融股</div>
+            <div class="stock-grid" id="financeStocks"></div>
+
+            <div class="category-title">⚡ 其他熱門</div>
+            <div class="stock-grid" id="otherStocks"></div>
+        </div>
+
+        <!-- 操作按鈕 -->
+        <div class="actions">
+            <button class="btn-success" onclick="saveChanges()">💾 儲存變更</button>
+            <button class="btn-danger" onclick="resetToDefault()">🔄 恢復預設</button>
+        </div>
+
+        <div id="status"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+
+        // 股票資料
+        const stockData = {
+            ai: [
+                { code: '2337', name: '旺宏' },
+                { code: '3443', name: '創意' },
+                { code: '2303', name: '聯電' },
+                { code: '3034', name: '聯詠' },
+                { code: '2379', name: '瑞昱' },
+                { code: '3661', name: '世芯-KY' },
+                { code: '2344', name: '華邦電' },
+            ],
+            shipping: [
+                { code: '2603', name: '長榮' },
+                { code: '2609', name: '陽明' },
+                { code: '2615', name: '萬海' },
+            ],
+            finance: [
+                { code: '2891', name: '中信金' },
+                { code: '2886', name: '兆豐金' },
+                { code: '2884', name: '玉山金' },
+                { code: '2892', name: '第一金' },
+            ],
+            other: [
+                { code: '3231', name: '緯創' },
+                { code: '2308', name: '台達電' },
+                { code: '3017', name: '奇鋐' },
+                { code: '2301', name: '光寶科' },
+                { code: '6505', name: '台塑化' },
+                { code: '2002', name: '中鋼' },
+            ]
+        };
+
+        // 預設股票
+        const defaultStocks = [
+            "2317", "5521", "2313", "8074", "3163", "1303", "6257", "3231", "1815", "8422", "6770", "3265", "3706", "2367", "2337", "2344", "3481", "2312", "3037", "3363", "2327", "8155", "6282", "5498", "2314", "1326", "1605", "2330", "2454", "3034", "2379", "2382", "3008", "2881", "2882", "2891", "2412", "2609", "2618", "1301", "1101", "2002", "2912", "9910", "2301", "8046", "3189", "2408", "2303", "6285", "8150", "1802", "2371", "6239", "2449"
+        ];
+
+        // 目前選中的股票
+        let selectedStocks = [...defaultStocks];
+
+        // 股票名稱對照表（完整版 - 涵蓋所有監控股票）
+        const stockNames = {
+            // 台灣權值股
+            '2330': '台積電', '2317': '鴻海', '2454': '聯發科', '2881': '富邦金', '2882': '國泰金',
+            '3008': '大立光', '2412': '中華電', '2308': '台達電', '2886': '兆豐金', '2891': '中信金',
+            '2884': '玉山金', '2892': '第一金', '2002': '中鋼', '1101': '台泥', '1301': '台塑',
+            '1303': '南亞', '1326': '台化', '6505': '台塑化', '2912': '統一超', '9910': '豐泰',
+
+            // AI / 半導體 / 代工 / 封測
+            '2303': '聯電', '2337': '旺宏', '2344': '華邦電', '2449': '京元電', '6257': '矽格',
+            '6770': '力積電', '3706': '神達', '2371': '大同', '2312': '金寶', '3265': '台星科',
+            '8150': '南茂', '2301': '光寶科', '3017': '奇鋐', '6239': '力成', '3661': '世芯-KY',
+            '3443': '創意', '6669': '緯穎', '2356': '英業達', '2357': '華碩', '6176': '瑞儀',
+            '3529': '力旺', '3693': '營邦', '3035': '智原', '3533': '嘉澤', '5274': '信驊',
+
+            // 網通 / 光通訊 / 低軌衛星
+            '2313': '華碩', '2314': '台揚', '6285': '啟碁', '3163': '波若威', '3363': '上詮',
+            '3491': '昇達科', '5388': '中磊', '3062': '建漢', '4979': '華星光', '6442': '光聖',
+            '6426': '統新', '4909': '新復興',
+
+            // 記憶體
+            '2408': '南亞科', '8299': '群聯', '3260': '威剛', '2451': '創見', '3006': '晶豪科',
+            '3257': '虹冠電',
+
+            // IC 設計 / 高價股
+            '3034': '聯詠', '2379': '瑞昱', '5269': '祥碩', '4966': '譜瑞-KY', '6643': 'M31',
+            '6531': '愛普', '6533': '晶心科', '8081': '致新',
+
+            // PCB / 面板 / 被動元件 / 零組件
+            '3037': '欣興', '8046': '南電', '3189': '景碩', '2367': '燿華', '6153': '嘉聯益',
+            '8074': '鉅橡', '8155': '博智', '5498': '凱崴', '1815': '富喬', '3481': '群創',
+            '2327': '國巨', '6282': '康舒', '1605': '華新', '2409': '友達', '6116': '彩晶',
+
+            // 航運
+            '2603': '長榮', '2609': '陽明', '2615': '萬海', '2618': '長榮航', '2637': '慧洋-KY',
+
+            // 緯創與其他
+            '3231': '緯創', '5521': '工信', '8422': '可寧衛', '1802': '台玻'
+        };
+
+        // ✅ 調試：輸出 stockNames 物件狀態
+        console.log('📊 stockNames 物件已定義，總共:', Object.keys(stockNames).length, '個股票');
+        console.log('🔍 測試讀取 6770:', stockNames['6770']);
+        console.log('🔍 測試讀取 8150:', stockNames['8150']);
+        console.log('🔍 測試讀取 2371:', stockNames['2371']);
+
+        // 初始化
+        async function init() {
+            console.log('🚀 開始初始化...');
+            console.log('📋 selectedStocks 前5個:', selectedStocks.slice(0, 5));
+            console.log('📋 對應名稱:', selectedStocks.slice(0, 5).map(code => `${code}: ${stockNames[code] || '未定義'}`));
+
+            await loadCurrentStocks();
+            renderRecommendedStocks();
+        }
+
+        // 股票分類定義 (根據用戶自選股更新)
+        const stockCategories = {
+            'ai_semi': {
+                title: '🤖 AI / 半導體 / 代工 / 封測',
+                codes: [
+                    '2330', '2317', '3231', '2382', '2303', '3706', '2371', '2312', '6770',
+                    '2449', '6257', '6239', '3265', '8150', '2301', '3017',
+                    '3661', '3443', '6669', '2356', '2357', '6176', '3529', '3693', '3035', '3533', '5274'
+                ]
+            },
+            'satellite': {
+                title: '📡 網通 / 光通訊 / 低軌衛星',
+                codes: [
+                    '2313', '2314', '6285', '3163', '3363', '2412',
+                    '3491', '5388', '3062', '4979', '6442', '6426', '4909'
+                ]
+            },
+            'memory': {
+                title: '💾 記憶體',
+                codes: ['2337', '2344', '2408', '8299', '3260', '2451', '3006', '3257']
+            },
+            'ic_design': {
+                title: '✨ IC 設計 / 高價股',
+                codes: [
+                    '2454', '3034', '2379', '3008',
+                    '5269', '4966', '6643', '6531', '6533', '8081'
+                ]
+            },
+            'pcb_components': {
+                title: '🔌 PCB / 面板 / 被動元件 / 零組件',
+                codes: [
+                    '3037', '8046', '3189', '2367', '6153', '8074', '8155', '5498', '1815',
+                    '3481', '2327', '6282', '1605',
+                    '2409', '6116'
+                ]
+            },
+            'shipping_finance': {
+                title: '🚢 傳產 / 金融 / 航運 / 其他',
+                codes: [
+                    '2609', '2618', '2881', '1301', '1326', '1303', '5521', '8422', '1802',
+                    '2603', '2615', '2637', '2882', '2891', '2884', '2892', '2002', '1101', '2912', '9910'
+                ]
+            }
+        };
+
+        function getCategory(code) {
+            for (const [key, category] of Object.entries(stockCategories)) {
+                if (category.codes.includes(code)) {
+                    return key;
+                }
+            }
+            return 'other';
+        }
+
+        // 載入目前監控的股票
+        async function loadCurrentStocks() {
+            try {
+                const res = await fetch(`${API_BASE}/api/orb/watchlist`);
+                if (res.ok) {
+                    const data = await res.json();
+                    selectedStocks = data.watchlist || defaultStocks;
+
+                    // 從 API 回傳的 details 更新股票名稱
+                    // ✅ 只有當名稱不等於代碼本身時才更新（避免覆蓋已定義的名稱）
+                    if (data.details) {
+                        data.details.forEach(d => {
+                            if (d.code && d.name && d.name !== d.code) {
+                                stockNames[d.code] = d.name;
+                            }
+                        });
+                    }
+                }
+            } catch (e) {
+                console.log('使用預設股票清單');
+                selectedStocks = [...defaultStocks];
+            }
+
+            // 渲染並自動獲取缺少的名稱
+            renderCurrentStocks();
+            await fetchMissingNames();
+        }
+
+        // 從 API 獲取單個股票名稱（優先富邦 API）
+        async function fetchStockName(code) {
+            try {
+                console.log(`🔍 開始查詢 ${code} 的股票名稱...`);
+
+                // ✅ 第一優先：富邦 API (最快最準確)
+                try {
+                    const res = await fetch(`${API_BASE}/api/fubon/quote/${code}`, {
+                        signal: AbortSignal.timeout(2000)
+                    });
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.name && data.name !== code) {
+                            console.log(`✅ [Fubon] 查詢到 ${code}: ${data.name}`);
+                            return data.name;
+                        }
+                        if (data.stock_name && data.stock_name !== code) {
+                            console.log(`✅ [Fubon] 查詢到 ${code}: ${data.stock_name}`);
+                            return data.stock_name;
+                        }
+                    }
+                } catch (e) {
+                    console.log(`⚠️ [Fubon] ${code} 查詢失敗: ${e.message}`);
+                }
+
+                // ✅ 第二優先：stock-analysis API
+                try {
+                    const res = await fetch(`${API_BASE}/api/stock-analysis/stock-name/${code}`, {
+                        signal: AbortSignal.timeout(3000)
+                    });
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.name && data.name !== code) {
+                            console.log(`✅ [Analysis] 查詢到 ${code}: ${data.name}`);
+                            return data.name;
+                        }
+                    }
+                } catch (e) {
+                    console.log(`⚠️ [Analysis] ${code} 查詢失敗: ${e.message}`);
+                }
+
+                // ✅ 第三優先：comprehensive API (yfinance)
+                try {
+                    const res = await fetch(`${API_BASE}/api/stock-analysis/comprehensive/${code}`, {
+                        signal: AbortSignal.timeout(3000)
+                    });
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.stock_name && data.stock_name !== code) {
+                            console.log(`✅ [Comprehensive] 查詢到 ${code}: ${data.stock_name}`);
+                            return data.stock_name;
+                        }
+                        if (data.name && data.name !== code) {
+                            console.log(`✅ [Comprehensive] 查詢到 ${code}: ${data.name}`);
+                            return data.name;
+                        }
+                    }
+                } catch (e) {
+                    console.log(`⚠️ [Comprehensive] ${code} 查詢失敗: ${e.message}`);
+                }
+
+                // ✅ 第四優先：big-order/quote API
+                try {
+                    const res = await fetch(`${API_BASE}/api/big-order/quote/${code}`, {
+                        signal: AbortSignal.timeout(3000)
+                    });
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.name && data.name !== code) {
+                            console.log(`✅ [BigOrder] 查詢到 ${code}: ${data.name}`);
+                            return data.name;
+                        }
+                    }
+                } catch (e) {
+                    console.log(`⚠️ [BigOrder] ${code} 查詢失敗: ${e.message}`);
+                }
+
+                console.log(`❌ 所有 API 都無法查詢到 ${code} 的名稱`);
+                return null; // ✅ 返回 null，而不是股票代碼，避免覆蓋已有名稱
+            } catch (e) {
+                console.log(`❌ 查詢 ${code} 時發生錯誤:`, e.message);
+                return null; // ✅ 返回 null，而不是股票代碼
+            }
+        }
+
+        // 獲取缺少的股票名稱（批次處理 - 優化版）
+        async function fetchMissingNames() {
+            const missingCodes = selectedStocks.filter(code => !stockNames[code]);
+
+            if (missingCodes.length === 0) {
+                console.log('✅ 所有股票名稱已完整');
+                return;
+            }
+
+            console.log(`🚀 批量查詢 ${missingCodes.length} 個股票名稱...`);
+
+            // ✨ 優化 1: 檢查 localStorage 緩存
+            const cachedNames = getCachedStockNames();
+            const stillMissing = [];
+
+            missingCodes.forEach(code => {
+                if (cachedNames[code]) {
+                    stockNames[code] = cachedNames[code];
+                    console.log(`💾 從緩存讀取 ${code}: ${cachedNames[code]}`);
+                } else {
+                    stillMissing.push(code);
+                }
+            });
+
+            // 立即更新 UI（顯示緩存的名稱）
+            if (missingCodes.length > stillMissing.length) {
+                renderCurrentStocks();
+            }
+
+            if (stillMissing.length === 0) {
+                console.log('✅ 所有名稱已從緩存載入');
+                return;
+            }
+
+            console.log(`🌐 需要從API查詢 ${stillMissing.length} 個股票`);
+
+            // ✨ 優化 2: 使用批量API（一次查詢所有股票）
+            try {
+                const startTime = Date.now();
+
+                const response = await fetch(`${API_BASE}/api/stocks/batch-names`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ codes: stillMissing })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API返回 ${response.status}`);
+                }
+
+                const results = await response.json();
+                const elapsedMs = Date.now() - startTime;
+
+                console.log(`✅ 批量查詢完成！耗時: ${elapsedMs}ms`);
+                console.log(`   平均每檔: ${(elapsedMs / stillMissing.length).toFixed(0)}ms`);
+
+                // 更新股票名稱
+                const namesToCache = {};
+                results.forEach(result => {
+                    if (result.name && result.name !== result.code) {
+                        stockNames[result.code] = result.name;
+                        namesToCache[result.code] = result.name;
+                        console.log(`✅ [${result.source}] ${result.code}: ${result.name}`);
+                    }
+                });
+
+                // ✨ 優化 3: 保存到 localStorage 緩存
+                saveStockNamesToCache(namesToCache);
+
+                // 立即更新 UI
+                renderCurrentStocks();
+
+            } catch (error) {
+                console.error('❌ 批量查詢失敗:', error);
+                console.log('🔄 降級使用逐個查詢...');
+
+                // Fallback: 如果批量API失敗，使用原有的逐個查詢
+                await fetchMissingNamesLegacy(stillMissing);
+            }
+
+            console.log('✅ 股票名稱查詢完成');
+        }
+
+        // ✨ localStorage 緩存函數
+        const CACHE_KEY = 'orb_stock_names_cache';
+        const CACHE_TTL = 24 * 60 * 60 * 1000; // 24小時
+
+        function getCachedStockNames() {
+            try {
+                const cached = localStorage.getItem(CACHE_KEY);
+                if (!cached) return {};
+
+                const data = JSON.parse(cached);
+
+                // 檢查是否過期
+                if (Date.now() - data.timestamp > CACHE_TTL) {
+                    localStorage.removeItem(CACHE_KEY);
+                    console.log('🗑️ 緩存已過期，已清除');
+                    return {};
+                }
+
+                console.log(`💾 載入緩存: ${Object.keys(data.names).length} 檔股票`);
+                return data.names || {};
+            } catch (e) {
+                console.error('緩存讀取失敗:', e);
+                return {};
+            }
+        }
+
+        function saveStockNamesToCache(newNames) {
+            try {
+                // 讀取現有緩存
+                const existing = getCachedStockNames();
+
+                // 合併新數據
+                const merged = { ...existing, ...newNames };
+
+                // 保存
+                localStorage.setItem(CACHE_KEY, JSON.stringify({
+                    names: merged,
+                    timestamp: Date.now()
+                }));
+
+                console.log(`💾 已保存 ${Object.keys(newNames).length} 檔股票名稱到緩存`);
+            } catch (e) {
+                console.error('緩存儲存失敗:', e);
+            }
+        }
+
+        // Fallback: 原有的逐個查詢邏輯（保留作為備援）
+        async function fetchMissingNamesLegacy(codes) {
+            const batchSize = 10; // 增加批次大小
+            for (let i = 0; i < codes.length; i += batchSize) {
+                const batch = codes.slice(i, i + batchSize);
+                console.log(`📦 處理批次 ${Math.floor(i / batchSize) + 1}/${Math.ceil(codes.length / batchSize)}`);
+
+                // 並行查詢當前批次
+                const promises = batch.map(async code => {
+                    const name = await fetchStockName(code);
+                    if (name && name !== code) {
+                        stockNames[code] = name;
+                    }
+                });
+
+                await Promise.all(promises);
+
+                // 立即更新 UI
+                renderCurrentStocks();
+
+                // 批次之間延遲（降低到200ms）
+                if (i + batchSize < codes.length) {
+                    await new Promise(resolve => setTimeout(resolve, 200));
+                }
+            }
+        }
+
+        // 渲染目前監控的股票 (已分類)
+        function renderCurrentStocks() {
+            const container = document.getElementById('currentStocks');
+            document.getElementById('currentCount').textContent = selectedStocks.length;
+
+            if (selectedStocks.length === 0) {
+                container.innerHTML = '<div class="loading">尚未設定監控股票</div>';
+                return;
+            }
+
+            // 1. 分組
+            const grouped = {
+                'ai_semi': [],
+                'satellite': [],
+                'memory': [],
+                'ic_design': [],
+                'shipping_finance': [],
+                'pcb_components': [],
+                'other': []
+            };
+
+            selectedStocks.forEach(code => {
+                const cat = getCategory(code);
+                if (grouped[cat]) {
+                    grouped[cat].push(code);
+                } else {
+                    grouped['other'].push(code);
+                }
+            });
+
+            // 2. 構建 HTML
+            let html = '';
+
+            // 定義順序
+            const order = ['ai_semi', 'satellite', 'memory', 'ic_design', 'pcb_components', 'shipping_finance', 'other'];
+
+            order.forEach(key => {
+                const stocks = grouped[key];
+                if (stocks && stocks.length > 0) {
+                    const title = stockCategories[key] ? stockCategories[key].title : '📁 其他分類';
+                    html += `<div style="grid-column: 1 / -1; margin-top: 10px;" class="category-title">${title} (${stocks.length})</div>`;
+
+                    stocks.forEach((code, idx) => {
+                        const nameValue = stockNames[code];
+                        const displayName = nameValue || '<span style="color:#999">查詢中...</span>';
+
+                        // 調試：輸出前3個股票的渲染信息
+                        if (idx < 3) {
+                            console.log(`🎨 渲染 ${code}: stockNames[${code}] = "${nameValue}", 顯示 = "${displayName}"`);
+                        }
+
+                        html += `
+                            <div class="stock-item selected" onclick="removeStock('${code}')">
+                                <div class="check-icon">✓</div>
+                                <div class="stock-code">${code}</div>
+                                <div class="stock-name">${displayName}</div>
+                            </div>
+                        `;
+                    });
+                }
+            });
+
+            container.innerHTML = html;
+        }
+
+        // 渲染推薦股票
+        function renderRecommendedStocks() {
+            renderCategory('aiStocks', stockData.ai);
+            renderCategory('shippingStocks', stockData.shipping);
+            renderCategory('financeStocks', stockData.finance);
+            renderCategory('otherStocks', stockData.other);
+        }
+
+        function renderCategory(containerId, stocks) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = stocks.map(s => {
+                const isSelected = selectedStocks.includes(s.code);
+                return `
+                    <div class="stock-item ${isSelected ? 'selected' : ''}" onclick="toggleStock('${s.code}')">
+                        <div class="check-icon">✓</div>
+                        <div class="stock-code">${s.code}</div>
+                        <div class="stock-name">${s.name}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 切換股票選中狀態
+        function toggleStock(code) {
+            if (selectedStocks.includes(code)) {
+                selectedStocks = selectedStocks.filter(c => c !== code);
+            } else {
+                selectedStocks.push(code);
+            }
+            renderCurrentStocks();
+            renderRecommendedStocks();
+        }
+
+        // 移除股票
+        function removeStock(code) {
+            selectedStocks = selectedStocks.filter(c => c !== code);
+            renderCurrentStocks();
+            renderRecommendedStocks();
+        }
+
+        // 新增股票 - 先新增再異步獲取名稱
+        async function addStock() {
+            const input = document.getElementById('newStock');
+            const code = input.value.trim();
+
+            if (!code) {
+                showStatus('請輸入股票代碼', 'error');
+                return;
+            }
+
+            if (!/^\d{4}$/.test(code)) {
+                showStatus('請輸入 4 位數股票代碼', 'error');
+                return;
+            }
+
+            if (selectedStocks.includes(code)) {
+                showStatus(`${code} 已在監控清單中`, 'error');
+                return;
+            }
+
+            // 先新增股票
+            selectedStocks.push(code);
+            input.value = '';
+            renderCurrentStocks();
+            renderRecommendedStocks();
+            showStatus(`✅ 已新增 ${code}`, 'success');
+
+            // 異步獲取股票名稱（不阻塞）
+            fetchStockNameAsync(code);
+        }
+
+        // 異步獲取股票名稱（不阻塞主流程）
+        async function fetchStockNameAsync(code) {
+            if (stockNames[code]) return; // 已有名稱
+
+            try {
+                // 使用 fetchStockName 函數（已整合多個 API 來源）
+                const name = await fetchStockName(code);
+                if (name) {
+                    stockNames[code] = name;
+                    // 重新渲染以顯示名稱
+                    renderCurrentStocks();
+                }
+            } catch (e) {
+                console.log(`獲取 ${code} 名稱失敗:`, e.message);
+            }
+        }
+
+        // 快速新增
+        function quickAdd(code) {
+            if (!selectedStocks.includes(code)) {
+                selectedStocks.push(code);
+                renderCurrentStocks();
+                renderRecommendedStocks();
+                showStatus(`已新增 ${code} ${stockNames[code] || ''}`, 'success');
+            } else {
+                showStatus(`${code} 已在監控清單中`, 'error');
+            }
+        }
+
+        // 儲存變更
+        async function saveChanges() {
+            try {
+                const res = await fetch(`${API_BASE}/api/orb/watchlist`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ watchlist: selectedStocks })
+                });
+
+                if (res.ok) {
+                    showStatus(`✅ 已儲存！共 ${selectedStocks.length} 檔股票`, 'success');
+                } else {
+                    throw new Error('儲存失敗');
+                }
+            } catch (e) {
+                showStatus('❌ 儲存失敗：' + e.message, 'error');
+            }
+        }
+
+        // 恢復預設
+        function resetToDefault() {
+            if (confirm('確定要恢復預設股票清單嗎？')) {
+                selectedStocks = [...defaultStocks];
+                renderCurrentStocks();
+                renderRecommendedStocks();
+                showStatus('已恢復預設股票清單', 'success');
+            }
+        }
+
+        // 顯示狀態
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.className = 'status ' + type;
+            status.textContent = message;
+            status.style.display = 'block';
+
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 3000);
+        }
+
+        // Enter 鍵新增
+        document.getElementById('newStock').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addStock();
+        });
+
+        // 初始化
+        init();
+    </script>
+</body>
+
+</html>

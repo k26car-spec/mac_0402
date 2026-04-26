@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日誌和數據庫
+*.log
+*.db
+*.sqlite
+
+# 環境變數
+.env
+.env.*
+fubon.env
+
+# 富邦憑證
+*.pfx
+*.p12
+
+# v3.0 特定
+backend-v3/venv/
+frontend-v3/node_modules/
+frontend-v3/.next/
+
+# 數據和備份
+data/historical/
+backups/
+*.csv

@@ -1,0 +1,156 @@
+{
+  "stock_code": "8046",
+  "stock_name": "南電",
+  "overall_score": 48.7,
+  "recommendation": "賣出",
+  "target_price": 253.05,
+  "stop_loss": 216.9,
+  "ai_summary": "南電 整體評分偏低 (48.7分)，出現 4 個買入訊號，技術面偏多。",
+  "technical_indicators": {
+    "current_price": 241.0,
+    "change_pct": 0.21,
+    "ma5": 241.5,
+    "ma10": 240.8,
+    "ma20": 255.2,
+    "ma60": 265.92,
+    "ma_arrangement": "均線糾結",
+    "ma_signal": "突破MA10、在MA5之下",
+    "ma_trend": "短期偏空、中期偏空、長期偏空",
+    "resistance_1": 241.5,
+    "resistance_2": 250.0,
+    "support_1": 240.8,
+    "support_2": 240.0,
+    "rsi_14": 23.65,
+    "macd": -7.0267,
+    "trend": "盤整"
+  },
+  "financial_health": {
+    "roe": 0,
+    "eps": 0,
+    "revenue_growth_3y": 0,
+    "gross_margin": 0,
+    "debt_ratio": 0
+  },
+  "institutional_trading": {
+    "foreign_net": -3756869,
+    "trust_net": -259035,
+    "dealer_net": 729764,
+    "total_net": -3286140
+  },
+  "volume_price_analysis": {
+    "trend_direction": "bullish",
+    "trend_confidence": 93.75,
+    "volume_price_confirmation": "價漲量增",
+    "confirmation_signal": "bullish_confirmation",
+    "confirmation_strength": 0.01,
+    "divergence_detected": true,
+    "divergence_type": "bullish_divergence",
+    "divergence_description": "價格創新低但成交量能未跟破，可能反轉上漲",
+    "volume_ratio": 0.85,
+    "obv_trend": "bullish",
+    "predicted_direction": "up",
+    "key_signals": [
+      "量價背離 (bullish_divergence)"
+    ]
+  },
+  "related_news": [
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-02",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-02",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-02",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-02",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-02",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    }
+  ],
+  "chip_analysis": {
+    "futures": {
+      "foreign_futures_net": 0,
+      "pc_ratio": 0,
+      "foreign_stance": "中性",
+      "market_sentiment": "極度樂觀"
+    },
+    "margin": {
+      "retail_sentiment": "資料取得中",
+      "margin_change_ratio": 0,
+      "short_change_ratio": 0
+    },
+    "summary": {
+      "overall_stance": "中性",
+      "total_score": 0.0
+    },
+    "continuous": {}
+  },
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "RSI 超賣",
+      "description": "RSI (23.65) 進入超賣區，可能反彈",
+      "confidence": 65
+    },
+    {
+      "type": "buy",
+      "name": "量價確認 (價漲量增)",
+      "description": "價漲量增，量價配合良好",
+      "confidence": 80
+    },
+    {
+      "type": "buy",
+      "name": "量價看漲背離",
+      "description": "價格創新低但成交量能未跟破，可能反轉上漲",
+      "confidence": 75
+    }
+  ],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "MACD 死亡交叉",
+      "description": "MACD 死亡交叉且在零軸之下，空頭動能強",
+      "confidence": 80
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "medium",
+      "name": "ROE 普通",
+      "description": "ROE (0%)，獲利能力一般"
+    }
+  ]
+}

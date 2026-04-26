@@ -1,0 +1,114 @@
+{
+  "stock_code": "2337",
+  "stock_name": "旺宏",
+  "overall_score": 54.0,
+  "recommendation": "觀望",
+  "target_price": 46.04,
+  "stop_loss": 38.92,
+  "ai_summary": "旺宏 整體評分中性 (54.0分)，出現 2 個買入訊號，技術面偏多。 注意：有 2 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 41.85,
+    "change_pct": 8.0,
+    "ma5": 39.38,
+    "ma10": 38.71,
+    "ma20": 37.47,
+    "ma60": 34.27,
+    "ma_arrangement": "多頭排列",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 42.0,
+    "resistance_2": 50.0,
+    "support_1": 40.0,
+    "support_2": 39.38,
+    "rsi_14": 69.32,
+    "macd": 1.3632,
+    "trend": "多頭"
+  },
+  "financial_health": {
+    "roe": -10.37,
+    "eps": -2.45,
+    "revenue_growth_3y": 5.9,
+    "gross_margin": 14.93,
+    "debt_ratio": 98.44
+  },
+  "institutional_trading": {
+    "foreign_net": 26112056,
+    "trust_net": 185000,
+    "dealer_net": 8494249,
+    "total_net": 34791305
+  },
+  "related_news": [
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-31",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-31",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-31",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-31",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-31",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    }
+  ],
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "多頭排列",
+      "description": "技術面多頭排列，趨勢向上",
+      "confidence": 75
+    },
+    {
+      "type": "buy",
+      "name": "MACD 黃金交叉",
+      "description": "MACD 黃金交叉且在零軸之上，多頭動能強",
+      "confidence": 80
+    }
+  ],
+  "sell_signals": [],
+  "risk_warnings": [
+    {
+      "level": "high",
+      "name": "ROE 偏低",
+      "description": "ROE (-10.37%)，獲利能力待改善"
+    },
+    {
+      "level": "high",
+      "name": "負債比過高",
+      "description": "負債比 (98.44%)，財務槓桿風險高"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+[
+  {
+    "code": "3481",
+    "original_mae": 0.15620379149913788,
+    "current_mae": 0.15555083751678467,
+    "change_pct": -0.41801416987808154,
+    "status": "稳定",
+    "method": "Augmented"
+  },
+  {
+    "code": "5521",
+    "original_mae": 0.1534498929977417,
+    "current_mae": 0.1518344134092331,
+    "change_pct": -1.0527733561419823,
+    "status": "稳定",
+    "method": "Augmented"
+  },
+  {
+    "code": "2313",
+    "original_mae": 0.13425838947296143,
+    "current_mae": 0.13874681293964386,
+    "change_pct": 3.3431232746809965,
+    "status": "稳定",
+    "method": "Augmented"
+  },
+  {
+    "code": "2312",
+    "original_mae": 0.09647652506828308,
+    "current_mae": 0.09702026844024658,
+    "change_pct": 0.5636017379136079,
+    "status": "稳定",
+    "method": "Regularized"
+  },
+  {
+    "code": "6285",
+    "original_mae": 0.11262246966362,
+    "current_mae": 0.11495143175125122,
+    "change_pct": 2.0679373259948512,
+    "status": "稳定",
+    "method": "Augmented"
+  },
+  {
+    "code": "8150",
+    "original_mae": 0.13526703417301178,
+    "current_mae": 0.13872139155864716,
+    "change_pct": 2.553731888005409,
+    "status": "稳定",
+    "method": "Augmented"
+  },
+  {
+    "code": "2371",
+    "original_mae": 0.11361463367938995,
+    "current_mae": 0.11318359524011612,
+    "change_pct": -0.379386374197346,
+    "status": "稳定",
+    "method": "Augmented"
+  },
+  {
+    "code": "2327",
+    "original_mae": 0.11381570994853973,
+    "current_mae": 0.09557704627513885,
+    "change_pct": -16.024733036983427,
+    "status": "提升",
+    "method": "Regularized"
+  },
+  {
+    "code": "6257",
+    "original_mae": 0.1367008537054062,
+    "current_mae": 0.13543927669525146,
+    "change_pct": -0.9228742732459115,
+    "status": "稳定",
+    "method": "Regularized"
+  },
+  {
+    "code": "6770",
+    "original_mae": 0.13103638589382172,
+    "current_mae": 0.12357074022293091,
+    "change_pct": -5.697383684666176,
+    "status": "提升",
+    "method": "Augmented"
+  },
+  {
+    "code": "6282",
+    "original_mae": 0.12347530573606491,
+    "current_mae": 0.12199528515338898,
+    "change_pct": -1.1986369046451744,
+    "status": "稳定",
+    "method": "Regularized"
+  },
+  {
+    "code": "6239",
+    "original_mae": 0.12637430429458618,
+    "current_mae": 0.12334271520376205,
+    "change_pct": -2.3988967597062363,
+    "status": "稳定",
+    "method": "Augmented"
+  },
+  {
+    "code": "2379",
+    "original_mae": 0.10997562110424042,
+    "current_mae": 0.10780829936265945,
+    "change_pct": -1.9707292578294844,
+    "status": "稳定",
+    "method": "Regularized"
+  },
+  {
+    "code": "2454",
+    "original_mae": 0.12730053067207336,
+    "current_mae": 0.1290895640850067,
+    "change_pct": 1.405362101389747,
+    "status": "稳定",
+    "method": "Augmented"
+  },
+  {
+    "code": "3008",
+    "original_mae": 0.08327613770961761,
+    "current_mae": 0.08291540294885635,
+    "change_pct": -0.4331790242471818,
+    "status": "稳定",
+    "method": "Augmented"
+  },
+  {
+    "code": "1802",
+    "original_mae": 0.10332212597131729,
+    "current_mae": 0.10423774272203445,
+    "change_pct": 0.8861768397713212,
+    "status": "稳定",
+    "method": "Regularized"
+  },
+  {
+    "code": "2303",
+    "original_mae": 0.11913660913705826,
+    "current_mae": 0.12001780420541763,
+    "change_pct": 0.739650955942201,
+    "status": "稳定",
+    "method": "Regularized"
+  },
+  {
+    "code": "2367",
+    "original_mae": 0.13491900265216827,
+    "current_mae": 0.12716762721538544,
+    "change_pct": -5.745206593889883,
+    "status": "提升",
+    "method": "Augmented"
+  },
+  {
+    "code": "2337",
+    "original_mae": 0.1433628797531128,
+    "current_mae": 0.13979817926883698,
+    "change_pct": -2.4864877787155493,
+    "status": "稳定",
+    "method": "Augmented"
+  }
+]

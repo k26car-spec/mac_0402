@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>測試刪除功能</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #1e40af;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .stock-list {
+            margin: 20px 0;
+        }
+
+        .stock-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f3f4f6;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .stock-item:hover {
+            background: #e5e7eb;
+            transform: translateX(5px);
+        }
+
+        .stock-info {
+            flex-grow: 1;
+        }
+
+        .stock-code {
+            font-weight: 700;
+            color: #1e40af;
+            font-size: 1.2em;
+        }
+
+        .stock-name {
+            color: #6b7280;
+            font-size: 0.9em;
+        }
+
+        .btn-delete {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-delete:active {
+            transform: scale(0.95);
+        }
+
+        .btn-refresh {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+            margin: 20px 0;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-refresh:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .status {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .status.success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status.info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🗑️ 監控清單刪除測試</h1>
+
+        <div id="status" class="status info">
+            正在載入股票清單...
+        </div>
+
+        <button onclick="loadStocks()" class="btn-refresh">
+            🔄 重新載入清單
+        </button>
+
+        <div id="stock-list" class="stock-list">
+            <div class="loading">載入中...</div>
+        </div>
+
+        <div
+            style="margin-top: 30px; padding: 20px; background: #f9fafb; border-radius: 10px; border-left: 4px solid #3b82f6;">
+            <h3 style="color: #1e40af; margin-bottom: 10px;">💡 使用說明</h3>
+            <ol style="color: #4b5563; line-height: 1.8; margin-left: 20px;">
+                <li>點擊「刪除」按鈕移除股票</li>
+                <li>確認刪除後，股票會從列表和 config.yaml 中移除</li>
+                <li>點擊「重新載入清單」可刷新顯示</li>
+                <li>打開開發者工具 (F12) 可查看詳細日誌</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        async function loadStocks() {
+            const statusDiv = document.getElementById('status');
+            const listDiv = document.getElementById('stock-list');
+
+            console.log('🔄 開始載入股票清單...');
+            statusDiv.className = 'status info';
+            statusDiv.textContent = '正在載入股票清單...';
+            listDiv.innerHTML = '<div class="loading">載入中...</div>';
+
+            try {
+                const response = await fetch('http://127.0.0.1:8082/api/stocks');
+                console.log('📡 API 響應狀態:', response.status);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('✅ 收到數據:', data);
+
+                if (!data.stocks || data.stocks.length === 0) {
+                    listDiv.innerHTML = '<div class="loading">目前沒有監控股票</div>';
+                    statusDiv.className = 'status info';
+                    statusDiv.textContent = '清單為空';
+                    return;
+                }
+
+                // 渲染股票列表
+                listDiv.innerHTML = data.stocks.map(stock => `
+                    <div class="stock-item" id="stock-${stock.code}">
+                        <div class="stock-info">
+                            <div class="stock-code">${stock.code}</div>
+                            <div class="stock-name">${stock.name || stock.full_name}</div>
+                        </div>
+                        <button class="btn-delete" onclick="event.stopPropagation(); deleteStock('${stock.code}', event)">
+                            🗑️ 刪除
+                        </button>
+                    </div>
+                `).join('');
+
+                statusDiv.className = 'status success';
+                statusDiv.textContent = `✅ 已載入 ${data.stocks.length} 支股票（點擊刪除按鈕即可移除）`;
+                console.log('✅ 清單渲染完成');
+
+            } catch (error) {
+                console.error('❌ 載入失敗:', error);
+                statusDiv.className = 'status error';
+                statusDiv.textContent = `❌ 載入失敗: ${error.message}`;
+                listDiv.innerHTML = '<div class="loading">載入失敗，請重試</div>';
+            }
+        }
+
+        async function deleteStock(stockCode, event) {
+            // 阻止事件冒泡
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            console.log('🗑️ 準備刪除股票:', stockCode);
+
+            // 直接刪除，不需要確認（已在按鈕文字中說明）
+            // 如果需要確認，用戶可以等1秒後看到狀態訊息再決定是否刷新
+
+            const statusDiv = document.getElementById('status');
+            const stockItem = document.getElementById(`stock-${stockCode}`);
+
+            try {
+                console.log('📡 發送刪除請求...');
+                statusDiv.className = 'status info';
+                statusDiv.textContent = `正在刪除 ${stockCode}...`;
+
+                // 添加視覺回饋
+                if (stockItem) {
+                    stockItem.style.opacity = '0.5';
+                }
+
+                const response = await fetch('http://127.0.0.1:8082/api/stocks/remove', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ stock_code: stockCode })
+                });
+
+                console.log('📡 API 響應狀態:', response.status);
+                const result = await response.json();
+                console.log('📦 響應數據:', result);
+
+                if (result.success) {
+                    console.log('✅ 刪除成功!');
+
+                    // 移除元素並添加動畫
+                    if (stockItem) {
+                        stockItem.style.transform = 'translateX(-100%)';
+                        stockItem.style.opacity = '0';
+                        setTimeout(() => {
+                            stockItem.remove();
+                        }, 300);
+                    }
+
+                    statusDiv.className = 'status success';
+                    statusDiv.textContent = `✅ ${result.message || '刪除成功'}`;
+
+                    // 3秒後重新載入
+                    setTimeout(() => {
+                        loadStocks();
+                    }, 1500);
+
+                } else {
+                    throw new Error(result.message || '刪除失敗');
+                }
+
+            } catch (error) {
+                console.error('❌ 刪除失敗:', error);
+                statusDiv.className = 'status error';
+                statusDiv.textContent = `❌ 刪除失敗: ${error.message}`;
+
+                // 恢復透明度
+                if (stockItem) {
+                    stockItem.style.opacity = '1';
+                }
+            }
+        }
+
+        // 頁面載入時自動載入股票
+        window.addEventListener('load', () => {
+            console.log('🚀 頁面已載入，開始初始化...');
+            loadStocks();
+        });
+    </script>
+</body>
+
+</html>

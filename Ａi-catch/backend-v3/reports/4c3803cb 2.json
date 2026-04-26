@@ -1,0 +1,161 @@
+{
+  "stock_code": "2337",
+  "stock_name": "旺宏",
+  "overall_score": 51.5,
+  "recommendation": "觀望",
+  "target_price": 46.48,
+  "stop_loss": 39.29,
+  "ai_summary": "旺宏 整體評分中性 (51.5分)，出現 4 個買入訊號，技術面偏多。 注意：有 2 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 42.25,
+    "change_pct": 7.1,
+    "ma5": 39.56,
+    "ma10": 38.93,
+    "ma20": 37.82,
+    "ma60": 34.52,
+    "ma_arrangement": "多頭排列",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 42.8,
+    "resistance_2": 50.0,
+    "support_1": 40.0,
+    "support_2": 39.56,
+    "rsi_14": 73.68,
+    "macd": 1.4032,
+    "trend": "多頭"
+  },
+  "financial_health": {
+    "roe": -10.37,
+    "eps": -2.45,
+    "revenue_growth_3y": 5.9,
+    "gross_margin": 14.93,
+    "debt_ratio": 98.44
+  },
+  "institutional_trading": {
+    "foreign_net": 6492513,
+    "trust_net": 1185000,
+    "dealer_net": 7535824,
+    "total_net": 15213337
+  },
+  "volume_price_analysis": {
+    "trend_direction": "bullish",
+    "trend_confidence": 70.0,
+    "volume_price_confirmation": "價漲量縮",
+    "confirmation_signal": "caution",
+    "confirmation_strength": 0.3,
+    "divergence_detected": false,
+    "divergence_type": "none",
+    "divergence_description": "",
+    "volume_ratio": 0.62,
+    "obv_trend": "bullish",
+    "predicted_direction": "up",
+    "key_signals": [
+      "OBV確認多頭"
+    ]
+  },
+  "related_news": [
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-02",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-02",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-02",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-02",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "",
+      "summary": "",
+      "date": "2026-01-02",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    }
+  ],
+  "chip_analysis": {
+    "futures": {
+      "foreign_futures_net": 0,
+      "pc_ratio": 0,
+      "foreign_stance": "中性",
+      "market_sentiment": "極度樂觀"
+    },
+    "margin": {
+      "retail_sentiment": "資料取得中",
+      "margin_change_ratio": 0,
+      "short_change_ratio": 0
+    },
+    "summary": {
+      "overall_stance": "中性",
+      "total_score": 0.0
+    },
+    "continuous": {}
+  },
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "多頭排列",
+      "description": "技術面多頭排列，趨勢向上",
+      "confidence": 75
+    },
+    {
+      "type": "buy",
+      "name": "MACD 黃金交叉",
+      "description": "MACD 黃金交叉且在零軸之上，多頭動能強",
+      "confidence": 80
+    },
+    {
+      "type": "buy",
+      "name": "OBV 確認多頭",
+      "description": "能量潮 OBV 趨勢向上，資金持續流入",
+      "confidence": 70
+    }
+  ],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "量能不足警示",
+      "description": "價漲量縮，上漲動能不足",
+      "confidence": 60
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "high",
+      "name": "ROE 偏低",
+      "description": "ROE (-10.37%)，獲利能力待改善"
+    },
+    {
+      "level": "medium",
+      "name": "RSI 過熱",
+      "description": "RSI (73.68)，短期可能回調"
+    }
+  ]
+}

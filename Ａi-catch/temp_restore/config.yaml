@@ -1,0 +1,123 @@
+ai_model:
+  confidence_threshold: 0.65
+  min_training_samples: 1000
+  path: ./models/main_force_model.pkl
+  retrain_interval: 30
+  use_ml_model: false
+database:
+  auto_cleanup: true
+  backup_interval: 86400
+  cleanup_days: 30
+  max_records: 100000
+  path: ./data/stock_monitor.db
+features:
+  thresholds:
+    large_order_ratio: 0.3
+    mfi_strong: 70
+    pattern_breakout: 0.05
+    volume_anomaly: 1.5
+  weights:
+    institutional_flow: 0.2
+    large_order_ratio: 0.3
+    money_flow: 0.15
+    pattern_breakout: 0.1
+    volume_ratio: 0.25
+logging:
+  backup_count: 5
+  file: ./logs/stock_monitor.log
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  level: INFO
+  max_size_mb: 100
+monitoring:
+  check_interval: 60
+  max_concurrent: 10
+  trading_hours_only: true
+notifications:
+  email:
+    enabled: true
+    password: null
+    recipients:
+    - k26car@gmail.com
+    - neimou1225@gmail.com
+    smtp_port: 587
+    smtp_server: smtp.gmail.com
+    username: null
+  line:
+    enabled: false
+    token: null
+  telegram:
+    bot_token: null
+    chat_id: null
+    enabled: false
+  webhook:
+    enabled: false
+    url: https://your-webhook.com/alert
+performance:
+  cache_enabled: true
+  cache_ttl: 300
+  max_workers: 5
+  parallel_requests: true
+report:
+  daily_report: true
+  export_format: json
+  report_time: '17:00'
+  weekly_summary: true
+security:
+  api_rate_limit: 10
+  data_encryption: false
+  max_retries: 3
+  ssl_verification: true
+  timeout: 10
+system:
+  author: 進階交易者
+  description: 多維度AI主力進出偵測與即時監控系統
+  name: AI主力偵測系統
+  version: 1.0.0
+watchlist:
+  # 市值分類門檻 (單位: 億元台幣)
+  thresholds:
+    large_cap: 1000     # 大型股: 市值 >= 1000 億
+    mid_cap: 200        # 中型股: 200 億 <= 市值 < 1000 億
+    small_cap: 50       # 小型股: 50 億 <= 市值 < 200 億
+    # 市值 < 50 億 為微型股，不在預設監控範圍
+  
+  # 各類股配置比例 (%)
+  allocation:
+    large_cap: 50       # 大型股配置 50%
+    mid_cap: 30         # 中型股配置 30%
+    small_cap: 20       # 小型股配置 20%
+  
+  # ETF
+  etfs:
+    - 0050.TW           # 元大台灣50
+    - 0056.TW           # 元大高股息
+    - 00631L.TW         # 元大台灣50正2
+    - 00632R.TW         # 元大台灣50反1
+  
+  # 大型股 (市值 >= 1000 億)
+  large_cap:
+    - 2330.TW           # 台積電
+    - 2317.TW           # 鴻海
+    - 2454.TW           # 聯發科
+    - 2881.TW           # 富邦金
+    - 2882.TW           # 國泰金
+    - 2412.TW           # 中華電
+    - 2308.TW           # 台達電
+  
+  # 中型股 (200億 <= 市值 < 1000億)
+  mid_cap:
+    - 8046.TW           # 南電
+    - 3706.TW           # 神達
+    - 2449.TW           # 京元電
+    - 2313.TW           # 華通
+    - 1802.TW           # 台玻
+  
+  # 小型股 (50億 <= 市值 < 200億)
+  small_cap:
+    - 3363.TW           # 上詮
+    - 8110.TW           # 華東
+    - 8021.TW           # 尖點
+    - 5521.TW           # 工信
+    - 8155.TWO          # 博智
+    - 2331.TW           # 精英
+

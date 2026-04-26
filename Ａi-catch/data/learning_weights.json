@@ -1,0 +1,27 @@
+{
+  "weights": {
+    "volume_ratio_high": 20,
+    "volume_ratio_mid": 10,
+    "ma_bull_alignment": 15,
+    "trend_up": 10,
+    "change_pct_moderate": 15,
+    "change_pct_excessive": -20,
+    "volume_insufficient": -20,
+    "risk_high": -15,
+    "risk_extreme": -30,
+    "sector_bull": 10,
+    "sector_bear": -15,
+    "quality_ideal": 15,
+    "quality_good": 8,
+    "quality_poor": -10,
+    "lstm_bullish": 12,
+    "lstm_bearish": -15
+  },
+  "updated_at": "2026-03-26T18:34:32.218885",
+  "metadata": {
+    "source": "backtest",
+    "period": "2y",
+    "overall_win_rate": 0.4896,
+    "total_trades": 1060
+  }
+}

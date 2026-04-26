@@ -1,0 +1,9 @@
+# 循環驅動多因子投資系統 - 依賴套件
+# Economic Cycle Detection System Dependencies
+
+pandas>=2.0.0
+numpy>=1.24.0
+yfinance>=0.2.28
+requests>=2.31.0
+matplotlib>=3.7.0
+plotly>=5.17.0

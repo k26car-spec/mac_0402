@@ -1,0 +1,86 @@
+{
+  "stock_code": "2344",
+  "stock_name": "華邦電",
+  "overall_score": 51.5,
+  "recommendation": "觀望",
+  "target_price": 84.59,
+  "stop_loss": 71.52,
+  "ai_summary": "華邦電 整體評分中性 (51.5分)，出現 2 個買入訊號，技術面偏多。 注意：有 2 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 76.9,
+    "change_pct": 0.52,
+    "ma5": 75.28,
+    "ma10": 73.78,
+    "ma20": 68.86,
+    "ma60": 57.57,
+    "ma_arrangement": "多頭排列",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 79.1,
+    "resistance_2": 80.0,
+    "support_1": 75.28,
+    "support_2": 73.78,
+    "rsi_14": 64.06,
+    "macd": 4.952,
+    "trend": "多頭"
+  },
+  "financial_health": {
+    "roe": -0.58,
+    "eps": -0.03,
+    "revenue_growth_3y": 2.1,
+    "gross_margin": 30.85,
+    "debt_ratio": 98.31
+  },
+  "institutional_trading": {
+    "foreign_net": 80145372,
+    "trust_net": -9474000,
+    "dealer_net": 13908564,
+    "total_net": 84579936
+  },
+  "related_news": [
+    {
+      "title": "",
+      "summary": "",
+      "date": "2025-12-30",
+      "source": "Yahoo Finance",
+      "sentiment": "neutral",
+      "impact": "medium",
+      "url": ""
+    },
+    {
+      "title": "把握搶賺年終獎金行情、華邦電、凌航、順達、台積電、鴻海、智邦、世芯-KY",
+      "summary": "把握搶賺年終獎金行情、華邦電、凌航、順達、台積電、鴻海、智邦、世芯-KY",
+      "date": "2025-12-30",
+      "source": "鉅亨網",
+      "sentiment": "neutral",
+      "impact": "medium"
+    }
+  ],
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "多頭排列",
+      "description": "技術面多頭排列，趨勢向上",
+      "confidence": 75
+    },
+    {
+      "type": "buy",
+      "name": "MACD 黃金交叉",
+      "description": "MACD 黃金交叉且在零軸之上，多頭動能強",
+      "confidence": 80
+    }
+  ],
+  "sell_signals": [],
+  "risk_warnings": [
+    {
+      "level": "high",
+      "name": "ROE 偏低",
+      "description": "ROE (-0.58%)，獲利能力待改善"
+    },
+    {
+      "level": "high",
+      "name": "負債比過高",
+      "description": "負債比 (98.31%)，財務槓桿風險高"
+    }
+  ]
+}

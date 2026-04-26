@@ -1,0 +1,32 @@
+{
+  "retrain_date": "2026-02-23T13:20:34.720972",
+  "method": "binary_cross_entropy + class_weight + alpha_label",
+  "total": 2,
+  "ok": 0,
+  "summary": [
+    {
+      "symbol": "2881",
+      "status": "still_biased",
+      "epochs": 39,
+      "accuracy": 0.569620253164557,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "pos_preds": 0,
+      "total_test": 79,
+      "is_valid": false
+    },
+    {
+      "symbol": "2317",
+      "status": "still_biased",
+      "epochs": 21,
+      "accuracy": 0.6708860759493671,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "pos_preds": 0,
+      "total_test": 79,
+      "is_valid": false
+    }
+  ]
+}

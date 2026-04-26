@@ -1,0 +1,176 @@
+{
+  "reviews": [
+    {
+      "symbol": "8039",
+      "entry_price": 97.0,
+      "exit_price": 85.0,
+      "stop_loss": 92.0,
+      "target_price": 104.0,
+      "signal_source": "大單分析",
+      "entry_date": "2025-12-22",
+      "pnl_percent": -12.37,
+      "is_loss": true,
+      "stop_missed": true,
+      "problems": [
+        {
+          "type": "跳空停損失效",
+          "detail": "股票有跳空下跌風險，停損無法在預設價位觸發",
+          "severity": "高"
+        },
+        {
+          "type": "單一訊號進場",
+          "detail": "僅依賴「大單分析」訊號，缺乏多因子確認",
+          "severity": "中"
+        },
+        {
+          "type": "風險報酬比不佳",
+          "detail": "風報比只有 1:1.4，建議至少 1:2",
+          "severity": "低"
+        }
+      ],
+      "recommendations": [
+        "對高波動股票使用更寬的停損，或減少倉位",
+        "至少需要 3 個正向因子才能進場",
+        "選擇風險報酬比至少 1:2 的交易機會"
+      ],
+      "timestamp": "2026-01-05T22:01:06.674740"
+    },
+    {
+      "symbol": "6257",
+      "entry_price": 121.0,
+      "exit_price": 113.0,
+      "stop_loss": 115.0,
+      "target_price": 130.0,
+      "signal_source": "大單分析",
+      "entry_date": "2026-01-02",
+      "pnl_percent": -6.61,
+      "is_loss": true,
+      "stop_missed": true,
+      "problems": [
+        {
+          "type": "追高買入",
+          "detail": "進場價 $121.0 高於 MA5 $113.40 超過 5%",
+          "severity": "高"
+        },
+        {
+          "type": "跳空停損失效",
+          "detail": "股票有跳空下跌風險，停損無法在預設價位觸發",
+          "severity": "高"
+        },
+        {
+          "type": "單一訊號進場",
+          "detail": "僅依賴「大單分析」訊號，缺乏多因子確認",
+          "severity": "中"
+        },
+        {
+          "type": "風險報酬比不佳",
+          "detail": "風報比只有 1:1.5，建議至少 1:2",
+          "severity": "低"
+        }
+      ],
+      "recommendations": [
+        "避免買入已大幅偏離 MA5 的股票",
+        "對高波動股票使用更寬的停損，或減少倉位",
+        "至少需要 3 個正向因子才能進場",
+        "選擇風險報酬比至少 1:2 的交易機會"
+      ],
+      "timestamp": "2026-01-05T22:01:26.904480"
+    },
+    {
+      "portfolio_id": 24,
+      "symbol": "8039",
+      "stock_name": "台虹",
+      "entry_price": 86.79,
+      "exit_price": 82.2,
+      "stop_loss": 82.45,
+      "target_price": 93.73,
+      "signal_source": "big_order",
+      "entry_date": "2026-01-02",
+      "pnl_percent": -5.29,
+      "is_loss": true,
+      "stop_missed": true,
+      "problems": [
+        {
+          "type": "逆勢買入",
+          "detail": "進場時 MA5 < MA20，處於下降趨勢",
+          "severity": "高"
+        },
+        {
+          "type": "跳空停損失效",
+          "detail": "實際出場價 $82.20 低於停損價 $82.45",
+          "severity": "高"
+        },
+        {
+          "type": "單一訊號進場",
+          "detail": "僅依賴「big_order」訊號，缺乏多因子確認",
+          "severity": "中"
+        },
+        {
+          "type": "風險報酬比不佳",
+          "detail": "風報比只有 1:1.6，建議至少 1:2",
+          "severity": "低"
+        }
+      ],
+      "recommendations": [
+        "只在 MA5 > MA20 的上升趨勢中買入",
+        "對高波動股票使用更寬的停損，或減少倉位",
+        "至少需要 3 個正向因子才能進場",
+        "選擇風險報酬比至少 1:2 的交易機會"
+      ],
+      "timestamp": "2026-01-05T22:07:50.300603",
+      "weight_adjusted": {
+        "source": "大單分析",
+        "old_weight": 0.6,
+        "new_weight": 0.55
+      }
+    },
+    {
+      "portfolio_id": 7,
+      "symbol": "1303",
+      "stock_name": "南亞",
+      "entry_price": 59.98,
+      "exit_price": 55.6,
+      "stop_loss": 56.98,
+      "target_price": 64.78,
+      "signal_source": "big_order",
+      "entry_date": "2025-12-22",
+      "pnl_percent": -7.3,
+      "is_loss": true,
+      "stop_missed": true,
+      "problems": [
+        {
+          "type": "逆勢買入",
+          "detail": "進場時 MA5 < MA20，處於下降趨勢",
+          "severity": "高"
+        },
+        {
+          "type": "跳空停損失效",
+          "detail": "實際出場價 $55.60 低於停損價 $56.98",
+          "severity": "高"
+        },
+        {
+          "type": "單一訊號進場",
+          "detail": "僅依賴「big_order」訊號，缺乏多因子確認",
+          "severity": "中"
+        },
+        {
+          "type": "風險報酬比不佳",
+          "detail": "風報比只有 1:1.6，建議至少 1:2",
+          "severity": "低"
+        }
+      ],
+      "recommendations": [
+        "只在 MA5 > MA20 的上升趨勢中買入",
+        "對高波動股票使用更寬的停損，或減少倉位",
+        "至少需要 3 個正向因子才能進場",
+        "選擇風險報酬比至少 1:2 的交易機會"
+      ],
+      "timestamp": "2026-01-05T22:07:50.422272",
+      "weight_adjusted": {
+        "source": "大單分析",
+        "old_weight": 0.55,
+        "new_weight": 0.5
+      }
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+    "version": "2.0",
+    "description": "智能進場系統配置",
+    "last_updated": "2026-01-21",
+    "entry_thresholds": {
+        "min_confidence": 70,
+        "max_ma5_deviation": 20,
+        "min_volume_ratio": 1.5,
+        "max_change_pct": 10,
+        "allow_breakout_entry": true,
+        "allow_momentum_entry": true,
+        "allow_pullback_entry": true,
+        "allow_vwap_bounce": true
+    },
+    "time_adjustments": {
+        "opening_period": {
+            "start": "09:00",
+            "end": "09:30",
+            "min_confidence": 80,
+            "description": "開盤觀察期，收緊"
+        },
+        "golden_period": {
+            "start": "09:30",
+            "end": "10:30",
+            "min_confidence": 70,
+            "description": "黃金進場期，放寬"
+        },
+        "extended_period": {
+            "start": "10:30",
+            "end": "11:00",
+            "min_confidence": 75,
+            "description": "延伸進場期"
+        },
+        "midday_period": {
+            "start": "11:00",
+            "end": "12:30",
+            "min_confidence": 80,
+            "description": "午盤謹慎期"
+        },
+        "closing_period": {
+            "start": "12:30",
+            "end": "13:30",
+            "min_confidence": 85,
+            "description": "尾盤收緊期"
+        }
+    },
+    "market_conditions": {
+        "BULL": {
+            "min_confidence": 70,
+            "max_deviation": 25,
+            "min_volume_ratio": 1.3,
+            "max_change_pct": 12,
+            "description": "多頭市場，放寬閾值"
+        },
+        "NEUTRAL": {
+            "min_confidence": 75,
+            "max_deviation": 20,
+            "min_volume_ratio": 1.5,
+            "max_change_pct": 10,
+            "description": "盤整市場，預設閾值"
+        },
+        "BEAR": {
+            "min_confidence": 80,
+            "max_deviation": 15,
+            "min_volume_ratio": 2.0,
+            "max_change_pct": 8,
+            "description": "空頭市場，收緊閾值"
+        }
+    },
+    "confidence_factors": {
+        "change_pct_moderate": {
+            "condition": "5 <= change_pct <= 10",
+            "points": 15,
+            "description": "漲幅適中"
+        },
+        "volume_explosion": {
+            "condition": "volume_ratio > 3",
+            "points": 20,
+            "description": "爆量"
+        },
+        "volume_increase": {
+            "condition": "volume_ratio > 1.5",
+            "points": 10,
+            "description": "放量"
+        },
+        "bullish_alignment": {
+            "condition": "above_ma5 and above_ma20",
+            "points": 15,
+            "description": "多頭排列"
+        },
+        "uptrend": {
+            "condition": "trend == '上升'",
+            "points": 10,
+            "description": "趨勢向上"
+        },
+        "change_pct_high": {
+            "condition": "change_pct > 10",
+            "points": -20,
+            "description": "漲幅過大"
+        },
+        "volume_low": {
+            "condition": "volume_ratio < 1.2",
+            "points": -20,
+            "description": "量能不足"
+        }
+    },
+    "risk_levels": {
+        "low": {
+            "deviation_max": 5,
+            "confidence_boost": 20,
+            "description": "低風險，安全買點"
+        },
+        "medium": {
+            "deviation_min": 5,
+            "deviation_max": 20,
+            "change_pct_max": 10,
+            "volume_ratio_min": 1.5,
+            "confidence_boost": 15,
+            "description": "中風險，突破買點"
+        },
+        "high": {
+            "blocked": true,
+            "description": "高風險，阻擋進場"
+        },
+        "extreme": {
+            "deviation_min": 20,
+            "blocked": true,
+            "description": "極端風險，超買嚴重"
+        }
+    },
+    "auto_trade": {
+        "enabled": true,
+        "max_positions": 10,
+        "position_size": 1000,
+        "is_simulated": true,
+        "stop_loss_atr_multiplier": 1.5,
+        "target_atr_multiplier": 2.0
+    }
+}

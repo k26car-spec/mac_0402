@@ -1,0 +1,54 @@
+{
+  "bias": "BULL",
+  "score": 85,
+  "confidence": 0.95,
+  "signals": [
+    {
+      "name": "台積電ADR",
+      "change": 5.26,
+      "impact": "📈 外資看好台積電",
+      "points": 25
+    },
+    {
+      "name": "費城半導體SOX",
+      "change": 2.72,
+      "impact": "📈 半導體族群強勢",
+      "points": 30
+    },
+    {
+      "name": "那斯達克NQ期貨",
+      "change": 1.53,
+      "impact": "📈 科技股資金湧入",
+      "points": 20
+    },
+    {
+      "name": "標普SP500",
+      "change": 1.05,
+      "impact": "📈 整體市場樂觀",
+      "points": 5
+    },
+    {
+      "name": "美元指數DXY",
+      "change": 0.17,
+      "impact": "➡️ 中性",
+      "points": 0
+    },
+    {
+      "name": "VIX恐慌指數",
+      "change": -2.97,
+      "impact": "📈 VIX 升 → 市場恐慌",
+      "points": 5
+    }
+  ],
+  "opening_strategy": "📈 強勁多頭偏向\n• 開盤前 5 分鐘可積極關注突破標的\n• 優先選半導體族群（SOX/TSM ADR 強勢帶動）\n• 09:30-10:00 黃金窗口積極進場",
+  "raw_changes": {
+    "TSM_ADR": 5.26,
+    "SOX": 2.72,
+    "NQ": 1.53,
+    "SP500": 1.05,
+    "DXY": 0.17,
+    "VIX": -2.97
+  },
+  "generated_at": "2026-04-23T08:30:10.704433",
+  "_cached_at": "2026-04-23T08:30:10.704446"
+}

@@ -1,0 +1,58 @@
+{
+  "train_date": "2026-03-05T18:09:30.259198",
+  "method": "LSTM_v5_full_features_RF12",
+  "label_policy": "alpha >= 0.005% vs index (outperform baseline)",
+  "alpha_threshold": 0.005,
+  "rf_selection": true,
+  "top_n_features": 12,
+  "n_features_orig": 34,
+  "feature_list": [
+    "Close",
+    "Volume",
+    "MA5",
+    "MA10",
+    "MA20",
+    "Volume_MA5",
+    "RSI",
+    "Volatility",
+    "MACD",
+    "price_up_vol_up",
+    "price_up_vol_down",
+    "price_dn_vol_up",
+    "price_dn_vol_down",
+    "vol_ratio_5",
+    "vol_ratio_20",
+    "vol_trend_3d",
+    "price_vol_score",
+    "vwap_deviation",
+    "above_vwap",
+    "vwap_trend_5d",
+    "kd_k",
+    "kd_d",
+    "kd_diff",
+    "kd_overbought",
+    "kd_oversold",
+    "rs_1d",
+    "rs_5d",
+    "rs_20d",
+    "outperform_5d",
+    "rs_trend",
+    "dist_52w_high",
+    "dist_52w_low",
+    "near_resistance",
+    "near_support"
+  ],
+  "total": 2,
+  "ok": 0,
+  "elapsed_sec": 3,
+  "results": [
+    {
+      "symbol": "3163",
+      "status": "data_error"
+    },
+    {
+      "symbol": "3265",
+      "status": "data_error"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>API 連線測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .test-result {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔍 ORB Watchlist API 連線測試</h1>
+
+    <div id="results"></div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        const resultsDiv = document.getElementById('results');
+
+        async function testAPI() {
+            // 測試 1: 後端狀態
+            try {
+                resultsDiv.innerHTML += '<h2>測試 1: 後端狀態</h2>';
+                const res = await fetch(`${API_BASE}/api/big-order/status`);
+                const data = await res.json();
+                resultsDiv.innerHTML += `<div class="test-result success">✅ 後端連線成功<pre>${JSON.stringify(data, null, 2)}</pre></div>`;
+            } catch (e) {
+                resultsDiv.innerHTML += `<div class="test-result error">❌ 後端連線失敗: ${e.message}</div>`;
+            }
+
+            // 測試 2: ORB Watchlist API
+            try {
+                resultsDiv.innerHTML += '<h2>測試 2: ORB Watchlist API</h2>';
+                const res = await fetch(`${API_BASE}/api/orb/watchlist`);
+                const data = await res.json();
+                resultsDiv.innerHTML += `<div class="test-result success">✅ Watchlist API 成功<br>股票數量: ${data.watchlist ? data.watchlist.length : 0}<pre>${JSON.stringify(data, null, 2).substring(0, 500)}...</pre></div>`;
+            } catch (e) {
+                resultsDiv.innerHTML += `<div class="test-result error">❌ Watchlist API 失敗: ${e.message}</div>`;
+            }
+
+            // 測試 3: CORS 檢查
+            try {
+                resultsDiv.innerHTML += '<h2>測試 3: CORS 設定</h2>';
+                const res = await fetch(`${API_BASE}/api/orb/watchlist`, {
+                    method: 'OPTIONS'
+                });
+                resultsDiv.innerHTML += `<div class="test-result success">✅ CORS 預檢通過</div>`;
+            } catch (e) {
+                resultsDiv.innerHTML += `<div class="test-result error">❌ CORS 問題: ${e.message}</div>`;
+            }
+        }
+
+        // 執行測試
+        testAPI();
+    </script>
+</body>
+
+</html>

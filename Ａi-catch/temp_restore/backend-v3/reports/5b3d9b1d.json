@@ -1,0 +1,101 @@
+{
+  "stock_code": "3030",
+  "stock_name": "德律",
+  "overall_score": 81.8,
+  "recommendation": "買進",
+  "target_price": 225.4,
+  "stop_loss": 186.2,
+  "ai_summary": "德律 整體評分優異 (81.8分)，出現 4 個買入訊號，技術面偏多。",
+  "technical_indicators": {
+    "current_price": 196.0,
+    "change_pct": -1.51,
+    "ma5": 194.6,
+    "ma10": 184.05,
+    "ma20": 174.3,
+    "ma60": 160.56,
+    "ma_arrangement": "多頭排列",
+    "ma_signal": "站穩MA5之上",
+    "ma_trend": "短期偏多、中期偏多、長期偏多",
+    "resistance_1": 200.0,
+    "resistance_2": 205.0,
+    "support_1": 194.6,
+    "support_2": 190.0,
+    "rsi_14": 73.04,
+    "macd": 10.126,
+    "trend": "多頭"
+  },
+  "financial_health": {
+    "roe": 27.91,
+    "eps": 9.79,
+    "revenue_growth_3y": 27.2,
+    "gross_margin": 58.35,
+    "debt_ratio": 32.43
+  },
+  "institutional_trading": {
+    "foreign_net": 6369368,
+    "trust_net": -4497000,
+    "dealer_net": -20360,
+    "total_net": 1852008
+  },
+  "related_news": [
+    {
+      "title": "德律(3030) 近期法人動態追蹤",
+      "summary": "分析師持續關注 德律 營運表現與法人買賣超動態",
+      "date": "2025-12-30",
+      "source": "市場分析",
+      "sentiment": "neutral",
+      "impact": "medium"
+    },
+    {
+      "title": "台股盤勢分析：3030 技術面觀察",
+      "summary": "觀察 德律 技術指標與成交量變化，研判後續走勢",
+      "date": "2025-12-29",
+      "source": "技術分析",
+      "sentiment": "neutral",
+      "impact": "low"
+    },
+    {
+      "title": "產業動態：德律 所屬產業近況",
+      "summary": "追蹤 德律 相關產業供需變化與景氣循環",
+      "date": "2025-12-28",
+      "source": "產業研究",
+      "sentiment": "neutral",
+      "impact": "medium"
+    }
+  ],
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "多頭排列",
+      "description": "技術面多頭排列，趨勢向上",
+      "confidence": 75
+    },
+    {
+      "type": "buy",
+      "name": "MACD 黃金交叉",
+      "description": "MACD 黃金交叉且在零軸之上，多頭動能強",
+      "confidence": 80
+    },
+    {
+      "type": "buy",
+      "name": "法人連續買超",
+      "description": "法人連續 5 天買超，籌碼集中",
+      "confidence": 75
+    }
+  ],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "KD 高檔死亡交叉",
+      "description": "KD 在高檔區死亡交叉",
+      "confidence": 70
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "medium",
+      "name": "RSI 過熱",
+      "description": "RSI (73.04)，短期可能回調"
+    }
+  ]
+}

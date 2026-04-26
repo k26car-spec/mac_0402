@@ -1,0 +1,97 @@
+{
+  "backtest_date": "2026-03-06T15:09:50.198330",
+  "period": "3m",
+  "threshold": "auto",
+  "summary": {
+    "total": 6,
+    "whitelist": 6,
+    "avg_precision": 0.710767923596871,
+    "avg_alpha": 5.921166666666667
+  },
+  "results": [
+    {
+      "symbol": "2337",
+      "version": "v5",
+      "threshold": 0.35,
+      "threshold_mode": "fixed",
+      "samples": 60,
+      "accuracy": 0.45,
+      "precision": 0.8125,
+      "recall": 0.3023255813953488,
+      "f1": 0.4406779661016949,
+      "pos_preds": 16,
+      "actual_pos": 43,
+      "avg_alpha": 9.378
+    },
+    {
+      "symbol": "2344",
+      "version": "v5",
+      "threshold": 0.4,
+      "threshold_mode": "fixed",
+      "samples": 60,
+      "accuracy": 0.6833333333333333,
+      "precision": 0.8928571428571429,
+      "recall": 0.6097560975609756,
+      "f1": 0.7246376811594203,
+      "pos_preds": 28,
+      "actual_pos": 41,
+      "avg_alpha": 9.802
+    },
+    {
+      "symbol": "2408",
+      "version": "v5",
+      "threshold": 0.4912039518356323,
+      "threshold_mode": "adaptive",
+      "samples": 60,
+      "accuracy": 0.6,
+      "precision": 0.9166666666666666,
+      "recall": 0.5,
+      "f1": 0.6470588235294118,
+      "pos_preds": 24,
+      "actual_pos": 44,
+      "avg_alpha": 6.646
+    },
+    {
+      "symbol": "3443",
+      "version": "v5",
+      "threshold": 0.5,
+      "threshold_mode": "fixed",
+      "samples": 60,
+      "accuracy": 0.5166666666666667,
+      "precision": 0.36363636363636365,
+      "recall": 0.15384615384615385,
+      "f1": 0.21621621621621623,
+      "pos_preds": 11,
+      "actual_pos": 26,
+      "avg_alpha": -0.566
+    },
+    {
+      "symbol": "6442",
+      "version": "v5",
+      "threshold": 0.35,
+      "threshold_mode": "fixed",
+      "samples": 60,
+      "accuracy": 0.4666666666666667,
+      "precision": 0.5789473684210527,
+      "recall": 0.3142857142857143,
+      "f1": 0.4074074074074074,
+      "pos_preds": 19,
+      "actual_pos": 35,
+      "avg_alpha": 5.564
+    },
+    {
+      "symbol": "6770",
+      "version": "v5",
+      "threshold": 0.45,
+      "threshold_mode": "fixed",
+      "samples": 60,
+      "accuracy": 0.7,
+      "precision": 0.7,
+      "recall": 1.0,
+      "f1": 0.8235294117647058,
+      "pos_preds": 60,
+      "actual_pos": 42,
+      "avg_alpha": 4.703
+    }
+  ]
+}

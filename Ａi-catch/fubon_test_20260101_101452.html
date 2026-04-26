@@ -1,0 +1,1425 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
+<script language="JavaScript"><!--
+document.writeln('<script language="JavaScript" src="/z/js/jquery.djjs"></script>\n');
+// --></script>
+<script language="JavaScript" src="/z/js/jsFunction.djjs"></script>
+<script language="JavaScript" src="/z/js/isSpecialKind.djjs"></script>
+<script language="JavaScript" src="/z/js/mdj.js"></script>
+<script type="text/javascript" src="/z/js/Applet2Canvas.djjs"></script>
+<script type="text/javascript" src="/z/js/DJWebGraph.djjs"></script>
+<script type="text/javascript" src="/z/js/xml2jsonJS.djjs"></script>
+<script type="text/javascript" src="/z/js/json2xmlJS.djjs"></script>
+<script type="text/javascript" src="/z/js/json2.djjs"></script>
+<script type="text/javascript" src="/z/js/GenUpDownJS.djjs"></script>
+<link rel=stylesheet href="/z/js/mdj.css" type="text/css">
+<title>ㄩ坝�i�X逼��</title>
+</head>
+<script language="JavaScript"><!--
+CheckMenu(8, '');
+function chkSetUpMenu(){ 
+	if (typeof(SetUpMenu) == 'function'){
+		SetUpMenu(8,'');
+}
+	else
+		setTimeout(function(){chkSetUpMenu();},5000);
+}
+// --></script>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="SysJustIFRAMEDIV">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td colspan="3" valign="top" align="left">
+<script language="javascript" src="/z/js/disableselectionjs.djjs"></script>
+<script language="javascript" src="/z/js/SU.js"></script>
+<script language="javascript"><!--
+ chkSetUpMenu();
+//--></script>
+</td></tr>
+<tr><td valign="top" align="left">
+<script language="javascript" src="/z/js/SL.js"></script>
+<script language="javascript"><!--
+ SetLeftMenu(8,'')
+//--></script>
+</td><td valign="top" width="99%">
+<script language="javascript"><!--
+if(typeof(ContentCenterBegin) == 'function'){ 	ContentCenterBegin();
+ } 
+//--></script>
+<script language="javascript" src="/z/js/zbrokerjs.djjs"></script>
+
+<script>
+	// �N�r�曷喱� hex �姒�, eg. &#xHH
+	function toHex_js(str) {
+		var result = "";
+		if (typeof (str) !== 'string') return '';
+
+		for (var i = 0; i < str.length; i++) {
+			var partial = str.charCodeAt(i).toString(16);
+
+			while (partial.length !== 4)
+				partial = "0" + partial;
+			result += partial;
+		}
+		return result;
+	}
+
+	// ち匡 ㄩ坝そ�qList 
+	function GoPage() {
+		var sUrl = '/z/zg/zgb/zgb0.djhtm?';
+
+		var sFrmObj = document.frm;
+		var sA = sFrmObj.sel_Broker.options[sFrmObj.sel_Broker.selectedIndex].value;
+		var sB = sFrmObj.sel_BrokerBranch.options[sFrmObj.sel_BrokerBranch.selectedIndex].value;
+			//sB = toHex_js(sB);
+
+		sUrl = sUrl + 'a=' + sA + '&b=' + sB;
+		//console.log(sUrl);
+		document.location.href = sUrl;
+	}
+
+	// ち匡 �i计 ┪ �髅B
+	function goChg(sKind) {
+		var sUrl = '/z/zg/zgb/zgb0.djhtm?';
+
+		var sFrmObj = document.frm;
+		var sA = sFrmObj.sel_Broker.options[sFrmObj.sel_Broker.selectedIndex].value;
+		var sB = sFrmObj.sel_BrokerBranch.options[sFrmObj.sel_BrokerBranch.selectedIndex].value;
+			//sB = toHex_js(sB);
+
+		var sDay = sFrmObj.S1.options[sFrmObj.S1.selectedIndex].value;
+
+		var sDate = sFrmObj.Y2.options[sFrmObj.Y2.selectedIndex].value + '-'; 	//�_�lら戳
+		sDate = sDate + sFrmObj.M2.options[sFrmObj.M2.selectedIndex].value + '-';
+		sDate = sDate + sFrmObj.D2.options[sFrmObj.D2.selectedIndex].value;
+
+		var eDate = sFrmObj.Y1.options[sFrmObj.Y1.selectedIndex].value + '-'; 	//挡�簸榇�
+		eDate = eDate + sFrmObj.M1.options[sFrmObj.M1.selectedIndex].value + '-';
+		eDate = eDate + sFrmObj.D1.options[sFrmObj.D1.selectedIndex].value;	// 挡�簸榇�
+
+		if (sDay != '0') {
+			sUrl = sUrl + 'a=' + sA + '&b=' + sB + '&c=' + sKind + '&d=' + sDay;
+		}
+		else {
+			sUrl = sUrl + 'a=' + sA + '&b=' + sB + '&c=' + sKind + '&e=' + sDate + '&f=' + eDate;
+		}
+		document.location.href = sUrl;
+	}
+
+	// ち匡 ��N ら �U┰匡虫
+	function goChgDay() {
+		var sUrl = '/z/zg/zgb/zgb0.djhtm?';
+
+		var sFrmObj = document.frm;
+		var sA = sFrmObj.sel_Broker.options[sFrmObj.sel_Broker.selectedIndex].value;
+		var sB = sFrmObj.sel_BrokerBranch.options[sFrmObj.sel_BrokerBranch.selectedIndex].value;
+			//sB = toHex_js(sB);
+
+		var sDay = sFrmObj.S1.options[sFrmObj.S1.selectedIndex].value;
+		var sKind = $('input[name=R1]:checked').val();
+		sUrl = sUrl + 'a=' + sA + '&b=' + sB + '&c=' + sKind + '&d=' + sDay;
+		document.location.href = sUrl;
+	}
+
+	// ち匡 �_�Wら戳ぇ �U┰匡虫
+	function goChgYMD() {
+		var sUrl = '/z/zg/zgb/zgb0.djhtm?';
+
+		var sFrmObj = document.frm;
+
+		if (CheckDate()) {
+			var sA = sFrmObj.sel_Broker.options[sFrmObj.sel_Broker.selectedIndex].value;
+			var sB = sFrmObj.sel_BrokerBranch.options[sFrmObj.sel_BrokerBranch.selectedIndex].value;
+				//sB = toHex_js(sB);
+
+			var sKind = $('input[name=R1]:checked').val();
+
+			var sDate = sFrmObj.Y2.options[sFrmObj.Y2.selectedIndex].value + '-'; 	//�_�lら戳
+			sDate = sDate + sFrmObj.M2.options[sFrmObj.M2.selectedIndex].value + '-';
+			sDate = sDate + sFrmObj.D2.options[sFrmObj.D2.selectedIndex].value;
+
+			var eDate = sFrmObj.Y1.options[sFrmObj.Y1.selectedIndex].value + '-'; 	//挡�簸榇�
+			eDate = eDate + sFrmObj.M1.options[sFrmObj.M1.selectedIndex].value + '-';
+			eDate = eDate + sFrmObj.D1.options[sFrmObj.D1.selectedIndex].value; // 挡�簸榇�				
+
+			sUrl = sUrl + 'a=' + sA + '&b=' + sB + '&c=' + sKind + '&e=' + sDate + '&f=' + eDate;
+
+			document.location.href = sUrl;
+		}
+	}
+</script>
+<table border="0">
+<tr><td class="t0" valign="top">
+	<table id="oMainTable" class="t01" border="0" cellspacing="1" cellpadding="1">
+	<form name="frm" id="frm">
+	<tr id="oScrollHead"><td class="t10" colspan="2">
+<SCRIPT LANGUAGE=javascript><!--
+ var sObj = eval('document.' + 'frm'); 
+	iID = '9600';
+	GenFundCorpCombo('9600','9600','frm');
+	for (i=0;i<sObj.sel_Broker.options.length;i++)
+	{
+		var tmpID1 = sObj.sel_Broker.options[i].value.toUpperCase();
+		if (tmpID1 == '9600') 
+		{
+			sObj.sel_Broker.selectedIndex = i;
+			break;
+		}
+	}
+	for (i=0;i<sObj.sel_BrokerBranch.options.length;i++)
+	{
+		var tmpID2 = sObj.sel_BrokerBranch.options[i].value.toUpperCase();
+		if (iID != '')
+		{
+			if (tmpID2 == iID )
+			{
+				sObj.sel_BrokerBranch.selectedIndex = i;
+				break;
+			}
+		}
+		else
+			sObj.sel_BrokerBranch.selectedIndex = 0;
+	}
+//--></SCRIPT>
+だ�I��灿�d高
+	<div class="t11">虫�臁G�i计 〓 戈�皮榇痢G20241231</div>	</td></tr>
+	<tr><td class="t12" colspan="2">
+	<select name="S1" onChange="javascript:goChgDay();">
+	<option value="0" selected>叫匡拒</option>
+	<option value="1">�瘠@ら</option>
+	<option value="5">�瘠�ら</option>
+	<option value="10">�瘠Qら</option>
+	<option value="20">��20ら</option>
+	<option value="40">��40ら</option>
+	</select>
+	 �鄢]跋丁�G
+<script language="JavaScript" src="/z/js/month.djjs"></script>
+�q�@<SELECT name="Y2" onChange="javascript:SetMonthDate(document.frm.Y2,document.frm.M2,document.frm.D2);">
+	<OPTION value="91"></OPTION>
+</SELECT>�~ 
+<SELECT name="M2" onChange="javascript:SetMonthDate(document.frm.Y2,document.frm.M2,document.frm.D2);">
+	<OPTION value="-1"></OPTION>
+</SELECT>る 
+<SELECT name="D2">
+	<OPTION value="-1"></OPTION>
+</SELECT>ら 
+ ° 
+<SELECT name="Y1" onChange="javascript:SetMonthDate(document.frm.Y1,document.frm.M1,document.frm.D1);">
+	<OPTION value="91"></OPTION>
+</SELECT>�~ 
+<SELECT name="M1" onChange="javascript:SetMonthDate(document.frm.Y1,document.frm.M1,document.frm.D1);">
+	<OPTION value="-1"></OPTION>
+</SELECT>る 
+<SELECT name="D1">
+	<OPTION value="-1"></OPTION>
+</SELECT>ら 
+<input type='hidden' name='bDate'>
+<input type='hidden' name='eDate'>
+<SCRIPT LANGUAGE=javascript><!--
+	var toDay ='2026/1/1'
+	var getYMD1 = '2024/12/31';
+	var getYMD2 = '2024/12/31';
+	PageInit(document.frm);
+	function PageInit(obj)
+	{	//�b BODY onLoad �森元邯飑lて
+		ShowYear(obj.Y1,'2026/1/1',1,'N');
+		ShowYear(obj.Y2,'2026/1/1',1,'N');
+		SetOptionValue(obj.M1,1,12);
+		SetOptionValue(obj.M2,1,12);
+		//�]�w�飑l��
+		var YMDary1,Hary1;
+		if (getYMD1.indexOf(' ') > -1 ) {
+			YMDary1 = getYMD1.split(' ')[0].split('/');
+		}else {
+			YMDary1 = getYMD1.split('/');
+		}
+		SetFocus(obj.Y1,YMDary1[0]);
+		SetFocus(obj.M1,YMDary1[1]);
+		var YMDary2,Hary2;
+		if (getYMD2.indexOf(' ') > -1 ) {
+			YMDary2 = getYMD2.split(' ')[0].split('/');
+		}else {
+			YMDary2 = getYMD2.split('/');
+		}
+		SetFocus(obj.Y2,YMDary2[0]);
+		SetFocus(obj.M2,YMDary2[1]);
+		SetMonthDate(obj.Y1,obj.M1,obj.D1);
+		SetMonthDate(obj.Y2,obj.M2,obj.D2);
+		SetFocus(obj.D2,YMDary2[2]);
+		SetFocus(obj.D1,YMDary1[2]);
+		removeToday(obj.Y1,obj.M1,obj.D1,toDay);
+		removeToday(obj.Y2,obj.M2,obj.D2,toDay);
+	}
+	function CheckDate()
+	{
+		var Frm = document.frm;
+		var y1 = parseInt(Frm.Y1.options[Frm.Y1.selectedIndex].value);
+		var m1 = parseInt(Frm.M1.options[Frm.M1.selectedIndex].value);
+		var d1 = parseInt(Frm.D1.options[Frm.D1.selectedIndex].value);
+		var y2 = parseInt(Frm.Y2.options[Frm.Y2.selectedIndex].value);
+		var m2 = parseInt(Frm.M2.options[Frm.M2.selectedIndex].value);
+		var d2 = parseInt(Frm.D2.options[Frm.D2.selectedIndex].value);
+		var sEDate = y1 + '-' + m1 + '-' + d1;
+		var sBDate = y2 + '-' + m2 + '-' + d2;
+		Frm.bDate.value = sBDate;
+		Frm.eDate.value = sEDate;
+		return checkBEdate(sBDate,sEDate);
+	}
+	function checkBEdate(sBDate,sEDate)
+	{
+		var aymd1 = sBDate.split(' ')[0].split('-');
+		var aymd2 = sEDate.split(' ')[0].split('-');
+		if (aymd1.length < 3 || aymd2.length < 3 ) {
+			alert ('ら戳匡拒岿�~!!');
+			return false;
+		}
+		var nbdate = parseInt(aymd1[0])*1000000 + parseInt(aymd1[1])*10000 + parseInt(aymd1[2])*100;
+		var nedate = parseInt(aymd2[0])*1000000 + parseInt(aymd2[1])*10000 + parseInt(aymd2[2])*100;
+		if (nbdate > nedate) {
+			alert('�z┮块�J�喊_�lら戳�j�蟮钵簸榇�');
+			return false;
+		}
+		return true;
+	}
+//--></SCRIPT>
+�@<INPUT type="button" name="BB" value="�d高" onclick="javascript:goChgYMD();">
+	<INPUT type="radio" name="R1" id="R1" value="E"  checked onClick="javascript:goChg('E');">�i计�@
+	<INPUT type="radio" name="R1" id="R1" value="B"  onClick="javascript:goChg('B');">�髅B�@
+	</td></tr>
+	</form>
+	<tr>
+	<TD width="25%" valign="top">
+<table width="100%" class="t0" cellspacing="1" cellpadding="2" border="0" valign="top">
+<tr><td class="t2" colspan="4">�R�W</td></tr>
+<tr>
+<td class="t2" width="25%">ㄩ坝�W嘿</td>
+<td class="t2" width="25%">�R�i�i计</td>
+<td class="t2" width="25%">芥�X�i计</td>
+<td class="t2" width="25%">�t�B</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2303','�p�q');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>7,193</td>
+<td class="t3n1" nowrap>824</td>
+<td class="t3n1" nowrap>6,369</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS8299','�s�p');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>2,067</td>
+<td class="t3n1" nowrap>9</td>
+<td class="t3n1" nowrap>2,058</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2504','瓣玻');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>1,478</td>
+<td class="t3n1" nowrap>6</td>
+<td class="t3n1" nowrap>1,472</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS1597','�奖o');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>1,403</td>
+<td class="t3n1" nowrap>66</td>
+<td class="t3n1" nowrap>1,337</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS4979','地�P��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>1,125</td>
+<td class="t3n1" nowrap>26</td>
+<td class="t3n1" nowrap>1,099</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2891','い�H��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>1,048</td>
+<td class="t3n1" nowrap>179</td>
+<td class="t3n1" nowrap>869</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00882');">00882い�Hい瓣蔼�旬�</a>
+</td>
+<td class="t3n1" nowrap>800</td>
+<td class="t3n1" nowrap>15</td>
+<td class="t3n1" nowrap>785</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2027','�jΘ葵');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>719</td>
+<td class="t3n1" nowrap>30</td>
+<td class="t3n1" nowrap>689</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS3706','���F');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>721</td>
+<td class="t3n1" nowrap>51</td>
+<td class="t3n1" nowrap>670</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2801','裹蝗');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>657</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>657</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS6689','レ冻é');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>651</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>651</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2881','�Iü��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>1,179</td>
+<td class="t3n1" nowrap>555</td>
+<td class="t3n1" nowrap>624</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00881');">00881瓣�酯x�W�歆蘩s�Y</a>
+</td>
+<td class="t3n1" nowrap>615</td>
+<td class="t3n1" nowrap>4</td>
+<td class="t3n1" nowrap>611</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS5880','�X�w��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>603</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>603</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00892');">00892�Iü�x�W�b旧砰</a>
+</td>
+<td class="t3n1" nowrap>558</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>558</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2330','�x�n�q');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>683</td>
+<td class="t3n1" nowrap>161</td>
+<td class="t3n1" nowrap>522</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2882','瓣�酹�');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>516</td>
+<td class="t3n1" nowrap>13</td>
+<td class="t3n1" nowrap>503</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2379','风�R');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>512</td>
+<td class="t3n1" nowrap>16</td>
+<td class="t3n1" nowrap>496</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2603','���a');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>405</td>
+<td class="t3n1" nowrap>6</td>
+<td class="t3n1" nowrap>399</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00730');">00730�Iü�O�W�u借蔼��</a>
+</td>
+<td class="t3n1" nowrap>377</td>
+<td class="t3n1" nowrap>5</td>
+<td class="t3n1" nowrap>372</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS8028','�@锭�b旧砰');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>359</td>
+<td class="t3n1" nowrap>9</td>
+<td class="t3n1" nowrap>350</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00929');">00929�_地�x�W�歆蘩u��</a>
+</td>
+<td class="t3n1" nowrap>676</td>
+<td class="t3n1" nowrap>339</td>
+<td class="t3n1" nowrap>337</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2883','惩膀��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>323</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>323</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS6757','�x�W�戬�');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>315</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>315</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2454','�p�o��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>313</td>
+<td class="t3n1" nowrap>38</td>
+<td class="t3n1" nowrap>275</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00946');">00946�s�q�歆薨��Еí�</a>
+</td>
+<td class="t3n1" nowrap>275</td>
+<td class="t3n1" nowrap>4</td>
+<td class="t3n1" nowrap>271</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00830');">00830瓣�醵O�哎b旧砰</a>
+</td>
+<td class="t3n1" nowrap>290</td>
+<td class="t3n1" nowrap>25</td>
+<td class="t3n1" nowrap>265</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS3450','�p�v');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>287</td>
+<td class="t3n1" nowrap>24</td>
+<td class="t3n1" nowrap>263</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00725B');">00725B瓣�酾敫戬扭渐q杜</a>
+</td>
+<td class="t3n1" nowrap>260</td>
+<td class="t3n1" nowrap>2</td>
+<td class="t3n1" nowrap>258</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS4977','渤�F-KY');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>305</td>
+<td class="t3n1" nowrap>56</td>
+<td class="t3n1" nowrap>249</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00893');">00893瓣�醮集喙q笆ó</a>
+</td>
+<td class="t3n1" nowrap>258</td>
+<td class="t3n1" nowrap>28</td>
+<td class="t3n1" nowrap>230</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00850');">00850じ�j�O�WESGッ尿</a>
+</td>
+<td class="t3n1" nowrap>213</td>
+<td class="t3n1" nowrap>5</td>
+<td class="t3n1" nowrap>208</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS1477','�E锭');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>204</td>
+<td class="t3n1" nowrap>33</td>
+<td class="t3n1" nowrap>171</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00715L');">00715L戳刁�fガ孽�Sタ2</a>
+</td>
+<td class="t3n1" nowrap>170</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>170</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2327','瓣エ*');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>172</td>
+<td class="t3n1" nowrap>5</td>
+<td class="t3n1" nowrap>167</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00646');">00646じ�jS‘P500</a>
+</td>
+<td class="t3n1" nowrap>165</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>165</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2880','地�n��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>165</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>165</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00934');">00934い�HΘ��蔼�旬�</a>
+</td>
+<td class="t3n1" nowrap>160</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>160</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00966B');">00966B参�@ESGщ单杜15</a>
+</td>
+<td class="t3n1" nowrap>208</td>
+<td class="t3n1" nowrap>52</td>
+<td class="t3n1" nowrap>156</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00900');">00900�Iü�S匡蔼�旬�30</a>
+</td>
+<td class="t3n1" nowrap>183</td>
+<td class="t3n1" nowrap>34</td>
+<td class="t3n1" nowrap>149</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS6531','�R炊*');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>150</td>
+<td class="t3n1" nowrap>2</td>
+<td class="t3n1" nowrap>148</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2002','い葵');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>143</td>
+<td class="t3n1" nowrap>4</td>
+<td class="t3n1" nowrap>139</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00877');">00877�_地い瓣5G</a>
+</td>
+<td class="t3n1" nowrap>124</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>124</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00936');">00936�x�sッ尿蔼�Гいp</a>
+</td>
+<td class="t3n1" nowrap>112</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>112</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS1303','�nㄈ');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>105</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>105</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS6669','�n�o');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>103</td>
+<td class="t3n1" nowrap>1</td>
+<td class="t3n1" nowrap>102</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS6488','吏�y垂');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>113</td>
+<td class="t3n1" nowrap>16</td>
+<td class="t3n1" nowrap>97</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS3163','�i�Y��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>98</td>
+<td class="t3n1" nowrap>3</td>
+<td class="t3n1" nowrap>95</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2049','�W蝗');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>130</td>
+<td class="t3n1" nowrap>38</td>
+<td class="t3n1" nowrap>92</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS8046','�n�q');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>89</td>
+<td class="t3n1" nowrap>1</td>
+<td class="t3n1" nowrap>88</td>
+</tr>
+</table>
+	</TD>
+	<TD width="25%" valign="top">
+<table width="100%" class="t0" cellspacing="1" cellpadding="2" border="0" valign="top">
+<tr><td class="t2" colspan="4">芥�W</td></tr>
+<tr>
+<td class="t2" width="25%">ㄩ坝�W嘿</td>
+<td class="t2" width="25%">�R�i�i计</td>
+<td class="t2" width="25%">芥�X�i计</td>
+<td class="t2" width="25%">�t�B</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS9105','�酹髂_-DR');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>2,082</td>
+<td class="t3n1" nowrap>10,084</td>
+<td class="t3n1" nowrap>-8,002</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00878');">00878瓣�酯媚虬��旬�</a>
+</td>
+<td class="t3n1" nowrap>95</td>
+<td class="t3n1" nowrap>5,136</td>
+<td class="t3n1" nowrap>-5,041</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00953B');">00953B�s�q�u匡�Dщ单杜</a>
+</td>
+<td class="t3n1" nowrap>10</td>
+<td class="t3n1" nowrap>3,849</td>
+<td class="t3n1" nowrap>-3,839</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00918');">00918�j地�u�Q蔼恶��30</a>
+</td>
+<td class="t3n1" nowrap>19</td>
+<td class="t3n1" nowrap>2,476</td>
+<td class="t3n1" nowrap>-2,457</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2610','地��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>5</td>
+<td class="t3n1" nowrap>2,421</td>
+<td class="t3n1" nowrap>-2,416</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00940');">00940じ�j�x�W基�劝���</a>
+</td>
+<td class="t3n1" nowrap>125</td>
+<td class="t3n1" nowrap>1,919</td>
+<td class="t3n1" nowrap>-1,794</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2371','�j�P');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>3</td>
+<td class="t3n1" nowrap>1,632</td>
+<td class="t3n1" nowrap>-1,629</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00919');">00919�s�q�x�W弘匡蔼��</a>
+</td>
+<td class="t3n1" nowrap>276</td>
+<td class="t3n1" nowrap>1,897</td>
+<td class="t3n1" nowrap>-1,621</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS1605','地�s');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>1</td>
+<td class="t3n1" nowrap>1,463</td>
+<td class="t3n1" nowrap>-1,462</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS0056','じ�j蔼�旬�');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>248</td>
+<td class="t3n1" nowrap>1,491</td>
+<td class="t3n1" nowrap>-1,243</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2353','Щ��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>95</td>
+<td class="t3n1" nowrap>1,290</td>
+<td class="t3n1" nowrap>-1,195</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2408','�nㄈ��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>20</td>
+<td class="t3n1" nowrap>1,164</td>
+<td class="t3n1" nowrap>-1,144</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('006208');">006208�Iü�x50</a>
+</td>
+<td class="t3n1" nowrap>10</td>
+<td class="t3n1" nowrap>1,078</td>
+<td class="t3n1" nowrap>-1,068</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2376','м古');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>4</td>
+<td class="t3n1" nowrap>1,065</td>
+<td class="t3n1" nowrap>-1,061</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00950B');">00950B惩膀A�扭渐q杜</a>
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>965</td>
+<td class="t3n1" nowrap>-965</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00751B');">00751Bじ�jAAA��Aそ�q杜</a>
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>754</td>
+<td class="t3n1" nowrap>-754</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2618','���a��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>51</td>
+<td class="t3n1" nowrap>758</td>
+<td class="t3n1" nowrap>-707</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS1301','�x鹅');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>55</td>
+<td class="t3n1" nowrap>732</td>
+<td class="t3n1" nowrap>-677</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00937B');">00937B�s�qESGщ单杜20</a>
+</td>
+<td class="t3n1" nowrap>166</td>
+<td class="t3n1" nowrap>800</td>
+<td class="t3n1" nowrap>-634</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2382','�s�F');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>37</td>
+<td class="t3n1" nowrap>638</td>
+<td class="t3n1" nowrap>-601</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00959B');">00959B�j地щ单��杜15Y+</a>
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>578</td>
+<td class="t3n1" nowrap>-578</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2834','�O��蝗');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>5</td>
+<td class="t3n1" nowrap>534</td>
+<td class="t3n1" nowrap>-529</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2374','ㄎ��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>11</td>
+<td class="t3n1" nowrap>526</td>
+<td class="t3n1" nowrap>-515</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00740B');">00740B�Iü���yщ单杜</a>
+</td>
+<td class="t3n1" nowrap>7</td>
+<td class="t3n1" nowrap>502</td>
+<td class="t3n1" nowrap>-495</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00952');">00952惩膀�x�WAI50</a>
+</td>
+<td class="t3n1" nowrap>34</td>
+<td class="t3n1" nowrap>516</td>
+<td class="t3n1" nowrap>-482</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2313','地�q');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>34</td>
+<td class="t3n1" nowrap>480</td>
+<td class="t3n1" nowrap>-446</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00969B');">00969Bじ�j�s�ФW����杜</a>
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>406</td>
+<td class="t3n1" nowrap>-406</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00795B');">00795Bい�H��瓣そ杜20�~</a>
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>379</td>
+<td class="t3n1" nowrap>-379</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS3010','地ミ');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>1</td>
+<td class="t3n1" nowrap>357</td>
+<td class="t3n1" nowrap>-356</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00722B');">00722B�s�qщ戈�殴q�H杜</a>
+</td>
+<td class="t3n1" nowrap>1</td>
+<td class="t3n1" nowrap>352</td>
+<td class="t3n1" nowrap>-351</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00922');">00922瓣�酯x�W烩�S50</a>
+</td>
+<td class="t3n1" nowrap>21</td>
+<td class="t3n1" nowrap>369</td>
+<td class="t3n1" nowrap>-348</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00696B');">00696B�Iü��杜20�~</a>
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>311</td>
+<td class="t3n1" nowrap>-311</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00712');">00712�_地�I�嗓０什�</a>
+</td>
+<td class="t3n1" nowrap>8</td>
+<td class="t3n1" nowrap>300</td>
+<td class="t3n1" nowrap>-292</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2383','�x���q');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>33</td>
+<td class="t3n1" nowrap>313</td>
+<td class="t3n1" nowrap>-280</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00909');">00909瓣�跫痞欷浈I�A叭</a>
+</td>
+<td class="t3n1" nowrap>5</td>
+<td class="t3n1" nowrap>270</td>
+<td class="t3n1" nowrap>-265</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2498','Щ�F�q');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>72</td>
+<td class="t3n1" nowrap>314</td>
+<td class="t3n1" nowrap>-242</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00679B');">00679Bじ�j��杜20�~</a>
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>236</td>
+<td class="t3n1" nowrap>-236</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00938');">00938惩膀�u匡30</a>
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>226</td>
+<td class="t3n1" nowrap>-226</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2486','�@膏');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>27</td>
+<td class="t3n1" nowrap>252</td>
+<td class="t3n1" nowrap>-225</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS3622','�v地');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>208</td>
+<td class="t3n1" nowrap>-208</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00662');">00662�IüNASDAQ</a>
+</td>
+<td class="t3n1" nowrap>3</td>
+<td class="t3n1" nowrap>210</td>
+<td class="t3n1" nowrap>-207</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00701');">00701瓣�酹学Q弘匡30</a>
+</td>
+<td class="t3n1" nowrap>50</td>
+<td class="t3n1" nowrap>257</td>
+<td class="t3n1" nowrap>-207</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS1560','い��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>205</td>
+<td class="t3n1" nowrap>-205</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS6274','�x嵇');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>9</td>
+<td class="t3n1" nowrap>210</td>
+<td class="t3n1" nowrap>-201</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS8249','蒂��');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>3</td>
+<td class="t3n1" nowrap>201</td>
+<td class="t3n1" nowrap>-198</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS6147','噜ü');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>0</td>
+<td class="t3n1" nowrap>196</td>
+<td class="t3n1" nowrap>-196</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS3042','垂м');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>1</td>
+<td class="t3n1" nowrap>190</td>
+<td class="t3n1" nowrap>-189</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<a href="javascript:Link2Stk('00687B');">00687B瓣��20�~��杜</a>
+</td>
+<td class="t3n1" nowrap>21</td>
+<td class="t3n1" nowrap>201</td>
+<td class="t3n1" nowrap>-180</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2455','���s');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>5</td>
+<td class="t3n1" nowrap>177</td>
+<td class="t3n1" nowrap>-172</td>
+</tr>
+<tr>
+<td class="t4t1" nowrap id="oAddCheckbox">
+<SCRIPT LANGUAGE=javascript>
+<!--
+	GenLink2stk('AS2354','�E非');
+//-->
+</SCRIPT>
+
+</td>
+<td class="t3n1" nowrap>12</td>
+<td class="t3n1" nowrap>181</td>
+<td class="t3n1" nowrap>-169</td>
+</tr>
+</table>
+	</TD>
+	</tr>
+	</table>
+</td></tr>
+</table>
+<script language="javascript"><!--
+if(typeof(ContentCenterEnd) == 'function'){ 	ContentCenterEnd();
+ } 
+//--></script>
+</td><td valign="top" align="right">
+<script language="javascript" src="/z/js/SR.js"></script>
+</td></tr>
+<tr><td colspan="3" valign="top">
+<script language="javascript" src="/z/js/SD.js"></script>
+</td></tr></table>
+</div>
+</body>
+</html>

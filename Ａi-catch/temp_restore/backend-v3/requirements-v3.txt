@@ -1,0 +1,61 @@
+# FastAPI Backend v3.0 - 依賴清單
+
+# === 核心框架 ===
+fastapi==0.108.0
+uvicorn[standard]==0.25.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# === 數據庫 ===
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+alembic==1.13.0
+
+# === 快取 ===
+redis==5.0.1
+hiredis==2.3.2
+
+# === WebSocket ===
+websockets==12.0
+python-socketio==5.10.0
+
+# === 數據處理 & AI/ML ===
+pandas==2.1.4
+numpy==1.26.2
+scikit-learn>=1.3.0
+aiofiles==23.2.1
+
+# === 技術分析 ===
+TA-Lib==0.4.28
+yfinance==0.2.33
+
+# === 機器學習（可選）===
+# tensorflow>=2.16.1  # LSTM預測功能，目前未啟用
+
+# === API 客戶端 ===
+httpx==0.25.2
+aiohttp==3.9.1
+
+# === 工具 ===
+python-dotenv==1.0.0
+python-multipart==0.0.6
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+pytz==2023.3.post1
+
+# === 新聞爬蟲 ===
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+requests>=2.31.0
+fake-useragent>=2.0.0
+
+# === 富邦 SDK（從現有專案共享）===
+# fubon-neo==2.2.5  # 使用現有安裝
+
+# === 開發工具 ===
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.12.1
+flake8==7.0.0
+mypy==1.7.1
+reportlab

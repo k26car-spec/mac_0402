@@ -1,0 +1,471 @@
+#!/bin/bash
+# setup_dashboard.sh - 快速安裝 Web 儀表板
+
+echo "🚀 開始安裝 AI 主力監控 Web 平台..."
+echo ""
+
+# 1. 安裝 Flask
+echo "📦 安裝 Flask..."
+pip3 install flask
+
+#
+
+2. 創建 HTML 模板
+echo "📝 創建網頁模板..."
+mkdir -p templates
+
+cat > templates/dashboard.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI主力監控平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .status-running { background: linear-gradient(135deg, #10b981, #059669); }
+        .status-stopped { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .alert-card { transition: transform 0.2s; }
+        .alert-card:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 頂部導航 -->
+    <nav class="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-robot text-3xl"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold">AI主力監控平台</h1>
+                        <p class="text-sm opacity-90" id="current-time"></p>
+                    </div>
+                </div>
+                <div id="system-status" class="px-4 py-2 rounded-full text-sm font-bold status-stopped">
+                    系統已停止
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <!-- 統計卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">系統狀態</p>
+                        <h3 id="status-text" class="text-2xl font-bold text-gray-800">停止中</h3>
+                    </div>
+                    <div class="bg-blue-100 p-3 rounded-lg">
+                        <i class="fas fa-power-off text-blue-600 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">今日警示</p>
+                        <h3 id="today-alerts" class="text-2xl font-bold text-green-600">0</h3>
+                    </div>
+                    <div class="bg-green-100 p-3 rounded-lg">
+                        <i class="fas fa-bell text-green-600 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">監控股票</p>
+                        <h3 id="stock-count" class="text-2xl font-bold text-purple-600">0</h3>
+                    </div>
+                    <div class="bg-purple-100 p-3 rounded-lg">
+                        <i class="fas fa-chart-line text-purple-600 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">交易時間</p>
+                        <h3 id="trading-status" class="text-2xl font-bold text-red-600">休市</h3>
+                    </div>
+                    <div class="bg-orange-100 p-3 rounded-lg">
+                        <i class="fas fa-clock text-orange-600 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- 左側：控制面板 -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- 控制按鈕 -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-gamepad mr-2 text-blue-600"></i>
+                        控制面板
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <button onclick="startMonitor()" 
+                                class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-play mr-2"></i> 啟動
+                        </button>
+                        <button onclick="stopMonitor()" 
+                                class="bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-stop mr-2"></i> 停止
+                        </button>
+                        <button onclick="testEmail()" 
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i> 測試
+                        </button>
+                        <button onclick="refreshAll()" 
+                                class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-3 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-sync-alt mr-2"></i> 刷新
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 添加股票 -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-plus-circle mr-2 text-green-600"></i>
+                        添加監控股票
+                    </h2>
+                    <div class="flex gap-2">
+                        <input type="text" id="new-stock" 
+                               placeholder="輸入股票代號 (如: 2330.TW)" 
+                               class="flex-grow px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
+                        <button onclick="addStock()" 
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition">
+                            添加
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 最近警示 -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>
+                        最近主力警示
+                    </h2>
+                    <div id="alerts-container" class="space-y-3 max-h-96 overflow-y-auto">
+                        <p class="text-gray-500 text-center py-8">載入中...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右側：監控清單 -->
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-list mr-2 text-purple-600"></i>
+                        監控清單
+                    </h2>
+                    <div id="stock-list" class="space-y-2">
+                        <p class="text-gray-500 text-center py-4">載入中...</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-info-circle mr-2 text-blue-600"></i>
+                        系統資訊
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">版本</span>
+                            <span class="font-bold">v1.0.0</span>
+                        </div>
+                        <div class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">最後檢查</span>
+                            <span id="last-check" class="font-bold text-sm">--:--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">總警示數</span>
+                            <span id="total-alerts" class="font-bold">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 更新時間
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleString('zh-TW');
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // 載入系統狀態
+        async function loadStatus() {
+            try {
+                const res = await fetch('/api/status');
+                const data = await res.json();
+                
+                const statusDiv = document.getElementById('system-status');
+                const statusText = document.getElementById('status-text');
+                const tradingStatus = document.getElementById('trading-status');
+                const todayAlerts = document.getElementById('today-alerts');
+                const totalAlerts = document.getElementById('total-alerts');
+                const lastCheck = document.getElementById('last-check');
+                
+                if (data.monitor_status === 'running') {
+                    statusDiv.className = 'px-4 py-2 rounded-full text-sm font-bold status-running';
+                    statusDiv.textContent = '系統運行中';
+                    statusText.textContent = '運行中';
+                    statusText.className = 'text-2xl font-bold text-green-600';
+                } else {
+                    statusDiv.className = 'px-4 py-2 rounded-full text-sm font-bold status-stopped';
+                    statusDiv.textContent = '系統已停止';
+                    statusText.textContent = '已停止';
+                    statusText.className = 'text-2xl font-bold text-red-600';
+                }
+                
+                if (data.is_trading_time) {
+                    tradingStatus.textContent = '交易中';
+                    tradingStatus.className = 'text-2xl font-bold text-green-600';
+                } else {
+                    tradingStatus.textContent = '休市';
+                    tradingStatus.className = 'text-2xl font-bold text-red-600';
+                }
+                
+                todayAlerts.textContent = data.today_alerts;
+                totalAlerts.textContent = data.total_alerts;
+                lastCheck.textContent = data.last_check;
+                
+            } catch (error) {
+                console.error('載入狀態失敗:', error);
+            }
+        }
+
+        // 載入股票清單
+        async function loadStocks() {
+            try {
+                const res = await fetch('/api/stocks');
+                const data = await res.json();
+                
+                document.getElementById('stock-count').textContent = data.stocks.length;
+                
+                const container = document.getElementById('stock-list');
+                if (data.stocks.length === 0) {
+                    container.innerHTML = '<p class="text-gray-500 text-center py-4">暫無股票</p>';
+                } else {
+                    container.innerHTML = data.stocks.map(stock => `
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                            <div class="flex items-center">
+                                <i class="fas fa-chart-line text-blue-500 mr-3"></i>
+                                <span class="font-medium">${stock}</span>
+                            </div>
+                            <button onclick="removeStock('${stock}')" 
+                                    class="text-red-500 hover:text-red-700">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('載入股票清單失敗:', error);
+            }
+        }
+
+        // 載入警示
+        async function loadAlerts() {
+            try {
+                const res = await fetch('/api/alerts/recent');
+                const alerts = await res.json();
+                
+                const container = document.getElementById('alerts-container');
+                if (alerts.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-8 text-gray-500">
+                            <i class="fas fa-inbox text-4xl mb-3"></i>
+                            <p>暫無警示記錄</p>
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = alerts.map(alert => {
+                        const confidence = (alert.confidence * 100).toFixed(1);
+                        const time = new Date(alert.timestamp).toLocaleString('zh-TW');
+                        const borderColor = confidence >= 80 ? 'border-red-500' : 
+                                          confidence >= 60 ? 'border-yellow-500' : 'border-green-500';
+                        
+                        return `
+                            <div class="alert-card border-l-4 ${borderColor} bg-gray-50 p-4 rounded-r-lg shadow-sm">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="font-bold text-lg">${alert.stock_code}</span>
+                                    <span class="text-xs text-gray-500">${time}</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600 text-sm">信心指數</span>
+                                    <span class="font-bold text-xl">${confidence}%</span>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            } catch (error) {
+                console.error('載入警示失敗:', error);
+            }
+        }
+
+        // 控制函數
+        async function startMonitor() {
+            if (!confirm('確定要啟動監控系統嗎？')) return;
+            try {
+                const res = await fetch('/api/monitor/start', { method: 'POST' });
+                const data = await res.json();
+                alert(data.message);
+                if (data.success) loadStatus();
+            } catch (error) {
+                alert('啟動失敗：' + error);
+            }
+        }
+
+        async function stopMonitor() {
+            if (!confirm('確定要停止監控系統嗎？')) return;
+            try {
+                const res = await fetch('/api/monitor/stop', { method: 'POST' });
+                const data = await res.json();
+                alert(data.message);
+                if (data.success) loadStatus();
+            } catch (error) {
+                alert('停止失敗：' + error);
+            }
+        }
+
+        async function addStock() {
+            const input = document.getElementById('new-stock');
+            const stockCode = input.value.trim().toUpperCase();
+            
+            if (!stockCode) {
+                alert('請輸入股票代號！');
+                return;
+            }
+            
+            try {
+                const res = await fetch('/api/stocks/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ stock_code: stockCode })
+                });
+                const data = await res.json();
+                alert(data.message);
+                if (data.success) {
+                    input.value = '';
+                    loadStocks();
+                }
+            } catch (error) {
+                alert('添加失敗：' + error);
+            }
+        }
+
+        async function removeStock(stockCode) {
+            if (!confirm(`確定要移除 ${stockCode} 嗎？`)) return;
+            
+            try {
+                const res = await fetch('/api/stocks/remove', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ stock_code: stockCode })
+                });
+                const data = await res.json();
+                alert(data.message);
+                if (data.success) loadStocks();
+            } catch (error) {
+                alert('移除失敗：' + error);
+            }
+        }
+
+        async function testEmail() {
+            if (confirm('確定要發送測試郵件嗎？')) {
+                alert('請在終端機執行：./test_email_quick.sh');
+            }
+        }
+
+        async function refreshAll() {
+            await Promise.all([loadStatus(), loadStocks(), loadAlerts()]);
+            alert('數據已更新！');
+        }
+
+        // 初始化
+        loadStatus();
+        loadStocks();
+        loadAlerts();
+        
+        // 自動刷新
+        setInterval(loadStatus, 5000);
+        setInterval(loadAlerts, 10000);
+    </script>
+</body>
+</html>
+HTMLEOF
+
+# 3. 創建啟動腳本
+echo "⚡ 創建啟動腳本..."
+
+cat > start_dashboard.sh << 'EOF'
+#!/bin/bash
+echo "🚀 啟動 AI 主力監控 Web 平台..."
+echo ""
+echo "📊 平台網址："
+echo "   本機: http://127.0.0.1:5000"
+echo "   區網: http://$(hostname -I | awk '{print $1}'):5000"
+echo ""
+echo "🛑 停止平台: 按 Ctrl+C"
+echo ""
+
+python3 dashboard.py
+EOF
+
+chmod +x start_dashboard.sh
+
+# 4. 創建背景啟動腳本
+cat > start_dashboard_daemon.sh << 'EOF'
+#!/bin/bash
+cd "$(dirname "$0")"
+nohup python3 dashboard.py > logs/dashboard.log 2>&1 &
+PID=$!
+echo $PID > dashboard.pid
+echo "✅ Web 平台已啟動 (PID: $PID)"
+echo "📊 網址: http://127.0.0.1:5000"
+echo "📝 日誌: logs/dashboard.log"
+EOF
+
+chmod +x start_dashboard_daemon.sh
+
+# 5. 創建停止腳本
+cat > stop_dashboard.sh << 'EOF'
+#!/bin/bash
+cd "$(dirname "$0")"
+if [ -f dashboard.pid ]; then
+    PID=$(cat dashboard.pid)
+    kill $PID 2>/dev/null
+    rm dashboard.pid
+    echo "✅ Web 平台已停止"
+else
+    pkill -f "python3 dashboard.py"
+    echo "ℹ️  已嘗試停止所有 dashboard 進程"
+fi
+EOF
+
+chmod +x stop_dashboard.sh
+
+echo ""
+echo "🎉 安裝完成！"
+echo ""
+echo "📋 可用指令："
+echo "   ./start_dashboard.sh           # 前台啟動 (可看到日誌)"
+echo "   ./start_dashboard_daemon.sh    # 背景啟動"
+echo "   ./stop_dashboard.sh            # 停止平台"
+echo ""
+echo "🚀 現在就啟動吧："
+echo "   ./start_dashboard.sh"
+echo ""

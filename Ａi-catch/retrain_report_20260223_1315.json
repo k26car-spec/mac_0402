@@ -1,0 +1,17 @@
+{
+  "retrain_date": "2026-02-23T13:15:00.861278",
+  "method": "binary_cross_entropy + class_weight",
+  "total": 2,
+  "ok": 0,
+  "summary": [
+    {
+      "symbol": "2881",
+      "status": "still_biased",
+      "epochs": 21,
+      "accuracy": 0.5063291139240507,
+      "precision": 0.5063291139240507,
+      "recall": 1.0,
+      "f1": 0.6722689075630253,
+      "pos_preds": 79,
+      "total_test": 79,
+      "is_valid": 

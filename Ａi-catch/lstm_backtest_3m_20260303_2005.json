@@ -1,0 +1,39 @@
+{
+  "backtest_date": "2026-03-03T20:05:07.111876",
+  "period": "3m",
+  "threshold": "auto",
+  "summary": {
+    "total": 2,
+    "whitelist": 2,
+    "avg_precision": 0.7157444005270093,
+    "avg_alpha": 2.7960000000000003
+  },
+  "results": [
+    {
+      "symbol": "2408",
+      "version": "v5",
+      "threshold": 0.35,
+      "samples": 60,
+      "accuracy": 0.5333333333333333,
+      "precision": 0.6739130434782609,
+      "recall": 0.7045454545454546,
+      "f1": 0.6888888888888889,
+      "pos_preds": 46,
+      "actual_pos": 44,
+      "avg_alpha": 2.682
+    },
+    {
+      "symbol": "3189",
+      "version": "v5",
+      "threshold": 0.35,
+      "samples": 60,
+      "accuracy": 0.48333333333333334,
+      "precision": 0.7575757575757576,
+      "recall": 0.5208333333333334,
+      "f1": 0.6172839506172839,
+      "pos_preds": 33,
+      "actual_pos": 48,
+      "avg_alpha": 2.91
+    }
+  ]
+}

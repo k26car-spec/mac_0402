@@ -1,0 +1,122 @@
+{
+  "stock_code": "8046",
+  "stock_name": "南電",
+  "overall_score": 45.5,
+  "recommendation": "減碼",
+  "target_price": 250.95,
+  "stop_loss": 215.1,
+  "ai_summary": "南電 整體評分偏低 (45.5分)，出現 4 個賣出訊號，需謹慎操作。 注意：有 1 項高風險警示。",
+  "technical_indicators": {
+    "current_price": 239.0,
+    "change_pct": 0.0,
+    "ma5": 239.2,
+    "ma10": 250.4,
+    "ma20": 259.35,
+    "ma60": 264.84,
+    "ma_arrangement": "空頭排列",
+    "ma_signal": "在MA5之下",
+    "ma_trend": "短期偏空、中期偏空、長期偏空",
+    "resistance_1": 239.2,
+    "resistance_2": 240.0,
+    "support_1": 232.0,
+    "support_2": 230.0,
+    "rsi_14": 39.11,
+    "macd": -7.0697,
+    "trend": "空頭"
+  },
+  "financial_health": {
+    "roe": 2.06,
+    "eps": 1.43,
+    "revenue_growth_3y": 19.3,
+    "gross_margin": 6.14,
+    "debt_ratio": 74.56
+  },
+  "institutional_trading": {
+    "foreign_net": -2323425,
+    "trust_net": 0,
+    "dealer_net": -278000,
+    "total_net": -2601425
+  },
+  "related_news": [
+    {
+      "title": "載板三雄回暖，點燃成長引擎，欣興、景碩、南電誰是最大黑馬？",
+      "summary": "載板三雄2025上半年走出谷底，產品漲價，法人看好2026年獲利顯著成長，南電T-glass認證將增供給。",
+      "date": "2025-12-24",
+      "source": "wealth.businessweekly.com.tw",
+      "sentiment": "positive",
+      "impact": "high"
+    },
+    {
+      "title": "南電(8046) 今日股價、行情討論",
+      "summary": "股價91.5漲3.27%，但討論指業績不亮眼，預計跌至200以下作帳結束。",
+      "date": "2025-12-24",
+      "source": "cmoney.tw",
+      "sentiment": "negative",
+      "impact": "medium"
+    },
+    {
+      "title": "南電8046 - 總覽",
+      "summary": "南電股價239.00持平，成交量3936張，市值1544億，本益比167.21。",
+      "date": "2025-12-24",
+      "source": "cnyes.com",
+      "sentiment": "neutral",
+      "impact": "low"
+    },
+    {
+      "title": "南電(8046) 個股資訊",
+      "summary": "成交價239.00，漲跌持平，EPS 1.15，累計營收年增22.44%。",
+      "date": "2025-12-24",
+      "source": "pchome.megatime.com.tw",
+      "sentiment": "neutral",
+      "impact": "low"
+    },
+    {
+      "title": "南电(8046)股票最新价格行情",
+      "summary": "12/24股價239.00，日內高244.00，台灣股市上漲0.74%。",
+      "date": "2025-12-24",
+      "source": "cn.investing.com",
+      "sentiment": "positive",
+      "impact": "medium"
+    }
+  ],
+  "buy_signals": [
+    {
+      "type": "buy",
+      "name": "高殖利率",
+      "description": "殖利率 (42.0%) 具吸引力",
+      "confidence": 65
+    }
+  ],
+  "sell_signals": [
+    {
+      "type": "sell",
+      "name": "空頭排列",
+      "description": "技術面空頭排列，趨勢向下",
+      "confidence": 75
+    },
+    {
+      "type": "sell",
+      "name": "MACD 死亡交叉",
+      "description": "MACD 死亡交叉且在零軸之下，空頭動能強",
+      "confidence": 80
+    },
+    {
+      "type": "sell",
+      "name": "法人連續賣超",
+      "description": "法人連續 3 天賣超，籌碼鬆動",
+      "confidence": 75
+    }
+  ],
+  "risk_warnings": [
+    {
+      "level": "medium",
+      "name": "ROE 普通",
+      "description": "ROE (2.06%)，獲利能力一般"
+    },
+    {
+      "level": "high",
+      "name": "負債比過高",
+      "description": "負債比 (74.56%)，財務槓桿風險高"
+    }
+  ]
+}

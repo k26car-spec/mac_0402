@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI主力監控平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .status-running {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .status-stopped {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .alert-card {
+            transition: transform 0.2s;
+        }
+
+        .alert-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- 頂部導航 -->
+    <nav class="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-robot text-3xl"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold">AI主力監控平台</h1>
+                        <p class="text-sm opacity-90" id="current-time"></p>
+                    </div>
+                </div>
+                <div id="system-status" class="px-4 py-2 rounded-full text-sm font-bold status-stopped">
+                    系統已停止
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <!-- 統計卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">系統狀態</p>
+                        <h3 id="status-text" class="text-2xl font-bold text-gray-800">停止中</h3>
+                    </div>
+                    <div class="bg-blue-100 p-3 rounded-lg">
+                        <i class="fas fa-power-off text-blue-600 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">今日警示</p>
+                        <h3 id="today-alerts" class="text-2xl font-bold text-green-600">0</h3>
+                    </div>
+                    <div class="bg-green-100 p-3 rounded-lg">
+                        <i class="fas fa-bell text-green-600 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">監控股票</p>
+                        <h3 id="stock-count" class="text-2xl font-bold text-purple-600">0</h3>
+                    </div>
+                    <div class="bg-purple-100 p-3 rounded-lg">
+                        <i class="fas fa-chart-line text-purple-600 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">交易時間</p>
+                        <h3 id="trading-status" class="text-2xl font-bold text-red-600">休市</h3>
+                    </div>
+                    <div class="bg-orange-100 p-3 rounded-lg">
+                        <i class="fas fa-clock text-orange-600 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- 左側：控制面板 -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- 控制按鈕 -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-gamepad mr-2 text-blue-600"></i>
+                        控制面板
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <button onclick="startMonitor()"
+                            class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-play mr-2"></i> 啟動
+                        </button>
+                        <button onclick="stopMonitor()"
+                            class="bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-stop mr-2"></i> 停止
+                        </button>
+                        <button onclick="testEmail()"
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i> 測試
+                        </button>
+                        <button onclick="refreshAll()"
+                            class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-3 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-sync-alt mr-2"></i> 刷新
+                        </button>
+                    </div>
+
+                    <!-- 新功能: 開盤前5分鐘精準選股 -->
+                    <div class="mt-4">
+                        <a href="/premarket"
+                            class="block w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-4 py-4 rounded-lg transition text-center font-bold shadow-lg">
+                            <i class="fas fa-stopwatch mr-2"></i> 🔥 開盤前5分鐘精準選股系統
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 添加股票 -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-plus-circle mr-2 text-green-600"></i>
+                        添加監控股票
+                    </h2>
+                    <div class="relative">
+                        <div class="flex gap-2">
+                            <div class="flex-grow relative">
+                                <input type="text" id="new-stock" placeholder="輸入代碼或名稱搜尋 (如: 2330、台積電)"
+                                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                                    onkeyup="searchStock(event)" autocomplete="off">
+                                <!-- 搜尋結果下拉選單 -->
+                                <div id="search-results"
+                                    class="absolute z-10 w-full bg-white border-2 border-gray-300 rounded-lg mt-1 max-h-60 overflow-y-auto hidden shadow-lg">
+                                </div>
+                            </div>
+                            <button onclick="addStock()"
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition">
+                                添加
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">💡 提示：可輸入代碼 (2330) 或名稱 (台積電) 搜尋</p>
+                    </div>
+                </div>
+
+                <!-- 最近警示 -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>
+                        最近主力警示
+                    </h2>
+                    <div id="alerts-container" class="space-y-3 max-h-96 overflow-y-auto">
+                        <p class="text-gray-500 text-center py-8">載入中...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右側：監控清單 -->
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-list mr-2 text-purple-600"></i>
+                        監控清單
+                    </h2>
+                    <div id="stock-list" class="space-y-2">
+                        <p class="text-gray-500 text-center py-4">載入中...</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-info-circle mr-2 text-blue-600"></i>
+                        系統資訊
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">版本</span>
+                            <span class="font-bold">v1.0.0</span>
+                        </div>
+                        <div class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">最後檢查</span>
+                            <span id="last-check" class="font-bold text-sm">--:--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">總警示數</span>
+                            <span id="total-alerts" class="font-bold">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 更新時間
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleString('zh-TW');
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // 載入系統狀態
+        async function loadStatus() {
+            try {
+                const res = await fetch('/api/status');
+                const data = await res.json();
+
+                const statusDiv = document.getElementById('system-status');
+                const statusText = document.getElementById('status-text');
+                const tradingStatus = document.getElementById('trading-status');
+                const todayAlerts = document.getElementById('today-alerts');
+                const totalAlerts = document.getElementById('total-alerts');
+                const lastCheck = document.getElementById('last-check');
+
+                if (data.monitor_status === 'running') {
+                    statusDiv.className = 'px-4 py-2 rounded-full text-sm font-bold status-running';
+                    statusDiv.textContent = '系統運行中';
+                    statusText.textContent = '運行中';
+                    statusText.className = 'text-2xl font-bold text-green-600';
+                } else {
+                    statusDiv.className = 'px-4 py-2 rounded-full text-sm font-bold status-stopped';
+                    statusDiv.textContent = '系統已停止';
+                    statusText.textContent = '已停止';
+                    statusText.className = 'text-2xl font-bold text-red-600';
+                }
+
+                if (data.is_trading_time) {
+                    tradingStatus.textContent = '交易中';
+                    tradingStatus.className = 'text-2xl font-bold text-green-600';
+                } else {
+                    tradingStatus.textContent = '休市';
+                    tradingStatus.className = 'text-2xl font-bold text-red-600';
+                }
+
+                todayAlerts.textContent = data.today_alerts;
+                totalAlerts.textContent = data.total_alerts;
+                lastCheck.textContent = data.last_check;
+
+            } catch (error) {
+                console.error('載入狀態失敗:', error);
+            }
+        }
+
+        // 載入股票清單
+        async function loadStocks() {
+            try {
+                const res = await fetch('/api/stocks');
+                const data = await res.json();
+
+                document.getElementById('stock-count').textContent = data.stocks.length;
+
+                const list = document.getElementById('stock-list');
+                if (data.stocks.length === 0) {
+                    list.innerHTML = '<p class="text-gray-500 text-center py-4">暫無股票</p>';
+                } else {
+                    list.innerHTML = data.stocks.map(stock => {
+                        const stockCode = stock.code || stock;
+                        const stockName = stock.name || '';
+                        const fullName = stock.full_name || stockCode;
+
+                        return `
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                            <div class="flex items-center flex-grow">
+                                <i class="fas fa-chart-line text-blue-500 mr-3"></i>
+                                <div>
+                                    <span class="font-medium">${fullName}</span>
+                                </div>
+                            </div>
+                            <button class="delete-btn px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                                    data-code="${stockCode}">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        `;
+                    }).join('');
+
+                    // 為所有刪除按鈕添加事件監聽
+                    document.querySelectorAll('.delete-btn').forEach(btn => {
+                        btn.addEventListener('click', function () {
+                            const code = this.getAttribute('data-code');
+                            removeStock(code);
+                        });
+                    });
+                }
+            } catch (error) {
+                console.error('載入股票清單失敗:', error);
+            }
+        }
+
+        // 載入警示
+        async function loadAlerts() {
+            try {
+                const res = await fetch('/api/alerts/recent');
+                const alerts = await res.json();
+
+                const container = document.getElementById('alerts-container');
+                if (alerts.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-8 text-gray-500">
+                            <i class="fas fa-inbox text-4xl mb-3"></i>
+                            <p>暫無警示記錄</p>
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = alerts.map(alert => {
+                        const confidence = (alert.confidence * 100).toFixed(1);
+                        const time = new Date(alert.timestamp).toLocaleString('zh-TW');
+                        const borderColor = confidence >= 80 ? 'border-red-500' :
+                            confidence >= 60 ? 'border-yellow-500' : 'border-green-500';
+
+                        return `
+                            <div class="alert-card border-l-4 ${borderColor} bg-gray-50 p-4 rounded-r-lg shadow-sm">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="font-bold text-lg">${alert.stock_code}</span>
+                                    <span class="text-xs text-gray-500">${time}</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600 text-sm">信心指數</span>
+                                    <span class="font-bold text-xl">${confidence}%</span>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            } catch (error) {
+                console.error('載入警示失敗:', error);
+            }
+        }
+
+        // 控制函數
+        async function startMonitor() {
+            console.log('啟動按鈕被點擊');
+
+            if (!confirm('確定要啟動監控系統嗎？\n\n系統將開始監控股票並偵測主力進場。')) {
+                console.log('用戶取消啟動');
+                return;
+            }
+
+            console.log('準備啟動監控系統...');
+
+            try {
+                console.log('發送 POST 請求到 /api/monitor/start');
+                const res = await fetch('/api/monitor/start', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                console.log('收到響應:', res.status);
+                const data = await res.json();
+                console.log('響應數據:', data);
+
+                // 顯示結果
+                if (data.success) {
+                    alert('✅ ' + data.message + '\n\n系統已開始監控。');
+                    await loadStatus();
+                } else {
+                    alert('⚠️  ' + data.message);
+                }
+            } catch (error) {
+                console.error('啟動失敗:', error);
+                alert('❌ 啟動失敗：' + error.message + '\n\n請檢查 stock_monitor.py 是否存在。');
+            }
+        }
+
+        async function stopMonitor() {
+            console.log('停止按鈕被點擊');
+
+            if (!confirm('確定要停止監控系統嗎？')) {
+                console.log('用戶取消停止');
+                return;
+            }
+
+            console.log('準備停止監控系統...');
+
+            try {
+                console.log('發送 POST 請求到 /api/monitor/stop');
+                const res = await fetch('/api/monitor/stop', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                console.log('收到響應:', res.status);
+                const data = await res.json();
+                console.log('響應數據:', data);
+
+                // 顯示結果
+                if (data.success) {
+                    alert('✅ ' + data.message);
+                    await loadStatus();
+                } else {
+                    alert('⚠️  ' + data.message);
+                }
+            } catch (error) {
+                console.error('停止失敗:', error);
+                alert('❌ 停止失敗：' + error.message);
+            }
+        }
+
+        // 刪除股票（簡化版）
+        async function removeStock(stockCode) {
+            console.log('刪除:', stockCode);
+
+            try {
+                const res = await fetch('/api/stocks/remove', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ stock_code: stockCode })
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    loadStocks();
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                alert('刪除失敗');
+            }
+        }
+
+        // 常用台股名稱對照表（本地資料庫）
+        const COMMON_TW_STOCKS = [
+            // 權值股
+            { code: '2330', name: '台積電', fullCode: '2330.TW' },
+            { code: '2317', name: '鴻海', fullCode: '2317.TW' },
+            { code: '2454', name: '聯發科', fullCode: '2454.TW' },
+            { code: '2308', name: '台達電', fullCode: '2308.TW' },
+            { code: '3008', name: '大立光', fullCode: '3008.TW' },
+            { code: '2412', name: '中華電', fullCode: '2412.TW' },
+            // 金融股
+            { code: '2881', name: '富邦金', fullCode: '2881.TW' },
+            { code: '2882', name: '國泰金', fullCode: '2882.TW' },
+            { code: '2884', name: '玉山金', fullCode: '2884.TW' },
+            { code: '2891', name: '中信金', fullCode: '2891.TW' },
+            { code: '2886', name: '兆豐金', fullCode: '2886.TW' },
+            { code: '2885', name: '元大金', fullCode: '2885.TW' },
+            { code: '2880', name: '華南金', fullCode: '2880.TW' },
+            { code: '2883', name: '開發金', fullCode: '2883.TW' },
+            { code: '2887', name: '台新金', fullCode: '2887.TW' },
+            { code: '2892', name: '第一金', fullCode: '2892.TW' },
+            { code: '5880', name: '合庫金', fullCode: '5880.TW' },
+            // 傳產股
+            { code: '1301', name: '台塑', fullCode: '1301.TW' },
+            { code: '1303', name: '南亞', fullCode: '1303.TW' },
+            { code: '1326', name: '台化', fullCode: '1326.TW' },
+            { code: '2002', name: '中鋼', fullCode: '2002.TW' },
+            { code: '1101', name: '台泥', fullCode: '1101.TW' },
+            { code: '1102', name: '亞泥', fullCode: '1102.TW' },
+            { code: '1216', name: '統一', fullCode: '1216.TW' },
+            { code: '2912', name: '統一超', fullCode: '2912.TW' },
+            // 電子股
+            { code: '2303', name: '聯電', fullCode: '2303.TW' },
+            { code: '2382', name: '廣達', fullCode: '2382.TW' },
+            { code: '2324', name: '仁寶', fullCode: '2324.TW' },
+            { code: '2357', name: '華碩', fullCode: '2357.TW' },
+            { code: '2376', name: '技嘉', fullCode: '2376.TW' },
+            { code: '2377', name: '微星', fullCode: '2377.TW' },
+            { code: '2353', name: '宏碁', fullCode: '2353.TW' },
+            { code: '3231', name: '緯創', fullCode: '3231.TW' },
+            { code: '4938', name: '和碩', fullCode: '4938.TW' },
+            { code: '2356', name: '英業達', fullCode: '2356.TW' },
+            { code: '2409', name: '友達', fullCode: '2409.TW' },
+            { code: '3481', name: '群創', fullCode: '3481.TW' },
+            // IC 設計
+            { code: '3034', name: '聯詠', fullCode: '3034.TW' },
+            { code: '2379', name: '瑞昱', fullCode: '2379.TW' },
+            { code: '3443', name: '創意', fullCode: '3443.TW' },
+            { code: '5274', name: '信驊', fullCode: '5274.TW' },
+            { code: '5269', name: '祥碩', fullCode: '5269.TW' },
+            { code: '6669', name: '緯穎', fullCode: '6669.TW' },
+            { code: '6257', name: '矽格', fullCode: '6257.TW' },  // 新增
+            { code: '2344', name: '華邦電', fullCode: '2344.TW' },
+            // 航運股
+            { code: '2603', name: '長榮', fullCode: '2603.TW' },
+            { code: '2609', name: '陽明', fullCode: '2609.TW' },
+            { code: '2615', name: '萬海', fullCode: '2615.TW' },
+            { code: '2618', name: '長榮航', fullCode: '2618.TW' },
+            // 監控中 / 上櫃
+            { code: '8110', name: '華東', fullCode: '8110.TW' },
+            { code: '8021', name: '尖點', fullCode: '8021.TW' },
+            { code: '8046', name: '南電', fullCode: '8046.TW' },
+            { code: '8155', name: '博智', fullCode: '8155.TWO' },
+            { code: '8039', name: '台虹', fullCode: '8039.TW' },
+            { code: '3706', name: '神達', fullCode: '3706.TW' },
+            { code: '3363', name: '上詮', fullCode: '3363.TW' },
+            { code: '5521', name: '工信', fullCode: '5521.TW' },
+            { code: '5498', name: '凱崴', fullCode: '5498.TW' },
+            { code: '3030', name: '德律', fullCode: '3030.TW' },
+            { code: '3037', name: '欣興', fullCode: '3037.TW' },
+            { code: '1815', name: '富喬', fullCode: '1815.TW' },
+            // ETF
+            { code: '0050', name: '元大台灣50', fullCode: '0050.TW' },
+            { code: '0056', name: '元大高股息', fullCode: '0056.TW' },
+            { code: '00878', name: '國泰永續高股息', fullCode: '00878.TW' },
+            { code: '00881', name: '國泰台灣5G+', fullCode: '00881.TW' }
+        ];
+
+        let searchTimeout = null;  // 防抖計時器
+
+        // 🔍 智能搜尋股票（雙層策略）
+        async function searchStock(event) {
+            const input = event.target;
+            const query = input.value.trim();
+            const resultsDiv = document.getElementById('search-results');
+
+            // 如果輸入為空，隱藏結果
+            if (!query) {
+                resultsDiv.classList.add('hidden');
+                return;
+            }
+
+            // ⏱️ 防抖機制：延遲 300ms
+            clearTimeout(searchTimeout);
+
+            searchTimeout = setTimeout(async () => {
+                console.log('🔍 搜尋:', query);
+
+                // 顯示載入中
+                resultsDiv.innerHTML = `
+                    <div class="px-4 py-3 text-gray-500 text-center">
+                        <i class="fas fa-spinner fa-spin mr-2"></i>
+                        搜尋中...
+                    </div>
+                `;
+                resultsDiv.classList.remove('hidden');
+
+                let results = [];
+
+                // 1️⃣ 第一層：本地資料庫 (最快、最可靠)
+                const localResults = searchLocalDatabase(query);
+                if (localResults.length > 0) {
+                    results = localResults;
+                    console.log('📦 本地資料庫命中:', results.length, '筆');
+                }
+
+                // 2️⃣ 第二層：如果本地沒有結果，嘗試 Yahoo Finance API
+                if (results.length === 0) {
+                    try {
+                        console.log('🌐 嘗試 Yahoo API...');
+                        const yahooResults = await searchYahooFinance(query);
+                        if (yahooResults && yahooResults.length > 0) {
+                            results = yahooResults;
+                            console.log('✅ Yahoo 搜尋成功:', results.length, '筆');
+                        }
+                    } catch (error) {
+                        console.warn('⚠️ Yahoo 搜尋失敗 (CORS 限制):', error.message);
+                    }
+                }
+
+                // 3️⃣ 如果還是沒有，嘗試直接用代碼添加
+                if (results.length === 0 && /^\d{4,5}$/.test(query)) {
+                    // 純數字代碼，讓用戶可以直接添加
+                    results = [{
+                        code: query,
+                        name: `股票 ${query}`,
+                        fullCode: query + '.TW',
+                        source: 'manual'
+                    }];
+                    console.log('📝 允許手動添加:', query);
+                }
+
+                // 顯示結果
+                displaySearchResults(results, resultsDiv);
+
+            }, 300);  // 300ms 防抖
+        }
+
+        // 🌐 Yahoo Finance 即時搜尋
+        async function searchYahooFinance(query) {
+            const url = `https://query1.finance.yahoo.com/v1/finance/search?q=${encodeURIComponent(query)}&lang=zh-Hant-TW&region=TW&quotesCount=10`;
+
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 3000);  // 3秒超時
+
+                const response = await fetch(url, {
+                    signal: controller.signal,
+                    headers: {
+                        'User-Agent': 'Mozilla/5.0'
+                    }
+                });
+
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // 過濾台股（.TW 或 .TWO）
+                const quotes = data.quotes || [];
+                return quotes
+                    .filter(quote => {
+                        const symbol = quote.symbol || '';
+                        return symbol.endsWith('.TW') || symbol.endsWith('.TWO');
+                    })
+                    .map(quote => ({
+                        code: quote.symbol.replace(/\.(TW|TWO)$/, ''),
+                        name: quote.shortname || quote.longname || '未知',
+                        fullCode: quote.symbol,
+                        source: 'yahoo'
+                    }))
+                    .slice(0, 10);  // 限制10筆
+
+            } catch (error) {
+                console.error('Yahoo 搜尋錯誤:', error.message);
+                return [];
+            }
+        }
+
+        // 💾 本地資料庫搜尋
+        function searchLocalDatabase(query) {
+            const normalizedQuery = query.toLowerCase();
+
+            return COMMON_TW_STOCKS.filter(stock => {
+                const codeMatch = stock.code.toLowerCase().includes(normalizedQuery);
+                const nameMatch = stock.name.toLowerCase().includes(normalizedQuery);
+                return codeMatch || nameMatch;
+            }).map(stock => ({
+                ...stock,
+                source: 'local'
+            }));
+        }
+
+        // 📊 顯示搜尋結果
+        function displaySearchResults(results, resultsDiv) {
+            if (results.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div class="px-4 py-3 text-gray-500 text-center">
+                        找不到匹配的股票
+                        <br>
+                        <small class="text-xs">請輸入股票代碼或名稱（如：2330、台積電）</small>
+                    </div>
+                `;
+                resultsDiv.classList.remove('hidden');
+                return;
+            }
+
+            resultsDiv.innerHTML = results.map(stock => `
+                <div class="px-4 py-3 hover:bg-blue-50 cursor-pointer border-b last:border-0"
+                     onclick="selectStock('${stock.fullCode}', '${stock.name}')">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="font-bold text-blue-600">${stock.code}</span>
+                            <span class="text-gray-600 ml-2">${stock.name}</span>
+                        </div>
+                        <div class="text-xs text-gray-400">
+                            ${stock.source === 'yahoo' ? '🌐 即時' : '💾 本地'}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // ✅ 選擇股票
+        function selectStock(code, name) {
+            const input = document.getElementById('new-stock');
+            input.value = code;
+            document.getElementById('search-results').classList.add('hidden');
+
+            // 自動添加
+            addStock();
+        }
+
+        // 點擊外部關閉下拉選單
+        document.addEventListener('click', function (e) {
+            const searchInput = document.getElementById('new-stock');
+            const resultsDiv = document.getElementById('search-results');
+            if (e.target !== searchInput && !resultsDiv.contains(e.target)) {
+                resultsDiv.classList.add('hidden');
+            }
+        });
+
+        async function addStock() {
+            const input = document.getElementById('new-stock');
+            let stockCode = input.value.trim().toUpperCase();
+
+            if (!stockCode) {
+                alert('請輸入股票代號！');
+                return;
+            }
+
+            // 🎯 智能補充後綴：純數字自動加 .TW
+            if (/^\d+$/.test(stockCode)) {
+                stockCode = stockCode + '.TW';
+                console.log('✨ 自動補充後綴:', stockCode);
+            }
+
+            try {
+                const res = await fetch('/api/stocks/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ stock_code: stockCode })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    alert(`✅ ${data.message}`);
+                    input.value = '';
+                    document.getElementById('search-results').classList.add('hidden');
+                    loadStocks();
+                } else {
+                    alert(`⚠️ ${data.message}`);
+                }
+            } catch (error) {
+                alert('❌ 添加失敗：' + error);
+            }
+        }
+
+        async function removeStock(stockCode) {
+            if (!confirm(`確定要移除 ${stockCode} 嗎？`)) return;
+
+            try {
+                const res = await fetch('/api/stocks/remove', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ stock_code: stockCode })
+                });
+                const data = await res.json();
+                alert(data.message);
+                if (data.success) loadStocks();
+            } catch (error) {
+                alert('移除失敗：' + error);
+            }
+        }
+
+        async function testEmail() {
+            if (confirm('確定要發送測試郵件嗎？')) {
+                alert('請在終端機執行：./test_email_quick.sh');
+            }
+        }
+
+        async function refreshAll() {
+            await Promise.all([loadStatus(), loadStocks(), loadAlerts()]);
+            alert('數據已更新！');
+        }
+
+        // 初始化
+        loadStatus();
+        loadStocks();
+        loadAlerts();
+
+        // 自動刷新
+        setInterval(loadStatus, 5000);
+        setInterval(loadAlerts, 10000);
+    </script>
+</body>
+
+</html>
