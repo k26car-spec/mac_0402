@@ -149,18 +149,31 @@
                         **智邦 (2345)**：投信連續十日買超，典型的主動式基金建倉期。
                     </p>
                 </div>
-            </div>
-
-
+            <!-- 主力共識持股看板 -->
+            <div id="common-box" class="bg-slate-900 p-6 rounded-2xl shadow-xl text-white border border-blue-900/30 mb-6">
+                <h3 class="font-bold mb-4 flex items-center gap-2 text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2H7a1 1 0 100-2h.01zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                    </svg>
+                    🎯 主力共識持股
+                </h3>
+                <div id="common-list" class="grid grid-cols-2 gap-2 text-[10px]">
+                    <!-- 動態載入 -->
+                </div>
                 <div class="mt-4 pt-4 border-t border-slate-800 text-[10px] text-slate-500 italic">
                     註：此名單為三檔選取 ETF 同步持有的強勢股
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- 股票詳細資料 Modal -->
+            <!-- 斐波那契回撤計算 -->
+            <div class="glass-card p-6 rounded-2xl shadow-sm border-t-4 border-t-indigo-500 mb-6">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    斐波那契回撤計算
+                </h3>
 <div id="stock-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-start md:items-center justify-center p-2 md:p-4 overflow-y-auto">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl border border-slate-200 flex flex-col my-auto max-h-[90vh] md:max-h-[95vh] overflow-hidden">
         <div class="p-4 md:p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50 shrink-0 pt-6 md:pt-6">
