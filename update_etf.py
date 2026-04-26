@@ -393,13 +393,20 @@ async def run():
     # [修正二] 動態生成籌碼筆記
     chip_notes = generate_chip_notes(etf_base_data)
 
+    # 計算主力共識持股 (所有 ETF 皆持有的成分股)
+    sets_of_names = []
+    for data in etf_base_data.values():
+        sets_of_names.append(set(st["name"] for st in data.get("holdings", [])))
+    
+    common_holdings = list(set.intersection(*sets_of_names)) if sets_of_names else []
+
     update_time = datetime.now().strftime("%Y-%m-%d %H:%M")
     with open(data_file, "w", encoding="utf-8") as f:
         json.dump(
             {
                 "etf_data": etf_base_data,
                 "chip_notes": chip_notes,          # 動態筆記寫入 JSON
-                "common_holdings": [],
+                "common_holdings": common_holdings,
                 "update_time": update_time,
             },
             f,
