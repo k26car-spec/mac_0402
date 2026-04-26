@@ -73,22 +73,27 @@ async def get_twse_official():
             except Exception:
                 pass
 
-        # TPEx 上櫃
-        try:
-            url_otc = (
-                "https://www.tpex.org.tw/openapi/v1/"
-                "tpex_mainboard_daily_trading_summary_by_institutional_investors"
-            )
-            res_otc = await client.get(url_otc, timeout=10)
-            for row in res_otc.json():
-                try:
-                    chips[row["SecuritiesCompanyCode"].strip()] = int(
-                        int(row["InvestmentTrustsNetBuySell"].replace(",", "")) / 1000
-                    )
-                except Exception:
-                    pass
-        except Exception:
-            pass
+        # TPEx (櫃買)
+        for d_back in range(10):
+            try:
+                d = datetime.now() - timedelta(days=d_back)
+                date_str = f"{d.year - 1911}/{d.strftime('%m/%d')}"
+                url_otc = f"https://www.tpex.org.tw/web/stock/3insti/daily_trade/3itrade_hedge_result.php?l=zh-tw&o=json&se=EW&t=D&d={date_str}"
+                res_otc = await client.get(url_otc, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
+                data_otc = res_otc.json()
+                if "tables" in data_otc and len(data_otc["tables"]) > 0:
+                    rows = data_otc["tables"][0].get("data", [])
+                    if len(rows) > 100:
+                        for row in rows:
+                            try:
+                                # 第 13 欄為「投信買賣超股數」
+                                val = int(row[13].replace(",", ""))
+                                chips[row[0].strip()] = int(val / 1000)
+                            except Exception:
+                                pass
+                        break
+            except Exception:
+                pass
     return chips
 
 
