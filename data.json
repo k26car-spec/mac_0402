@@ -2,7 +2,7 @@
   "etf_data": {
     "00981A": {
       "name": "統一台股增長",
-      "scale": "1,925 億",
+      "scale": "2120.8億",
       "topWeight": "9.39%",
       "vwap": "多頭鎖碼",
       "holdings": [
@@ -11,7 +11,7 @@
           "name": "台積電",
           "weight": 9.39,
           "shares": 9114000,
-          "etf_net_buy": 350,
+          "etf_net_buy": 1,
           "price": 2185.0,
           "change": "+105.0 (+5.05%)",
           "history": [
@@ -66,7 +66,7 @@
           "name": "台光電",
           "weight": 8.7,
           "shares": 4125000,
-          "etf_net_buy": -120,
+          "etf_net_buy": 221,
           "price": 4475.0,
           "change": "+375.0 (+9.15%)",
           "history": [
@@ -231,7 +231,7 @@
           "name": "奇鋐",
           "weight": 5.42,
           "shares": 3902000,
-          "etf_net_buy": 0,
+          "etf_net_buy": 57,
           "price": 2945.0,
           "change": "+265.0 (+9.89%)",
           "history": [
@@ -286,7 +286,7 @@
           "name": "貿聯-KY",
           "weight": 5.34,
           "shares": 4097848,
-          "etf_net_buy": 0,
+          "etf_net_buy": 164,
           "price": 2765.0,
           "change": "+10.0 (+0.36%)",
           "history": [
@@ -341,7 +341,7 @@
           "name": "智邦",
           "weight": 5.28,
           "shares": 5231000,
-          "etf_net_buy": 0,
+          "etf_net_buy": 174,
           "price": 2140.0,
           "change": "+60.0 (+2.88%)",
           "history": [
@@ -396,7 +396,7 @@
           "name": "金像電",
           "weight": 5.08,
           "shares": 7748000,
-          "etf_net_buy": 0,
+          "etf_net_buy": 359,
           "price": 1390.0,
           "change": "+125.0 (+9.88%)",
           "history": [
@@ -451,7 +451,7 @@
           "name": "南電",
           "weight": 4.9,
           "shares": 11881000,
-          "etf_net_buy": 0,
+          "etf_net_buy": 2625,
           "price": 874.0,
           "change": "+79.0 (+9.94%)",
           "history": [
@@ -506,7 +506,7 @@
           "name": "聯發科",
           "weight": 4.44,
           "shares": 3867000,
-          "etf_net_buy": 0,
+          "etf_net_buy": 572,
           "price": 2435.0,
           "change": "+220.0 (+9.93%)",
           "history": [
@@ -726,7 +726,7 @@
           "name": "緯穎",
           "weight": 2.41,
           "shares": 1101000,
-          "etf_net_buy": 0,
+          "etf_net_buy": 149,
           "price": 4635.0,
           "change": "+385.0 (+9.06%)",
           "history": [
@@ -1001,7 +1001,7 @@
           "name": "精測",
           "weight": 1.5,
           "shares": 875000,
-          "etf_net_buy": 0,
+          "etf_net_buy": 94,
           "price": 3630.0,
           "change": "-220.0 (-5.71%)",
           "history": [
@@ -1221,7 +1221,7 @@
           "name": "景碩",
           "weight": 1.25,
           "shares": 5038000,
-          "etf_net_buy": 0,
+          "etf_net_buy": 2086,
           "price": 526.0,
           "change": "+47.0 (+9.81%)",
           "history": [
@@ -2647,16 +2647,20 @@
           "chips": "⚖️ 本基金持平"
         },
         {
-          "id": "6223",
-          "name": "旺矽",
+          "id": "3583",
+          "name": "辛耘",
           "weight": 0,
           "shares": 0,
-          "etf_net_buy": -520,
+          "etf_net_buy": -57,
           "is_deleted": true
         }
       ],
-      "price": 27.8,
-      "change": "+4.43%"
+      "price": "27.64",
+      "change": "+6.22%",
+      "cash_ratio": "6.95%",
+      "cash_ratio_chg": "+0.22%",
+      "futures_margin": "0.24%",
+      "futures_margin_chg": "-0.01%"
     },
     "00992A": {
       "name": "群益科技創新",
