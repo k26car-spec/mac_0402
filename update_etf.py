@@ -157,6 +157,25 @@ async def scrape_etf_holdings(etf_id, name_to_id):
                 except:
                     pass
 
+                # 抓取持股明細
+                matches = _re.findall(
+                    r'"DetailCode":"([^"\s]+)","DetailName":"([^"]+)","Position":"[^"]*","Share":([\d\.]+),"Amount":[\d\.]*,"NavRate":([0-9\.]+)',
+                    decoded
+                )
+                for match in matches:
+                    try:
+                        w = float(match[3])
+                        shares = int(float(match[2]))  # 股數（ezmoney 原始單位）
+                        if w > 0:
+                            holdings.append({
+                                "id": match[0].strip(),
+                                "name": match[1].strip(),
+                                "weight": w,
+                                "shares": shares,  # 存入股數以供差值計算
+                            })
+                    except Exception:
+                        pass
+
                 if holdings:
                     return sorted(holdings, key=lambda x: x["weight"], reverse=True), meta
             except Exception:
