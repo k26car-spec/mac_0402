@@ -134,27 +134,35 @@ async def scrape_etf_holdings(etf_id, name_to_id):
                 url = "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW"
                 r = await client.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
                 decoded = _html.unescape(r.text)
-                matches = _re.findall(
-                    r'"DetailCode":"([^"\s]+)","DetailName":"([^"]+)","Position":"[^"]*","Share":([\d\.]+),"Amount":[\d\.]*,"NavRate":([0-9\.]+)',
-                    decoded
-                )
-                for match in matches:
-                    try:
-                        w = float(match[3])
-                        shares = int(float(match[2]))  # 股數（ezmoney 原始單位）
-                        if w > 0:
-                            holdings.append({
-                                "id": match[0].strip(),
-                                "name": match[1].strip(),
-                                "weight": w,
-                                "shares": shares,  # 存入股數以供差值計算
-                            })
-                    except Exception:
-                        pass
+                # 額外抓取基金規格數據 (規模, 淨值, 現金比, 期貨)
+                meta = {}
+                try:
+                    f_asset = _re.search(r'"FundAsset":([\d\.]+)', decoded)
+                    if f_asset:
+                        scale_val = float(f_asset.group(1))
+                        meta["scale"] = f"{int(scale_val / 100000000):,} 億"
+                    
+                    f_nav = _re.search(r'"FundNav":([\d\.]+)', decoded)
+                    if f_nav: meta["price"] = f_nav.group(1)
+                    
+                    f_rate = _re.search(r'"FundNavRate":([\d\.\+\-]+)', decoded)
+                    if f_rate: meta["change"] = f"{float(f_rate.group(1)):+.2f}%"
+                    
+                    # 抓資產配置 (現金與期貨)
+                    f_cash = _re.search(r'"AssetCode":"Cash","AssetRate":([\d\.]+)', decoded)
+                    if f_cash: meta["cash_ratio"] = f"{f_cash.group(1)}%"
+                    
+                    f_fut = _re.search(r'"AssetCode":"Futures","AssetRate":([\d\.]+)', decoded)
+                    if f_fut: meta["futures_margin"] = f"{f_fut.group(1)}%"
+                except:
+                    pass
+
+                if holdings:
+                    return sorted(holdings, key=lambda x: x["weight"], reverse=True), meta
             except Exception:
                 pass
             if holdings:
-                return sorted(holdings, key=lambda x: x["weight"], reverse=True)
+                return sorted(holdings, key=lambda x: x["weight"], reverse=True), {}
 
         # 特別處理群益投信 (00992A)
         if etf_id == "00992A":
@@ -201,8 +209,12 @@ async def scrape_etf_holdings(etf_id, name_to_id):
 etf_base_data = {
     "00981A": {
         "name": "統一台股增長",
-        "scale": "1,925 億",
-        "topWeight": "8.55%",   # 啟動時的預設值；run() 會動態覆蓋
+        "scale": "2,321 億",
+        "price": "27.74",
+        "change": "+0.36%",
+        "cash_ratio": "6.60%",
+        "futures_margin": "0.22%",
+        "topWeight": "9.46%",   # 啟動時的預設值；run() 會動態覆蓋
         "vwap": "多頭鎖碼",
         "holdings": [
             {"id": "2330", "name": "台積電",   "weight": 8.55},
@@ -356,10 +368,17 @@ async def run():
 
     # 動態爬蟲覆蓋預設持股
     if name_to_id:
-        for eid in etf_base_data.keys():
-            scraped = await scrape_etf_holdings(eid, name_to_id)
-            if scraped:
-                prev_info = prev_holdings.get(eid, {"ids": set(), "shares": {}})
+        for eid in list(etf_base_data.keys()):
+            res = await scrape_etf_holdings(eid, name_to_id)
+            if res:
+                if isinstance(res, tuple):
+                    scraped, meta = res
+                    if meta:
+                        etf_base_data[eid].update(meta)
+                else:
+                    scraped = res
+                
+                prev_info = prev_holdings.get(eid, {"ids": set(), "shares": {}, "names": {}})
                 prev_ids = prev_info.get("ids", set())
                 prev_shares = prev_info.get("shares", {})
 
