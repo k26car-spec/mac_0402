@@ -15,7 +15,7 @@
                     "name": "台積電",
                     "weight": 9.46,
                     "shares": 9693000,
-                    "etf_net_buy": 579,
+                    "etf_net_buy": 0,
                     "price": 2265.0,
                     "change": "+80.0 (+3.66%)",
                     "history": [
@@ -62,15 +62,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 4.6%",
                     "vp_analysis": "⚡ 量能 1.7倍 (向上)",
-                    "net_buy": "+579",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "2383",
                     "name": "台光電",
                     "weight": 9.02,
                     "shares": 4425000,
-                    "etf_net_buy": 300,
+                    "etf_net_buy": 0,
                     "price": 4730.0,
                     "change": "+255.0 (+5.70%)",
                     "history": [
@@ -117,15 +117,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 9.8%",
                     "vp_analysis": "⚡ 量能 1.3倍 (向上)",
-                    "net_buy": "+300",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "2345",
                     "name": "智邦",
                     "weight": 5.65,
                     "shares": 6031000,
-                    "etf_net_buy": 800,
+                    "etf_net_buy": 0,
                     "price": 2175.0,
                     "change": "+35.0 (+1.64%)",
                     "history": [
@@ -172,8 +172,8 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 1.4%",
                     "vp_analysis": "🐢 量縮 1.0倍 (向上)",
-                    "net_buy": "+800",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "2308",
@@ -235,7 +235,7 @@
                     "name": "金像電",
                     "weight": 5.04,
                     "shares": 8240000,
-                    "etf_net_buy": 492,
+                    "etf_net_buy": 0,
                     "price": 1420.0,
                     "change": "+30.0 (+2.16%)",
                     "history": [
@@ -282,15 +282,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 6.5%",
                     "vp_analysis": "🐢 量縮 1.2倍 (向上)",
-                    "net_buy": "+492",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "8046",
                     "name": "南電",
                     "weight": 4.97,
                     "shares": 12637000,
-                    "etf_net_buy": 756,
+                    "etf_net_buy": 0,
                     "price": 913.0,
                     "change": "+39.0 (+4.46%)",
                     "history": [
@@ -337,15 +337,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 9.0%",
                     "vp_analysis": "⚡ 量能 1.3倍 (向上)",
-                    "net_buy": "+756",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "3665",
                     "name": "貿聯-KY",
                     "weight": 4.96,
                     "shares": 4377848,
-                    "etf_net_buy": 280,
+                    "etf_net_buy": 0,
                     "price": 2630.0,
                     "change": "-135.0 (-4.88%)",
                     "history": [
@@ -392,8 +392,8 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 1.2%",
                     "vp_analysis": "🐢 量縮 0.9倍 (向下)",
-                    "net_buy": "+280",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "3653",
@@ -510,7 +510,7 @@
                     "name": "聯發科",
                     "weight": 4.35,
                     "shares": 4147000,
-                    "etf_net_buy": 280,
+                    "etf_net_buy": 0,
                     "price": 2435.0,
                     "change": "+0.0 (+0.00%)",
                     "history": [
@@ -557,15 +557,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 6.4%",
                     "vp_analysis": "🐢 量縮 1.1倍 (向下)",
-                    "net_buy": "+280",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "6223",
                     "name": "旺矽",
                     "weight": 3.96,
                     "shares": 1886000,
-                    "etf_net_buy": 112,
+                    "etf_net_buy": 0,
                     "price": 4880.0,
                     "change": "+230.0 (+4.95%)",
                     "history": [
@@ -612,8 +612,8 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 0.5%",
                     "vp_analysis": "🐢 量縮 1.2倍 (向上)",
-                    "net_buy": "+112",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "3037",
@@ -675,7 +675,7 @@
                     "name": "緯穎",
                     "weight": 3.26,
                     "shares": 1549000,
-                    "etf_net_buy": 448,
+                    "etf_net_buy": 0,
                     "price": 4890.0,
                     "change": "+255.0 (+5.50%)",
                     "history": [
@@ -722,15 +722,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 8.3%",
                     "vp_analysis": "⚡ 量能 1.3倍 (向上)",
-                    "net_buy": "+448",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "5274",
                     "name": "信驊",
                     "weight": 2.57,
                     "shares": 373000,
-                    "etf_net_buy": 22,
+                    "etf_net_buy": 0,
                     "price": 16000.0,
                     "change": "-370.0 (-2.26%)",
                     "history": [
@@ -777,15 +777,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 0.3%",
                     "vp_analysis": "🐢 量縮 0.9倍 (向下)",
-                    "net_buy": "+22",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "2327",
                     "name": "國巨*",
                     "weight": 2.0,
                     "shares": 15196000,
-                    "etf_net_buy": 908,
+                    "etf_net_buy": 0,
                     "price": 305.0,
                     "change": "+8.0 (+2.69%)",
                     "history": [
@@ -832,15 +832,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 0.8%",
                     "vp_analysis": "🐢 量縮 1.0倍 (向上)",
-                    "net_buy": "+908",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "6805",
                     "name": "富世達",
                     "weight": 1.87,
                     "shares": 2099000,
-                    "etf_net_buy": 401,
+                    "etf_net_buy": 0,
                     "price": 2070.0,
                     "change": "+155.0 (+8.09%)",
                     "history": [
@@ -887,15 +887,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 5.3%",
                     "vp_analysis": "🐢 量縮 1.1倍 (向上)",
-                    "net_buy": "+401",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "3711",
                     "name": "日月光投控",
                     "weight": 1.74,
                     "shares": 8174000,
-                    "etf_net_buy": 520,
+                    "etf_net_buy": 0,
                     "price": 495.5,
                     "change": "-0.5 (-0.10%)",
                     "history": [
@@ -942,15 +942,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 2.5%",
                     "vp_analysis": "🐢 量縮 1.1倍 (向下)",
-                    "net_buy": "+520",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "6515",
                     "name": "穎崴",
                     "weight": 1.61,
                     "shares": 391000,
-                    "etf_net_buy": 23,
+                    "etf_net_buy": 0,
                     "price": 9580.0,
                     "change": "-480.0 (-4.77%)",
                     "history": [
@@ -997,15 +997,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 7.9%",
                     "vp_analysis": "⚡ 量能 1.3倍 (向下)",
-                    "net_buy": "+23",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "6510",
                     "name": "精測",
                     "weight": 1.43,
                     "shares": 930000,
-                    "etf_net_buy": 55,
+                    "etf_net_buy": 0,
                     "price": 3570.0,
                     "change": "-60.0 (-1.65%)",
                     "history": [
@@ -1052,15 +1052,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 8.9%",
                     "vp_analysis": "🐢 量縮 0.7倍 (向下)",
-                    "net_buy": "+55",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "2449",
                     "name": "京元電子",
                     "weight": 1.36,
                     "shares": 11172000,
-                    "etf_net_buy": 669,
+                    "etf_net_buy": 0,
                     "price": 283.5,
                     "change": "-2.5 (-0.87%)",
                     "history": [
@@ -1107,15 +1107,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 0.0%",
                     "vp_analysis": "🐢 量縮 0.9倍 (向下)",
-                    "net_buy": "+669",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "3661",
                     "name": "世芯-KY",
                     "weight": 1.32,
                     "shares": 738000,
-                    "etf_net_buy": 44,
+                    "etf_net_buy": 0,
                     "price": 4160.0,
                     "change": "-55.0 (-1.30%)",
                     "history": [
@@ -1162,8 +1162,8 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 2.1%",
                     "vp_analysis": "🐢 量縮 0.9倍 (向下)",
-                    "net_buy": "+44",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "6274",
@@ -1225,7 +1225,7 @@
                     "name": "景碩",
                     "weight": 1.19,
                     "shares": 5358000,
-                    "etf_net_buy": 320,
+                    "etf_net_buy": 0,
                     "price": 515.0,
                     "change": "-11.0 (-2.09%)",
                     "history": [
@@ -1272,15 +1272,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 3.4%",
                     "vp_analysis": "🐢 量縮 1.0倍 (向下)",
-                    "net_buy": "+320",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "2317",
                     "name": "鴻海",
                     "weight": 1.05,
                     "shares": 10727000,
-                    "etf_net_buy": 3800,
+                    "etf_net_buy": 0,
                     "price": 228.0,
                     "change": "+6.5 (+2.93%)",
                     "history": [
@@ -1327,15 +1327,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 2.7%",
                     "vp_analysis": "⚡ 量能 1.4倍 (向上)",
-                    "net_buy": "+3800",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "2303",
                     "name": "聯電",
                     "weight": 1.03,
                     "shares": 32791000,
-                    "etf_net_buy": 1954,
+                    "etf_net_buy": 0,
                     "price": 72.69999694824219,
                     "change": "-1.8 (-2.42%)",
                     "history": [
@@ -1382,8 +1382,8 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 4.0%",
                     "vp_analysis": "🐢 量縮 1.0倍 (向下)",
-                    "net_buy": "+1954",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "8358",
@@ -1445,7 +1445,7 @@
                     "name": "勤誠",
                     "weight": 0.56,
                     "shares": 1117000,
-                    "etf_net_buy": 66,
+                    "etf_net_buy": 0,
                     "price": 1165.0,
                     "change": "-45.0 (-3.72%)",
                     "history": [
@@ -1492,15 +1492,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 2.8%",
                     "vp_analysis": "🐢 量縮 1.2倍 (向下)",
-                    "net_buy": "+66",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "5439",
                     "name": "高技",
                     "weight": 0.5,
                     "shares": 3130000,
-                    "etf_net_buy": 250,
+                    "etf_net_buy": 0,
                     "price": 374.5,
                     "change": "+9.0 (+2.46%)",
                     "history": [
@@ -1547,8 +1547,8 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 6.2%",
                     "vp_analysis": "🐢 量縮 0.9倍 (向上)",
-                    "net_buy": "+250",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "3443",
@@ -1720,7 +1720,7 @@
                     "name": "欣銓",
                     "weight": 0.41,
                     "shares": 4897000,
-                    "etf_net_buy": 1,
+                    "etf_net_buy": 0,
                     "price": 194.0,
                     "change": "-16.0 (-7.62%)",
                     "history": [
@@ -1767,8 +1767,8 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 5.8%",
                     "vp_analysis": "🐢 量縮 0.8倍 (向下)",
-                    "net_buy": "+1",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "8996",
@@ -1830,7 +1830,7 @@
                     "name": "鴻勁",
                     "weight": 0.21,
                     "shares": 98000,
-                    "etf_net_buy": 1,
+                    "etf_net_buy": 0,
                     "price": 4970.0,
                     "change": "+240.0 (+5.07%)",
                     "history": [
@@ -1877,15 +1877,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 5.0%",
                     "vp_analysis": "🐢 量縮 1.2倍 (向上)",
-                    "net_buy": "+1",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "6191",
                     "name": "精成科",
                     "weight": 0.18,
                     "shares": 3986000,
-                    "etf_net_buy": 1,
+                    "etf_net_buy": 0,
                     "price": 107.0,
                     "change": "-2.0 (-1.83%)",
                     "history": [
@@ -1932,15 +1932,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 3.1%",
                     "vp_analysis": "🐢 量縮 0.6倍 (向下)",
-                    "net_buy": "+1",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "2481",
                     "name": "強茂",
                     "weight": 0.16,
                     "shares": 3652000,
-                    "etf_net_buy": 1,
+                    "etf_net_buy": 0,
                     "price": 103.0,
                     "change": "+3.0 (+3.00%)",
                     "history": [
@@ -1987,15 +1987,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 0.8%",
                     "vp_analysis": "⚡ 量能 1.5倍 (向上)",
-                    "net_buy": "+1",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "3376",
                     "name": "新日興",
                     "weight": 0.15,
                     "shares": 1681000,
-                    "etf_net_buy": 120,
+                    "etf_net_buy": 0,
                     "price": 207.5,
                     "change": "-5.5 (-2.58%)",
                     "history": [
@@ -2042,8 +2042,8 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 5.0%",
                     "vp_analysis": "🐢 量縮 0.6倍 (向下)",
-                    "net_buy": "+120",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "6415",
@@ -2105,7 +2105,7 @@
                     "name": "譜瑞-KY",
                     "weight": 0.1,
                     "shares": 371000,
-                    "etf_net_buy": 1,
+                    "etf_net_buy": 0,
                     "price": 615.0,
                     "change": "-34.0 (-5.24%)",
                     "history": [
@@ -2152,15 +2152,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 0.1%",
                     "vp_analysis": "🐢 量縮 0.6倍 (向下)",
-                    "net_buy": "+1",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "6488",
                     "name": "環球晶",
                     "weight": 0.09,
                     "shares": 333000,
-                    "etf_net_buy": 1,
+                    "etf_net_buy": 0,
                     "price": 620.0,
                     "change": "+38.0 (+6.53%)",
                     "history": [
@@ -2207,15 +2207,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 3.9%",
                     "vp_analysis": "⚡ 量能 1.8倍 (向上)",
-                    "net_buy": "+1",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "2313",
                     "name": "華通",
                     "weight": 0.09,
                     "shares": 843000,
-                    "etf_net_buy": 79,
+                    "etf_net_buy": 0,
                     "price": 235.5,
                     "change": "+21.0 (+9.79%)",
                     "history": [
@@ -2262,15 +2262,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 1.7%",
                     "vp_analysis": "🐢 量縮 1.0倍 (向上)",
-                    "net_buy": "+79",
-                    "chips": "🔥 本基金積極買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "3211",
                     "name": "順達",
                     "weight": 0.08,
                     "shares": 458000,
-                    "etf_net_buy": -458,
+                    "etf_net_buy": 0,
                     "price": 385.5,
                     "change": "+4.0 (+1.05%)",
                     "history": [
@@ -2317,15 +2317,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 2.4%",
                     "vp_analysis": "🐢 量縮 0.7倍 (向上)",
-                    "net_buy": "-458",
-                    "chips": "💤 本基金減碼"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "3217",
                     "name": "優群",
                     "weight": 0.06,
                     "shares": 830000,
-                    "etf_net_buy": 50,
+                    "etf_net_buy": 0,
                     "price": 169.5,
                     "change": "-7.5 (-4.24%)",
                     "history": [
@@ -2372,15 +2372,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 6.3%",
                     "vp_analysis": "🐢 量縮 0.5倍 (向下)",
-                    "net_buy": "+50",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "1303",
                     "name": "南亞",
                     "weight": 0.05,
                     "shares": 1374000,
-                    "etf_net_buy": 1,
+                    "etf_net_buy": 0,
                     "price": 87.80000305175781,
                     "change": "+1.9 (+2.21%)",
                     "history": [
@@ -2427,15 +2427,15 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 0.4%",
                     "vp_analysis": "🐢 量縮 1.2倍 (向上)",
-                    "net_buy": "+1",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "2002",
                     "name": "中鋼",
                     "weight": 0.04,
                     "shares": 5161000,
-                    "etf_net_buy": 1,
+                    "etf_net_buy": 0,
                     "price": 18.75,
                     "change": "-0.2 (-1.32%)",
                     "history": [
@@ -2482,15 +2482,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 2.2%",
                     "vp_analysis": "⚡ 量能 1.4倍 (向下)",
-                    "net_buy": "+1",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "1319",
                     "name": "東陽",
                     "weight": 0.02,
                     "shares": 509000,
-                    "etf_net_buy": 1,
+                    "etf_net_buy": 0,
                     "price": 73.5999984741211,
                     "change": "-1.6 (-2.13%)",
                     "history": [
@@ -2537,15 +2537,15 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 4.0%",
                     "vp_analysis": "⚡ 量能 2.0倍 (向下)",
-                    "net_buy": "+1",
-                    "chips": "👍 本基金小幅買入"
+                    "net_buy": "+0",
+                    "chips": "⚖️ 本基金持平"
                 },
                 {
                     "id": "1815",
                     "name": "富喬",
                     "weight": 0,
                     "shares": 0,
-                    "etf_net_buy": -107,
+                    "etf_net_buy": -99999,
                     "is_deleted": true,
                     "price": 108.0,
                     "change": "-0.5 (-0.46%)",
@@ -2593,7 +2593,7 @@
                     ],
                     "vwap_pos": "📉 低於 VWAP 4.7%",
                     "vp_analysis": "🐢 量縮 1.0倍 (向下)",
-                    "net_buy": "-107",
+                    "net_buy": "-99999",
                     "chips": "💤 本基金減碼"
                 },
                 {
@@ -2601,7 +2601,7 @@
                     "name": "雙鴻",
                     "weight": 0,
                     "shares": 0,
-                    "etf_net_buy": -170,
+                    "etf_net_buy": -99999,
                     "is_deleted": true,
                     "price": 1180.0,
                     "change": "-35.0 (-2.88%)",
@@ -2649,7 +2649,7 @@
                     ],
                     "vwap_pos": "💪 高於 VWAP 2.5%",
                     "vp_analysis": "🐢 量縮 1.0倍 (向下)",
-                    "net_buy": "-170",
+                    "net_buy": "-99999",
                     "chips": "💤 本基金減碼"
                 }
             ]
@@ -4214,22 +4214,7 @@
         }
     },
     "chip_notes": [
-        "🔥 **台積電 (2330)**：投信積極買超 +579 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "🔥 **台光電 (2383)**：投信積極買超 +300 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "🔥 **智邦 (2345)**：投信積極買超 +800 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "🔥 **金像電 (2368)**：投信積極買超 +492 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "🔥 **南電 (8046)**：投信積極買超 +756 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "🔥 **貿聯-KY (3665)**：投信積極買超 +280 張，但股價尚低於週 VWAP，持續追蹤。",
-        "🔥 **聯發科 (2454)**：投信積極買超 +280 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "🔥 **緯穎 (6669)**：投信積極買超 +448 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "⚠️ **國巨* (2327)**：投信單日大買 +908 張，但股價仍低於週 VWAP，籌碼與價格背離，需觀察後續走勢。",
-        "🔥 **富世達 (6805)**：投信積極買超 +401 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "🔥 **日月光投控 (3711)**：投信積極買超 +520 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "🔥 **京元電子 (2449)**：投信積極買超 +669 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "🔥 **景碩 (3189)**：投信積極買超 +320 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "🔥 **鴻海 (2317)**：投信積極買超 +3,800 張，股價同步高於週 VWAP，多頭動能強勁。",
-        "⚠️ **聯電 (2303)**：投信單日大買 +1,954 張，但股價仍低於週 VWAP，籌碼與價格背離，需觀察後續走勢。",
-        "🔥 **高技 (5439)**：投信積極買超 +250 張，但股價尚低於週 VWAP，持續追蹤。",
+        "🔴 **富喬 (1815)**：投信單日大賣 -99,999 張，且股價已低於週 VWAP，法人調節訊號明確，留意下檔風險。",
         "🔥 **台積電 (2330)**：投信積極買超 +4,992 張，股價同步高於週 VWAP，多頭動能強勁。",
         "🔥 **緯穎 (6669)**：投信積極買超 +1,087 張，股價同步高於週 VWAP，多頭動能強勁。",
         "🔴 **穩懋 (3105)**：投信單日大賣 -2,532 張，且股價已低於週 VWAP，法人調節訊號明確，留意下檔風險。",
@@ -4245,8 +4230,8 @@
         "🔴 **第一金 (2892)**：投信單日大賣 -574 張，且股價已低於週 VWAP，法人調節訊號明確，留意下檔風險。"
     ],
     "common_holdings": [
-        "台積電",
-        "欣興"
+        "欣興",
+        "台積電"
     ],
-    "update_time": "2026-04-27 18:55"
+    "update_time": "2026-04-27 11:10"
 }
