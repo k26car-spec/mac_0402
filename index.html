@@ -607,6 +607,7 @@
 
     
     let etfData = {};
+    let lastUpdateTime = null;
     let currentView = 'etf'; // 'etf' | 'summary'
     
     async function loadDataFromServer() {
@@ -627,6 +628,7 @@
                     console.log('Keys in data.json:', Object.keys(fullData));
                     if (fullData.etf_data) {
                         etfData = fullData.etf_data;
+                        lastUpdateTime = fullData.update_time || null;
                         renderCommonBox(fullData.common_holdings || []);
                         
                         // 動態更新標題時間
@@ -708,8 +710,14 @@
 
         try {
         const holdings = data.holdings || [];
-        const today = new Date();
-        const dateStr = `(${String(today.getMonth()+1).padStart(2,'0')}/${String(today.getDate()).padStart(2,'0')})`;
+        let dateStr;
+        if (lastUpdateTime) {
+            const parts = lastUpdateTime.split(' ')[0].split('-'); // YYYY-MM-DD
+            dateStr = `(${parts[1]}/${parts[2]})`;
+        } else {
+            const today = new Date();
+            dateStr = `(${String(today.getMonth()+1).padStart(2,'0')}/${String(today.getDate()).padStart(2,'0')})`;
+        }
         const NONE_ROW = `<tr><td colspan="2" style="text-align:center;padding:12px;color:#94a3b8;font-size:13px;">無</td></tr>`;
 
         // 分類

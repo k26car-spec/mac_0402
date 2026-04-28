@@ -469,7 +469,9 @@ async def run():
                         prev_s = prev_shares.get(st["id"], None)
                         if prev_s is not None:
                             delta_lots = int((st["shares"] - prev_s) / 1000)
-                            st["etf_net_buy"] = delta_lots  # 儲存 ETF 自身買賣超
+                            st["etf_net_buy"] = delta_lots
+                        else:
+                            st["etf_net_buy"] = 0  # 新進成分股，無前日資料
 
                 # 處理被刪除的股票
                 if eid == "00981A" and prev_ids:
@@ -483,7 +485,7 @@ async def run():
                             "name": del_name,
                             "weight": 0,
                             "shares": 0,
-                            "etf_net_buy": -int(del_shares / 1000) if del_shares else -99999,
+                            "etf_net_buy": -int(del_shares / 1000) if del_shares else 0,
                             "is_deleted": True
                         })
 
