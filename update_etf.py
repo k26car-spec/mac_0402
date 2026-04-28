@@ -8,6 +8,61 @@ from bs4 import BeautifulSoup
 data_file = "data.json"
 
 # ─────────────────────────────────────────────
+# Fugle Market API Token
+# ─────────────────────────────────────────────
+FUGLE_API_KEY = "YzI2ZjgyMTEtYWQ1Yi00YWM1LTk3ZTAtOGI3NzM0MDBkYjYxIGMwMjQxY2U2LWNhYTgtNDk4OS1hZDY3LWNhNDBhNzkyZTNlOQ=="
+FUGLE_BASE = "https://api.fugle.tw/marketdata/v1.0/stock"
+
+async def fetch_fugle_quote(symbol: str, client: httpx.AsyncClient) -> dict | None:
+    """用 Fugle Market API 取得即時報僷（包含收盤價、五日K線）"""
+    headers = {"X-API-KEY": FUGLE_API_KEY}
+    clean = symbol.replace(".TW", "").replace(".TWO", "")
+    try:
+        # 1. 即時報僷
+        r = await client.get(f"{FUGLE_BASE}/intraday/quote/{clean}",
+                             headers=headers, timeout=10)
+        if r.status_code != 200:
+            return None
+        q = r.json()
+        price = float(q.get("closePrice") or q.get("lastPrice") or 0)
+        prev  = float(q.get("referencePrice") or q.get("previousClose") or price)
+        if not price:
+            return None
+
+        # 2. 歷史K線 (5日)
+        hist_bars = []
+        try:
+            from datetime import date
+            to_d = date.today().isoformat()
+            fr_d = (date.today() - timedelta(days=9)).isoformat()
+            rh = await client.get(
+                f"{FUGLE_BASE}/historical/candles/{clean}",
+                headers=headers,
+                params={"from": fr_d, "to": to_d},
+                timeout=10
+            )
+            if rh.status_code == 200:
+                candles = rh.json().get("data", [])
+                hist_bars = [{
+                    "t": int(datetime.fromisoformat(c["date"]).timestamp()),
+                    "o": float(c["open"]),
+                    "c": float(c["close"]),
+                    "hPrice": float(c["high"]),
+                    "lPrice": float(c["low"]),
+                    "v": int(c["volume"]) * 1000,
+                } for c in candles if c.get("close")][-5:]
+        except Exception:
+            pass
+
+        return {
+            "bars": hist_bars if hist_bars else None,
+            "price": price,
+            "prev_close": prev,
+        }
+    except Exception:
+        return None
+
+# ─────────────────────────────────────────────
 # [修正四] fetch_yahoo_full：補抓 high / low
 #          以便後續計算標準 VWAP 典型價格
 # ─────────────────────────────────────────────
@@ -435,7 +490,8 @@ async def run():
                 etf_base_data[eid]["holdings"] = scraped
                 etf_base_data[eid]["topWeight"] = f"{scraped[0]['weight']:.2f}%"
 
-    # 抓個股 + ETF 本身的 Yahoo Finance 報價
+
+    # 抓個股 + ETF 本身的 Fugle 即時報價（備援 Yahoo Finance）
     async with httpx.AsyncClient() as client:
         all_sids = set(["00981A", "00992A", "0050"])
         for d in etf_base_data.values():
@@ -443,35 +499,57 @@ async def run():
                 all_sids.add(st["id"])
 
         id_list = list(all_sids)
-        tasks = [fetch_yahoo_full(sid, client) for sid in id_list]
-        responses = await asyncio.gather(*tasks)
-        q_map = {id_list[i]: res for i, res in enumerate(responses) if res}
+
+        # 優先用 Fugle API
+        fugle_tasks = [fetch_fugle_quote(sid, client) for sid in id_list]
+        fugle_responses = await asyncio.gather(*fugle_tasks)
+        fugle_map = {id_list[i]: fg for i, fg in enumerate(fugle_responses) if fg}
+
+        # 對於 Fugle 沒有回傳的，用 Yahoo Finance 補上
+        missing = [sid for sid in id_list if sid not in fugle_map]
+        yahoo_map = {}
+        if missing:
+            yahoo_tasks = [fetch_yahoo_full(sid, client) for sid in missing]
+            yahoo_responses = await asyncio.gather(*yahoo_tasks)
+            yahoo_map = {missing[i]: res for i, res in enumerate(yahoo_responses) if res}
+
+        # 統一格式的 q_map: {sid: {bars, price, prev}}
+        q_map = {}
+        for sid in id_list:
+            if sid in fugle_map:
+                fg = fugle_map[sid]
+                q_map[sid] = {"bars": fg.get("bars"), "price": fg["price"], "prev": fg["prev_close"]}
+            elif sid in yahoo_map:
+                yb = yahoo_map[sid]
+                q_map[sid] = {"bars": yb, "price": yb[-1]["c"], "prev": yb[-2]["c"] if len(yb) > 1 else yb[-1]["c"]}
 
     # 填入價格、VWAP、量能資訊
     for eid, data in etf_base_data.items():
         if eid in q_map:
-            q = q_map[eid]
-            data["price"] = round(q[-1]["c"], 2)
-            data["change"] = f"{((q[-1]['c'] - q[-2]['c']) / q[-2]['c'] * 100):+.2f}%"
+            qe = q_map[eid]
+            data["price"] = round(qe["price"], 2)
+            if qe["prev"]:
+                data["change"] = f"{((qe['price'] - qe['prev']) / qe['prev'] * 100):+.2f}%"
 
         for st in data.get("holdings", []):
             sid = st["id"]
             if sid in q_map:
-                q = q_map[sid]
-                p, p_p = q[-1]["c"], q[-2]["c"]
-                v, v_p = q[-1]["v"], q[-2]["v"]
+                qe  = q_map[sid]
+                q   = qe["bars"]
+                p   = qe["price"]
+                p_p = qe["prev"]
+                v   = q[-1]["v"] if q else 0
+                v_p = q[-2]["v"] if q and len(q) > 1 else v
 
                 # [修正四] 使用標準典型價格計算 VWAP
-                vw_avg = calc_vwap(q)
-                dist = (p - vw_avg) / vw_avg * 100
+                vw_avg = calc_vwap(q) if q else p
+                dist = (p - vw_avg) / vw_avg * 100 if vw_avg else 0
 
-                st.update(
-                    {
-                        "price": p,
-                        "change": f"{p - p_p:+.1f} ({((p - p_p) / p_p * 100):+.2f}%)",
-                        "history": q,
-                    }
-                )
+                st.update({
+                    "price": p,
+                    "change": f"{p - p_p:+.1f} ({((p - p_p) / p_p * 100):+.2f}%)" if p_p else "--",
+                    "history": q or [],
+                })
                 st["vwap_pos"] = (
                     f"{'💪' if dist > 0 else '📉'} "
                     f"{'高於' if dist > 0 else '低於'} VWAP {abs(dist):.1f}%"
