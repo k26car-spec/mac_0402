@@ -370,10 +370,11 @@ def load_previous_holdings() -> dict:
             saved = json.load(f)
         result = {}
         for eid, d in saved.get("etf_data", {}).items():
+            active = [s for s in d.get("holdings", []) if not s.get("is_deleted")]
             result[eid] = {
-                "ids": {s["id"] for s in d.get("holdings", [])},
-                "shares": {s["id"]: s.get("shares", 0) for s in d.get("holdings", [])},
-                "names": {s["id"]: s.get("name", "") for s in d.get("holdings", [])},
+                "ids": {s["id"] for s in active},
+                "shares": {s["id"]: s.get("shares", 0) for s in active},
+                "names": {s["id"]: s.get("name", "") for s in active},
             }
         return result
     except Exception:
@@ -471,7 +472,8 @@ async def run():
                             delta_lots = int((st["shares"] - prev_s) / 1000)
                             st["etf_net_buy"] = delta_lots
                         else:
-                            st["etf_net_buy"] = 0  # 新進成分股，無前日資料
+                            # 新進成分股：前日持股為 0，買進量等於當前全部持股
+                            st["etf_net_buy"] = int(st["shares"] / 1000)
 
                 # 處理被刪除的股票
                 if eid == "00981A" and prev_ids:
