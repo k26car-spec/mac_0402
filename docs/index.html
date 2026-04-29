@@ -737,7 +737,7 @@
             `<tr style="border-top:1px solid #f3f4f6;${i%2===0?'background:#faf5ff;':''}">
                 <td style="padding:9px 12px;text-align:center;font-size:16px;">${RANKS[i]}</td>
                 <td style="padding:9px 12px;font-size:13px;font-weight:600;">${s.name}</td>
-                <td style="padding:9px 12px;font-size:13px;font-weight:700;text-align:right;color:#374151;">${s.shares ? (s.shares/1000).toLocaleString()+'張' : '--'}</td>
+                <td style="padding:9px 12px;font-size:13px;font-weight:700;text-align:right;color:#374151;">${s.shares ? Math.round(s.shares/1000).toLocaleString()+'張' : '--'}</td>
                 <td style="padding:9px 12px;font-size:13px;font-weight:700;text-align:right;color:#7c3aed;">${s.weight}%</td>
              </tr>`
         ).join('');
