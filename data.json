@@ -235,7 +235,7 @@
                     "name": "貿聯-KY",
                     "weight": 5.38,
                     "shares": 4583848,
-                    "etf_net_buy": 0,
+                    "etf_net_buy": 206,
                     "price": 2805.0,
                     "change": "+25.0 (+0.90%)",
                     "history": [
@@ -620,7 +620,7 @@
                     "name": "緯穎",
                     "weight": 3.59,
                     "shares": 1754000,
-                    "etf_net_buy": 0,
+                    "etf_net_buy": 119,
                     "price": 4755.0,
                     "change": "-90.0 (-1.86%)",
                     "history": [
@@ -730,7 +730,7 @@
                     "name": "信驊",
                     "weight": 2.84,
                     "shares": 406000,
-                    "etf_net_buy": 0,
+                    "etf_net_buy": 33,
                     "price": 17100.0,
                     "change": "+545.0 (+3.29%)",
                     "history": [
