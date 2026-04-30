@@ -602,7 +602,13 @@ async def run():
     
     common_holdings = list(set.intersection(*sets_of_names)) if sets_of_names else []
 
-    update_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+    # 台北時間 14:30 前視為盤中，日期用前一天（資料仍是昨日盤後）
+    tw_now = datetime.utcnow() + timedelta(hours=8)
+    if tw_now.hour < 14 or (tw_now.hour == 14 and tw_now.minute < 30):
+        data_date = (tw_now - timedelta(days=1)).strftime("%Y-%m-%d")
+    else:
+        data_date = tw_now.strftime("%Y-%m-%d")
+    update_time = data_date + " " + tw_now.strftime("%H:%M")
     with open(data_file, "w", encoding="utf-8") as f:
         json.dump(
             {
