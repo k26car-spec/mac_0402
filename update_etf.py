@@ -360,29 +360,35 @@ etf_base_data = {
 def ensure_daily_baseline():
     """
     每天第一次執行時，把 data.json 另存為 baseline.json（當日基準）。
-    同一天再跑不覆蓋，確保 etf_net_buy 比對基準不會漂移。
+    同一天再跑不覆蓋（以 run_date 欄位判斷），確保 etf_net_buy 比對基準不漂移。
     """
     tw_now = datetime.utcnow() + timedelta(hours=8)
     today_str = tw_now.strftime("%Y-%m-%d")
 
-    # 讀取現有 baseline 的日期
-    baseline_date = None
+    # 讀取 baseline.json 的 run_date（實際建立日，非資料日期）
+    baseline_run_date = None
     if os.path.exists(baseline_file):
         try:
             with open(baseline_file, encoding="utf-8") as f:
                 b = json.load(f)
-            baseline_date = b.get("update_time", "")[:10]
+            baseline_run_date = b.get("run_date")
         except Exception:
             pass
 
-    # 日期不同（新的一天）→ 用目前 data.json 建立新基準
-    if baseline_date != today_str and os.path.exists(data_file):
+    # 今天已建立過 → 直接跳過
+    if baseline_run_date == today_str:
+        print(f"✅ 今日基準已存在（{today_str}），跳過建立")
+        return
+
+    # 今天尚未建立 → 以目前 data.json 為基準存檔
+    if os.path.exists(data_file):
         try:
             with open(data_file, encoding="utf-8") as f:
                 current = json.load(f)
+            current["run_date"] = today_str  # 標記本次建立的日期
             with open(baseline_file, "w", encoding="utf-8") as f:
                 json.dump(current, f, ensure_ascii=False, indent=4)
-            print(f"📸 建立今日基準快照：{today_str}")
+            print(f"📸 建立今日基準快照：{today_str}（資料日期：{current.get('update_time','')}）")
         except Exception as e:
             print(f"⚠️ 建立基準快照失敗：{e}")
 
