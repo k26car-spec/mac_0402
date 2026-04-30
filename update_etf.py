@@ -645,11 +645,31 @@ async def run():
     else:
         data_date = tw_now.strftime("%Y-%m-%d")
     update_time = data_date + " " + tw_now.strftime("%H:%M")
+
+    # 如果 00981A 本次沒有偵測到任何持股異動（etf_net_buy 全為 0），
+    # 保留上次 data.json 中已知的最後一筆加碼/減碼資料，
+    # 讓使用者在盤後資料出爐前仍能看到最後一次有效的調整。
+    holdings_981 = etf_base_data.get("00981A", {}).get("holdings", [])
+    has_any_change = any(h.get("etf_net_buy", 0) != 0 for h in holdings_981)
+    if not has_any_change and os.path.exists(data_file):
+        try:
+            with open(data_file, encoding="utf-8") as f:
+                old_data = json.load(f)
+            old_holdings = old_data.get("etf_data", {}).get("00981A", {}).get("holdings", [])
+            old_buy_map = {h["id"]: h.get("etf_net_buy", 0) for h in old_holdings if h.get("id")}
+            for h in holdings_981:
+                old_val = old_buy_map.get(h.get("id"), 0)
+                if old_val != 0:
+                    h["etf_net_buy"] = old_val
+            print("ℹ️ 本次無持股異動，保留上次 etf_net_buy 資料")
+        except Exception:
+            pass
+
     with open(data_file, "w", encoding="utf-8") as f:
         json.dump(
             {
                 "etf_data": etf_base_data,
-                "chip_notes": chip_notes,          # 動態筆記寫入 JSON
+                "chip_notes": chip_notes,
                 "common_holdings": common_holdings,
                 "update_time": update_time,
             },
