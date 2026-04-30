@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
 data_file = "data.json"
+baseline_file = "baseline.json"  # 每日基準快照，當天不覆蓋
 
 # ─────────────────────────────────────────────
 # Fugle Market API Token
@@ -356,19 +357,46 @@ etf_base_data = {
 # [修正三] 讀取上次 data.json 的成分股清單，
 #          用來判斷「這次爬蟲新出現的股票」才是真正 is_new
 # ─────────────────────────────────────────────
+def ensure_daily_baseline():
+    """
+    每天第一次執行時，把 data.json 另存為 baseline.json（當日基準）。
+    同一天再跑不覆蓋，確保 etf_net_buy 比對基準不會漂移。
+    """
+    tw_now = datetime.utcnow() + timedelta(hours=8)
+    today_str = tw_now.strftime("%Y-%m-%d")
+
+    # 讀取現有 baseline 的日期
+    baseline_date = None
+    if os.path.exists(baseline_file):
+        try:
+            with open(baseline_file, encoding="utf-8") as f:
+                b = json.load(f)
+            baseline_date = b.get("update_time", "")[:10]
+        except Exception:
+            pass
+
+    # 日期不同（新的一天）→ 用目前 data.json 建立新基準
+    if baseline_date != today_str and os.path.exists(data_file):
+        try:
+            with open(data_file, encoding="utf-8") as f:
+                current = json.load(f)
+            with open(baseline_file, "w", encoding="utf-8") as f:
+                json.dump(current, f, ensure_ascii=False, indent=4)
+            print(f"📸 建立今日基準快照：{today_str}")
+        except Exception as e:
+            print(f"⚠️ 建立基準快照失敗：{e}")
+
+
 def load_previous_holdings() -> dict:
     """
-    回傳 {
-      etf_id: {
-        'ids': {股票代號, ...},
-        'shares': {股票代號: 股數, ...}  ← 用於計算 00981A 自身買賣超
-      }
-    }
+    從 baseline.json（每日基準）讀取上一個基準的持股，
+    避免同天多次更新導致 etf_net_buy 歸零。
     """
-    if not os.path.exists(data_file):
+    source = baseline_file if os.path.exists(baseline_file) else data_file
+    if not os.path.exists(source):
         return {}
     try:
-        with open(data_file, encoding="utf-8") as f:
+        with open(source, encoding="utf-8") as f:
             saved = json.load(f)
         result = {}
         for eid, d in saved.get("etf_data", {}).items():
@@ -437,7 +465,9 @@ def generate_chip_notes(etf_data: dict) -> list[str]:
 
 
 async def run():
-    # 讀取上次成分股快照（用於 is_new 判斷）
+    # 確保每日基準快照存在（同天多次執行不覆蓋）
+    ensure_daily_baseline()
+    # 讀取今日基準快照（用於 etf_net_buy / is_new 比對）
     prev_holdings = load_previous_holdings()
 
     c_map = await get_twse_official()

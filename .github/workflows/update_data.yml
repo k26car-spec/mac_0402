@@ -29,6 +29,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           cp data.json docs/data.json
-          git add data.json docs/data.json
+          git add data.json docs/data.json baseline.json
           git commit -m "Auto-update ETF data.json [skip ci]" || echo "No changes to commit"
           git push
