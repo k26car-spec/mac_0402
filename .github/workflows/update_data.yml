@@ -1,0 +1,48 @@
+name: Daily ETF Data Update
+
+on:
+  schedule:
+    - cron: '0 9 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # ← 加這行，才能 force push
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install httpx yfinance pandas
+
+      - name: Run update script
+        run: python update_etf.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          cp data.json docs/data.json
+
+          # 確認有沒有實際變更
+          git add data.json docs/data.json baseline.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          # Orphan commit：建立無歷史的全新根節點
+          git checkout --orphan temp-main
+          git rm -rf --cached . -q          # 清空舊 index
+          git add -A                        # 只加目前工作目錄的檔案
+          git commit -m "Auto-update ETF data $(date '+%Y-%m-%d')"
+          git push origin temp-main:main --force
