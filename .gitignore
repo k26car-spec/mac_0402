@@ -1,0 +1,16 @@
+*.tar.gz
+*.pfx
+.env
+venv/
+__pycache__/
+.DS_Store
+.vscode/
+backup-*/
+Ai-catch_backup_*/
+Ａi-catch/
+log/
+fubon_neo-*.whl
+node_modules/
+*.png
+*.jpg
+*.jpeg
