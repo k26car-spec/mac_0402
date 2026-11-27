@@ -1,0 +1,123 @@
+name: ETF Official Data (00981A)
+
+# 台北時間 17:10 / 19:10 / 23:10 / 隔天 07:10。
+# 資料日期取自官方持股基準日，排程延遲、跨日、週末重跑都不會錯置；每次重抓最近 5 個交易日。
+#
+# 三種執行方式：
+#   自動排程                ：repo Variable ETF_OFFICIAL_ENABLED=true 且在 main 才正式更新（預設關閉）
+#   手動執行（預設）        ：dry-run，只抓取、驗算、輸出結果；沒有寫入權限
+#   手動執行並勾選 deploy   ：只有在 main 才正式提交資料
+on:
+  schedule:
+    - cron: '10 9,11,15,23 * * *'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: '重新抓取最近幾個交易日'
+        default: '5'
+      deploy:
+        description: '勾選才把資料正式提交到 main（不勾＝dry-run）'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.deploy == true && github.ref != 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reject deploy outside main
+        run: |
+          echo "deploy=true 只能在 main 分支執行" >&2
+          exit 1
+
+  dry-run:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.deploy != true }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install httpx
+
+      - name: Test
+        run: python -m unittest discover -s tests -v
+
+      - name: Fetch and validate (no write)
+        env:
+          DAYS: ${{ inputs.days || '5' }}
+          ETF_PUBLISH_TIME: ${{ vars.ETF_PUBLISH_TIME }}
+        run: python etf_official.py --days "$DAYS" --dry-run
+
+  publish:
+    if: ${{ github.ref == 'refs/heads/main' && ((github.event_name == 'schedule' && vars.ETF_OFFICIAL_ENABLED == 'true') || (github.event_name == 'workflow_dispatch' && inputs.deploy == true)) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    concurrency:
+      group: etf-official-data   # 與舊流程分開，避免排隊時互相取消
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install httpx
+
+      - name: Test
+        run: python -m unittest discover -s tests -v
+
+      - name: Fetch, validate and build report
+        id: fetch
+        env:
+          DAYS: ${{ inputs.days || '5' }}
+          # 官方清單應公布時間；repo Variables 可覆寫，未設定時程式用 17:00
+          ETF_PUBLISH_TIME: ${{ vars.ETF_PUBLISH_TIME }}
+        run: python etf_official.py --days "$DAYS"
+
+      # 測試失敗：fetch 沒執行，這一步也不執行。
+      # 驗證不通過：只提交錯誤紀錄與狀態，不提交快照與報表。
+      - name: Commit data (normal commit, no force push)
+        if: ${{ !cancelled() && steps.fetch.outcome != 'skipped' }}
+        env:
+          FETCH_OUTCOME: ${{ steps.fetch.outcome }}
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          if [ "$FETCH_OUTCOME" = "success" ]; then
+            git add -A docs/etf
+          else
+            for f in docs/etf/*/status.json docs/etf/*/errors.jsonl; do
+              [ -f "$f" ] && git add "$f"
+            done
+          fi
+          git diff --staged --quiet && exit 0
+          # 提交前核對「即將提交的內容」：status／report／snapshots 日期不一致就不提交
+          check=$(mktemp -d)
+          git checkout-index -a --prefix="$check/"
+          python3 etf_official.py --verify "$check/docs/etf"
+          git commit -m "data(00981A): $(TZ=Asia/Taipei date '+%Y-%m-%d %H:%M') run ($FETCH_OUTCOME)"
+          for i in 1 2 3; do
+            # rebase 後再核對一次合併結果，通過才推送
+            git pull --rebase origin main && python3 etf_official.py --verify docs/etf && git push origin HEAD:main && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((i * 10))
+          done
+          exit 1

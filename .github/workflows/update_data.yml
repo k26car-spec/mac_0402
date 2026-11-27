@@ -6,7 +6,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # ← 加這行，才能 force push
+  contents: write
+
+concurrency:
+  group: etf-legacy-data
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -14,6 +18,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: main   # 排隊後執行時要拿最新版本，否則 data.json 會和前一次提交衝突
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -35,16 +41,13 @@ jobs:
           git config --local user.name "GitHub Action"
           cp data.json docs/data.json
 
-          # 確認有沒有實際變更
+          # 一般 commit，保留歷史（不可用 orphan／force push，否則會蓋掉程式修改紀錄）
           git add data.json docs/data.json baseline.json
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
-
-          # Orphan commit：建立無歷史的全新根節點
-          git checkout --orphan temp-main
-          git rm -rf --cached . -q          # 清空舊 index
-          git add -A                        # 只加目前工作目錄的檔案
-          git commit -m "Auto-update ETF data $(date '+%Y-%m-%d')"
-          git push origin temp-main:main --force
+          git diff --staged --quiet && { echo "No changes to commit"; exit 0; }
+          git commit -m "Auto-update ETF data $(TZ=Asia/Taipei date '+%Y-%m-%d')"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((i * 10))
+          done
+          exit 1

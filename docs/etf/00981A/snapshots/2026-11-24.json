@@ -1,0 +1,703 @@
+{
+ "fund": "00981A",
+ "basis_date": "2026-11-24",
+ "previous_trading_date": "2026-11-23",
+ "fetched_at": "2026-11-28T01:27:34+08:00",
+ "pcf": {
+  "url": "https://www.ezmoney.com.tw/ETF/Transaction/PCF?fundCode=49YTW",
+  "query_date": "2026-11-25",
+  "raw": {
+   "pcf": [
+    {
+     "TranDate": "/Date(1795449600000)/",
+     "PostDate": "/Date(1795536000000)/",
+     "PCFCode": "PRE_AMT",
+     "Amount": 11860000.0,
+     "EditDate": "/Date(1795509035000)/",
+     "PCFName": "預收申購總價金(元)",
+     "ValueDate": "          "
+    },
+    {
+     "TranDate": "/Date(1795449600000)/",
+     "PostDate": "/Date(1795536000000)/",
+     "PCFCode": "NAV",
+     "Amount": 283736058919.0,
+     "EditDate": "/Date(1795509035000)/",
+     "PCFName": "基金淨資產價值(元)",
+     "ValueDate": "          "
+    },
+    {
+     "TranDate": "/Date(1795449600000)/",
+     "PostDate": "/Date(1795536000000)/",
+     "PCFCode": "OUT_UNIT",
+     "Amount": 13167709000.0,
+     "EditDate": "/Date(1795509035000)/",
+     "PCFName": "已發行受益權單位總數",
+     "ValueDate": "          "
+    },
+    {
+     "TranDate": "/Date(1795449600000)/",
+     "PostDate": "/Date(1795536000000)/",
+     "PCFCode": "DIFF_UNIT",
+     "Amount": 1796500000.0,
+     "EditDate": "/Date(1795509035000)/",
+     "PCFName": "與前日已發行單位差異數",
+     "ValueDate": "          "
+    },
+    {
+     "TranDate": "/Date(1795449600000)/",
+     "PostDate": "/Date(1795536000000)/",
+     "PCFCode": "P_UNIT",
+     "Amount": 21.55,
+     "EditDate": "/Date(1795509035000)/",
+     "PCFName": "每受益權單位淨資產價值(元)",
+     "ValueDate": "115/11/24 "
+    },
+    {
+     "TranDate": "/Date(1795449600000)/",
+     "PostDate": "/Date(1795536000000)/",
+     "PCFCode": "FUND_BASEUNIT",
+     "Amount": 500000.0,
+     "EditDate": "/Date(1795509035000)/",
+     "PCFName": "每現金申購/買回基數之受益權單位數",
+     "ValueDate": "          "
+    },
+    {
+     "TranDate": "/Date(1795449600000)/",
+     "PostDate": "/Date(1795536000000)/",
+     "PCFCode": "BASEUNIT_MRK_VAL",
+     "Amount": 10773934.0,
+     "EditDate": "/Date(1795509035000)/",
+     "PCFName": "每現金申購/買回基數約當淨值(元)",
+     "ValueDate": "          "
+    },
+    {
+     "TranDate": "/Date(1795449600000)/",
+     "PostDate": "/Date(1795536000000)/",
+     "PCFCode": "DIFF_ACT_AMT",
+     "Amount": -73292.0,
+     "EditDate": "/Date(1795509035000)/",
+     "PCFName": "每現金申購基數總價金差異額(元)",
+     "ValueDate": "115/11/24 "
+    },
+    {
+     "TranDate": "/Date(1795449600000)/",
+     "PostDate": "/Date(1795536000000)/",
+     "PCFCode": "ACT_AMT",
+     "Amount": 10786708.0,
+     "EditDate": "/Date(1795509035000)/",
+     "PCFName": "每現金申購基數實際申購總價金(元)",
+     "ValueDate": "115/11/24 "
+    },
+    {
+     "TranDate": "/Date(1795449600000)/",
+     "PostDate": "/Date(1795536000000)/",
+     "PCFCode": "NAV_PEOPLE",
+     "Amount": 1012919.0,
+     "EditDate": "/Date(1795509035000)/",
+     "PCFName": "受益人數",
+     "ValueDate": "115/10/30 "
+    }
+   ],
+   "asset": [
+    {
+     "AssetCode": "GD",
+     "AssetName": "期貨(名目本金)",
+     "Value": 12363338400.0,
+     "Details": [
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "TX",
+       "DetailName": "台指期貨",
+       "Position": "B",
+       "Share": 1533,
+       "Amount": 12363338400.0,
+       "NavRate": 4.36,
+       "MTH": "2026/12",
+       "EditTime": "/Date(1795509035000)/"
+      }
+     ],
+     "EditDate": "/Date(1795509035000)/"
+    },
+    {
+     "AssetCode": "ST",
+     "AssetName": "股票",
+     "Value": 223726245245.0,
+     "Details": [
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2330",
+       "DetailName": "台積電",
+       "Position": " ",
+       "Share": 19847000,
+       "Amount": 44258810000.0,
+       "NavRate": 15.6,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2454",
+       "DetailName": "聯發科",
+       "Position": " ",
+       "Share": 5861000,
+       "Amount": 23737050000.0,
+       "NavRate": 8.37,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3017",
+       "DetailName": "奇鋐",
+       "Position": " ",
+       "Share": 7078000,
+       "Amount": 18402800000.0,
+       "NavRate": 6.49,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2383",
+       "DetailName": "台光電",
+       "Position": " ",
+       "Share": 4058000,
+       "Amount": 13776910000.0,
+       "NavRate": 4.86,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3037",
+       "DetailName": "欣興",
+       "Position": " ",
+       "Share": 19739000,
+       "Amount": 12100007000.0,
+       "NavRate": 4.26,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "6223",
+       "DetailName": "旺矽",
+       "Position": " ",
+       "Share": 2683000,
+       "Amount": 11228355000.0,
+       "NavRate": 3.96,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2345",
+       "DetailName": "智邦",
+       "Position": " ",
+       "Share": 7475000,
+       "Amount": 11100375000.0,
+       "NavRate": 3.91,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3653",
+       "DetailName": "健策",
+       "Position": " ",
+       "Share": 2552000,
+       "Amount": 10335600000.0,
+       "NavRate": 3.64,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3711",
+       "DetailName": "日月光投控",
+       "Position": " ",
+       "Share": 17940000,
+       "Amount": 9508200000.0,
+       "NavRate": 3.35,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2308",
+       "DetailName": "台達電",
+       "Position": " ",
+       "Share": 7582000,
+       "Amount": 8226470000.0,
+       "NavRate": 2.9,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2327",
+       "DetailName": "國巨*",
+       "Position": " ",
+       "Share": 23519000,
+       "Amount": 8019979000.0,
+       "NavRate": 2.83,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2368",
+       "DetailName": "金像電",
+       "Position": " ",
+       "Share": 8053000,
+       "Amount": 6925580000.0,
+       "NavRate": 2.44,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3443",
+       "DetailName": "創意",
+       "Position": " ",
+       "Share": 1052000,
+       "Amount": 5922760000.0,
+       "NavRate": 2.09,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2303",
+       "DetailName": "聯電",
+       "Position": " ",
+       "Share": 60392000,
+       "Amount": 5864063200.0,
+       "NavRate": 2.07,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "6274",
+       "DetailName": "台燿",
+       "Position": " ",
+       "Share": 7342000,
+       "Amount": 5528526000.0,
+       "NavRate": 1.95,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3665",
+       "DetailName": "貿聯-KY",
+       "Position": " ",
+       "Share": 3391848,
+       "Amount": 5325201360.0,
+       "NavRate": 1.88,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "8046",
+       "DetailName": "南電",
+       "Position": " ",
+       "Share": 6993000,
+       "Amount": 5153841000.0,
+       "NavRate": 1.82,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "6669",
+       "DetailName": "緯穎",
+       "Position": " ",
+       "Share": 2379561,
+       "Amount": 3593137110.0,
+       "NavRate": 1.27,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "6805",
+       "DetailName": "富世達",
+       "Position": " ",
+       "Share": 1676000,
+       "Amount": 2681600000.0,
+       "NavRate": 0.95,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3231",
+       "DetailName": "緯創",
+       "Position": " ",
+       "Share": 11967000,
+       "Amount": 1950621000.0,
+       "NavRate": 0.69,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "5274",
+       "DetailName": "信驊",
+       "Position": " ",
+       "Share": 206900,
+       "Amount": 1891066000.0,
+       "NavRate": 0.67,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2449",
+       "DetailName": "京元電子",
+       "Position": " ",
+       "Share": 7506450,
+       "Amount": 1294862625.0,
+       "NavRate": 0.46,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "6510",
+       "DetailName": "精測",
+       "Position": " ",
+       "Share": 470000,
+       "Amount": 1165600000.0,
+       "NavRate": 0.41,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2317",
+       "DetailName": "鴻海",
+       "Position": " ",
+       "Share": 4637000,
+       "Amount": 1050280500.0,
+       "NavRate": 0.37,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "8996",
+       "DetailName": "高力",
+       "Position": " ",
+       "Share": 981000,
+       "Amount": 925083000.0,
+       "NavRate": 0.33,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3264",
+       "DetailName": "欣銓",
+       "Position": " ",
+       "Share": 5027000,
+       "Amount": 781698500.0,
+       "NavRate": 0.28,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2891",
+       "DetailName": "中信金",
+       "Position": " ",
+       "Share": 9355000,
+       "Amount": 653914500.0,
+       "NavRate": 0.23,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "6271",
+       "DetailName": "同欣電",
+       "Position": " ",
+       "Share": 2940000,
+       "Amount": 545370000.0,
+       "NavRate": 0.19,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2618",
+       "DetailName": "長榮航",
+       "Position": " ",
+       "Share": 9527000,
+       "Amount": 463012200.0,
+       "NavRate": 0.16,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "6191",
+       "DetailName": "精成科",
+       "Position": " ",
+       "Share": 3921000,
+       "Amount": 288193500.0,
+       "NavRate": 0.1,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "4979",
+       "DetailName": "華星光",
+       "Position": " ",
+       "Share": 957000,
+       "Amount": 268438500.0,
+       "NavRate": 0.09,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "6515",
+       "DetailName": "穎崴",
+       "Position": " ",
+       "Share": 69000,
+       "Amount": 222180000.0,
+       "NavRate": 0.08,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "8358",
+       "DetailName": "金居",
+       "Position": " ",
+       "Share": 654000,
+       "Amount": 174945000.0,
+       "NavRate": 0.06,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "1590",
+       "DetailName": "亞德客-KY",
+       "Position": " ",
+       "Share": 78000,
+       "Amount": 80730000.0,
+       "NavRate": 0.03,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "6187",
+       "DetailName": "萬潤",
+       "Position": " ",
+       "Share": 121000,
+       "Amount": 89540000.0,
+       "NavRate": 0.03,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2002",
+       "DetailName": "中鋼",
+       "Position": " ",
+       "Share": 5163000,
+       "Amount": 90610650.0,
+       "NavRate": 0.03,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2313",
+       "DetailName": "華通",
+       "Position": " ",
+       "Share": 501000,
+       "Amount": 84919500.0,
+       "NavRate": 0.03,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "6278",
+       "DetailName": "台表科",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 171000.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3661",
+       "DetailName": "世芯-KY",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 3915000.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3008",
+       "DetailName": "大立光",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 3980000.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "4958",
+       "DetailName": "臻鼎-KY",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 364500.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2382",
+       "DetailName": "廣達",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 282500.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "3376",
+       "DetailName": "新日興",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 87800.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "4551",
+       "DetailName": "智伸科",
+       "Position": " ",
+       "Share": 40000,
+       "Amount": 4960000.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2408",
+       "DetailName": "南亞科",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 309000.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2637",
+       "DetailName": "慧洋-KY",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 89200.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2360",
+       "DetailName": "致茂",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 1015000.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "8150",
+       "DetailName": "南茂",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 71700.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "1802",
+       "DetailName": "台玻",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 63900.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "5347",
+       "DetailName": "世界",
+       "Position": " ",
+       "Share": 1000,
+       "Amount": 121000.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      },
+      {
+       "TranDate": "/Date(1795449600000)/",
+       "DetailCode": "2481",
+       "DetailName": "強茂",
+       "Position": " ",
+       "Share": 5000,
+       "Amount": 484500.0,
+       "NavRate": 0.0,
+       "MTH": "",
+       "EditTime": "/Date(1795509035000)/"
+      }
+     ],
+     "EditDate": "/Date(1795509035000)/"
+    }
+   ]
+  }
+ },
+ "price": {
+  "url": "https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20261101&stockNo=00981A",
+  "fetched_at": "2026-11-28T01:27:34+08:00",
+  "date": "2026-11-24",
+  "close": 22.04,
+  "previous_date": "2026-11-23",
+  "previous_close": 20.04
+ },
+ "assets": null
+}

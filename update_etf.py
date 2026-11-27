@@ -185,63 +185,7 @@ async def get_name_to_id():
 async def scrape_etf_holdings(etf_id, name_to_id):
     holdings = []
     async with httpx.AsyncClient(follow_redirects=True) as client:
-        # 特別處理統一投信 (00981A)：同時抓取 Share（股數）用於計算 ETF 自身買賣超
-        if etf_id == "00981A":
-            try:
-                import html as _html, re as _re
-                url = "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW"
-                r = await client.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
-                decoded = _html.unescape(r.text)
-                # 額外抓取基金規格數據 (規模, 淨值, 現金比, 期貨)
-                meta = {}
-                try:
-                    f_asset = _re.search(r'"FundAsset":([\d\.]+)', decoded)
-                    if f_asset:
-                        scale_val = float(f_asset.group(1))
-                        meta["scale"] = f"{int(scale_val / 100000000):,} 億"
-                    
-                    f_nav = _re.search(r'"FundNav":([\d\.]+)', decoded)
-                    if f_nav: meta["price"] = f_nav.group(1)
-                    
-                    f_rate = _re.search(r'"FundNavRate":([\d\.\+\-]+)', decoded)
-                    if f_rate: meta["change"] = f"{float(f_rate.group(1)):+.2f}%"
-                    
-                    # 抓資產配置 (現金與期貨)
-                    f_cash = _re.search(r'"AssetCode":"Cash","AssetRate":([\d\.]+)', decoded)
-                    if f_cash: meta["cash_ratio"] = f"{f_cash.group(1)}%"
-                    
-                    f_fut = _re.search(r'"AssetCode":"Futures","AssetRate":([\d\.]+)', decoded)
-                    if f_fut: meta["futures_margin"] = f"{f_fut.group(1)}%"
-                except:
-                    pass
-
-                # 抓取持股明細
-                matches = _re.findall(
-                    r'"DetailCode":"([^"\s]+)","DetailName":"([^"]+)","Position":"[^"]*","Share":([\d\.]+),"Amount":[\d\.]*,"NavRate":([0-9\.]+)',
-                    decoded
-                )
-                for match in matches:
-                    try:
-                        w = float(match[3])
-                        shares = int(float(match[2]))  # 股數（ezmoney 原始單位）
-                        if w > 0:
-                            holdings.append({
-                                "id": match[0].strip(),
-                                "name": match[1].strip(),
-                                "weight": w,
-                                "shares": shares,  # 存入股數以供差值計算
-                            })
-                    except Exception:
-                        pass
-
-                if holdings:
-                    return sorted(holdings, key=lambda x: x["weight"], reverse=True), meta
-            except Exception:
-                pass
-            if holdings:
-                return sorted(holdings, key=lambda x: x["weight"], reverse=True), {}
-
-        # 特別處理統一投信 (00403A)：同 00981A，使用 ezmoney fundCode=63YTW
+        # 特別處理統一投信 (00403A)：使用 ezmoney fundCode=63YTW（00981A 已改由 etf_official.py 處理）
         if etf_id == "00403A":
             try:
                 import html as _html, re as _re
@@ -348,30 +292,6 @@ async def scrape_etf_holdings(etf_id, name_to_id):
 
 
 etf_base_data = {
-    "00981A": {
-        "name": "統一台股增長",
-        "scale": "2,321 億",
-        "price": "27.74",
-        "change": "+0.36%",
-        "cash_ratio": "6.60%",
-        "futures_margin": "0.22%",
-        "topWeight": "9.46%",   # 啟動時的預設值；run() 會動態覆蓋
-        "vwap": "多頭鎖碼",
-        "holdings": [
-            {"id": "2330", "name": "台積電",   "weight": 8.55},
-            {"id": "3037", "name": "欣興",     "weight": 2.50, "is_new": True},
-            {"id": "2454", "name": "聯發科",   "weight": 6.20},
-            {"id": "2317", "name": "鴻海",     "weight": 4.10},
-            {"id": "2383", "name": "台光電",   "weight": 4.80},
-            {"id": "3017", "name": "奇鋐",     "weight": 4.30},
-            {"id": "2449", "name": "京元電",   "weight": 2.00, "is_new": True},
-            {"id": "6223", "name": "旺矽",     "weight": 2.20},
-            {"id": "2368", "name": "金像電",   "weight": 2.10},
-            {"id": "2345", "name": "智邦",     "weight": 1.80},
-            {"id": "3653", "name": "健策",     "weight": 1.60},
-            {"id": "6669", "name": "緯穎",     "weight": 1.40},
-        ],
-    },
     "00992A": {
         "name": "群益科技創新",
         "scale": "468 億",
@@ -590,7 +510,7 @@ async def run():
                     # 自身買賣超 = 今日股數 - 昨日股數（適用 00981A 和 00403A）
                     #          單位：股 → 張 (除以 1000)
                     # ──────────────────────────────────────────────────────
-                    if eid in ("00981A", "00403A") and "shares" in st:
+                    if eid == "00403A" and "shares" in st:
                         prev_s = prev_shares.get(st["id"], None)
                         if prev_s is not None:
                             delta_lots = int((st["shares"] - prev_s) / 1000)
@@ -600,7 +520,7 @@ async def run():
                             st["etf_net_buy"] = int(st["shares"] / 1000)
 
                 # 處理被刪除的股票
-                if eid in ("00981A", "00403A") and prev_ids:
+                if eid == "00403A" and prev_ids:
                     scraped_ids = {st["id"] for st in scraped}
                     deleted_ids = prev_ids - scraped_ids
                     for del_id in deleted_ids:
@@ -621,7 +541,7 @@ async def run():
 
     # 抓個股 + ETF 本身的 Fugle 即時報價（備援 Yahoo Finance）
     async with httpx.AsyncClient() as client:
-        all_sids = set(["00981A", "00992A", "00403A", "0050"])
+        all_sids = set(["00992A", "00403A", "0050"])
         for d in etf_base_data.values():
             for st in d["holdings"]:
                 all_sids.add(st["id"])
@@ -692,7 +612,7 @@ async def run():
             # [修正五] 00981A 優先使用「ETF 自身持股變化」顯示基金動向
             #          其他 ETF 仍使用 T86 全市場投信合計買賣超
             # ──────────────────────────────────────────────────────────
-            if eid in ("00981A", "00403A") and "etf_net_buy" in st:
+            if eid == "00403A" and "etf_net_buy" in st:
                 nb = st["etf_net_buy"]
                 st["net_buy"] = f"{nb:+d}"
                 st["chips"] = (
@@ -734,7 +654,7 @@ async def run():
 
     # 如果本次沒有偵測到任何持股異動（etf_net_buy 全為 0），
     # 保留上次 data.json 中已知的最後一筆加碼/減碼資料。
-    for _eid in ("00981A", "00403A"):
+    for _eid in ("00403A",):
         _holdings = etf_base_data.get(_eid, {}).get("holdings", [])
         _has_any_change = any(h.get("etf_net_buy", 0) != 0 for h in _holdings)
         if not _has_any_change and os.path.exists(data_file):

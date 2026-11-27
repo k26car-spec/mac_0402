@@ -14,3 +14,7 @@ node_modules/
 *.png
 *.jpg
 *.jpeg
+# etf_official.py 的暫存工作區（中斷時可能殘留），不可提交
+docs/etf/.*.staging/
+# 開發助理的本機工作筆記（公開 repo 不收）
+.trail/

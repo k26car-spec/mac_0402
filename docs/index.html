@@ -285,6 +285,7 @@
     </div>
 </div>
 
+<script src="etf-official.js?v=4"></script>
 <script>
     function generateSparkline(data) {
         if (!data || data.length === 0) return '';
@@ -654,7 +655,7 @@
                         if (dateLabel && fullData.update_time) {
                             // fullData.update_time 格式為 "YYYY-MM-DD HH:mm"
                             const updateDateStr = fullData.update_time.split(' ')[0]; // 提取 YYYY-MM-DD
-                            dateLabel.textContent = `數據基準日：${updateDateStr} | 法規：單一持股上限已放寬至 25%`;
+                            dateLabel.textContent = `舊版分頁資料更新日：${updateDateStr}（00981A 以分頁內「持股基準日」為準）`;
                         }
 
                         // 載入完成後，尊重目前活踴視圖（大盤分析有自己的資料來源，這裡不用處理）
@@ -931,6 +932,8 @@
         console.log('[Summary] renderSummaryPanel called, etfId=', etfId, 'currentView=', currentView);
         const data = etfData[etfId];
         const panel = document.getElementById('summary-panel');
+        // 00981A 改讀官方驗證資料（etf-official.js）；其他 ETF 仍走舊版
+        if (etfId === '00981A') { renderOfficialETF(etfId, panel); return; }
         console.log('[Summary] data=', data ? 'OK ('+data.holdings.length+' holdings)' : 'NULL', 'panel=', panel ? 'FOUND' : 'NOT FOUND');
 
         if (!data) {
@@ -1368,7 +1371,7 @@ tr:nth-child(even) td{background:#fafafa}
 
 
     <footer class="mt-12 pb-8 border-t border-slate-200 pt-8 text-center">
-        <p class="text-xs text-slate-400">Git Release: v1.2-Pro | Last Sync: 2026-04-26 12:26</p>
+        <p class="text-xs text-slate-400">Git Release: v1.2-Pro</p>
         <p class="text-[10px] text-slate-300 mt-1">Powered by Antigravity AI Deployment Engine</p>
     </footer>
 </body>
