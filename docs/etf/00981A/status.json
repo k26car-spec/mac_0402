@@ -1,15 +1,15 @@
 {
- "last_attempt_at": "2026-11-28T12:43:45+08:00",
+ "last_attempt_at": "2026-11-29T01:29:49+08:00",
  "state": "ok",
  "message": "資料已通過驗證",
  "expected_basis_date": "2026-11-27",
  "latest_basis_date": "2026-11-27",
  "warnings": [],
- "last_success_at": "2026-11-28T12:43:45+08:00",
+ "last_success_at": "2026-11-29T01:29:49+08:00",
  "publish_time": "17:00",
  "data_current": true,
  "next_due_at": "2026-11-30T17:00:00+08:00",
  "issues": [],
  "closures": [],
- "data_version": "3cc8e1ef00b69c21"
+ "data_version": "e99a22357eccb60e"
 }
