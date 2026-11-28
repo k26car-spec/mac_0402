@@ -2,7 +2,7 @@
  "fund": "00981A",
  "basis_date": "2026-11-24",
  "previous_trading_date": "2026-11-23",
- "fetched_at": "2026-11-28T02:14:36+08:00",
+ "fetched_at": "2026-11-28T12:43:45+08:00",
  "pcf": {
   "url": "https://www.ezmoney.com.tw/ETF/Transaction/PCF?fundCode=49YTW",
   "query_date": "2026-11-25",
@@ -693,7 +693,7 @@
  },
  "price": {
   "url": "https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20261101&stockNo=00981A",
-  "fetched_at": "2026-11-28T02:14:36+08:00",
+  "fetched_at": "2026-11-28T12:43:45+08:00",
   "date": "2026-11-24",
   "close": 22.04,
   "previous_date": "2026-11-23",
